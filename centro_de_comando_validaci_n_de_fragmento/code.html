@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#000066",
+              "gold": "#C5A059",
+              "background-light": "#f5f5f8",
+              "background-dark": "#0f0f23",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .text-legal {
+            font-family: 'Arial', sans-serif;
+            font-size: 12pt;
+            line-height: 1.5;
+        }
+        .sensitive-data {
+            color: #dc2626;
+            font-weight: 600;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+        }
+        .blink-dot {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .3; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Header / Top Bar -->
+<header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-4 flex items-center justify-between sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<div class="text-primary dark:text-slate-100 cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<div>
+<h1 class="text-lg font-bold text-primary dark:text-white leading-tight">Validación de Fragmento</h1>
+<p class="text-xs text-slate-500 font-medium">Materia: Penal</p>
+</div>
+</div>
+<div class="bg-primary/10 px-3 py-1 rounded border border-primary/20">
+<span class="text-primary font-bold text-sm">#LF-2024-0892</span>
+</div>
+</header>
+<!-- Progress Stepper -->
+<div class="bg-white dark:bg-slate-900 px-6 py-6 border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-4xl mx-auto">
+<div class="flex items-center justify-between mb-4">
+<div class="flex flex-col items-center flex-1">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-sm">check</span>
+</div>
+<span class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Declaraciones</span>
+</div>
+<div class="h-px bg-primary flex-1 mx-2 -mt-6"></div>
+<div class="flex flex-col items-center flex-1">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-sm">check</span>
+</div>
+<span class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Valoración</span>
+</div>
+<div class="h-px bg-primary/30 flex-1 mx-2 -mt-6"></div>
+<div class="flex flex-col items-center flex-1">
+<div class="w-8 h-8 rounded-full bg-primary border-4 border-primary/20 text-white flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-sm">edit_note</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary">Acreditación del Delito</span>
+</div>
+</div>
+<div class="flex justify-between items-center bg-background-light dark:bg-slate-800 p-3 rounded-lg">
+<div class="flex items-center gap-2">
+<span class="flex h-2 w-2 rounded-full bg-primary blink-dot"></span>
+<p class="text-sm font-medium text-slate-700 dark:text-slate-300">Estado: En Proceso de Revisión</p>
+</div>
+<p class="text-xs text-slate-500">Paso 3 de 3</p>
+</div>
+</div>
+</div>
+<!-- Main Content -->
+<main class="flex-1 p-6 max-w-4xl mx-auto w-full">
+<div class="bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+<div class="bg-slate-50 dark:bg-slate-800/50 px-6 py-3 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center">
+<h2 class="text-sm font-bold text-primary dark:text-gold uppercase tracking-widest">Fragmento para Revisión</h2>
+<div class="flex gap-2">
+<button class="p-1 hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors">
+<span class="material-symbols-outlined text-slate-500 text-lg">print</span>
+</button>
+<button class="p-1 hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors">
+<span class="material-symbols-outlined text-slate-500 text-lg">share</span>
+</button>
+</div>
+</div>
+<div class="p-8 md:p-12">
+<div class="text-legal text-slate-800 dark:text-slate-200 text-justify">
+<p class="mb-6">
+                        En relación con los hechos ocurridos el pasado <span class="sensitive-data">14 de mayo de 2024</span>, el sujeto identificado como <span class="sensitive-data">JUAN CARLOS "N"</span> fue interceptado por elementos de seguridad en la intersección de <span class="sensitive-data">Calle Reforma y Avenida Insurgentes</span>.
+                    </p>
+<p class="mb-6">
+                        De acuerdo con la narrativa de los hechos, el imputado manifestó de manera libre que se encontraba en posesión de un <span class="sensitive-data">artefacto metálico con características de arma de fuego</span>, el cual portaba al interior de una mochila de color negro. El parafraseo de la declaración indica que el sujeto reconoció que dicho objeto ilícito no contaba con los permisos correspondientes emitidos por la autoridad competente.
+                    </p>
+<p class="mb-6">
+                        Durante la diligencia, se observó que el individuo intentó ocultar el objeto al notar la presencia de la unidad <span class="sensitive-data">SSP-9021</span>. Al realizar la inspección precautoria, los agentes confirmaron el hallazgo del material mencionado, procediendo al aseguramiento inmediato y la lectura de sus derechos constitucionales en el lugar del incidente ubicado en <span class="sensitive-data">Ciudad de México</span>.
+                    </p>
+<p>
+                        Este fragmento constituye la base para la <span class="font-bold border-b-2 border-gold">Acreditación del Delito de Posesión de Objeto Ilícito</span>, integrándose a la carpeta de investigación bajo la materia penal correspondiente.
+                    </p>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800/50 px-6 py-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<div class="flex items-center gap-2 text-slate-500">
+<span class="material-symbols-outlined text-sm">info</span>
+<span class="text-xs italic">Los datos resaltados en rojo son sensibles y requieren validación manual.</span>
+</div>
+<div class="flex gap-4">
+<button class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">
+                        Editar Texto
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation / Action Area -->
+<div class="mt-auto bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 p-4">
+<div class="max-w-4xl mx-auto flex flex-col sm:flex-row gap-4 items-center justify-between">
+<div class="flex gap-8">
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">folder_open</span>
+<span class="text-[10px] font-medium">Expedientes</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">verified_user</span>
+<span class="text-[10px] font-bold">Validación</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Ajustes</span>
+</a>
+</div>
+<button class="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg font-bold flex items-center justify-center gap-3 transition-all transform active:scale-95 shadow-lg shadow-primary/20">
+<span>Validar y Continuar</span>
+<span class="material-symbols-outlined text-gold">check_circle</span>
+</button>
+</div>
+</div>
+</body></html>

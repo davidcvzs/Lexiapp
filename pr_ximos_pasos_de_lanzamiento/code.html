@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000066", // Navy Blue
+                        "accent": "#C5A059",  // Gold
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0f0f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex min-h-screen w-full flex-col max-w-md mx-auto bg-white dark:bg-background-dark shadow-2xl overflow-hidden">
+<!-- Header Section -->
+<header class="pt-10 pb-6 px-6 bg-primary dark:bg-slate-950 text-center border-b border-accent/20">
+<div class="mx-auto mb-4 h-20 w-20 rounded-xl bg-gradient-to-tr from-accent to-accent/50 p-[2px]">
+<div class="h-full w-full rounded-[inherit] bg-primary flex items-center justify-center bg-cover bg-center" data-alt="Abstract legal scales emblem in gold tones" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDLUrkVURqXGydg9oIFm4ZgRCGUL2hY8EI08_YqXA8bFbmPxk1Y3s8PmMn0xxBNDSTM6o5tvapPodyuUJrRxsi4AXCD5bxZTYP3_5IMRf31ehVNevOgXAxSeIip5qs3SFMVP8Nz9bSOZOq_jAvKy2iLP094miK503vmwjiVcX4zemY8yCNsCamMiFn5tydRI1_xmrk2vi9R-rHlCsBbSQbvSZUTlhIfRncQ_quqVjSdftkyspMm9XwPrRAOs9XjH70hYlY0fphE5qC6")'>
+</div>
+</div>
+<h1 class="text-accent text-sm font-semibold uppercase tracking-widest">LegalFlow</h1>
+<p class="text-white text-2xl font-bold mt-1">Ready for Production</p>
+<p class="text-slate-300 text-xs mt-2 font-medium">Premium Account Status: Active</p>
+</header>
+<!-- Main Content -->
+<main class="flex-1 px-6 py-8">
+<div class="mb-8">
+<h2 class="text-slate-900 dark:text-white text-xl font-bold">Launch Checklist</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Complete the final steps to go live.</p>
+</div>
+<!-- Checklist Items -->
+<div class="space-y-4">
+<!-- Step 1 -->
+<label class="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm transition-all hover:border-accent/40 group cursor-pointer">
+<div class="relative flex items-center">
+<input checked="" class="h-6 w-6 rounded border-accent/30 text-accent focus:ring-accent bg-transparent transition-colors cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex flex-col">
+<span class="text-slate-900 dark:text-slate-100 font-semibold text-sm">Domain Activation</span>
+<span class="text-slate-500 dark:text-slate-400 text-xs font-medium">legalflow.com</span>
+</div>
+</label>
+<!-- Step 2 -->
+<label class="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm transition-all hover:border-accent/40 group cursor-pointer">
+<div class="relative flex items-center">
+<input checked="" class="h-6 w-6 rounded border-accent/30 text-accent focus:ring-accent bg-transparent transition-colors cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex flex-col">
+<span class="text-slate-900 dark:text-slate-100 font-semibold text-sm">Final Security Audit</span>
+<span class="text-slate-500 dark:text-slate-400 text-xs font-medium">SSL &amp; Encryption Verified</span>
+</div>
+</label>
+<!-- Step 3 -->
+<label class="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm transition-all hover:border-accent/40 group cursor-pointer">
+<div class="relative flex items-center">
+<input class="h-6 w-6 rounded border-accent/30 text-accent focus:ring-accent bg-transparent transition-colors cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex flex-col">
+<span class="text-slate-900 dark:text-slate-100 font-semibold text-sm">Marketing Launch</span>
+<span class="text-slate-500 dark:text-slate-400 text-xs font-medium">Social Media &amp; Legal Forums</span>
+</div>
+</label>
+<!-- Step 4 -->
+<label class="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm transition-all hover:border-accent/40 group cursor-pointer">
+<div class="relative flex items-center">
+<input class="h-6 w-6 rounded border-accent/30 text-accent focus:ring-accent bg-transparent transition-colors cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex flex-col">
+<span class="text-slate-900 dark:text-slate-100 font-semibold text-sm">Community Support Setup</span>
+<span class="text-slate-500 dark:text-slate-400 text-xs font-medium">Help Desk &amp; Live Chat</span>
+</div>
+</label>
+</div>
+<!-- Action Area -->
+<div class="mt-10 mb-6">
+<button class="w-full bg-accent hover:bg-accent/90 text-primary font-bold py-4 rounded-xl shadow-lg shadow-accent/20 transition-all uppercase tracking-widest text-sm">
+                    Launch Now
+                </button>
+<p class="text-center text-slate-400 text-[10px] mt-4 uppercase tracking-[0.2em]">Deployment Tier: Enterprise v4.2</p>
+</div>
+</main>
+<!-- Bottom Navigation (Styled for Premium Look) -->
+<nav class="flex border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-6 py-4">
+<a class="flex flex-1 flex-col items-center justify-center text-primary dark:text-accent" href="#">
+<span class="h-1 w-6 bg-accent rounded-full mb-1"></span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Home</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center text-slate-400 hover:text-primary dark:hover:text-accent transition-colors" href="#">
+<span class="h-1 w-6 bg-transparent rounded-full mb-1"></span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Cases</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center text-slate-400 hover:text-primary dark:hover:text-accent transition-colors" href="#">
+<span class="h-1 w-6 bg-transparent rounded-full mb-1"></span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Analytics</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center text-slate-400 hover:text-primary dark:hover:text-accent transition-colors" href="#">
+<span class="h-1 w-6 bg-transparent rounded-full mb-1"></span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Account</span>
+</a>
+</nav>
+</div>
+</body></html>

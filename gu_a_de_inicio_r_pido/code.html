@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Legal App Quick Start Guide</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+        .step-active {
+            @apply border-primary text-primary;
+        }
+        .step-inactive {
+            @apply border-slate-200 text-slate-400 dark:border-slate-700 dark:text-slate-500;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Header -->
+<header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-10">
+<div class="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl">gavel</span>
+<h1 class="text-xl font-bold tracking-tight">LegalFlow</h1>
+</div>
+<button class="text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</div>
+</header>
+<main class="flex-1 max-w-3xl mx-auto w-full px-4 py-8">
+<!-- Progress Indicator -->
+<div class="mb-10">
+<div class="flex items-center justify-between relative">
+<div class="absolute top-1/2 left-0 w-full h-0.5 bg-slate-200 dark:bg-slate-800 -translate-y-1/2 z-0"></div>
+<!-- Step 1 (Active) -->
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">1</div>
+<span class="text-xs font-semibold text-primary uppercase tracking-wider">Upload</span>
+</div>
+<!-- Step 2 -->
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-400 flex items-center justify-center font-bold">2</div>
+<span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Transcribe</span>
+</div>
+<!-- Step 3 -->
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-400 flex items-center justify-center font-bold">3</div>
+<span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Configure</span>
+</div>
+<!-- Step 4 -->
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-400 flex items-center justify-center font-bold">4</div>
+<span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Export</span>
+</div>
+</div>
+</div>
+<!-- Step Content -->
+<div class="space-y-8">
+<section class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-800">
+<div class="flex items-start gap-4 mb-6">
+<div class="p-3 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl">upload_file</span>
+</div>
+<div>
+<h2 class="text-2xl font-bold">Step 1: Upload Case Videos</h2>
+<p class="text-slate-600 dark:text-slate-400 mt-1">Submit your multi-day recordings for automated forensic analysis.</p>
+</div>
+</div>
+<div class="border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-xl p-10 flex flex-col items-center justify-center text-center hover:border-primary transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-slate-300 dark:text-slate-600 group-hover:text-primary text-5xl mb-4 transition-colors">cloud_upload</span>
+<p class="font-medium">Drag and drop video files or browse folders</p>
+<p class="text-sm text-slate-500 mt-2">Maximum supported duration: 650 minutes per session</p>
+<button class="mt-6 px-6 py-2 bg-primary text-white rounded-lg font-semibold hover:bg-primary/90 transition-all">Select Files</button>
+</div>
+<div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800/50 flex gap-3">
+<span class="material-symbols-outlined text-primary">info</span>
+<div>
+<p class="text-sm font-semibold">Automatic Transcription</p>
+<p class="text-xs text-slate-500 mt-1">Step 2: Voice-to-text with advanced speaker identification.</p>
+</div>
+</div>
+<div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800/50 flex gap-3">
+<span class="material-symbols-outlined text-primary">settings_suggest</span>
+<div>
+<p class="text-sm font-semibold">Valuation Methods</p>
+<p class="text-xs text-slate-500 mt-1">Step 3: Configure DAUBERT and psychological testimony parameters.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-white/50 dark:bg-slate-900/50 rounded-xl p-6 border border-slate-200 dark:border-slate-800 opacity-80">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400">description</span>
+<h3 class="font-bold">Step 4: PJENL Document Generation</h3>
+</div>
+<span class="material-symbols-outlined text-slate-300">lock</span>
+</div>
+<p class="text-sm text-slate-500 mt-2">Automatically generates reports in Arial 12, 1.5 spacing, highlighting sensitive data in red.</p>
+</section>
+</div>
+<div class="mt-10 flex justify-end gap-3">
+<button class="px-6 py-2 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">Save Draft</button>
+<button class="px-8 py-2 bg-primary text-white rounded-lg font-semibold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-all">Next Step</button>
+</div>
+</main>
+<!-- Bottom Navigation Component -->
+<nav class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 mt-auto">
+<div class="max-w-3xl mx-auto flex justify-around p-3">
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-medium uppercase tracking-tighter">Dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">folder_open</span>
+<span class="text-[10px] font-medium uppercase tracking-tighter">Cases</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[10px] font-medium uppercase tracking-tighter">Analysis</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium uppercase tracking-tighter">Settings</span>
+</a>
+</div>
+</nav>
+</body></html>

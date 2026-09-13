@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000066", // Navy Blue
+                        "accent": "#B8860B", // Gold
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0f0f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full max-w-md mx-auto flex-col bg-background-light dark:bg-background-dark overflow-x-hidden border-x border-slate-200 dark:border-slate-800">
+<!-- Header / TopAppBar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between">
+<div class="text-primary dark:text-slate-100 flex size-12 shrink-0 items-center justify-start cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-primary dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">LegalFlow</h2>
+</div>
+<!-- Progress Indicator -->
+<div class="flex flex-col gap-3 p-4">
+<div class="flex gap-6 justify-between items-center">
+<p class="text-slate-700 dark:text-slate-300 text-sm font-medium uppercase tracking-wider">Fase: Valoración</p>
+<p class="text-primary dark:text-slate-100 text-sm font-bold">100%</p>
+</div>
+<div class="rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+<div class="h-2 rounded-full bg-primary" style="width: 100%;"></div>
+</div>
+</div>
+<!-- Main Validation Prompt -->
+<div class="px-4 pt-6 pb-2 text-center">
+<div class="inline-flex items-center justify-center p-3 mb-4 rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined" style="font-size: 32px;">verified_user</span>
+</div>
+<h1 class="text-slate-900 dark:text-white tracking-tight text-2xl font-bold leading-tight pb-3">Validación de Integridad</h1>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-slate-700 dark:text-slate-300 text-base font-medium leading-relaxed">
+                    ¿Desea realizar una revisión de congruencia antes de finalizar esta fase?
+                </p>
+</div>
+</div>
+<!-- Integrity Report Section -->
+<div class="px-4 pt-6">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-accent">analytics</span>
+<h3 class="text-primary dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em]">Reporte de Integridad AI</h3>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Checkpoint 1 -->
+<div class="flex items-start gap-3 p-4 bg-white dark:bg-slate-900 rounded-lg border-l-4 border-primary shadow-sm">
+<span class="material-symbols-outlined text-emerald-600">check_circle</span>
+<div>
+<p class="text-slate-900 dark:text-white font-semibold text-sm">Cero Inferencias</p>
+<p class="text-slate-600 dark:text-slate-400 text-xs mt-1">El contenido es 100% fiel a la transcripción del proceso.</p>
+</div>
+</div>
+<!-- Checkpoint 2 -->
+<div class="flex items-start gap-3 p-4 bg-white dark:bg-slate-900 rounded-lg border-l-4 border-primary shadow-sm">
+<span class="material-symbols-outlined text-emerald-600">check_circle</span>
+<div>
+<p class="text-slate-900 dark:text-white font-semibold text-sm">Sin Resúmenes</p>
+<p class="text-slate-600 dark:text-slate-400 text-xs mt-1">No se ha omitido información relevante ni detalles procesales.</p>
+</div>
+</div>
+<!-- Checkpoint 3 -->
+<div class="flex items-start gap-3 p-4 bg-white dark:bg-slate-900 rounded-lg border-l-4 border-primary shadow-sm">
+<span class="material-symbols-outlined text-emerald-600">check_circle</span>
+<div>
+<p class="text-slate-900 dark:text-white font-semibold text-sm">Sin Modificaciones</p>
+<p class="text-slate-600 dark:text-slate-400 text-xs mt-1">El texto respeta la literalidad y el Auto de Apertura del caso.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer / Action Buttons -->
+<div class="mt-auto p-4 flex flex-col gap-3 pb-8">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg transition-colors flex items-center justify-center gap-2">
+<span>Confirmar y Avanzar</span>
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+<button class="w-full bg-transparent border-2 border-primary/20 hover:border-primary text-primary dark:text-slate-100 font-semibold py-4 rounded-xl transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">find_in_page</span>
+<span>Solicitar Revisión Detallada</span>
+</button>
+</div>
+<!-- Decorative Background Pattern (Subtle) -->
+<div class="fixed top-0 right-0 -z-10 opacity-5 pointer-events-none">
+<div class="w-64 h-64 rounded-full bg-accent blur-3xl"></div>
+</div>
+</div>
+</body></html>

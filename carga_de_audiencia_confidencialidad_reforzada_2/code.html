@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#1152d4",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+            },
+            fontFamily: {
+              "display": ["Public Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<!-- Main Container -->
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark overflow-x-hidden mx-auto max-w-md border-x border-slate-200 dark:border-slate-800 shadow-xl">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-10 flex items-center bg-white dark:bg-slate-900 p-4 border-b border-slate-200 dark:border-slate-800 justify-between">
+<button class="text-slate-900 dark:text-slate-100 flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">Nueva Audiencia</h2>
+</header>
+<main class="flex-1 flex flex-col p-4 space-y-6"><div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/50 p-3 rounded-xl flex items-start gap-3">
+<span class="material-symbols-outlined text-red-600 dark:text-red-400 text-xl shrink-0">gavel</span>
+<p class="text-[11px] text-red-700 dark:text-red-300 font-medium leading-tight">
+<strong>Confidencial:</strong> Uso estrictamente laboral y confidencial. Los datos sensibles, incluyendo testimonios de menores, se transcriben íntegramente bajo protocolos de seguridad judicial.
+  </p>
+</div>
+<!-- Instructions/Status -->
+<div class="flex flex-col space-y-1">
+<h3 class="text-slate-900 dark:text-slate-100 text-xl font-bold">Detalles del Proceso</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Complete la información para iniciar el procesamiento de la audiencia.</p>
+</div>
+<!-- Form Fields -->
+<div class="space-y-4">
+<label class="flex flex-col">
+<p class="text-slate-700 dark:text-slate-300 text-sm font-semibold pb-2">Número de Expediente</p>
+<input class="form-input flex w-full rounded-xl text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary/50 border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 h-14 placeholder:text-slate-400 p-4 text-base transition-all" placeholder="Ej. 12345/2023" type="text"/>
+</label>
+<label class="flex flex-col">
+<p class="text-slate-700 dark:text-slate-300 text-sm font-semibold pb-2">Tipo de Audiencia</p>
+<div class="relative">
+<select class="form-select appearance-none flex w-full rounded-xl text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary/50 border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 h-14 p-4 text-base transition-all">
+<option disabled="" selected="" value="">Seleccione el tipo</option>
+<option value="penal">Penal</option>
+<option value="civil">Civil</option>
+<option value="laboral">Laboral</option>
+<option value="familia">Familia</option>
+</select>
+</div>
+</label>
+<label class="flex flex-col">
+<p class="text-slate-700 dark:text-slate-300 text-sm font-semibold pb-2">Fecha de Audiencia</p>
+<div class="relative flex w-full">
+<input class="form-input flex w-full rounded-xl text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary/50 border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 h-14 p-4 text-base transition-all" type="date"/>
+</div>
+</label>
+</div>
+<!-- Upload Area -->
+<div class="flex flex-col">
+<p class="text-slate-700 dark:text-slate-300 text-sm font-semibold pb-2">Archivo de Video</p>
+<div class="group relative flex flex-col items-center gap-4 rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-700 hover:border-primary dark:hover:border-primary bg-white dark:bg-slate-800/50 px-6 py-12 transition-all cursor-pointer">
+<div class="flex size-16 items-center justify-center rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all">
+<span class="material-symbols-outlined text-3xl">cloud_upload</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold text-center">Subir Video de Audiencia</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs text-center max-w-[240px]">MP4, MOV o AVI (máx. 2GB y hasta 650 min). La calidad de audio afecta la precisión.</p>
+</div>
+<button class="mt-2 px-4 py-2 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-sm font-semibold rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">
+                        Seleccionar Archivo
+                    </button>
+<input accept="video/*" class="absolute inset-0 opacity-0 cursor-pointer" type="file"/>
+</div>
+</div>
+<!-- Alert Box (Security Info) -->
+<div class="flex items-start gap-3 p-4 bg-primary/5 dark:bg-primary/10 rounded-xl border border-primary/20">
+<span class="material-symbols-outlined text-primary text-xl">verified_user</span>
+<p class="text-xs text-primary/80 dark:text-primary/90 leading-relaxed">El procesamiento cumple con la normativa de protección de datos judiciales. Los archivos son encriptados automáticamente y no se divulgan datos a terceros. Uso exclusivo para el registro oficial de audiencias.</p>
+</div>
+</main>
+<!-- Bottom Action Button -->
+<footer class="p-4 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+<button class="flex w-full items-center justify-center gap-2 rounded-xl bg-primary h-14 text-white text-base font-bold shadow-lg shadow-primary/20 active:scale-[0.98] transition-all"><span class="material-symbols-outlined">description</span>
+                Comenzar Transcripción Íntegra</button>
+</footer>
+<!-- Progress Indicator (Hidden by default, used for state visualization) -->
+<div class="hidden px-6 py-4">
+<div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-full w-1/3 rounded-full"></div>
+</div>
+<p class="text-[10px] text-slate-500 mt-1 text-center">Subiendo archivo: 32%</p>
+</div>
+</div>
+</body></html>

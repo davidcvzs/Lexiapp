@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegalFlow - Transcripción Judicial Profesional</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000066",
+                        "accent": "#B8860B",
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0f0f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+<!-- Navigation -->
+<nav class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10">
+<div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="text-primary dark:text-slate-100 text-xl font-black tracking-tight">LegalFlow</span>
+</div>
+<div class="flex items-center gap-6">
+<a class="text-sm font-semibold text-primary/80 hover:text-primary transition-colors" href="#">Ingresar</a>
+<button class="bg-primary text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-primary/90 transition-all">
+                    Prueba Gratis
+                </button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative overflow-hidden pt-16 pb-20 @container">
+<div class="max-w-7xl mx-auto px-4 grid grid-cols-1 @[864px]:grid-cols-2 gap-12 items-center">
+<div class="flex flex-col gap-8">
+<div class="inline-flex items-center px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-bold uppercase tracking-widest">
+                    Estándares SCJN &amp; PJENL
+                </div>
+<div class="flex flex-col gap-4">
+<h1 class="text-primary dark:text-slate-100 text-5xl @[480px]:text-6xl font-black leading-[1.1] tracking-tight">
+                        LegalFlow
+                    </h1>
+<p class="text-slate-600 dark:text-slate-400 text-lg @[480px]:text-xl leading-relaxed max-w-xl">
+                        Transforma tus audiencias en sentencias con precisión judicial. Herramientas diseñadas para la eficiencia de magistrados y secretarios.
+                    </p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-primary text-white h-14 px-8 rounded-lg text-base font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform">
+                        Prueba Gratis una Sentencia
+                    </button>
+<button class="bg-white border-2 border-primary/10 text-primary h-14 px-8 rounded-lg text-base font-bold hover:bg-primary/5 transition-colors">
+                        Ver Demo
+                    </button>
+</div>
+</div>
+<div class="relative">
+<div class="aspect-square rounded-2xl bg-gradient-to-br from-primary to-primary/80 shadow-2xl flex items-center justify-center p-8 overflow-hidden">
+<div class="w-full h-full rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 p-6 flex flex-col gap-4">
+<div class="h-4 w-1/2 bg-white/20 rounded"></div>
+<div class="h-4 w-full bg-white/10 rounded"></div>
+<div class="h-4 w-full bg-white/10 rounded"></div>
+<div class="h-32 w-full bg-white/5 border border-white/10 rounded-lg mt-4 flex items-center justify-center text-white/40 italic text-sm text-center px-4">
+                            "Basado en los lineamientos técnicos de la Suprema Corte de Justicia de la Nación..."
+                        </div>
+<div class="mt-auto flex justify-between">
+<div class="h-8 w-24 bg-accent/40 rounded"></div>
+<div class="h-8 w-24 bg-white/20 rounded"></div>
+</div>
+</div>
+</div>
+<!-- Decorative Gold Element -->
+<div class="absolute -bottom-6 -right-6 w-32 h-32 bg-accent/20 rounded-full blur-3xl"></div>
+</div>
+</div>
+</header>
+<!-- How It Works -->
+<section class="py-24 bg-white dark:bg-background-dark/50 border-y border-primary/5">
+<div class="max-w-7xl mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-primary dark:text-slate-100 text-3xl font-black mb-4">Cómo funciona</h2>
+<p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                    Nuestra tecnología está diseñada específicamente para el flujo de trabajo del poder judicial mexicano.
+                </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="p-8 rounded-2xl border border-primary/5 hover:border-accent/30 transition-colors group">
+<div class="text-accent text-5xl font-black mb-6 opacity-20 group-hover:opacity-100 transition-opacity">01</div>
+<h3 class="text-xl font-bold text-primary dark:text-slate-100 mb-3">Carga de Audiencia</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        Sube el archivo de audio o video de la audiencia. Procesamos múltiples formatos con seguridad de grado bancario.
+                    </p>
+</div>
+<div class="p-8 rounded-2xl border border-primary/5 hover:border-accent/30 transition-colors group">
+<div class="text-accent text-5xl font-black mb-6 opacity-20 group-hover:opacity-100 transition-opacity">02</div>
+<h3 class="text-xl font-bold text-primary dark:text-slate-100 mb-3">Transcripción IA</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        Nuestra inteligencia artificial especializada en terminología legal genera una transcripción exacta en minutos.
+                    </p>
+</div>
+<div class="p-8 rounded-2xl border border-primary/5 hover:border-accent/30 transition-colors group">
+<div class="text-accent text-5xl font-black mb-6 opacity-20 group-hover:opacity-100 transition-opacity">03</div>
+<h3 class="text-xl font-bold text-primary dark:text-slate-100 mb-3">Estructuración Judicial</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        Exporta el borrador de sentencia cumpliendo rigurosamente con los formatos oficiales de la SCJN y PJENL.
+                    </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Section -->
+<section class="py-24">
+<div class="max-w-7xl mx-auto px-4">
+<div class="max-w-3xl mx-auto bg-primary rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
+<div class="p-10 md:p-14 flex-1 text-white">
+<h2 class="text-3xl font-black mb-6">Acceso Profesional</h2>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3 text-slate-300">
+<span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+                            Transcripciones ilimitadas
+                        </li>
+<li class="flex items-center gap-3 text-slate-300">
+<span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+                            Formato oficial SCJN/PJENL
+                        </li>
+<li class="flex items-center gap-3 text-slate-300">
+<span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+                            Seguridad de grado bancario
+                        </li>
+<li class="flex items-center gap-3 text-slate-300">
+<span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+                            Soporte técnico 24/7
+                        </li>
+</ul>
+<p class="text-white/60 text-xs italic">
+                        Cumplimos con la Ley General de Protección de Datos Personales.
+                    </p>
+</div>
+<div class="bg-accent p-10 md:p-14 flex flex-col justify-center items-center text-primary min-w-[320px]">
+<span class="text-sm font-bold uppercase tracking-widest mb-2">Suscripción Mensual</span>
+<div class="flex items-baseline gap-1 mb-8">
+<span class="text-5xl font-black tracking-tight">$60 MXN</span>
+<span class="text-lg font-bold">/mes</span>
+</div>
+<button class="w-full bg-primary text-white h-14 rounded-lg font-black hover:bg-primary/90 transition-colors">
+                        Comenzar Ahora
+                    </button>
+<p class="mt-4 text-xs font-semibold opacity-70">Cancela en cualquier momento</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-20 bg-background-light dark:bg-background-dark">
+<div class="max-w-4xl mx-auto px-4 text-center">
+<h2 class="text-primary dark:text-slate-100 text-4xl font-black mb-6">Optimiza tu flujo de trabajo hoy</h2>
+<p class="text-slate-600 dark:text-slate-400 text-lg mb-10">
+                Únete a los cientos de profesionales que ya confían en LegalFlow para elevar la calidad de su labor judicial.
+            </p>
+<div class="flex justify-center">
+<button class="bg-primary text-white h-14 px-12 rounded-lg text-lg font-bold shadow-xl shadow-primary/20 hover:scale-[1.05] transition-all">
+                    Prueba Gratis
+                </button>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="py-12 border-t border-primary/10">
+<div class="max-w-7xl mx-auto px-4">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex flex-col gap-2">
+<span class="text-primary dark:text-slate-100 text-xl font-black tracking-tight">LegalFlow</span>
+<p class="text-slate-500 text-sm">© 2024 LegalFlow. Todos los derechos reservados.</p>
+</div>
+<div class="flex gap-10 text-sm font-bold text-slate-600 dark:text-slate-400">
+<a class="hover:text-primary transition-colors" href="#">Privacidad</a>
+<a class="hover:text-primary transition-colors" href="#">Términos</a>
+<a class="hover:text-primary transition-colors" href="#">Contacto</a>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-primary/5 text-center text-xs text-slate-400 uppercase tracking-widest">
+                En cumplimiento con las normativas de la SCJN y PJENL
+            </div>
+</div>
+</footer>
+</body></html>

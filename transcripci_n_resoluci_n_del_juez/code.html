@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#000066",
+              "accent": "#C5A059", // Dorado para acentos profesionales
+              "background-light": "#f5f5f8",
+              "background-dark": "#0f0f23",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<title>LegalFlow - Resolución Judicial</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Header / Top Bar -->
+<header class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 py-3 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-3">
+<div class="text-primary dark:text-accent cursor-pointer">
+<span class="material-symbols-outlined text-[28px]">arrow_back</span>
+</div>
+<div>
+<h1 class="text-primary dark:text-white font-bold text-lg leading-none">LegalFlow</h1>
+<p class="text-[10px] text-accent font-semibold uppercase tracking-wider">Gestión Jurídica</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined">share</span>
+</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</header>
+<main class="flex-1 max-w-4xl mx-auto w-full p-4 md:p-8">
+<!-- Title Section -->
+<div class="mb-8 text-center md:text-left">
+<span class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary dark:bg-accent/10 dark:text-accent text-xs font-bold mb-3 uppercase tracking-widest">Documento Oficial</span>
+<h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">Resolución del Juez en Audiencia</h2>
+<div class="mt-2 flex flex-wrap items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">event</span>
+<span>24 Oct 2023</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">gavel</span>
+<span>Causa Nº 2849/2023</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span>Sala de Audiencias 4</span>
+</div>
+</div>
+</div>
+<!-- Document Container -->
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-200 dark:border-slate-800 overflow-hidden mb-8">
+<!-- Document Header -->
+<div class="bg-slate-50 dark:bg-slate-800/50 px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div>
+<p class="text-xs font-bold text-slate-400 uppercase">Transcripción</p>
+<p class="text-sm font-semibold text-slate-700 dark:text-slate-200">Acta Judicial Digitalizada</p>
+</div>
+</div>
+<div class="hidden md:flex gap-2">
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+                        Copiar texto
+                    </button>
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-sm">send</span>
+                        Valoración
+                    </button>
+</div>
+</div>
+<!-- Content Area -->
+<div class="p-8 md:p-12 relative">
+<!-- Watermark -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03] dark:opacity-[0.05]">
+<span class="material-symbols-outlined text-[300px]">gavel</span>
+</div>
+<div class="relative z-10">
+<div class="flex justify-center mb-10">
+<div class="w-24 h-24 bg-primary/5 rounded-full flex items-center justify-center border-2 border-primary/10">
+<span class="material-symbols-outlined text-primary text-5xl">balance</span>
+</div>
+</div>
+<div class="prose dark:prose-invert max-w-none">
+<p class="text-slate-800 dark:text-slate-200 text-lg leading-relaxed first-letter:text-5xl first-letter:font-bold first-letter:text-primary dark:first-letter:text-accent first-letter:mr-3 first-letter:float-left">
+                            Bien, vamos a continuar en audiencia en este caso para comunicar la decisión tomada respecto a la pretensión de la parte actora y las excepciones presentadas por la defensa técnica.
+                        </p>
+<p class="mt-6 text-slate-800 dark:text-slate-200 text-lg leading-relaxed">
+                            Tras analizar exhaustivamente el material probatorio aportado y escuchar las argumentaciones orales vertidas en esta sesión, este juzgador considera que concurren los elementos necesarios para dictar una resolución inmediata conforme a lo dispuesto en el código de procedimientos vigente.
+                        </p>
+<p class="mt-6 text-slate-800 dark:text-slate-200 text-lg leading-relaxed italic border-l-4 border-accent pl-6 bg-accent/5 py-4 rounded-r-lg">
+                            "Se resuelve: Primero, declarar con lugar la medida cautelar solicitada en virtud del peligro en la demora plenamente acreditado. Segundo, ordenar el cese inmediato de cualquier actividad que altere el estado actual de los bienes objeto de litigio."
+                        </p>
+<p class="mt-6 text-slate-800 dark:text-slate-200 text-lg leading-relaxed">
+                            Las partes quedan notificadas en este acto de la presente resolución, otorgándose el plazo legal correspondiente para interponer los recursos que a su derecho convenga. Sin más que agregar, se da por finalizada la presente audiencia siendo las 11:45 horas del día de la fecha.
+                        </p>
+</div>
+<!-- Footer Signatures -->
+<div class="mt-16 flex flex-col items-center justify-center text-center border-t border-slate-100 dark:border-slate-800 pt-8">
+<div class="w-48 h-px bg-slate-300 dark:bg-slate-700 mb-4"></div>
+<p class="text-sm font-bold text-slate-900 dark:text-white">Firma Digital Legitimada</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Poder Judicial - Sistema LegalFlow</p>
+<div class="mt-4 flex gap-2">
+<div class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded text-[10px] font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified</span> AUTENTICADO
+                             </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Mobile Actions Sticky -->
+<div class="md:hidden flex gap-3 mb-10">
+<button class="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm font-bold shadow-sm">
+<span class="material-symbols-outlined text-lg">content_copy</span>
+                Copiar
+            </button>
+<button class="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-lg">send</span>
+                Valoración
+            </button>
+</div>
+<!-- Valuation Card Preview -->
+<div class="bg-primary/5 border border-primary/20 rounded-xl p-6 flex flex-col md:flex-row items-center gap-6">
+<div class="w-16 h-16 rounded-full bg-accent flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-white text-3xl">analytics</span>
+</div>
+<div class="flex-1 text-center md:text-left">
+<h3 class="text-lg font-bold text-primary dark:text-white">Análisis de Valoración</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400">Envía esta resolución directamente al módulo de analítica para estimar probabilidades de éxito en futuras apelaciones.</p>
+</div>
+<button class="w-full md:w-auto px-6 py-2.5 bg-primary text-white rounded-lg font-bold hover:bg-primary/90 transition-transform active:scale-95 shadow-md">
+                Enviar a Valoración
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Component Reference) -->
+<nav class="sticky bottom-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-4 py-2 flex items-center justify-around z-50">
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 py-1" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Inicio</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 py-1" href="#">
+<span class="material-symbols-outlined text-slate-400">folder</span>
+<span class="text-[10px] font-medium">Expedientes</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary dark:text-accent py-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">gavel</span>
+<span class="text-[10px] font-bold">Audiencias</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 py-1" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Ajustes</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,88 @@
+/**
+ * LexIA - Global Styles & CSS Variables
+ */
+:root {
+  /* Colors - Light Theme */
+  --color-primary: #1A2E5A;
+  --color-primary-light: #2563A8;
+  --color-accent-gold: #C9A227;
+  --color-accent-gold-light: #E2C275;
+  --color-background-light: #f6f6f8;
+  --color-card-bg-light: #ffffff;
+  
+  --color-text-main: #0f172a; /* slate-900 */
+  --color-text-muted: #64748b; /* slate-500 */
+  --color-border: #e2e8f0; /* slate-200 */
+
+  --font-family-display: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-family-serif: 'Georgia', serif;
+
+  /* Spacing */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Colors - Dark Theme */
+    --color-background-light: #101622;
+    --color-card-bg-light: #1e293b; /* slate-800 */
+    --color-text-main: #f1f5f9; /* slate-100 */
+    --color-text-muted: #94a3b8; /* slate-400 */
+    --color-border: #334155; /* slate-700 */
+  }
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-display);
+  background-color: var(--color-background-light);
+  color: var(--color-text-main);
+  min-height: 100vh;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-card-bg-light);
+  color: var(--color-text-main);
+}

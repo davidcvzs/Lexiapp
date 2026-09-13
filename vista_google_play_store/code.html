@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegalFlow - Google Play Store</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                        "legal-blue": "#1a3a5f",
+                        "legal-gold": "#c5a059",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 transition-colors duration-300">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<header class="flex items-center bg-background-light dark:bg-background-dark p-4 sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800">
+<div class="flex size-10 shrink-0 items-center justify-center text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<div class="flex-1 px-4">
+<h2 class="text-lg font-bold leading-tight tracking-tight">Google Play</h2>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined">search</span>
+<span class="material-symbols-outlined">help_outline</span>
+</div>
+</header>
+<main class="flex-1">
+<section class="p-4 md:p-6 @container">
+<div class="flex w-full flex-col gap-6 md:flex-row md:items-start">
+<div class="flex gap-4 items-start">
+<div class="relative flex size-24 md:size-32 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-legal-blue to-slate-900 shadow-lg border-2 border-legal-gold/30 overflow-hidden" data-alt="Modern app icon with blue and gold geometric patterns" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBpHdZHBGG26EEnAoY8Ha7vok5Jalc8H6f4h8WrhZHZMLU4pX7thp0EtmmjkHhb6vPrZzhpkQ3Gs-1XyXIDtrBvuinZlbIIximEAniXugk5FQg3R5t52zJhVH0hCt7Rtq7tzxMzvmZlr4Q22J_BRf-9dBcUvSzNPa7MP3Zcq6j-EDDWBBztKdXAwPfMmydd1Z1-TuxQPhy19CNAdqr0LZIdXQ9EfzGVkPND0kAP3bxjQAIuENy0PLWqZzsE55WAFw8XxDbjdry2gsB8');">
+<span class="material-symbols-outlined text-legal-gold text-5xl">gavel</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-2xl md:text-3xl font-bold leading-tight">LegalFlow</h1>
+<p class="text-primary font-semibold text-sm md:text-base">Productividad / Legal</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Contiene anuncios · Compras directas</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-3 w-full md:w-auto md:ml-auto">
+<button class="flex-1 md:flex-none min-w-[120px] cursor-pointer items-center justify-center rounded-xl h-11 px-6 bg-primary text-white text-sm font-bold transition-all hover:brightness-110 active:scale-95">
+                            Instalar
+                        </button>
+<button class="flex-1 md:flex-none min-w-[120px] cursor-pointer items-center justify-center rounded-xl h-11 px-6 bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-slate-100 text-sm font-bold border border-slate-300 dark:border-slate-700">
+                            Añadir a lista
+                        </button>
+</div>
+</div>
+</section>
+<section class="flex flex-col gap-1 p-4 border-y border-slate-200 dark:border-slate-800 overflow-x-auto">
+<div class="flex gap-8 min-w-max items-center py-2 px-2">
+<div class="flex flex-col items-center gap-1">
+<div class="flex items-center gap-1">
+<span class="font-bold text-base">4.8</span>
+<span class="material-symbols-outlined text-xs scale-75">star</span>
+</div>
+<span class="text-[10px] text-slate-500 uppercase font-bold tracking-wider">1.2k reseñas</span>
+</div>
+<div class="h-8 w-px bg-slate-300 dark:bg-slate-700"></div>
+<div class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-slate-700 dark:text-slate-300">download</span>
+<span class="text-[10px] text-slate-500 uppercase font-bold tracking-wider">50k+ Descargas</span>
+</div>
+<div class="h-8 w-px bg-slate-300 dark:bg-slate-700"></div>
+<div class="flex flex-col items-center gap-1">
+<span class="font-bold text-base">$60</span>
+<span class="text-[10px] text-slate-500 uppercase font-bold tracking-wider">MXN / Mes</span>
+</div>
+<div class="h-8 w-px bg-slate-300 dark:bg-slate-700"></div>
+<div class="flex flex-col items-center gap-1">
+<div class="flex items-center justify-center size-5 rounded-sm border-2 border-slate-700 dark:border-slate-300 text-[10px] font-bold">3+</div>
+<span class="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Para todos</span>
+</div>
+</div>
+</section>
+<section class="p-4">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-bold">Acerca de esta app</h3>
+<span class="material-symbols-outlined text-slate-500">arrow_forward</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-3">
+                    Optimiza tu flujo de trabajo jurídico con LegalFlow. La herramienta definitiva para la transcripción automática de audiencias, redacción asistida de sentencias y gestión de expedientes digitales con IA. Diseñada específicamente para abogados y magistrados en México.
+                </p>
+<div class="flex flex-wrap gap-2 mt-4">
+<span class="px-3 py-1 bg-slate-200 dark:bg-slate-800 rounded-full text-xs font-medium">Gestión Legal</span>
+<span class="px-3 py-1 bg-slate-200 dark:bg-slate-800 rounded-full text-xs font-medium">IA Jurídica</span>
+<span class="px-3 py-1 bg-slate-200 dark:bg-slate-800 rounded-full text-xs font-medium">Transcripción</span>
+</div>
+</section>
+<section class="flex gap-4 overflow-x-auto px-4 pb-6 no-scrollbar">
+<div class="min-w-[200px] aspect-[9/16] bg-slate-100 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col shadow-sm flex-none overflow-hidden" data-alt="App screenshot showing voice transcription interface with blue accents">
+<div class="h-full w-full bg-gradient-to-b from-legal-blue/10 to-transparent p-4 flex flex-col">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">mic</span>
+<span class="text-[10px] font-bold uppercase">Grabación en vivo</span>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<div class="h-2 w-3/4 bg-slate-300 dark:bg-slate-700 rounded-full"></div>
+<div class="h-2 w-full bg-slate-300 dark:bg-slate-700 rounded-full opacity-60"></div>
+<div class="h-2 w-1/2 bg-slate-300 dark:bg-slate-700 rounded-full opacity-40"></div>
+</div>
+<div class="mt-auto bg-white dark:bg-slate-800 p-2 rounded-lg text-[8px] border border-slate-200 dark:border-slate-700">
+                            "En la ciudad de México, siendo las 10:00 horas..."
+                        </div>
+</div>
+</div>
+<div class="min-w-[200px] aspect-[9/16] bg-slate-100 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col shadow-sm flex-none overflow-hidden" data-alt="App screenshot showing judicial sentence drafting editor with AI suggestions">
+<div class="h-full w-full bg-gradient-to-b from-legal-gold/10 to-transparent p-4 flex flex-col">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-legal-gold">auto_fix</span>
+<span class="text-[10px] font-bold uppercase">Redactor de Sentencias</span>
+</div>
+<div class="bg-white dark:bg-slate-800 p-2 rounded-lg border border-slate-200 dark:border-slate-700 h-full overflow-hidden">
+<div class="space-y-2">
+<div class="h-1 w-1/4 bg-primary mb-2"></div>
+<div class="h-1 w-full bg-slate-200 dark:bg-slate-700"></div>
+<div class="h-1 w-full bg-slate-200 dark:bg-slate-700"></div>
+<div class="h-1 w-3/4 bg-slate-200 dark:bg-slate-700"></div>
+<div class="mt-4 p-2 bg-primary/5 border-l-2 border-primary">
+<div class="h-1 w-1/2 bg-primary/30"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="min-w-[200px] aspect-[9/16] bg-slate-100 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col shadow-sm flex-none overflow-hidden" data-alt="App screenshot showing dashboard with legal case files list">
+<div class="h-full w-full bg-slate-50 dark:bg-slate-900/50 p-4">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-legal-blue">folder_open</span>
+<span class="text-[10px] font-bold uppercase">Mis Expedientes</span>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-2 p-2 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
+<div class="size-6 bg-legal-blue rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xs">description</span>
+</div>
+<div class="h-1.5 w-16 bg-slate-200 dark:bg-slate-700"></div>
+</div>
+<div class="flex items-center gap-2 p-2 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
+<div class="size-6 bg-legal-gold rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xs">description</span>
+</div>
+<div class="h-1.5 w-12 bg-slate-200 dark:bg-slate-700"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="p-4">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="text-lg font-bold">Valoraciones y reseñas</h3>
+<p class="text-xs text-slate-500">Las valoraciones están verificadas</p>
+</div>
+<span class="material-symbols-outlined text-slate-500">arrow_forward</span>
+</div>
+<div class="flex flex-wrap gap-x-8 gap-y-6 mb-8">
+<div class="flex flex-col gap-2">
+<p class="text-5xl font-black leading-tight tracking-tighter">4.8</p>
+<div class="flex gap-0.5 text-primary">
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star_half</span>
+</div>
+<p class="text-slate-500 text-xs font-medium">1,240 valoraciones</p>
+</div>
+<div class="grid min-w-[200px] max-w-[400px] flex-1 grid-cols-[20px_1fr] items-center gap-y-2">
+<p class="text-xs font-bold">5</p>
+<div class="flex h-1.5 flex-1 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800 ml-2">
+<div class="rounded-full bg-primary" style="width: 75%;"></div>
+</div>
+<p class="text-xs font-bold">4</p>
+<div class="flex h-1.5 flex-1 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800 ml-2">
+<div class="rounded-full bg-primary" style="width: 15%;"></div>
+</div>
+<p class="text-xs font-bold">3</p>
+<div class="flex h-1.5 flex-1 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800 ml-2">
+<div class="rounded-full bg-primary" style="width: 5%;"></div>
+</div>
+<p class="text-xs font-bold">2</p>
+<div class="flex h-1.5 flex-1 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800 ml-2">
+<div class="rounded-full bg-primary" style="width: 3%;"></div>
+</div>
+<p class="text-xs font-bold">1</p>
+<div class="flex h-1.5 flex-1 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800 ml-2">
+<div class="rounded-full bg-primary" style="width: 2%;"></div>
+</div>
+</div>
+</div>
+<div class="space-y-6">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-legal-blue flex items-center justify-center text-white text-xs font-bold">RM</div>
+<span class="text-sm font-semibold">Ricardo Mendoza</span>
+</div>
+<span class="material-symbols-outlined text-slate-400">more_vert</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="flex text-primary scale-75 origin-left">
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+</div>
+<span class="text-[10px] text-slate-500">12/10/23</span>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400">
+                            Excelente para audiencias. La transcripción es muy precisa incluso con términos legales complejos. Vale totalmente los $60 mensuales.
+                        </p>
+</div>
+</div>
+</section>
+</main>
+<nav class="sticky bottom-0 w-full bg-white dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 px-4 py-2 flex justify-around items-center z-50">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Juegos</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500 dark:text-slate-400" href="#">
+<span class="material-symbols-outlined">apps</span>
+<span class="text-[10px] font-medium">Apps</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500 dark:text-slate-400" href="#">
+<span class="material-symbols-outlined">local_offer</span>
+<span class="text-[10px] font-medium">Ofertas</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500 dark:text-slate-400" href="#">
+<span class="material-symbols-outlined">book</span>
+<span class="text-[10px] font-medium">Libros</span>
+</a>
+</nav>
+</div>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</body></html>

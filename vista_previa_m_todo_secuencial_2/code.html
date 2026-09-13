@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .legal-document {
+            font-family: Arial, sans-serif;
+            font-size: 12pt;
+            line-height: 1.5;
+            color: #000000;
+        }
+        .redacted-text {
+            color: #dc2626;
+            font-weight: 600;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-screen w-full flex-col bg-background-light dark:bg-background-dark overflow-hidden max-w-md mx-auto border-x border-slate-200 dark:border-slate-800 shadow-2xl">
+<header class="flex items-center bg-white dark:bg-slate-900 p-4 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-10">
+<div class="text-slate-900 dark:text-slate-100 flex size-10 shrink-0 items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 ml-2">Vista Previa: Método Secuencial</h2>
+</header>
+<div class="flex flex-col gap-3 p-4 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+<div class="flex justify-between items-center">
+<p class="text-slate-900 dark:text-slate-100 text-sm font-medium">Progreso del Documento</p>
+<span class="text-xs font-bold text-primary">100%</span>
+</div>
+<div class="rounded-full bg-slate-200 dark:bg-slate-800 h-2">
+<div class="h-2 rounded-full bg-primary w-full"></div>
+</div>
+</div>
+<main class="flex-1 overflow-y-auto p-6 bg-slate-50 dark:bg-slate-950">
+<div class="bg-white dark:bg-white shadow-sm border border-slate-200 p-8 min-h-[1000px] legal-document">
+<h1 class="text-center font-bold mb-8 uppercase underline">Sentencia Definitiva</h1>
+<div class="mb-6">
+<p class="mb-4">
+                        En la ciudad de <span class="redacted-text">[MONTERREY, NUEVO LEÓN]</span>, a las <span class="redacted-text">[14:00 HORAS]</span> del día <span class="redacted-text">[25 DE OCTUBRE DE 2023]</span>.
+                    </p>
+</div>
+<div class="mb-8">
+<h3 class="font-bold uppercase mb-4">I. VALORACIÓN DE PRUEBAS</h3>
+<div class="mb-6 pl-4 border-l-2 border-slate-200">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-slate-500 text-sm">record_voice_over</span>
+<span class="font-bold">TESTIMONIAL 1</span>
+</div>
+<p class="text-justify">
+                            Evaluación individual de la prueba testimonial presentada por <span class="redacted-text">[NOMBRE_REDACTADO]</span>. El deponente manifiesta haber presenciado los hechos ocurridos en <span class="redacted-text">[UBICACIÓN_REDACTADA]</span>. Esta juzgadora concede valor probatorio pleno en virtud de la congruencia y espontaneidad de su relato.
+                        </p>
+</div>
+<div class="mb-6 pl-4 border-l-2 border-slate-200">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-slate-500 text-sm">biotech</span>
+<span class="font-bold">PERICIAL EN GENÉTICA</span>
+</div>
+<p class="text-justify">
+                            Dictamen emitido por el perito <span class="redacted-text">[NOMBRE_PERITO]</span> adscrito al Instituto de Criminalística. Los resultados arrojan una coincidencia del 99.9% con la muestra recabada de <span class="redacted-text">[SUJETO_REDACTADO]</span>, estableciendo un vínculo científico incontrovertible.
+                        </p>
+</div>
+</div>
+<div class="mb-8">
+<h3 class="font-bold uppercase mb-4">II. ACREDITACIÓN DEL HECHO Y DELITO</h3>
+<p class="text-justify bg-slate-50 p-4 border border-slate-100 italic">
+                        De la valoración conjunta de los elementos de convicción antes reseñados, se concluye de forma sintetizada la existencia de la conducta típica descrita en el artículo <span class="redacted-text">[ARTICULO_CP]</span> del Código Penal vigente. La secuencia lógica de las pruebas desahogadas permite establecer, más allá de toda duda razonable, la responsabilidad penal del imputado <span class="redacted-text">[NOMBRE_IMPUTADO]</span> en la comisión del ilícito.
+                    </p>
+</div>
+<div class="mt-12 text-center">
+<p class="font-bold">____________________________________</p>
+<p class="font-bold uppercase">Juez <span class="redacted-text">[NOMBRE_JUEZ]</span></p>
+<p class="text-sm">Juzgado de Control y Juicio Oral Penal del Estado</p>
+</div>
+</div>
+</main>
+<footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 p-4">
+<div class="flex gap-3 mb-3">
+<button class="flex-1 bg-primary text-white py-3 px-4 rounded-lg font-bold flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-lg">description</span>
+                    Exportar Word
+                </button>
+<button class="flex-1 bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-slate-100 py-3 px-4 rounded-lg font-bold flex items-center justify-center gap-2 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-lg">close</span>
+                    Volver
+                </button>
+</div>
+<div class="text-center">
+<p class="text-[10px] text-slate-500 dark:text-slate-400 font-bold tracking-widest uppercase">
+                    Poder Judicial del Estado de Nuevo León
+                </p>
+</div>
+</footer>
+</div>
+</body></html>

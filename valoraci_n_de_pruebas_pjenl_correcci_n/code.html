@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    .legal-document-editor {
+        font-family: Arial, sans-serif !important;
+        line-height: 1.5 !important;
+        font-size: 12pt !important;
+        color: #000000 !important;
+    }
+    .legal-document-editor::placeholder {
+        color: #64748b;
+        line-height: 1.5;
+    }
+</style></head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<header class="flex items-center bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-4 sticky top-0 z-10">
+<div class="text-primary flex size-12 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-3xl">balance</span>
+</div>
+<div class="flex-1 ml-2">
+<h1 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">Redactor Jurídico PJENL</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs uppercase tracking-widest font-semibold">Valoración de Pruebas</p>
+</div>
+<div class="flex gap-2">
+<button class="bg-primary/10 text-primary p-2 rounded-lg">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<main class="flex-1 pb-24">
+<div class="bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-500 p-4 mx-4 mt-4 rounded-r-lg">
+<div class="flex items-start">
+<span class="material-symbols-outlined text-amber-600 mr-3">shield_lock</span>
+<div>
+<p class="text-amber-800 dark:text-amber-200 text-xs font-bold uppercase mb-1">Aviso de Confidencialidad</p>
+<p class="text-amber-700 dark:text-amber-300 text-xs leading-normal">
+                            Esta información es estrictamente confidencial y está protegida por la Ley General de Protección de Datos Personales. El uso indebido de este redactor conlleva responsabilidades administrativas y penales.
+                        </p>
+</div>
+</div>
+</div>
+<nav class="mt-4 px-4 overflow-x-auto">
+<div class="flex border-b border-slate-200 dark:border-slate-800 gap-6 whitespace-nowrap">
+<a class="flex flex-col items-center justify-center border-b-2 border-primary text-primary pb-3 pt-2" href="#">
+<span class="text-sm font-bold">Declaración Testigo</span>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-2" href="#">
+<span class="text-sm font-bold">Dictamen Pericial</span>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-2" href="#">
+<span class="text-sm font-bold">Valoración Documental</span>
+</a>
+</div>
+</nav>
+<div class="px-4 py-6">
+<div class="flex justify-between items-center mb-4">
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold">Módulo de Redacción</h2>
+<button class="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-lg">description</span>
+                        Aplicar Formato PJENL
+                    </button>
+</div>
+<div class="space-y-6">
+<div class="flex flex-col gap-3">
+<label class="text-slate-700 dark:text-slate-300 text-sm font-semibold">Narrativa del Testimonio (Protocolo Judicial)</label>
+<div class="flex w-full items-stretch rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden bg-white dark:bg-slate-900" style="border-color: #cbd5e1;">
+<div class="flex flex-col bg-slate-50 dark:bg-slate-800/50 p-4 border-r border-slate-200 dark:border-slate-700">
+<div class="size-10 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Official judiciary seal watermark logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAEsqSLdtWkhrVwevdBlrm4Xiz6ZUkOZFJbalVvN_qMcWttm5ZeW6_8ogyr-sBlCbVZW3u07LQBGA6HYq0wmZ4ZnA11-lHnJPcvaWrJEKeQnyxkTT3bVCxoFoVscO46wgdNUVZb_yhJFePmZcbcdXOiViVEaXb6Z9RtqSqyBTHiMs9526Qwko2bmgVrhRJAZZtwTcqnt20MwhESWho8PIPr4PovS7NN_JVK9B0krCEBwOLy2rXvKDo8BALQUrAb6CXdAcod5VJy1Tt"/>
+</div>
+</div>
+<div class="flex flex-1 flex-col">
+<textarea class="w-full min-h-[200px] p-4 text-slate-900 dark:text-slate-100 bg-transparent border-none focus:ring-0 text-base leading-relaxed placeholder:text-slate-400 legal-document-editor" placeholder="Inicie la redacción del testimonio aquí (Arial 12, Interlineado 1.5). Utilice negro para texto general y rojo para datos sensibles bajo reserva..."></textarea>
+<div class="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-700">
+<div class="flex gap-1">
+<button class="p-2 text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">mic</span>
+</button>
+<button class="p-2 text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+<button class="p-2 text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">history_edu</span>
+</button>
+</div>
+<div class="flex gap-2">
+<button class="bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-200">
+                                            Guardar Borrador
+                                        </button>
+<button class="bg-primary text-white px-3 py-1.5 rounded-lg text-xs font-bold">
+                                            Finalizar Entrada
+                                        </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+<div class="flex items-center gap-3 mb-3">
+<span class="material-symbols-outlined text-primary">analytics</span>
+<h3 class="text-sm font-bold">Criterios de Valoración</h3>
+</div>
+<ul class="space-y-2">
+<li class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span>
+                                    Idoneidad de los testigos
+                                </li>
+<li class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span>
+                                    Congruencia interna del relato
+                                </li>
+<li class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span>
+                                    Reglas de la lógica y máximas de experiencia
+                                </li>
+</ul>
+</div>
+<div class="p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+<div class="flex items-center gap-3 mb-3">
+<span class="material-symbols-outlined text-primary">fact_check</span>
+<h3 class="text-sm font-bold">Sugerencias del Sistema</h3>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 italic">Se detectó falta de fundamentación en el artículo 234 del Código de Procedimientos Civiles. ¿Desea añadir la cita legal?</p>
+<button class="mt-3 text-xs font-bold hover:underline text-slate-700 underline">Añadir Fundamento Legal</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 w-full bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-4 pb-4 pt-2 flex justify-around items-center z-20">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Redactor</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">folder_open</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Expedientes</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Historial</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Ajustes</span>
+</a>
+</nav>
+</div>
+</body></html>

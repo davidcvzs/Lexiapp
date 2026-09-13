@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegalFlow - Inventario Completo del Código Fuente</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration for Custom Colors -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'legal-navy': '#002147',
+            'legal-gold': '#C5A059',
+            'legal-white': '#FFFFFF',
+            'legal-gray': '#F4F7F9'
+          },
+          fontFamily: {
+            sans: ['Arial', 'Helvetica', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="typography">
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12pt;
+      line-height: 1.5;
+      color: #333;
+    }
+    h1, h2, h3 {
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  </style>
+<style data-purpose="layout">
+    .inventory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .component-card {
+      border-left: 4px solid #C5A059;
+    }
+    .status-badge {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body class="bg-legal-gray min-h-screen">
+<!-- BEGIN: MainHeader -->
+<header class="bg-legal-navy text-legal-white py-6 px-8 shadow-lg border-b-4 border-legal-gold">
+<div class="max-w-7xl mx-auto flex justify-between items-center">
+<div>
+<h1 class="text-2xl font-bold tracking-widest">LEGALFLOW</h1>
+<p class="text-sm text-legal-gold">SISTEMA INTEGRAL DE GESTIÓN JURÍDICA IA</p>
+</div>
+<div class="text-right">
+<p class="text-xs uppercase opacity-80">Documento Técnico</p>
+<h2 class="text-lg font-semibold">Inventario Completo del Código Fuente</h2>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: MainContent -->
+<main class="max-w-7xl mx-auto py-10 px-8">
+<!-- Summary Section -->
+<div class="mb-8 bg-white p-6 border border-gray-200 shadow-sm" data-purpose="inventory-summary">
+<h3 class="text-legal-navy font-bold mb-4 border-b border-gray-100 pb-2">RESUMEN DEL PAQUETE ZIP</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+<div>
+<span class="block text-gray-500 uppercase text-xs">Versión del Software</span>
+<span class="font-bold">v2.4.0-STABLE</span>
+</div>
+<div>
+<span class="block text-gray-500 uppercase text-xs">Total de Archivos</span>
+<span class="font-bold">1,428 Componentes</span>
+</div>
+<div>
+<span class="block text-gray-500 uppercase text-xs">Última Compilación</span>
+<span class="font-bold">24/05/2024 10:45 AM</span>
+</div>
+</div>
+</div>
+<div class="inventory-grid">
+<!-- BEGIN: SectionFrontend -->
+<section class="bg-white p-6 shadow-sm border border-gray-200 component-card" data-purpose="frontend-inventory">
+<h3 class="text-legal-navy font-bold mb-4 border-b pb-2">1. FRONTEND (React.js)</h3>
+<ul class="space-y-3 text-sm">
+<li class="flex justify-between items-start">
+<span>/src/components/Dashboard.jsx</span>
+<span class="status-badge bg-green-100 text-green-800">OK</span>
+</li>
+<li class="flex justify-between items-start">
+<span>/src/pages/TranscriptionTool.tsx</span>
+<span class="status-badge bg-green-100 text-green-800">OK</span>
+</li>
+<li class="flex justify-between items-start">
+<span>/src/modules/SentenceRedactor.jsx</span>
+<span class="status-badge bg-green-100 text-green-800">OK</span>
+</li>
+<li class="flex justify-between items-start">
+<span>/src/hooks/useLegalAuth.ts</span>
+<span class="status-badge bg-green-100 text-green-800">OK</span>
+</li>
+<li class="flex justify-between items-start text-gray-500 italic">
+<span>+ 142 UI Core Components</span>
+</li>
+</ul>
+</section>
+<!-- END: SectionFrontend -->
+<!-- BEGIN: SectionBackend -->
+<section class="bg-white p-6 shadow-sm border border-gray-200 component-card" data-purpose="backend-inventory">
+<h3 class="text-legal-navy font-bold mb-4 border-b pb-2">2. BACKEND &amp; AI AGENTS</h3>
+<ul class="space-y-3 text-sm">
+<li class="flex justify-between items-start">
+<span>/api/integrations/gpt-4o-wrapper.py</span>
+<span class="status-badge bg-green-100 text-green-800">DEPLOYED</span>
+</li>
+<li class="flex justify-between items-start">
+<span>/api/integrations/deepseek-engine.py</span>
+<span class="status-badge bg-green-100 text-green-800">DEPLOYED</span>
+</li>
+<li class="flex justify-between items-start">
+<span>/api/integrations/gemini-pro.py</span>
+<span class="status-badge bg-green-100 text-green-800">DEPLOYED</span>
+</li>
+<li class="flex justify-between items-start font-semibold text-legal-navy">
+<span>/agents/legal-gpt-agent-v2.bin</span>
+<span class="status-badge bg-blue-100 text-blue-800">CORE</span>
+</li>
+<li class="flex justify-between items-start">
+<span>/middleware/auth-security.js</span>
+<span class="status-badge bg-green-100 text-green-800">OK</span>
+</li>
+</ul>
+</section>
+<!-- END: SectionBackend -->
+<!-- BEGIN: SectionDatabase -->
+<section class="bg-white p-6 shadow-sm border border-gray-200 component-card" data-purpose="database-inventory">
+<h3 class="text-legal-navy font-bold mb-4 border-b pb-2">3. DATABASE &amp; SCHEMAS</h3>
+<ul class="space-y-3 text-sm">
+<li class="flex justify-between items-start">
+<span>/db/migrations/cases_schema.sql</span>
+<span class="status-badge bg-gray-100 text-gray-800">SQL</span>
+</li>
+<li class="flex justify-between items-start">
+<span>/db/migrations/user_roles.sql</span>
+<span class="status-badge bg-gray-100 text-gray-800">SQL</span>
+</li>
+<li class="flex justify-between items-start">
+<span>/db/audit/logs_system.sql</span>
+<span class="status-badge bg-gray-100 text-gray-800">SQL</span>
+</li>
+<li class="flex justify-between items-start">
+<span>/db/models/case_files.model.ts</span>
+<span class="status-badge bg-blue-100 text-blue-800">ORM</span>
+</li>
+<li class="flex justify-between items-start">
+<span>/db/seed/jurisprudence_init.json</span>
+<span class="status-badge bg-gray-100 text-gray-800">DATA</span>
+</li>
+</ul>
+</section>
+<!-- END: SectionDatabase -->
+<!-- BEGIN: SectionPayments -->
+<section class="bg-white p-6 shadow-sm border border-gray-200 component-card" data-purpose="payments-inventory">
+<h3 class="text-legal-navy font-bold mb-4 border-b pb-2">4. PAYMENTS &amp; SUBSCRIPTIONS</h3>
+<ul class="space-y-3 text-sm">
+<li class="flex justify-between items-start">
+<span>/services/stripe/webhook_handler.js</span>
+<span class="status-badge bg-purple-100 text-purple-800">STRIPE</span>
+</li>
+<li class="flex justify-between items-start">
+<span>/services/mercadopago/checkout.js</span>
+<span class="status-badge bg-blue-100 text-blue-800">MP</span>
+</li>
+<li class="flex justify-between items-start">
+<span>/services/billing/invoice_gen.py</span>
+<span class="status-badge bg-green-100 text-green-800">OK</span>
+</li>
+<li class="flex justify-between items-start">
+<span>/services/subscription_logic.ts</span>
+<span class="status-badge bg-green-100 text-green-800">OK</span>
+</li>
+</ul>
+</section>
+<!-- END: SectionPayments -->
+<!-- BEGIN: SectionLegalModules -->
+<section class="bg-white p-6 shadow-sm border border-gray-200 component-card" data-purpose="legal-modules-inventory">
+<h3 class="text-legal-navy font-bold mb-4 border-b pb-2">5. LEGAL SPECIALIZED MODULES</h3>
+<ul class="space-y-3 text-sm">
+<li class="flex justify-between items-start">
+<span>/lib/jurisprudence/supreme_court_api.py</span>
+<span class="status-badge bg-yellow-100 text-yellow-800">LIB</span>
+</li>
+<li class="flex justify-between items-start">
+<span>/lib/docx/engine_v4.py</span>
+<span class="status-badge bg-yellow-100 text-yellow-800">LIB</span>
+</li>
+<li class="flex justify-between items-start">
+<span>/lib/templates/demandas_base.docx</span>
+<span class="status-badge bg-gray-100 text-gray-800">TPL</span>
+</li>
+<li class="flex justify-between items-start">
+<span>/lib/pdf/anonymization_engine.py</span>
+<span class="status-badge bg-green-100 text-green-800">OK</span>
+</li>
+<li class="flex justify-between items-start">
+<span>/lib/citation/bluebook_formatter.js</span>
+<span class="status-badge bg-green-100 text-green-800">OK</span>
+</li>
+</ul>
+</section>
+<!-- END: SectionLegalModules -->
+<!-- BEGIN: SectionEnvironment -->
+<section class="bg-white p-6 shadow-sm border border-gray-200 component-card" data-purpose="env-inventory">
+<h3 class="text-legal-navy font-bold mb-4 border-b pb-2">6. ENVIRONMENT &amp; DOCS</h3>
+<ul class="space-y-3 text-sm">
+<li class="flex justify-between items-start">
+<span>/docker-compose.yml</span>
+<span class="status-badge bg-blue-100 text-blue-800">CONFIG</span>
+</li>
+<li class="flex justify-between items-start">
+<span>/.env.example</span>
+<span class="status-badge bg-blue-100 text-blue-800">CONFIG</span>
+</li>
+<li class="flex justify-between items-start">
+<span>/README_DEPLOYMENT.md</span>
+<span class="status-badge bg-gray-100 text-gray-800">DOC</span>
+</li>
+<li class="flex justify-between items-start">
+<span>/docs/api_documentation.json</span>
+<span class="status-badge bg-gray-100 text-gray-800">DOC</span>
+</li>
+</ul>
+</section>
+<!-- END: SectionEnvironment -->
+</div>
+<!-- BEGIN: VerificationFooter -->
+<div class="mt-12 p-6 border-2 border-legal-gold bg-legal-navy text-legal-white text-center" data-purpose="integrity-check">
+<div class="flex justify-center items-center gap-4 mb-2">
+<div class="h-2 w-2 rounded-full bg-green-500 animate-pulse"></div>
+<span class="uppercase font-bold tracking-widest text-sm">Integridad del Código Verificada</span>
+</div>
+<p class="text-xs opacity-70">Todos los módulos listados anteriormente están presentes en el archivo LegalFlow_FullStack_v2.4.zip</p>
+<p class="text-xs mt-4 font-mono">HASH MD5: 4a8f9c2d1b0e3f5a7c8d9e0f1a2b3c4d</p>
+</div>
+<!-- END: VerificationFooter -->
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: PageFooter -->
+<footer class="text-center py-8 text-gray-400 text-[10pt]">
+<p>© 2024 LegalFlow Technologies S.A. - Propiedad Intelectual Protegida</p>
+<p class="mt-1">Documentación generada automáticamente para el despliegue técnico.</p>
+</footer>
+<!-- END: PageFooter -->
+</body></html>

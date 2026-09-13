@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegalFlow - Modelo de Redacción Final</title>
+<!-- BEGIN: External Resources -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'legal-navy': '#1A2B4B',
+            'legal-gold': '#C5A059',
+            'legal-white': '#FFFFFF',
+            'legal-bg': '#F4F7F9'
+          },
+          fontFamily: {
+            'arial': ['Arial', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- END: External Resources -->
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="document-typography">
+    /* Exact styling for the document preview area */
+    .document-preview {
+      font-family: Arial, sans-serif;
+      font-size: 12pt;
+      line-height: 1.5;
+      color: #000000;
+      text-align: justify;
+    }
+    
+    /* Highlight sensitive data in red */
+    .sensitive-data {
+      color: #DC2626; /* Red-600 */
+      font-weight: bold;
+    }
+
+    /* Scrollbar styling for the preview area */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #C5A059;
+    }
+  </style>
+<!-- END: Custom Styles -->
+</head>
+<body class="bg-legal-bg min-h-screen flex flex-col font-sans">
+<!-- BEGIN: Header -->
+<header class="bg-legal-navy text-legal-white p-4 shadow-lg sticky top-0 z-10" data-purpose="main-header">
+<div class="flex items-center justify-between">
+<h1 class="text-lg font-semibold tracking-wide uppercase">LegalFlow</h1>
+<div class="h-1 w-12 bg-legal-gold"></div>
+</div>
+</header>
+<!-- END: Header -->
+<!-- BEGIN: Main Content -->
+<main class="flex-grow flex flex-col p-4 max-w-md mx-auto w-full">
+<!-- Section Title -->
+<div class="mb-6" data-purpose="page-title">
+<h2 class="text-xl font-bold text-legal-navy border-l-4 border-legal-gold pl-3">
+        Estándar de Redacción LegalFlow
+      </h2>
+<p class="text-sm text-gray-600 mt-1">Modelo de Redacción Final</p>
+</div>
+<!-- BEGIN: Document Preview Card -->
+<section class="bg-white rounded-lg shadow-xl border border-gray-200 flex-grow flex flex-col overflow-hidden" data-purpose="document-container">
+<!-- Document Header Decoration -->
+<div class="bg-gray-50 border-b border-gray-100 py-2 px-4 flex justify-between items-center">
+<span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Vista Previa del Instrumento</span>
+<div class="flex gap-1">
+<div class="w-2 h-2 rounded-full bg-gray-200"></div>
+<div class="w-2 h-2 rounded-full bg-gray-200"></div>
+</div>
+</div>
+<!-- Scrollable Content Area -->
+<div class="p-6 overflow-y-auto custom-scrollbar flex-grow bg-white" data-purpose="scrollable-document">
+<article class="document-preview">
+<!-- The narrative text follows the requested "Maria del Refugio" style -->
+          En relación a los hechos que se investigan, la compareciente <span class="sensitive-data">MARÍA DEL REFUGIO N.</span>
+<span data-purpose="narrative-body">
+            refirió que el día <span class="sensitive-data">15 DE OCTUBRE DE 2023</span> se encontraba en su domicilio particular. 
+            Sostuvo que, aproximadamente a las diez de la mañana, observó el arribo de un vehículo color gris del cual 
+            descendieron dos personas del sexo masculino. Agregó que uno de los sujetos portaba una carpeta color azul 
+            y se identificó verbalmente como personal de la notaría, sin mostrar acreditación oficial en ese momento. 
+            Asimismo, manifestó que al cuestionarles sobre el motivo de su presencia, estos se mostraron evasivos. 
+            Refirió además que no es la primera vez que dichas personas acuden al inmueble, pues sostuvo que en una 
+            ocasión previa, específicamente en el mes de <span class="sensitive-data">AGOSTO DE 2023</span>, ya habían 
+            solicitado información sobre el estatus legal de la propiedad. Finalmente, agregó que teme por su integridad 
+            física dado el tono intimidatorio utilizado por los sujetos durante la breve interacción.
+          </span>
+</article>
+</div>
+<!-- Document Footer Decoration -->
+<div class="p-3 bg-gray-50 border-t border-gray-100 text-center">
+<p class="text-[9px] text-gray-400 font-medium italic">Documento generado automáticamente bajo estándares de LegalFlow v3.0</p>
+</div>
+</section>
+<!-- END: Document Preview Card -->
+<!-- BEGIN: Action Controls -->
+<section class="mt-6 mb-4" data-purpose="action-buttons">
+<button class="w-full bg-legal-navy text-legal-white font-bold py-4 px-6 rounded-md shadow-lg active:scale-[0.98] transition-transform flex items-center justify-center gap-3 border-b-4 border-legal-gold">
+        CONFIRMAR ESTÁNDAR
+      </button>
+<button class="w-full mt-3 py-2 text-sm text-gray-500 font-medium hover:text-legal-navy transition-colors">
+        Editar Narrativa Manualmente
+      </button>
+</section>
+<!-- END: Action Controls -->
+</main>
+<!-- END: Main Content -->
+<!-- BEGIN: Mobile Navigation Indicator (Decorative) -->
+<footer class="h-6 flex justify-center items-center bg-white" data-purpose="mobile-indicator">
+<div class="w-32 h-1.5 bg-gray-200 rounded-full"></div>
+</footer>
+<!-- END: Mobile Navigation Indicator -->
+</body></html>

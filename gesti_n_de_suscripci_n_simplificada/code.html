@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#000066",
+              "accent-gold": "#C5A059",
+              "background-light": "#f5f5f8",
+              "background-dark": "#0f0f23",
+            },
+            fontFamily: {
+              "display": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<title>Gestión de Suscripción - LegalFlow</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex min-h-screen flex-col max-w-md mx-auto bg-white dark:bg-background-dark shadow-xl overflow-x-hidden">
+<!-- Header -->
+<div class="flex items-center bg-white dark:bg-background-dark p-4 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-10">
+<button class="text-primary dark:text-slate-100 flex size-10 items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex-1 text-center">
+<h1 class="text-primary dark:text-slate-100 text-lg font-bold tracking-tight">LegalFlow</h1>
+<p class="text-[10px] uppercase tracking-widest text-accent-gold font-semibold">Premium Legal Tech</p>
+</div>
+<div class="size-10"></div> <!-- Spacer for centering -->
+</div>
+<div class="flex-1 overflow-y-auto">
+<!-- Section Title -->
+<div class="px-6 py-6">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">Gestión de Suscripción</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Administra tu plan y facturación</p>
+</div>
+<!-- Current Plan Card -->
+<div class="px-6 pb-6">
+<div class="relative overflow-hidden rounded-xl bg-primary p-6 text-white shadow-lg">
+<!-- Decorative background element -->
+<div class="absolute -right-8 -top-8 size-32 rounded-full bg-accent-gold/20"></div>
+<div class="relative z-10 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center rounded-full bg-accent-gold/20 px-3 py-1 text-xs font-semibold text-accent-gold border border-accent-gold/30">
+                                Suscripción Activa
+                            </span>
+<span class="material-symbols-outlined text-accent-gold">verified</span>
+</div>
+<div>
+<p class="text-white/70 text-sm font-medium">Plan Actual</p>
+<h3 class="text-3xl font-extrabold tracking-tight">Plan Pro</h3>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="text-2xl font-bold text-accent-gold">$60</span>
+<span class="text-white/60 text-sm">/ mes</span>
+</div>
+<div class="border-t border-white/10 pt-4 mt-2">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-xs mt-1">calendar_today</span>
+<p class="text-white/80 text-xs leading-normal">
+                                    Próxima facturación automática: <br/>
+<span class="font-bold text-white">1 de noviembre, 2023</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Payment Method -->
+<div class="px-6 py-4">
+<h3 class="text-slate-900 dark:text-slate-100 text-sm font-bold uppercase tracking-wider mb-3">Método de Pago</h3>
+<div class="flex items-center gap-4 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+<div class="bg-white dark:bg-slate-700 h-10 w-14 rounded border border-slate-200 dark:border-slate-600 flex items-center justify-center p-1 overflow-hidden">
+<div class="w-full h-full bg-no-repeat bg-contain bg-center" data-alt="Logotipo de tarjeta Visa azul" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCT_74mQcZUzyCtBwJXoYFkW1VOjqG_Tvs1Owml7i9KaQNUb2bdNoxPsxMEB0l61cpdVtrAaFID-w4pBZjBq8hLgQpge6h5QZSic6s9xUklII1jYdg7lUh6HmQOoKbkftCgVfiQfnFxdkwKGa79PT9mYSXVDz8HGde0PBimVTtvpiN-D_crMKG6nostDP2glAs8CJ7UPEbTps4cslaYUdBJKylU_HV4lM2hHdr70T5nc8cJaHkG6XjykFWAiUSBIiBjarwhzNBAZvSo");'></div>
+</div>
+<div class="flex-1">
+<p class="text-slate-900 dark:text-slate-100 text-base font-semibold">Visa terminada en 4242</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs italic">Vence en 12/26</p>
+</div>
+<button class="text-primary dark:text-accent-gold font-medium text-sm">Editar</button>
+</div>
+</div>
+<!-- Action Area -->
+<div class="px-6 py-10 mt-4 border-t border-slate-100 dark:border-slate-800">
+<div class="flex flex-col gap-4">
+<p class="text-center text-slate-500 dark:text-slate-400 text-sm px-4">
+                        Si cancelas ahora, seguirás teniendo acceso a las funciones Pro hasta el final de tu ciclo de facturación.
+                    </p>
+<!-- Primary Action Button -->
+<button class="w-full bg-red-50 hover:bg-red-100 dark:bg-red-900/10 dark:hover:bg-red-900/20 text-red-600 dark:text-red-400 py-4 rounded-xl font-bold transition-all border border-red-200 dark:border-red-900/30 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">cancel</span>
+                        Cancelar Suscripción
+                    </button>
+</div>
+</div>
+</div>
+<!-- Navigation Bar -->
+<div class="flex border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark px-4 pb-6 pt-2">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">home</span>
+<p class="text-[10px] font-medium leading-none">Inicio</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">work</span>
+<p class="text-[10px] font-medium leading-none">Casos</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">description</span>
+<p class="text-[10px] font-medium leading-none">Documentos</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary dark:text-accent-gold font-semibold" href="#">
+<span class="material-symbols-outlined fill-1">account_circle</span>
+<p class="text-[10px] font-medium leading-none">Perfil</p>
+</a>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000066",
+                        "gold": "#C5A059",
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0f0f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "legal": ["Arial", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .legal-spacing { line-height: 1.5; font-size: 12pt; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header / Top Bar -->
+<div class="flex items-center bg-white dark:bg-slate-900 border-b border-primary/10 p-4 justify-between sticky top-0 z-10">
+<div class="text-primary dark:text-gold flex size-10 shrink-0 items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-primary dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center">Case #2024-0892</h2>
+<div class="w-10"></div> <!-- Spacer for balance -->
+</div>
+<main class="flex-1 max-w-4xl mx-auto w-full px-4 py-8">
+<!-- Success Hero Section -->
+<div class="flex flex-col items-center gap-6 mb-10">
+<div class="flex items-center justify-center bg-primary/10 dark:bg-primary/30 rounded-full p-6">
+<span class="material-symbols-outlined text-primary dark:text-gold !text-6xl">verified_user</span>
+</div>
+<div class="flex flex-col items-center gap-2 text-center">
+<span class="text-gold font-bold uppercase tracking-widest text-xs">Phase Completed</span>
+<h1 class="text-primary dark:text-slate-100 text-3xl font-extrabold leading-tight">Declaraciones Finalized</h1>
+<p class="text-slate-600 dark:text-slate-400 text-base max-w-md">
+                        The witness testimony and evidentiary statements have been processed and formatted according to judicial standards.
+                    </p>
+</div>
+<!-- Primary Action Buttons -->
+<div class="flex flex-col sm:flex-row gap-4 w-full justify-center mt-2">
+<button class="flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white rounded-lg h-12 px-8 font-bold transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">download_for_offline</span>
+<span>Download Word File</span>
+</button>
+<button class="flex items-center justify-center gap-2 bg-white dark:bg-slate-800 border-2 border-primary/20 dark:border-primary/40 hover:border-primary text-primary dark:text-slate-200 rounded-lg h-12 px-8 font-bold transition-all">
+<span>Continue to Next Phase</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-gold/10 rounded-full">
+<span class="material-symbols-outlined text-gold text-sm">info</span>
+<p class="text-slate-700 dark:text-slate-300 text-xs font-medium">
+                        This content will be available for integration into the Final Sentence later.
+                    </p>
+</div>
+</div>
+<!-- Text Preview Section -->
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800 px-6 py-4 flex justify-between items-center">
+<h3 class="text-primary dark:text-slate-200 font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-gold">description</span>
+                        Document Preview
+                    </h3>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Arial 12pt • 1.5 Spacing</span>
+</div>
+<div class="p-8 md:p-12 bg-white dark:bg-slate-900 overflow-y-auto max-h-[500px]">
+<!-- Simulated Legal Document Page -->
+<div class="max-w-[210mm] mx-auto text-slate-900 dark:text-slate-200 font-legal legal-spacing">
+<p class="font-bold text-center mb-8 uppercase underline decoration-primary/30">ACTA DE DECLARACIÓN TESTIFICAL</p>
+<p class="mb-4">
+                            En la ciudad de Madrid, a catorce de octubre de dos mil veinticuatro, ante la presencia de la autoridad judicial competente, se procede a la formalización de las declaraciones obtenidas durante la fase de instrucción del presente procedimiento ordinario.
+                        </p>
+<p class="mb-4">
+<strong>ANTECEDENTES DE HECHO:</strong> Conforme a lo dispuesto en la normativa vigente, se han recopilado los testimonios pertinentes relativos a los hechos acaecidos en fecha veinte de agosto del corriente año. El deponente, tras ser debidamente informado de sus derechos y obligaciones legales, manifiesta lo siguiente:
+                        </p>
+<p class="mb-4">
+                            "Que el día de los hechos, el compareciente se encontraba en el lugar designado, pudiendo observar con claridad la secuencia de eventos que han dado lugar al presente litigio. Que ratifica en todos sus extremos la declaración prestada anteriormente ante las autoridades policiales, sin que existan contradicciones de relevancia procesal."
+                        </p>
+<p class="mb-4">
+<strong>VALORACIÓN DE LA PRUEBA:</strong> La coherencia del relato, unida a la ausencia de móviles espurios o relaciones de parentesco que pudieran viciar la objetividad del testimonio, permite otorgar a esta declaración un alto valor probatorio dentro del conjunto de la fase de 'Declaraciones'.
+                        </p>
+<p class="mt-12 text-center text-slate-400 italic">
+                            [ Fin de la vista previa del documento ]
+                        </p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<div class="sticky bottom-0 w-full border-t border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md px-4 pb-4 pt-2 flex gap-2">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Home</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Cases</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary dark:text-gold" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Phases</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Settings</p>
+</a>
+</div>
+</div>
+</body></html>

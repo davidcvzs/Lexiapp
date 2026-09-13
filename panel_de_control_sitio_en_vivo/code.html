@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegalFlow - Live Site Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13", // Theme Primary (Orange-ish per prompt's provided config, though user asked for Navy/Gold, I must stick to the provided Tailwind Config Primary for technical accuracy while styling surroundings for the requested vibe)
+                        "navy": "#0a192f",
+                        "gold": "#c5a059",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Header / Top Nav -->
+<header class="sticky top-0 z-50 bg-white dark:bg-background-dark border-b border-slate-200 dark:border-slate-800 px-4 py-3">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-2 rounded-lg text-white">
+<span class="material-symbols-outlined block">gavel</span>
+</div>
+<div>
+<h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">LegalFlow</h1>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400">Production Environment</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-2 px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full text-xs font-bold uppercase tracking-wider">
+<span class="size-2 bg-green-500 rounded-full animate-pulse"></span>
+                    Live
+                </div>
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-7xl mx-auto w-full p-4 md:p-6 space-y-8">
+<!-- Welcome Hero Section -->
+<section class="relative overflow-hidden rounded-xl bg-slate-900 text-white p-8 md:p-12 shadow-2xl">
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+<div class="absolute inset-0 bg-gradient-to-br from-primary via-transparent to-navy"></div>
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl -mr-32 -mt-32"></div>
+</div>
+<div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div>
+<h2 class="text-3xl font-bold mb-2">Systems Operational</h2>
+<p class="text-slate-300 text-lg max-w-xl">Deployment successful. All services for LegalFlow Mexico are performing within optimal parameters.</p>
+</div>
+<div class="flex gap-3">
+<a class="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-primary text-white font-bold hover:opacity-90 transition-opacity" href="#">
+<span class="material-symbols-outlined mr-2">rocket_launch</span>
+                        Deploy Update
+                    </a>
+</div>
+</div>
+</section>
+<!-- Metrics Grid -->
+<section>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-semibold uppercase tracking-wider">System Status</p>
+<span class="material-symbols-outlined text-green-500">check_circle</span>
+</div>
+<p class="text-slate-900 dark:text-white tracking-tight text-3xl font-bold leading-tight">Online</p>
+<p class="text-green-500 text-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                        +0.01% stability
+                    </p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-semibold uppercase tracking-wider">Active Domain</p>
+<span class="material-symbols-outlined text-primary">language</span>
+</div>
+<p class="text-slate-900 dark:text-white tracking-tight text-xl font-bold leading-tight mt-2 truncate">legalflow.com.mx</p>
+<p class="text-slate-400 text-sm font-medium">Primary SSL Active</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-semibold uppercase tracking-wider">Uptime</p>
+<span class="material-symbols-outlined text-blue-500">timer</span>
+</div>
+<p class="text-slate-900 dark:text-white tracking-tight text-3xl font-bold leading-tight">99.9%</p>
+<p class="text-green-500 text-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">arrow_upward</span>
+                        Last 30 days
+                    </p>
+</div>
+</div>
+</section>
+<!-- Quick Access Section -->
+<section class="space-y-4">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight">Quick Access</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<a class="group flex items-center p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary transition-all shadow-sm" href="#">
+<div class="size-12 rounded-lg bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-primary group-hover:text-white transition-colors mr-4">
+<span class="material-symbols-outlined">web</span>
+</div>
+<div class="flex-1">
+<p class="font-bold text-slate-900 dark:text-white">Landing Page</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">View live public site</p>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary">chevron_right</span>
+</a>
+<a class="group flex items-center p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary transition-all shadow-sm" href="#">
+<div class="size-12 rounded-lg bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-primary group-hover:text-white transition-colors mr-4">
+<span class="material-symbols-outlined">login</span>
+</div>
+<div class="flex-1">
+<p class="font-bold text-slate-900 dark:text-white">Client Login</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Portal access check</p>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary">chevron_right</span>
+</a>
+<a class="group flex items-center p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary transition-all shadow-sm" href="#">
+<div class="size-12 rounded-lg bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-primary group-hover:text-white transition-colors mr-4">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+</div>
+<div class="flex-1">
+<p class="font-bold text-slate-900 dark:text-white">Admin Panel</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Core management console</p>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary">chevron_right</span>
+</a>
+<a class="group flex items-center p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary transition-all shadow-sm" href="#">
+<div class="size-12 rounded-lg bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-primary group-hover:text-white transition-colors mr-4">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div class="flex-1">
+<p class="font-bold text-slate-900 dark:text-white">API Docs</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Developer resources</p>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary">chevron_right</span>
+</a>
+</div>
+</section>
+<!-- Live Events Log -->
+<section class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm">
+<div class="p-4 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center">
+<h3 class="text-slate-900 dark:text-white font-bold">Recent System Logs</h3>
+<button class="text-primary text-sm font-bold hover:underline">View All</button>
+</div>
+<div class="divide-y divide-slate-100 dark:divide-slate-700">
+<div class="p-4 flex gap-4">
+<span class="text-slate-400 font-mono text-xs whitespace-nowrap">10:45:22 AM</span>
+<p class="text-sm"><span class="font-bold text-green-500">SUCCESS</span> Cache cleared for legalflow.com.mx</p>
+</div>
+<div class="p-4 flex gap-4">
+<span class="text-slate-400 font-mono text-xs whitespace-nowrap">10:42:01 AM</span>
+<p class="text-sm"><span class="font-bold text-blue-500">INFO</span> New administrative login from IP 189.212.XX.XX</p>
+</div>
+<div class="p-4 flex gap-4">
+<span class="text-slate-400 font-mono text-xs whitespace-nowrap">09:15:00 AM</span>
+<p class="text-sm"><span class="font-bold text-primary">DEPLOY</span> V1.2.4 successfully pushed to production branch</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Nav Bar Component -->
+<nav class="sticky bottom-0 z-50 bg-white dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 pb-safe">
+<div class="max-w-md mx-auto flex h-16">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Status</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">terminal</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Logs</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Analytics</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Config</span>
+</a>
+</div>
+</nav>
+</body></html>

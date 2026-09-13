@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f172a", // Navy Blue
+                        "accent": "#d4af37",  // Gold
+                        "background-light": "#f8fafd",
+                        "background-dark": "#020617",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Configuración de Motores IA - LegalFlow</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Header Navigation -->
+<header class="sticky top-0 z-50 bg-primary border-b border-accent/30 px-4 py-3 shadow-lg">
+<div class="max-w-4xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-accent text-3xl">account_balance</span>
+<h1 class="text-white text-xl font-bold tracking-tight">LegalFlow <span class="text-accent">AI</span></h1>
+</div>
+<div class="flex items-center gap-2 bg-accent/10 px-3 py-1 rounded-full border border-accent/20">
+<span class="material-symbols-outlined text-accent text-sm">shield_lock</span>
+<span class="text-accent text-xs font-semibold uppercase tracking-wider">Entorno Seguro</span>
+</div>
+</div>
+</header>
+<main class="max-w-4xl mx-auto p-4 pb-24">
+<!-- Hero Section -->
+<section class="mt-6 mb-8">
+<h2 class="text-2xl font-bold text-primary dark:text-slate-100 mb-2">Motores de Inteligencia Artificial</h2>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                Personalice los motores de procesamiento para sus expedientes legales. Todas las comunicaciones con las APIs están cifradas bajo protocolos TLS 1.3 y los datos no son utilizados para entrenamiento externo.
+            </p>
+</section>
+<!-- Security Banner -->
+<div class="mb-8 p-4 rounded-xl bg-primary dark:bg-slate-900 border-l-4 border-accent flex gap-4 items-start shadow-md">
+<span class="material-symbols-outlined text-accent mt-1">verified_user</span>
+<div>
+<h4 class="text-white font-bold text-sm">Privacidad de Grado Bancario</h4>
+<p class="text-slate-300 text-xs">Las API Keys se almacenan en una bóveda cifrada (Vault) y nunca se muestran en texto plano tras su guardado inicial.</p>
+</div>
+</div>
+<!-- AI Engine Cards Container -->
+<div class="space-y-6">
+<!-- DeepSeek Card -->
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="p-5">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-primary/5 flex items-center justify-center border border-primary/10">
+<span class="material-symbols-outlined text-primary dark:text-accent">terminal</span>
+</div>
+<div>
+<h3 class="font-bold text-lg text-primary dark:text-white">DeepSeek-V3</h3>
+<span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-700 uppercase">Optimizado para Análisis Técnico</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-accent"></div>
+</label>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-5">Excelente para el razonamiento lógico complejo, análisis de jurisprudencia técnica y extracción de datos estructurados de documentos extensos.</p>
+<div class="space-y-3">
+<label class="block">
+<span class="text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wide">API Key</span>
+<div class="mt-1 relative">
+<input class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-accent focus:border-accent transition-all outline-none" placeholder="sk-••••••••••••••••••••••••" type="password"/>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-slate-400 cursor-pointer text-xl">visibility</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- Claude Card -->
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm">
+<div class="p-5">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-primary/5 flex items-center justify-center border border-primary/10">
+<span class="material-symbols-outlined text-primary dark:text-accent">edit_note</span>
+</div>
+<div>
+<h3 class="font-bold text-lg text-primary dark:text-white">Claude 3.5 Sonnet</h3>
+<span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-700 uppercase">Redacción Natural y Síntesis</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-accent"></div>
+</label>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-5">Líder en redacción de escritos jurídicos con tono humano, resúmenes ejecutivos de alta fidelidad y detección de matices lingüísticos en contratos.</p>
+<div class="space-y-3">
+<label class="block">
+<span class="text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wide">Anthropic API Key</span>
+<div class="mt-1 relative">
+<input class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-accent focus:border-accent transition-all outline-none" placeholder="sk-ant-••••••••••••••••••••••••" type="password"/>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-slate-400 cursor-pointer text-xl">visibility</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- GPT-4o Card -->
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm">
+<div class="p-5">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-primary/5 flex items-center justify-center border border-primary/10">
+<span class="material-symbols-outlined text-primary dark:text-accent">psychology</span>
+</div>
+<div>
+<h3 class="font-bold text-lg text-primary dark:text-white">GPT-4o (OpenAI)</h3>
+<span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-purple-100 text-purple-700 uppercase">Multimodal y Versátil</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-accent"></div>
+</label>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-5">Ideal para tareas generales, procesamiento de imágenes (documentos escaneados) y traducción jurídica multilingüe de alta precisión.</p>
+<div class="space-y-3">
+<label class="block">
+<span class="text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wide">OpenAI API Key</span>
+<div class="mt-1 relative">
+<input class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-accent focus:border-accent transition-all outline-none" placeholder="sk-proj-••••••••••••••••••••••••" type="password"/>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-slate-400 cursor-pointer text-xl">visibility</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- ZAI Card -->
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm">
+<div class="p-5">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-primary/5 flex items-center justify-center border border-primary/10">
+<span class="material-symbols-outlined text-primary dark:text-accent">gavel</span>
+</div>
+<div>
+<h3 class="font-bold text-lg text-primary dark:text-white">ZAI Engine</h3>
+<span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-700 uppercase">Específico Sector Legal</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-accent"></div>
+</label>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-5">Motor propietario entrenado exclusivamente en legislación nacional, procesos judiciales y terminología forense específica.</p>
+<div class="space-y-3">
+<label class="block">
+<span class="text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wide">ZAI License Key</span>
+<div class="mt-1 relative">
+<input class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-accent focus:border-accent transition-all outline-none" placeholder="ZAI-PRO-••••••••••••••••••••••••" type="password"/>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-slate-400 cursor-pointer text-xl">visibility</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="mt-10 flex flex-col sm:flex-row gap-4">
+<button class="flex-1 bg-primary text-white font-bold py-3 rounded-lg hover:bg-slate-800 transition-colors shadow-lg border border-primary">
+                Guardar Configuración
+            </button>
+<button class="flex-1 bg-white dark:bg-slate-800 text-primary dark:text-slate-200 font-bold py-3 rounded-lg border border-slate-300 dark:border-slate-600 hover:bg-slate-50 transition-colors">
+                Probar Conexiones
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-primary border-t border-accent/30 px-4 pb-4 pt-2 z-50">
+<div class="max-w-4xl mx-auto flex gap-2">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 hover:text-accent" href="#">
+<span class="material-symbols-outlined">home</span>
+<p class="text-[10px] font-medium leading-normal">Inicio</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 hover:text-accent" href="#">
+<span class="material-symbols-outlined">description</span>
+<p class="text-[10px] font-medium leading-normal">Documentos</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-accent" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">memory</span>
+<p class="text-[10px] font-medium leading-normal">Motores</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 hover:text-accent" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-[10px] font-medium leading-normal">Ajustes</p>
+</a>
+</div>
+</nav>
+</body></html>

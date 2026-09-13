@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Redactor de Sentencias PJENL</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+        /* Custom scrollbar for the preview area */
+        .legal-preview::-webkit-scrollbar {
+            width: 6px;
+        }
+        .legal-preview::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Header Navigation -->
+<header class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 py-3">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">gavel</span>
+<div>
+<h1 class="text-lg font-bold leading-tight tracking-tight">Redactor Jurídico AI</h1>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Poder Judicial del Estado de Nuevo León</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-primary/10 px-3 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-primary text-sm">auto_awesome</span>
+<span class="text-xs font-bold text-primary uppercase tracking-wider">IA Asistida 2026</span>
+</div>
+<button class="material-symbols-outlined p-2 text-slate-500 hover:bg-slate-100 rounded-full">history</button>
+<button class="material-symbols-outlined p-2 text-slate-500 hover:bg-slate-100 rounded-full">settings</button>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-7xl mx-auto w-full p-4 grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Column: Input & Configuration -->
+<aside class="lg:col-span-5 space-y-6">
+<!-- Configuration Section -->
+<section class="bg-white dark:bg-slate-900 p-5 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
+<h2 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-4">Configuración del Documento</h2>
+<div class="space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<label class="flex flex-col gap-1.5">
+<span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Tipo de Resolución</span>
+<select class="form-select rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 text-sm focus:ring-primary focus:border-primary">
+<option>Sentencia Definitiva</option>
+<option>Interlocutoria</option>
+<option>Auto de Trámite</option>
+<option>Sentencia de Amparo</option>
+</select>
+</label>
+<label class="flex flex-col gap-1.5">
+<span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Materia</span>
+<select class="form-select rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 text-sm focus:ring-primary focus:border-primary">
+<option>Civil</option>
+<option>Penal</option>
+<option>Familiar</option>
+<option>Laboral</option>
+<option>Mercantil</option>
+</select>
+</label>
+</div>
+<div class="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-700">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-800 dark:text-slate-200">Formato Lectura Fácil</span>
+<span class="text-[10px] text-slate-500 leading-tight">Protocolo PJENL 2026 para grupos vulnerables</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Transcription Section -->
+<section class="bg-white dark:bg-slate-900 p-5 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col h-[400px]">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-sm font-bold uppercase tracking-widest text-slate-500">Insumos del Caso</h2>
+<div class="flex items-center gap-1.5 px-2 py-0.5 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800 rounded-full">
+<span class="material-symbols-outlined text-[12px] text-emerald-600 dark:text-emerald-400">verified_user</span>
+<span class="text-[9px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-tighter">Entorno Seguro</span>
+</div><button class="text-xs font-bold text-primary flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-xs">file_upload</span>
+                        Importar de Audiencia
+                    </button>
+</div>
+<div class="relative flex-1 group">
+<textarea class="w-full h-full p-4 rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 text-sm focus:ring-primary focus:border-primary resize-none placeholder:text-slate-400" placeholder="Pegue aquí la transcripción de la audiencia, hechos relevantes o el dictamen pericial..."></textarea>
+<div class="absolute bottom-3 right-3 flex gap-2">
+<button class="p-2 bg-white dark:bg-slate-700 shadow-md rounded-full border border-slate-100 dark:border-slate-600 hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-primary">mic</span>
+</button>
+</div>
+</div>
+<div class="mt-4">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 px-4 rounded-lg shadow-lg shadow-primary/20 flex items-center justify-center gap-2 transition-all">
+<span class="material-symbols-outlined">magic_button</span>
+                        Generar Proyecto de Sentencia
+                    </button><div class="mt-3 flex items-start gap-2 px-1">
+<span class="material-symbols-outlined text-slate-400 text-sm mt-0.5">lock</span>
+<p class="text-[10px] leading-relaxed text-slate-500 dark:text-slate-400 italic font-medium">
+        Toda la información ingresada es confidencial y se procesa exclusivamente para la generación de este proyecto legal bajo protocolos de seguridad del PJENL.
+    </p>
+</div>
+</div>
+</section>
+</aside>
+<!-- Right Column: Preview Area -->
+<div class="lg:col-span-7 flex flex-col h-full min-h-[600px]">
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 flex flex-col h-full overflow-hidden">
+<!-- Toolbar Preview -->
+<div class="px-6 py-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between bg-slate-50/50 dark:bg-slate-800/20">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400">description</span>
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400 italic">Vista Previa del Borrador</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50">
+<span class="material-symbols-outlined text-sm">download</span> PDF
+                        </button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50">
+<span class="material-symbols-outlined text-sm">print</span>
+</button>
+</div>
+</div>
+<!-- Legal Structure Preview -->
+<div class="flex-1 overflow-y-auto p-10 legal-preview bg-white dark:bg-slate-900 font-serif leading-relaxed text-slate-800 dark:text-slate-200">
+<!-- HEADER -->
+<div class="text-center mb-12 space-y-1">
+<div class="font-bold text-lg uppercase">Poder Judicial del Estado de Nuevo León</div>
+<div class="font-bold text-base italic">Juzgado Tercero de lo Civil del Primer Distrito Judicial</div>
+<div class="text-sm">Expediente: 452/2024 | Juicio Ordinario Civil</div>
+</div>
+<!-- VISTOS -->
+<div class="mb-8">
+<h3 class="font-bold uppercase mb-3 border-b-2 border-slate-100 dark:border-slate-800 inline-block">VISTOS</h3>
+<p class="text-justify text-sm">Para resolver en definitiva los autos del juicio mencionado al rubro, promovido por la parte actora en contra de la parte demandada sobre el cumplimiento de contrato y otras prestaciones...</p>
+</div>
+<!-- RESULTANDOS -->
+<div class="mb-8">
+<h3 class="font-bold uppercase mb-3 border-b-2 border-slate-100 dark:border-slate-800 inline-block">RESULTANDOS</h3>
+<p class="text-justify text-sm mb-4">1. Por escrito presentado en fecha [FECHA], compareció la parte actora ante la Oficialía de Partes Común demandando las prestaciones que se detallan en el capítulo respectivo...</p>
+<p class="text-justify text-sm italic bg-primary/5 p-4 rounded-lg border-l-4 border-primary">
+<span class="font-bold block mb-1 text-primary text-xs uppercase tracking-widest">IA Insight:</span>
+                            Se detectó contradicción en las fechas de entrega mencionadas en la foja 45 y la declaración del testigo A.
+                        </p>
+</div>
+<!-- CONSIDERANDOS -->
+<div class="mb-8">
+<h3 class="font-bold uppercase mb-3 border-b-2 border-slate-100 dark:border-slate-800 inline-block">CONSIDERANDOS</h3>
+<p class="text-justify text-sm mb-4">Esta autoridad es competente para conocer del presente negocio jurídico... Con base en el análisis de las pruebas ofrecidas, se determina que la acción intentada resulta procedente, fundamentada en la siguiente Jurisprudencia de la SCJN:</p>
+<div class="p-4 bg-slate-50 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 text-xs italic mb-4">
+                            "CONTRATOS DE ARRENDAMIENTO. LA FALTA DE EXHIBICIÓN DE LOS RECIBOS DE PAGO NO EXIME DEL CUMPLIMIENTO..." [Registro Digital: 2021544]
+                        </div>
+</div>
+<!-- RESOLUTIVOS -->
+<div class="mb-8 bg-slate-50 dark:bg-slate-800/30 p-6 rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-700">
+<h3 class="font-bold uppercase mb-3 text-center">RESOLUTIVOS</h3>
+<ol class="list-decimal list-inside space-y-3 text-sm">
+<li class="font-bold">PRIMERO. Ha sido procedente la vía ordinaria civil intentada.</li>
+<li><span class="font-bold uppercase">Segundo.</span> Se condena a la parte demandada al pago inmediato de las prestaciones reclamadas.</li>
+<li><span class="font-bold uppercase">Tercero.</span> Notifíquese personalmente a las partes en términos de ley.</li>
+</ol>
+</div>
+<!-- Lectura Fácil Section (Toggle Dependent) -->
+<div class="mt-12 pt-8 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">child_care</span>
+<h3 class="font-bold text-primary">Anexo: Versión de Lectura Fácil</h3>
+</div>
+<div class="bg-primary/5 p-6 rounded-2xl border border-primary/20 space-y-4">
+<p class="text-base font-bold text-slate-800 dark:text-slate-100 italic">"Hola, te explicamos qué decidimos hoy:"</p>
+<p class="text-sm leading-relaxed">Leímos todos tus papeles y escuchamos lo que nos dijiste. Después de revisar todo con cuidado, el Juez decidió que la razón la tiene la persona que te demandó, porque no se pudo comprobar que el pago se hizo a tiempo...</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-4 py-2 sticky bottom-0 z-50">
+<div class="max-w-md mx-auto flex justify-between">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">edit_square</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">Redactor</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">folder_open</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">Expedientes</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">balance</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">Jurisprudencia</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">Estadísticas</p>
+</a>
+</div>
+</nav>
+</body></html>

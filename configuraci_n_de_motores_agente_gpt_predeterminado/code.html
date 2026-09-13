@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#002147", // Navy Blue
+                        "accent": "#D4AF37",  // Gold
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0f0f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .gold-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+        }
+        .navy-glass {
+            background: rgba(0, 33, 71, 0.03);
+            border: 1px solid rgba(0, 33, 71, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex h-screen w-full flex-col overflow-hidden max-w-md mx-auto bg-white shadow-2xl">
+<!-- Header -->
+<header class="flex items-center p-4 pt-6 justify-between bg-white border-b border-slate-100">
+<div class="flex items-center gap-3">
+<div class="text-primary cursor-pointer hover:bg-slate-100 p-1 rounded-full transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<div>
+<h2 class="text-primary text-lg font-bold leading-tight">Configuración</h2>
+<p class="text-xs text-slate-500 font-medium tracking-wide uppercase">LegalFlow Premium</p>
+</div>
+</div>
+<div class="text-accent">
+<span class="material-symbols-outlined text-3xl">verified_user</span>
+</div>
+</header>
+<!-- Content Area -->
+<main class="flex-1 overflow-y-auto px-4 py-6 space-y-6">
+<section>
+<h1 class="text-primary text-2xl font-bold leading-tight">Motores de IA</h1>
+<p class="text-slate-600 text-sm mt-2">
+                    Seleccione y configure los modelos de inteligencia artificial optimizados para su práctica legal.
+                </p>
+</section>
+<!-- AI Engine Cards -->
+<div class="space-y-4"><!-- Custom Agent Card -->
+<div class="rounded-xl navy-glass p-5 border-l-4 border-accent bg-white shadow-sm transition-all hover:shadow-md ring-2 ring-accent/20">
+<div class="flex justify-between items-start mb-3">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-accent uppercase tracking-widest mb-1">Motor Predeterminado</span>
+<h3 class="text-primary text-lg font-bold">Agente Personalizado (GPT)</h3>
+</div>
+<span class="flex items-center gap-1 px-2 py-1 rounded bg-green-50 text-[10px] font-bold text-green-600 border border-green-200 uppercase">
+<span class="size-1.5 rounded-full bg-green-500"></span>
+            Activo
+        </span>
+</div>
+<p class="text-slate-600 text-sm leading-relaxed mb-4">
+        Instancia privada optimizada con sus bases de datos específicas. Utiliza su URL de endpoint personalizada para procesamiento exclusivo.
+    </p>
+<div class="flex items-center justify-between">
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-white text-xs font-bold rounded-lg hover:bg-opacity-90 transition-all">
+<span class="material-symbols-outlined text-sm">language</span>
+            CONFIGURAR URL
+        </button>
+<div class="flex items-center">
+<input checked="" class="w-5 h-5 text-accent border-slate-300 focus:ring-accent" id="custom_agent" name="engine" type="radio"/>
+</div>
+</div>
+</div>
+<!-- DeepSeek Card -->
+<div class="rounded-xl navy-glass p-5 border-l-4 border-accent bg-white shadow-sm transition-all hover:shadow-md">
+<div class="flex justify-between items-start mb-3">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Cálculo Lógico</span>
+<h3 class="text-primary text-lg font-bold">DeepSeek v3</h3>
+</div>
+<span class="flex items-center gap-1 px-2 py-1 rounded bg-slate-100 text-[10px] font-bold text-slate-500 border border-slate-200 uppercase">
+<span class="size-1.5 rounded-full bg-slate-400"></span>
+                            Desconectado
+                        </span>
+</div>
+<p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Optimizado para consistencia lógica rigurosa y generación de código legal especializado. Ideal para auditorías técnicas.
+                    </p>
+<div class="flex items-center justify-between">
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-white text-xs font-bold rounded-lg hover:bg-opacity-90 transition-all">
+<span class="material-symbols-outlined text-sm">link</span>
+                            CONECTAR API
+                        </button>
+<div class="flex items-center">
+<input class="w-5 h-5 text-accent border-slate-300 focus:ring-accent" id="deepseek" name="engine" type="radio"/>
+</div>
+</div>
+</div>
+<!-- Claude Card -->
+<div class="rounded-xl navy-glass p-5 border-l-4 border-accent bg-white shadow-sm transition-all hover:shadow-md">
+<div class="flex justify-between items-start mb-3">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-accent uppercase tracking-widest mb-1">Razonamiento Nuance</span>
+<h3 class="text-primary text-lg font-bold">Claude 3.5 Sonnet</h3>
+</div>
+<span class="flex items-center gap-1 px-2 py-1 rounded bg-green-50 text-[10px] font-bold text-green-600 border border-green-200 uppercase">
+<span class="size-1.5 rounded-full bg-green-500"></span>
+                            Activo
+                        </span>
+</div>
+<p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Especializado en razonamiento jurídico matizado y procesamiento de contextos extensos (ideal para transcripciones de 650min).
+                    </p>
+<div class="flex items-center justify-between">
+<button class="flex items-center gap-2 px-4 py-2 bg-slate-100 text-primary text-xs font-bold rounded-lg border border-slate-200 hover:bg-slate-200 transition-all">
+<span class="material-symbols-outlined text-sm">settings</span>
+                            CONFIGURAR
+                        </button>
+<div class="flex items-center">
+<input class="w-5 h-5 text-accent border-slate-300 focus:ring-accent" id="claude" name="engine" type="radio"/>
+</div>
+</div>
+</div>
+<!-- GPT-4 Card -->
+<div class="rounded-xl navy-glass p-5 border-l-4 border-accent bg-white shadow-sm transition-all hover:shadow-md">
+<div class="flex justify-between items-start mb-3">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Redacción General</span>
+<h3 class="text-primary text-lg font-bold">GPT-4o (OpenAI)</h3>
+</div>
+<span class="flex items-center gap-1 px-2 py-1 rounded bg-slate-100 text-[10px] font-bold text-slate-500 border border-slate-200 uppercase">
+<span class="size-1.5 rounded-full bg-slate-400"></span>
+                            No Configurado
+                        </span>
+</div>
+<p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Equilibrado para redacción general de documentos, transcripción básica y tareas administrativas de alta velocidad.
+                    </p>
+<div class="flex items-center justify-between">
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-white text-xs font-bold rounded-lg hover:bg-opacity-90 transition-all">
+<span class="material-symbols-outlined text-sm">link</span>
+                            CONECTAR API
+                        </button>
+<div class="flex items-center">
+<input class="w-5 h-5 text-accent border-slate-300 focus:ring-accent" id="gpt4" name="engine" type="radio"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Notice -->
+<div class="bg-primary/5 p-4 rounded-lg flex gap-3 items-start border border-primary/10">
+<span class="material-symbols-outlined text-primary text-xl">info</span>
+<p class="text-xs text-slate-500 leading-normal">
+                    Los datos procesados por estos motores están protegidos bajo protocolos de cifrado de grado legal. Sus claves API se almacenan de forma segura en su bóveda local.
+                </p>
+</div>
+<div class="h-20"></div> <!-- Spacer for scrolling -->
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="absolute bottom-0 w-full flex gap-1 border-t border-slate-200 bg-white/95 backdrop-blur-md px-4 pb-6 pt-2">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">Inicio</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">description</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">Documentos</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary relative" href="#">
+<div class="absolute -top-3 size-1 bg-accent rounded-full"></div>
+<span class="material-symbols-outlined filled text-primary">psychology</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">IA</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">Ajustes</p>
+</a>
+</nav>
+</div>
+</body></html>

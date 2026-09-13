@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000066",
+                        "accent": "#B8860B", /* Dark Golden Rod for professional look */
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0f0f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-slate-900 dark:text-slate-100">
+<div class="relative flex h-auto min-h-screen w-full flex-col max-w-md mx-auto bg-white dark:bg-slate-900 shadow-xl overflow-x-hidden">
+<!-- Header -->
+<div class="flex items-center p-4 border-b border-slate-100 dark:border-slate-800">
+<div class="text-primary dark:text-slate-100 flex size-10 items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-primary dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 ml-2">Mi Suscripción</h2>
+<div class="text-primary dark:text-slate-100 flex size-10 items-center justify-center">
+<span class="material-symbols-outlined">settings</span>
+</div>
+</div>
+<!-- Plan Status Card -->
+<div class="flex p-6 flex-col items-center">
+<div class="relative flex w-full flex-col gap-6 items-center bg-primary/5 dark:bg-primary/20 rounded-xl p-8 border border-primary/10">
+<div class="flex flex-col items-center justify-center">
+<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-4 text-accent">
+<span class="material-symbols-outlined text-4xl">workspace_premium</span>
+</div>
+<p class="text-primary dark:text-white text-2xl font-bold tracking-tight text-center">Plan Premium Pro</p>
+<div class="mt-2 px-3 py-1 bg-accent/20 rounded-full">
+<p class="text-accent text-sm font-semibold uppercase tracking-wider">Activo</p>
+</div>
+</div>
+<div class="w-full h-px bg-slate-200 dark:bg-slate-700"></div>
+<div class="grid grid-cols-2 gap-4 w-full">
+<div class="flex flex-col gap-1">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Precio Actual</p>
+<p class="text-primary dark:text-white text-xl font-bold leading-tight">$60<span class="text-sm font-normal text-slate-500">/mes</span></p>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Renovación</p>
+<p class="text-primary dark:text-white text-xl font-bold leading-tight">15 Oct 2024</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Benefits Summary -->
+<div class="px-6 py-2">
+<h3 class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-4">Incluido en tu plan</h3>
+<div class="space-y-3">
+<div class="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary dark:text-accent text-xl">check_circle</span>
+<span class="text-sm">Acceso ilimitado a todas las funciones</span>
+</div>
+<div class="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary dark:text-accent text-xl">check_circle</span>
+<span class="text-sm">Soporte prioritario 24/7</span>
+</div>
+<div class="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary dark:text-accent text-xl">check_circle</span>
+<span class="text-sm">Almacenamiento en la nube de 1TB</span>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="mt-auto p-6 space-y-4">
+<button class="w-full flex h-14 cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-primary text-white text-base font-bold transition-all hover:bg-opacity-90 active:scale-[0.98]">
+<span class="truncate">Actualizar Plan</span>
+</button>
+<button class="w-full flex h-14 cursor-pointer items-center justify-center overflow-hidden rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-transparent text-slate-600 dark:text-slate-300 text-base font-bold transition-all hover:bg-slate-50 dark:hover:bg-slate-800">
+<span class="truncate">Cancelar Suscripción</span>
+</button>
+<div class="flex flex-col gap-2 pt-2">
+<p class="text-slate-500 dark:text-slate-400 text-sm text-center italic">
+                    Sin preguntas, sin complicaciones. Tu suscripción terminará al finalizar el periodo actual.
+                </p>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<div class="flex gap-2 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pb-6 pt-3">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">home</span>
+<p class="text-[10px] font-medium leading-normal">Inicio</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary dark:text-accent" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">credit_card</span>
+<p class="text-[10px] font-bold leading-normal">Plan</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<p class="text-[10px] font-medium leading-normal">Facturas</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">person</span>
+<p class="text-[10px] font-medium leading-normal">Perfil</p>
+</a>
+</div>
+</div>
+</body></html>

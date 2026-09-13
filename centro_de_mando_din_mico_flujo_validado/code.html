@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000066",
+                        "accent": "#D4AF37",
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0f0f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono-legal": ["Arial", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .legal-document {
+            font-family: Arial, sans-serif;
+            font-size: 12pt;
+            line-height: 1.5;
+        }
+        .sensitive-data {
+            color: #dc2626;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex h-screen max-w-md mx-auto flex-col bg-background-light dark:bg-background-dark overflow-hidden border-x border-slate-200 dark:border-slate-800">
+<!-- Header -->
+<div class="flex items-center bg-white dark:bg-slate-900 p-4 border-b border-slate-200 dark:border-slate-800 justify-between sticky top-0 z-10">
+<div class="text-primary dark:text-slate-100 flex size-10 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined">menu</span>
+</div>
+<h2 class="text-primary dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center">LegalFlow</h2>
+<div class="flex w-10 items-center justify-end">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-transparent text-primary dark:text-slate-100">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+<!-- Main Content Area (Scrollable) -->
+<div class="flex-1 overflow-y-auto pb-24">
+<div class="px-4 pt-6 pb-4">
+<h1 class="text-primary dark:text-slate-100 text-2xl font-bold leading-tight">Centro de Comando: Validación de Fragmento</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Case #LF-2024-0892</p>
+</div>
+<!-- Stepper Component -->
+<div class="px-4 py-4">
+<div class="flex items-center justify-between relative mb-8">
+<!-- Progress Line Background -->
+<div class="absolute top-5 left-0 w-full h-0.5 bg-slate-200 dark:bg-slate-700 -z-0"></div>
+<!-- Active Progress Line -->
+<div class="absolute top-5 left-0 w-1/3 h-0.5 bg-primary dark:bg-primary/80 -z-0"></div>
+<!-- Step 1: Active -->
+<div class="flex flex-col items-center gap-2 z-10">
+<div class="size-10 rounded-full bg-primary flex items-center justify-center text-white ring-4 ring-white dark:ring-slate-900">
+<span class="material-symbols-outlined text-sm">play_arrow</span>
+</div>
+<span class="text-[10px] font-bold text-primary uppercase tracking-wider">Declaraciones</span>
+</div>
+<!-- Step 2: Locked -->
+<div class="flex flex-col items-center gap-2 z-10">
+<div class="size-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-500 ring-4 ring-white dark:ring-slate-900">
+<span class="material-symbols-outlined text-sm">lock</span>
+</div>
+<span class="text-[10px] font-medium text-slate-400 uppercase tracking-wider text-center">Valoración</span>
+</div>
+<!-- Step 3: Locked -->
+<div class="flex flex-col items-center gap-2 z-10">
+<div class="size-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-500 ring-4 ring-white dark:ring-slate-900">
+<span class="material-symbols-outlined text-sm">lock</span>
+</div>
+<span class="text-[10px] font-medium text-slate-400 uppercase tracking-wider text-center">Acreditación<br/>del Delito</span>
+</div>
+</div>
+</div>
+<!-- Active Stage Detail -->
+<div class="px-4">
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="bg-primary/5 dark:bg-primary/20 border-b border-slate-200 dark:border-slate-800 p-3 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">description</span>
+<span class="text-sm font-bold text-primary">Validación de Fragmento</span>
+</div>
+<div class="flex items-center gap-1">
+<div class="size-2 rounded-full bg-red-500 animate-pulse"></div>
+<span class="text-[10px] font-bold text-red-500 uppercase">EN PROCESO</span>
+</div>
+</div>
+<div class="p-6 legal-document text-slate-800 dark:text-slate-200 min-h-[300px]"><p class="mb-4">El declarante <span class="sensitive-data">Roberto G.M.</span> refirió encontrarse en las inmediaciones de la instalación a las 23:45 horas. Ante el cuestionamiento sobre sus pertenencias, agregó que portaba un <span class="sensitive-data">dispositivo de almacenamiento cifrado</span> de alta capacidad, manifestando desconocer el origen del mismo.</p><p class="mb-4">Respecto a la transacción financiera, la testigo <span class="sensitive-data">Sgt. Elena Rodriguez</span> aseveró que el monto involucrado asciende a <span class="sensitive-data">$450,000.00 USD</span>, el cual fue transferido mediante protocolos no estandarizados. Durante la aprehensión, el sujeto demostró conocimiento previo de los códigos de seguridad.</p><p class="italic text-slate-400 dark:text-slate-500 border-l-2 border-accent pl-4">Nota del Sistema: Consolidación narrativa en tercera persona finalizada. Entidades marcadas para verificación jurídica.</p></div>
+<div class="p-4 bg-slate-50 dark:bg-slate-800/50 flex flex-col gap-3">
+<div class="flex items-center justify-between text-xs text-slate-500">
+<span>Confianza de Consolidación: 96%</span>
+<span>Tokens remaining: 412</span>
+</div>
+<div class="w-full bg-slate-200 dark:bg-slate-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-accent h-full w-[85%] rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="p-4 mt-4">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 shadow-lg transition-all active:scale-[0.98]">
+<span>Validar y Continuar</span>
+<span class="material-symbols-outlined text-accent">chevron_right</span>
+</button>
+<p class="text-center text-[11px] text-slate-400 mt-3 px-6 leading-relaxed">Al proceder, usted confirma que la narrativa del fragmento es jurídicamente coherente y está lista para la fase de valoración probatoria.</p>
+</div>
+</div>
+<!-- Bottom Navigation -->
+<div class="fixed bottom-0 w-full max-w-md bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-4 pb-6 pt-2 z-20">
+<div class="flex gap-2">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-[10px] font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">work</span>
+<p class="text-[10px] font-medium leading-normal">Cases</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">account_tree</span>
+<p class="text-[10px] font-bold leading-normal">Workflows</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">person</span>
+<p class="text-[10px] font-medium leading-normal">Profile</p>
+</a>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "legal-red": "#dc2626"
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"],
+                        "serif": ["Arial", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .legal-content {
+            font-family: Arial, sans-serif;
+            font-size: 12pt;
+            line-height: 1.5;
+            color: #000000;
+        }
+        .redacted {
+            color: #dc2626;
+            font-weight: bold;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-white group/design-root overflow-x-hidden mx-auto max-w-4xl shadow-md border-x border-slate-200">
+<header class="flex items-center bg-white p-4 border-b border-slate-200 justify-between">
+<div class="text-slate-900 flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-slate-900 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12 uppercase">
+                Vista Previa de Sentencia
+            </h2>
+</header>
+<main class="flex-1 bg-white px-12 py-16">
+<div class="text-center mb-10 border-b-2 border-slate-900 pb-4">
+<h1 class="text-slate-900 text-xl font-bold tracking-widest leading-tight uppercase">
+                    PODER JUDICIAL DEL ESTADO DE NUEVO LEÓN
+                </h1>
+</div>
+<div class="legal-content">
+<h2 class="text-center font-bold underline mb-8 uppercase">
+                    VALORACIÓN INTEGRAL DE LAS PRUEBAS
+                </h2>
+<p class="mb-6 text-justify">
+                    En cumplimiento a las reglas de la lógica, los conocimientos científicos y las máximas de experiencia, este juzgador procede a realizar la <strong>VALORACIÓN EN CONJUNTO</strong> de los elementos de convicción desahogados durante la audiencia de juicio, a efecto de determinar la acreditación de los hechos objeto del proceso con fecha de <span class="redacted">[FECHA_REDACTADA]</span> en la ciudad de <span class="redacted">[UBICACIÓN_REDACTADA]</span>.
+                </p>
+<p class="mb-6 text-justify">
+                    Bajo el principio de congruencia e idoneidad, se analizan de forma concatenada la <strong>Testimonial 1</strong> a cargo de <span class="redacted">[NOMBRE_REDACTADO]</span>, la <strong>Testimonial 2</strong> a cargo de <span class="redacted">[NOMBRE_REDACTADO]</span> y el dictamen de la <strong>Pericial en Genética</strong> elaborado por el especialista <span class="redacted">[NOMBRE_REDACTADO]</span>.
+                </p>
+<p class="mb-6 text-justify">
+                    Respecto a los testimonios referidos, se observa una total <strong>ausencia de incredibilidad subjetiva</strong>, toda vez que no se advierten móviles espurios, de odio o resentimiento que pudieran viciar el dicho de los deponentes. Asimismo, existe <strong>verosimilitud</strong> en sus declaraciones, al guardar una estructura lógica y coherente entre sí, encontrando un sustento periférico objetivo en los resultados arrojados por la prueba pericial en genética forense.
+                </p>
+<p class="mb-6 text-justify">
+                    La valoración en conjunto permite concluir que los indicios presentados no son aislados, sino que forman un tejido probatorio sólido. El dictamen pericial confirma la presencia de material biológico perteneciente al imputado en el lugar de los hechos, lo cual otorga a las testimoniales una fiabilidad técnica que supera cualquier duda razonable. Se advierte una correlación directa entre la narrativa de los hechos y la evidencia material recolectada en <span class="redacted">[UBICACIÓN_REDACTADA]</span>.
+                </p>
+<p class="mb-6 text-justify">
+                    Por lo anteriormente expuesto, este órgano jurisdiccional determina que el material probatorio analizado bajo la sana crítica es suficiente para establecer la verdad histórica del evento acontecido el <span class="redacted">[FECHA_REDACTADA]</span>.
+                </p>
+</div>
+<footer class="mt-20 pt-8 border-t border-slate-200">
+<p class="text-center text-slate-500 text-sm font-bold uppercase tracking-widest">
+                    Poder Judicial del Estado de Nuevo León
+                </p>
+</footer>
+</main>
+<nav class="sticky bottom-0 bg-white border-t border-slate-200 p-6 flex flex-col md:flex-row gap-4 justify-center">
+<button class="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-lg flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined">description</span>
+                Exportar Word
+            </button>
+<button class="bg-slate-200 hover:bg-slate-300 text-slate-900 font-bold py-3 px-8 rounded-lg flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined">undo</span>
+                Volver
+            </button>
+</nav>
+</div>
+</body></html>

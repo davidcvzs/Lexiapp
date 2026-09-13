@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegalFlow - Subir Transcripción Existente</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#b89552", // Dorado
+                        "navy": "#0a192f",    // Azul Marino
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#0a192f",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"],
+                        "legal": ["Arial", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .legal-preview {
+            font-family: 'Arial', sans-serif;
+            font-size: 12pt;
+            line-height: 1.5;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark text-navy dark:text-slate-100 min-h-screen">
+<nav class="bg-navy text-white px-6 py-4 flex items-center justify-between shadow-md">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">gavel</span>
+<span class="text-xl font-bold tracking-tight">LegalFlow</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-white/10 rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-primary/20 border border-primary/50 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">account_circle</span>
+</div>
+</div>
+</nav>
+<main class="max-w-4xl mx-auto px-4 py-8">
+<header class="mb-8">
+<div class="flex items-center gap-2 text-navy/60 dark:text-slate-400 mb-2">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+<span class="text-sm font-medium">Volver al panel</span>
+</div>
+<h1 class="text-3xl font-bold text-navy dark:text-white">Subir Transcripción Existente</h1>
+<p class="text-navy/70 dark:text-slate-300 mt-2">Complete la información del expediente y cargue el documento legal correspondiente.</p>
+</header>
+<section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+<div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+<label class="block mb-2 text-sm font-semibold text-navy dark:text-slate-200 uppercase tracking-wider">Número de Expediente</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">folder_open</span>
+<input class="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-primary bg-transparent outline-none transition-all" placeholder="Ej. 1234/2023-CIV" type="text"/>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+<label class="block mb-2 text-sm font-semibold text-navy dark:text-slate-200 uppercase tracking-wider">Materia</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">balance</span>
+<select class="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-primary bg-transparent outline-none transition-all appearance-none">
+<option value="">Seleccione materia</option>
+<option value="civil">Civil</option>
+<option value="penal">Penal</option>
+<option value="laboral">Laboral</option>
+<option value="familiar">Familiar</option>
+</select>
+</div>
+</div>
+</section>
+<div class="bg-white dark:bg-slate-800 p-8 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm mb-8">
+<div class="flex border-b border-slate-200 dark:border-slate-700 mb-6">
+<button class="px-6 py-3 border-b-2 border-primary text-primary font-bold flex items-center gap-2">
+<span class="material-symbols-outlined">upload_file</span> Cargar Archivo
+                </button>
+<button class="px-6 py-3 border-b-2 border-transparent text-slate-500 hover:text-navy dark:hover:text-white flex items-center gap-2">
+<span class="material-symbols-outlined">content_paste</span> Pegar Texto
+                </button>
+</div>
+<div class="border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-xl p-12 text-center group hover:border-primary transition-colors cursor-pointer bg-slate-50 dark:bg-slate-900/30">
+<span class="material-symbols-outlined text-6xl text-slate-300 group-hover:text-primary transition-colors mb-4">cloud_upload</span>
+<h3 class="text-xl font-semibold text-navy dark:text-white mb-1">Arrastra tu archivo aquí</h3>
+<p class="text-slate-500 mb-6">Soporta formatos Word (.docx), PDF y Texto (.txt)</p>
+<button class="bg-navy dark:bg-primary text-white dark:text-navy px-8 py-3 rounded-lg font-bold hover:opacity-90 transition-opacity">Seleccionar desde mi equipo</button>
+</div>
+<div class="mt-8">
+<label class="block mb-2 text-sm font-semibold text-navy dark:text-slate-200 uppercase tracking-wider">Previsualización (Arial 12)</label>
+<div class="legal-preview w-full h-48 p-4 border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-900/50 text-slate-400 italic flex items-center justify-center">
+                    Cargue un archivo para ver la previsualización del documento...
+                </div>
+</div>
+</div>
+<div class="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/50 p-6 rounded-xl mb-12 flex gap-4">
+<span class="material-symbols-outlined text-amber-600 dark:text-amber-500">lock</span>
+<div>
+<h4 class="font-bold text-amber-800 dark:text-amber-500 mb-1">Aviso de Confidencialidad</h4>
+<p class="text-amber-700 dark:text-amber-600/80 text-sm leading-relaxed">
+                    Toda la información cargada en LegalFlow es tratada bajo estrictos protocolos de seguridad y encriptación. Cumplimos con la normativa vigente de protección de datos sensibles y confidencialidad jurídica. Los archivos son procesados exclusivamente para su análisis legal.
+                </p>
+</div>
+</div>
+<div class="flex justify-end gap-4">
+<button class="px-8 py-3 rounded-lg font-bold border border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">Cancelar</button>
+<button class="px-10 py-3 rounded-lg font-bold bg-primary text-white shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all">Procesar Transcripción</button>
+</div>
+</main>
+<div class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-4">
+<div class="max-w-4xl mx-auto flex justify-between py-3">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] uppercase font-bold">Inicio</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-navy dark:hover:text-white" href="#">
+<span class="material-symbols-outlined">folder</span>
+<span class="text-[10px] uppercase font-bold">Expedientes</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-navy dark:hover:text-white" href="#">
+<span class="material-symbols-outlined">upload</span>
+<span class="text-[10px] uppercase font-bold">Subir</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-navy dark:hover:text-white" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] uppercase font-bold">Ajustes</span>
+</a>
+</div>
+</div>
+<div class="h-16"></div>
+</body></html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegalFlow - Gestión Legal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f172a", // Azul Marino
+                        "accent": "#b59410",  // Dorado
+                        "background-light": "#ffffff",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .gold-gradient {
+            background: linear-gradient(135deg, #b59410 0%, #d4af37 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header / Top Bar -->
+<div class="flex items-center bg-background-light dark:bg-primary p-4 border-b border-slate-200 dark:border-slate-800 justify-between sticky top-0 z-50">
+<div class="flex items-center gap-3">
+<div class="bg-primary dark:bg-accent flex h-10 w-10 items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-white text-2xl">balance</span>
+</div>
+<h2 class="text-primary dark:text-white text-xl font-bold leading-tight tracking-tight">LegalFlow</h2>
+</div>
+<div class="flex gap-2">
+<button class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-10 w-10 rounded-full border-2 border-accent bg-cover bg-center" data-alt="Retrato profesional de un abogado" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD6Vy6NtraB_pD4-jDdoCns2AMCRbV6AaKHQBAW20Ouj3TlbbZQsF5yGiRhd0RTLcxqEIqREhvq3SVYuq_NeolROKhwl2TezVRHwlxbADXHMI1bSOYO-xoEhTR_gMiHW7SM8_uUF168WwMeIxidaBt86tWIsf6RSc5-BgaVmoLWTtSPZ82uwIMuViLXyTeEi_jniStzwfTrAvdZjxaZT49Gt2_JUFZVKLM3TwCsMq2-kLWQC6kOxom-DyjZQZKkGMhxG5fVzDKJpV50");'></div>
+</div>
+</div>
+<!-- Hero Section -->
+<div class="p-6 bg-slate-50 dark:bg-slate-900/50">
+<div class="flex flex-col gap-1">
+<h1 class="text-primary dark:text-white text-2xl font-bold">Bienvenido, Dr. García</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Gestión Legal Inteligente • Suscripción Premium</p>
+</div>
+<!-- Resumen Rápido -->
+<div class="mt-6 grid grid-cols-2 gap-4">
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+<p class="text-xs text-slate-500 uppercase tracking-wider font-bold mb-1">Casos Activos</p>
+<p class="text-2xl font-bold text-primary dark:text-accent">24</p>
+</div>
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+<p class="text-xs text-slate-500 uppercase tracking-wider font-bold mb-1">Pendientes</p>
+<p class="text-2xl font-bold text-primary dark:text-accent">08</p>
+</div>
+</div>
+</div>
+<!-- Main Actions Grid -->
+<div class="p-6">
+<h2 class="text-primary dark:text-white text-lg font-bold mb-4">Acciones Principales</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Cargar Audiencia -->
+<button class="group flex flex-col gap-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-sm hover:border-accent transition-all text-left">
+<div class="bg-primary/10 dark:bg-accent/20 text-primary dark:text-accent p-3 rounded-lg w-fit group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">video_camera_back</span>
+</div>
+<div>
+<p class="text-primary dark:text-white font-bold text-base">Cargar Audiencia</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm italic">(Video)</p>
+</div>
+</button>
+<!-- Subir Transcripción -->
+<button class="group flex flex-col gap-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-sm hover:border-accent transition-all text-left">
+<div class="bg-primary/10 dark:bg-accent/20 text-primary dark:text-accent p-3 rounded-lg w-fit group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">description</span>
+</div>
+<div>
+<p class="text-primary dark:text-white font-bold text-base">Subir Transcripción</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm italic">(Texto/Doc)</p>
+</div>
+</button>
+<!-- Mis Casos -->
+<button class="group flex flex-col gap-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-sm hover:border-accent transition-all text-left">
+<div class="bg-primary/10 dark:bg-accent/20 text-primary dark:text-accent p-3 rounded-lg w-fit group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">folder_shared</span>
+</div>
+<div>
+<p class="text-primary dark:text-white font-bold text-base">Mis Casos</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm italic">Gestión de expedientes</p>
+</div>
+</button>
+<!-- Configuración -->
+<button class="group flex flex-col gap-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-sm hover:border-accent transition-all text-left">
+<div class="bg-primary/10 dark:bg-accent/20 text-primary dark:text-accent p-3 rounded-lg w-fit group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">settings</span>
+</div>
+<div>
+<p class="text-primary dark:text-white font-bold text-base">Configuración</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm italic">Perfil y preferencias</p>
+</div>
+</button>
+</div>
+</div>
+<!-- Recent Activity Section -->
+<div class="p-6 pt-0 mb-20">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-primary dark:text-white text-lg font-bold">Actividad Reciente</h2>
+<a class="text-accent text-sm font-semibold" href="#">Ver todo</a>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-4 p-3 rounded-lg border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
+<div class="h-10 w-10 flex items-center justify-center bg-white dark:bg-slate-800 rounded-full text-accent shadow-sm">
+<span class="material-symbols-outlined text-xl">history_edu</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-primary dark:text-white line-clamp-1">Caso: Martínez vs. Constructora</p>
+<p class="text-xs text-slate-500">Transcripción procesada hoy</p>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-lg border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
+<div class="h-10 w-10 flex items-center justify-center bg-white dark:bg-slate-800 rounded-full text-accent shadow-sm">
+<span class="material-symbols-outlined text-xl">video_file</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-primary dark:text-white line-clamp-1">Audiencia: Familia 04</p>
+<p class="text-xs text-slate-500">Video analizado ayer</p>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<div class="fixed bottom-0 left-0 right-0 flex border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-primary px-4 pb-4 pt-2 shadow-2xl z-50">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary dark:text-accent" href="#">
+<span class="material-symbols-outlined fill-1">home</span>
+<p class="text-[10px] font-bold leading-normal tracking-wide uppercase">Inicio</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">folder</span>
+<p class="text-[10px] font-medium leading-normal tracking-wide uppercase">Casos</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<p class="text-[10px] font-medium leading-normal tracking-wide uppercase">Reportes</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<p class="text-[10px] font-medium leading-normal tracking-wide uppercase">Perfil</p>
+</a>
+</div>
+</div>
+</body></html>

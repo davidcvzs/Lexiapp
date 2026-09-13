@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegalFlow - Biblioteca de Jurisprudencia</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13", // Primary from theme
+                        "legal-navy": "#0a192f", // Navy blue for the brand
+                        "legal-gold": "#c5a059", // Gold for accents
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .active-nav { color: #c5a059 !important; border-bottom: 2px solid #c5a059; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Header / Top Bar -->
+<header class="bg-legal-navy text-white px-4 py-4 flex items-center justify-between sticky top-0 z-50 shadow-md">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-legal-gold text-3xl">balance</span>
+<div>
+<h1 class="text-lg font-bold leading-tight tracking-tight">LegalFlow</h1>
+<p class="text-[10px] uppercase tracking-widest text-legal-gold font-semibold">Biblioteca de Jurisprudencia</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-10 w-10 rounded-full border-2 border-legal-gold overflow-hidden bg-slate-200">
+<img alt="Profile" data-alt="Portrait of a professional lawyer in a suit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwCF6aazdpWU0hsF00okVkaKzjDt1Q6yeIvopyzH8uAUnq3Eu5suvHzMz9mEoSZMLXwd-qUx62wkK4VaTDAvgCqGLGrAKtoZ-vxxxKFd1oCYRKo-sFfBS3f5FOnWlgP7L_d-k6kHTulRxBkmuUrCy5NF6nYImPHEBy69a-lLUCkc8gz_S6Xaio9aFxvH-9uMu0TzFbvaYkVSvmbdpckBkRmRcEvlOQvygSKAh0XLkeRSQtpJqkj_UR13EWhACrcm7yt2kZ8B3dwCYQ"/>
+</div>
+</div>
+</header>
+<main class="flex-1 w-full max-w-4xl mx-auto px-4 py-6">
+<!-- Search Section -->
+<div class="mb-6">
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400 group-focus-within:text-legal-gold transition-colors">search</span>
+</div>
+<input class="block w-full pl-12 pr-4 py-4 bg-white dark:bg-slate-800 border-none rounded-xl shadow-sm focus:ring-2 focus:ring-legal-gold text-base placeholder:text-slate-400 transition-all" placeholder="Buscar en tesis, precedentes o párrafos guardados..." type="text"/>
+</div>
+</div>
+<!-- Smart Filters -->
+<div class="flex gap-2 overflow-x-auto pb-4 no-scrollbar">
+<button class="flex items-center gap-2 px-4 py-2 bg-legal-navy text-white rounded-lg text-sm font-medium whitespace-nowrap shadow-sm hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+                Filtros
+            </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-medium whitespace-nowrap shadow-sm">
+                Materia
+                <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-medium whitespace-nowrap shadow-sm">
+                Delito
+                <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-medium whitespace-nowrap shadow-sm">
+                Agravio
+                <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-medium whitespace-nowrap shadow-sm">
+                Fecha
+                <span class="material-symbols-outlined text-sm">calendar_today</span>
+</button>
+</div>
+<!-- Organizing Folders -->
+<section class="mb-8">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-lg font-bold text-legal-navy dark:text-slate-100 flex items-center gap-2">
+<span class="material-symbols-outlined text-legal-gold">folder_open</span>
+                    Carpetas Organizadoras
+                </h2>
+<button class="text-sm font-bold text-primary hover:underline">Ver todas</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl border-b-4 border-legal-gold shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+<span class="material-symbols-outlined text-legal-navy dark:text-legal-gold mb-2">gavel</span>
+<p class="font-bold text-sm">Amparos Penales</p>
+<p class="text-[10px] text-slate-500 mt-1">12 items</p>
+</div>
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl border-b-4 border-slate-300 dark:border-slate-600 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+<span class="material-symbols-outlined text-legal-navy dark:text-legal-gold mb-2">family_restroom</span>
+<p class="font-bold text-sm">Derecho Familiar</p>
+<p class="text-[10px] text-slate-500 mt-1">28 items</p>
+</div>
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl border-b-4 border-slate-300 dark:border-slate-600 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+<span class="material-symbols-outlined text-legal-navy dark:text-legal-gold mb-2">description</span>
+<p class="font-bold text-sm">Contratos Civiles</p>
+<p class="text-[10px] text-slate-500 mt-1">15 items</p>
+</div>
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-700 flex flex-col items-center justify-center py-6 text-slate-400 hover:text-primary hover:border-primary transition-all cursor-pointer">
+<span class="material-symbols-outlined">add_circle</span>
+<p class="font-bold text-[10px] mt-1">Nueva Carpeta</p>
+</div>
+</div>
+</section>
+<!-- Recent Results / Saved Items -->
+<section class="space-y-4">
+<h2 class="text-lg font-bold text-legal-navy dark:text-slate-100 flex items-center gap-2">
+<span class="material-symbols-outlined text-legal-gold">history</span>
+                Guardados recientemente
+            </h2>
+<!-- Item Card 1 -->
+<div class="bg-white dark:bg-slate-800 p-5 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 group hover:border-legal-gold transition-colors">
+<div class="flex justify-between items-start mb-2">
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-legal-navy/10 text-legal-navy dark:bg-legal-gold/20 dark:text-legal-gold text-[10px] font-bold rounded uppercase">Tesis</span>
+<span class="px-2 py-0.5 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase">Penal</span>
+</div>
+<button class="text-slate-300 hover:text-legal-gold transition-colors">
+<span class="material-symbols-outlined">bookmark</span>
+</button>
+</div>
+<h3 class="font-bold text-slate-800 dark:text-white mb-2 leading-snug">PRINCIPIO DE PRESUNCIÓN DE INOCENCIA. ALCANCE EN MATERIA PENAL...</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-3 mb-4">
+                    "La presunción de inocencia es un derecho fundamental que obliga a las autoridades a tratar a las personas como inocentes hasta que se demuestre lo contrario..."
+                </p>
+<div class="flex flex-wrap gap-2 items-center text-xs text-slate-400">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">sell</span> #AgravioInexistente</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">sell</span> #Homicidio</span>
+<div class="ml-auto flex gap-3">
+<button class="text-primary font-bold hover:underline">Copiar Párrafo</button>
+<button class="text-legal-navy dark:text-legal-gold font-bold hover:underline">Ver Completo</button>
+</div>
+</div>
+</div>
+<!-- Item Card 2 -->
+<div class="bg-white dark:bg-slate-800 p-5 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 group hover:border-legal-gold transition-colors">
+<div class="flex justify-between items-start mb-2">
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-legal-navy/10 text-legal-navy dark:bg-legal-gold/20 dark:text-legal-gold text-[10px] font-bold rounded uppercase">Precedente</span>
+<span class="px-2 py-0.5 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase">Familiar</span>
+</div>
+<button class="text-legal-gold">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</button>
+</div>
+<h3 class="font-bold text-slate-800 dark:text-white mb-2 leading-snug">INTERÉS SUPERIOR DEL MENOR. CRITERIOS PARA LA GUARDA Y CUSTODIA...</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-3 mb-4">
+                    "En los juicios donde se ventilen derechos de menores, el juzgador debe atender primordialmente al bienestar físico y psicológico del infante sobre las pretensiones de los progenitores."
+                </p>
+<div class="flex flex-wrap gap-2 items-center text-xs text-slate-400">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">sell</span> #Custodia</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">sell</span> #DerechosHumanos</span>
+<div class="ml-auto flex gap-3">
+<button class="text-primary font-bold hover:underline">Copiar Párrafo</button>
+<button class="text-legal-navy dark:text-legal-gold font-bold hover:underline">Ver Completo</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Floating Action Button (Mobile) -->
+<button class="fixed bottom-24 right-6 bg-primary text-white p-4 rounded-full shadow-xl flex items-center justify-center hover:scale-110 transition-transform md:hidden">
+<span class="material-symbols-outlined text-2xl">add</span>
+</button>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="bg-legal-navy border-t border-white/10 px-4 py-2 sticky bottom-0 z-50">
+<div class="flex items-center justify-around max-w-lg mx-auto">
+<a class="flex flex-col items-center gap-1 py-1 px-3 text-slate-400 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Inicio</span>
+</a>
+<a class="flex flex-col items-center gap-1 py-1 px-3 active-nav transition-colors" href="#">
+<span class="material-symbols-outlined">library_books</span>
+<span class="text-[10px] font-medium">Biblioteca</span>
+</a>
+<a class="flex flex-col items-center gap-1 py-1 px-3 text-slate-400 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="text-[10px] font-medium">Buscador</span>
+</a>
+<a class="flex flex-col items-center gap-1 py-1 px-3 text-slate-400 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Ajustes</span>
+</a>
+</div>
+</nav>
+</body></html>

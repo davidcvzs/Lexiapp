@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegalFlow - Valoración de Pruebas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                        "legal-navy": "#1a2a40",
+                        "legal-gold": "#c5a059",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "Arial", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', 'Arial', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-slate-900 dark:text-slate-100">
+<div class="max-w-md mx-auto min-h-screen flex flex-col bg-white dark:bg-slate-900 shadow-xl overflow-hidden">
+<!-- Header -->
+<div class="flex items-center bg-legal-navy p-4 pb-2 justify-between">
+<div class="text-white flex size-10 shrink-0 items-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Valoración de Pruebas</h2>
+<div class="size-10"></div>
+</div>
+<!-- Progress Indicator (Step 3 of 8) -->
+<div class="bg-legal-navy/5 dark:bg-slate-800/50 py-4 border-b border-slate-200 dark:border-slate-700">
+<div class="flex w-full flex-row items-center justify-center gap-2 px-4">
+<div class="h-1.5 flex-1 rounded-full bg-legal-navy/20 dark:bg-slate-700"></div>
+<div class="h-1.5 flex-1 rounded-full bg-legal-navy/20 dark:bg-slate-700"></div>
+<div class="h-1.5 flex-1 rounded-full bg-primary"></div>
+<div class="h-1.5 flex-1 rounded-full bg-legal-navy/10 dark:bg-slate-800"></div>
+<div class="h-1.5 flex-1 rounded-full bg-legal-navy/10 dark:bg-slate-800"></div>
+<div class="h-1.5 flex-1 rounded-full bg-legal-navy/10 dark:bg-slate-800"></div>
+<div class="h-1.5 flex-1 rounded-full bg-legal-navy/10 dark:bg-slate-800"></div>
+<div class="h-1.5 flex-1 rounded-full bg-legal-navy/10 dark:bg-slate-800"></div>
+</div>
+<p class="text-[10px] text-center mt-2 font-semibold uppercase tracking-widest text-legal-navy/60 dark:text-slate-400">Etapa 3 de 8: Metodología Jurídica</p>
+</div>
+<!-- Main Content -->
+<div class="flex-1 overflow-y-auto px-4 py-6">
+<h3 class="text-slate-900 dark:text-white tracking-tight text-xl font-bold leading-tight mb-2">Seleccione el método de valoración</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm font-normal leading-relaxed mb-8">
+                Determine la metodología técnica que el motor de IA utilizará para estructurar el proyecto de sentencia.
+            </p>
+<!-- Methods Selection -->
+<div class="space-y-4">
+<!-- Option 1 -->
+<label class="relative flex flex-col p-4 rounded-xl border-2 border-primary bg-primary/5 cursor-pointer transition-all">
+<input checked="" class="absolute right-4 top-4 text-primary focus:ring-primary h-4 w-4" name="method" type="radio"/>
+<span class="text-slate-900 dark:text-white font-bold text-base mb-1">1. Método Secuencial</span>
+<span class="text-slate-600 dark:text-slate-400 text-xs leading-normal">
+                        Declaración individual de cada medio probatorio seguida de su valoración jurídica específica.
+                    </span>
+</label>
+<!-- Option 2 -->
+<label class="relative flex flex-col p-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 hover:border-legal-gold dark:hover:border-legal-gold cursor-pointer transition-all">
+<input class="absolute right-4 top-4 text-primary focus:ring-primary h-4 w-4" name="method" type="radio"/>
+<span class="text-slate-900 dark:text-white font-bold text-base mb-1">2. Valoración Conjunta</span>
+<span class="text-slate-600 dark:text-slate-400 text-xs leading-normal">
+                        Análisis armónico e integral de todo el acervo probatorio para establecer la verdad de los hechos.
+                    </span>
+</label>
+<!-- Option 3 -->
+<label class="relative flex flex-col p-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 hover:border-legal-gold dark:hover:border-legal-gold cursor-pointer transition-all">
+<input class="absolute right-4 top-4 text-primary focus:ring-primary h-4 w-4" name="method" type="radio"/>
+<span class="text-slate-900 dark:text-white font-bold text-base mb-1">3. Prueba Circunstancial</span>
+<span class="text-slate-600 dark:text-slate-400 text-xs leading-normal">
+                        Razonamiento inductivo basado en hechos probados para inferir hechos desconocidos.
+                    </span>
+</label>
+</div>
+<!-- AI Prompt Section -->
+<div class="mt-10">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary text-xl">psychology</span>
+<h4 class="text-slate-900 dark:text-white font-bold text-sm uppercase tracking-wide">Instrucciones para GPT Engine</h4>
+</div>
+<div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 border border-slate-200 dark:border-slate-700">
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-2 italic">Defina el estilo, tono o énfasis legal que desea que la IA aplique en la valoración:</p>
+<textarea class="w-full bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 rounded-lg text-sm text-slate-900 dark:text-slate-100 focus:ring-primary focus:border-primary p-3 min-h-[120px]" placeholder="Ej: 'Priorizar el análisis de las contradicciones en los testimonios de la parte demandada y aplicar un tono garantista conforme a la jurisprudencia de la Corte Suprema...'"></textarea>
+</div>
+</div>
+</div>
+<!-- Footer Action -->
+<div class="p-4 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg transition-colors flex items-center justify-center gap-2">
+                Continuar a Etapa 4
+                <span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<!-- Bottom Navigation Bar -->
+<div class="flex gap-2 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 px-4 pb-6 pt-2">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">home</span>
+<p class="text-[10px] font-medium leading-normal tracking-tight">Inicio</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">work</span>
+<p class="text-[10px] font-medium leading-normal tracking-tight">Casos</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<p class="text-[10px] font-medium leading-normal tracking-tight">Procesos</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-[10px] font-medium leading-normal tracking-tight">Ajustes</p>
+</a>
+</div>
+</div>
+</body></html>

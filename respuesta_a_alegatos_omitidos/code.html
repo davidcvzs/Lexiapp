@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegalFlow - Respuesta a Alegatos Omitidos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13", // This will be used for accents as per theme rules
+                        "legal-navy": "#0a192f",
+                        "legal-gold": "#c5a059",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"],
+                        "legal": ["Arial", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .line-spacing-1-5 { line-height: 1.5; }
+        .bg-navy-gradient { background: linear-gradient(135deg, #0a192f 0%, #112240 100%); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+<div class="relative flex h-screen w-full max-w-md mx-auto flex-col bg-background-light dark:bg-background-dark overflow-hidden border-x border-slate-200 dark:border-slate-800 shadow-2xl">
+<!-- Header -->
+<div class="flex items-center bg-navy-gradient p-4 pt-6 text-white shrink-0">
+<div class="flex size-10 shrink-0 items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<div class="flex flex-col flex-1 ml-2">
+<h2 class="text-lg font-bold leading-tight tracking-tight">LegalFlow</h2>
+<p class="text-[10px] uppercase tracking-widest text-legal-gold font-semibold">Respuesta a Alegatos Omitidos</p>
+</div>
+<div class="flex size-10 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-legal-gold">gavel</span>
+</div>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto pb-24">
+<!-- Section Title -->
+<div class="px-4 pt-6 pb-2">
+<h3 class="text-slate-800 dark:text-slate-200 text-base font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">list_alt</span>
+                    Alegatos de Clausura No Abordados
+                </h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Seleccione un argumento para generar la fundamentación legal correspondiente.</p>
+</div>
+<!-- Arguments List -->
+<div class="flex flex-col gap-3 p-4">
+<label class="flex items-center gap-4 rounded-xl border border-solid border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900/50 p-4 transition-all hover:border-legal-gold cursor-pointer group shadow-sm">
+<input checked="" class="h-5 w-5 border-2 border-slate-300 dark:border-slate-600 text-legal-navy focus:ring-legal-gold ring-offset-white dark:ring-offset-slate-900" name="argumento" type="radio"/>
+<div class="flex grow flex-col">
+<p class="text-slate-900 dark:text-slate-100 text-sm font-bold">Inexistencia de dolo en la conducta</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Argumento omitido en la valoración sobre el elemento subjetivo del tipo penal.</p>
+</div>
+</label>
+<label class="flex items-center gap-4 rounded-xl border border-solid border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900/50 p-4 transition-all hover:border-legal-gold cursor-pointer group shadow-sm opacity-70">
+<input class="h-5 w-5 border-2 border-slate-300 dark:border-slate-600 text-legal-navy focus:ring-legal-gold ring-offset-white dark:ring-offset-slate-900" name="argumento" type="radio"/>
+<div class="flex grow flex-col">
+<p class="text-slate-900 dark:text-slate-100 text-sm font-bold">Insuficiencia probatoria testimonial</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Contradicciones en declaraciones de testigos de cargo no analizadas por el juzgador.</p>
+</div>
+</label>
+<label class="flex items-center gap-4 rounded-xl border border-solid border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900/50 p-4 transition-all hover:border-legal-gold cursor-pointer group shadow-sm opacity-70">
+<input class="h-5 w-5 border-2 border-slate-300 dark:border-slate-600 text-legal-navy focus:ring-legal-gold ring-offset-white dark:ring-offset-slate-900" name="argumento" type="radio"/>
+<div class="flex grow flex-col">
+<p class="text-slate-900 dark:text-slate-100 text-sm font-bold">Indebida valoración de peritaje contable</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Error técnico en el cálculo de daños materiales omitido en la sentencia definitiva.</p>
+</div>
+</label>
+</div>
+<!-- Action Button -->
+<div class="px-4 py-2">
+<button class="w-full flex items-center justify-center gap-2 rounded-xl h-14 bg-legal-navy text-white text-sm font-bold tracking-wide shadow-lg border border-legal-gold/30 active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined text-legal-gold">psychology</span>
+                    Desarrollar Contestación
+                </button>
+</div>
+<!-- Resulting Response Block -->
+<div class="mt-6 px-4">
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-inner overflow-hidden">
+<div class="bg-slate-50 dark:bg-slate-800/50 px-4 py-2 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Fundamentación Generada</span>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-xs text-slate-400">content_copy</span>
+<span class="material-symbols-outlined text-xs text-slate-400">print</span>
+</div>
+</div>
+<!-- Legal Text Content -->
+<div class="p-6 font-legal text-[12pt] text-slate-800 dark:text-slate-200 line-spacing-1-5 text-justify">
+<p class="mb-4">
+                            En relación al agravio consistente en la <span class="font-bold underline decoration-legal-gold">omisión de valoración del elemento subjetivo</span>, esta defensa técnica sostiene que la resolución recurrida carece de la debida motivación exigida por el artículo 16 Constitucional.
+                        </p>
+<p class="mb-4">
+                            Al respecto, el C. <span class="text-red-600 font-semibold">[NOMBRE DEL IMPUTADO]</span> actuó bajo un error de prohibición invencible, toda vez que en la fecha <span class="text-red-600 font-semibold">[DD/MM/AAAA]</span>, las circunstancias fácticas en el domicilio <span class="text-red-600 font-semibold">[DIRECCIÓN PROTEGIDA]</span> no permitían inferir la ilicitud de la conducta desplegada.
+                        </p>
+<p>
+                            Por lo anterior, la sentencia debe ser integrada considerando que la inexistencia de dolo rompe el nexo de culpabilidad necesario para la imposición de la pena de <span class="text-red-600 font-semibold">[NÚMERO DE AÑOS]</span> solicitada por la representación social.
+                        </p>
+</div>
+<div class="p-4 bg-slate-50 dark:bg-slate-800/50">
+<button class="w-full flex items-center justify-center gap-2 rounded-lg h-10 bg-legal-gold text-white text-xs font-bold uppercase tracking-widest shadow hover:bg-opacity-90 transition-colors">
+<span class="material-symbols-outlined text-sm">library_add</span>
+                            Integrar a la Sentencia
+                        </button>
+</div>
+</div>
+</div>
+<!-- Spacer for bottom nav -->
+<div class="h-10"></div>
+</div>
+<!-- Bottom Navigation Bar -->
+<div class="absolute bottom-0 left-0 right-0 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pb-4 pt-2 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+<div class="flex gap-2">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 dark:text-slate-500" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">home</span>
+</div>
+<p class="text-[10px] font-medium leading-normal tracking-tight">Inicio</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 dark:text-slate-500" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">folder_open</span>
+</div>
+<p class="text-[10px] font-medium leading-normal tracking-tight">Expedientes</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-legal-navy dark:text-legal-gold" href="#">
+<div class="flex h-10 w-10 bg-legal-navy dark:bg-legal-gold text-white dark:text-legal-navy rounded-full items-center justify-center -mt-4 shadow-lg border-4 border-white dark:border-slate-900">
+<span class="material-symbols-outlined">auto_awesome</span>
+</div>
+<p class="text-[10px] font-bold leading-normal tracking-tight">Herramientas</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 dark:text-slate-500" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">history</span>
+</div>
+<p class="text-[10px] font-medium leading-normal tracking-tight">Actividad</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 dark:text-slate-500" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">person</span>
+</div>
+<p class="text-[10px] font-medium leading-normal tracking-tight">Perfil</p>
+</a>
+</div>
+</div>
+</div>
+</body></html>

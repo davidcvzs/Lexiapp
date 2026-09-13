@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Redactor de Sentencias PJENL - Valoración de Pruebas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 20px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 flex justify-center">
+<!-- Mobile Container -->
+<div class="relative flex min-h-screen w-full max-w-[430px] flex-col bg-white dark:bg-slate-950 shadow-2xl overflow-x-hidden">
+<!-- Header -->
+<header class="sticky top-0 z-30 bg-white/95 dark:bg-slate-950/95 backdrop-blur-sm px-4 pt-6 pb-2 border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center justify-between mb-2">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">menu</span>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">search</span>
+<span class="material-symbols-outlined text-primary">account_circle</span>
+</div>
+</div>
+<h1 class="text-xl font-bold text-slate-900 dark:text-white">Redactor de Sentencias PJENL</h1>
+<p class="text-sm font-medium text-primary">Valoración de Pruebas</p>
+<!-- Tab Navigation -->
+<nav class="flex mt-4 overflow-x-auto no-scrollbar gap-6 border-b border-slate-100 dark:border-slate-800">
+<a class="pb-2 text-sm font-semibold text-slate-400 whitespace-nowrap border-b-2 border-transparent" href="#">Vistos</a>
+<a class="pb-2 text-sm font-semibold text-slate-400 whitespace-nowrap border-b-2 border-transparent" href="#">Resultandos</a>
+<a class="pb-2 text-sm font-semibold text-primary whitespace-nowrap border-b-2 border-primary" href="#">Considerandos</a>
+<a class="pb-2 text-sm font-semibold text-slate-400 whitespace-nowrap border-b-2 border-transparent" href="#">Resolutivos</a>
+</nav>
+</header>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto px-4 py-6 space-y-6 bg-background-light dark:bg-slate-900">
+<!-- Section Title & Description -->
+<section>
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Valoración de Pruebas Documentales</h2>
+<div class="mt-2 p-3 bg-primary/5 border-l-4 border-primary rounded-r-lg">
+<p class="text-sm text-slate-600 dark:text-slate-300">
+                        Este módulo aplica automáticamente los criterios jurisprudenciales del Poder Judicial del Estado de Nuevo León (PJENL).
+                    </p>
+</div>
+<button class="mt-4 w-full flex items-center justify-center gap-2 bg-primary text-white font-bold py-3 rounded-xl shadow-lg shadow-primary/20 hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-[20px]">auto_fix_high</span>
+                    Aplicar Formato PJENL
+                </button>
+</section>
+<!-- Document Type Selection -->
+<section>
+<p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Tipo de Documento</p>
+<div class="grid grid-cols-2 gap-3">
+<div class="flex flex-col items-center p-4 bg-white dark:bg-slate-800 border-2 border-primary rounded-xl ring-2 ring-primary/20">
+<span class="material-symbols-outlined text-primary text-3xl mb-2">gavel</span>
+<span class="text-xs font-bold text-center dark:text-white">Documentales Públicas</span>
+</div>
+<div class="flex flex-col items-center p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl opacity-60">
+<span class="material-symbols-outlined text-slate-400 text-3xl mb-2">description</span>
+<span class="text-xs font-bold text-center dark:text-white">Documentales Privadas</span>
+</div>
+</div>
+</section>
+<!-- Editor Section -->
+<section class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+<div class="p-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center">
+<h3 class="text-sm font-bold text-slate-800 dark:text-white uppercase tracking-tight">Editor: Documental Pública</h3>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm cursor-pointer">settings_suggest</span>
+</div>
+</div>
+<div class="flex gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 overflow-x-auto no-scrollbar border-b border-slate-100 dark:border-slate-700">
+<button class="flex items-center gap-1.5 whitespace-nowrap bg-white dark:bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-600 text-xs font-semibold text-slate-700 dark:text-slate-300 shadow-sm">
+<span class="material-symbols-outlined text-sm">upload_file</span> Cargar Plantilla
+                    </button>
+<button class="flex items-center gap-1.5 whitespace-nowrap bg-white dark:bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-600 text-xs font-semibold text-slate-700 dark:text-slate-300 shadow-sm">
+<span class="material-symbols-outlined text-sm">library_books</span> Ver Criterios PJENL
+                    </button>
+</div>
+<!-- Legal Content Editor -->
+<div class="p-4">
+<div class="flex gap-2 mb-4 flex-wrap">
+<span class="inline-flex items-center gap-1 px-2 py-1 rounded bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold">
+<span class="material-symbols-outlined text-[12px] fill-current">verified</span> Autenticidad verificada
+                        </span>
+<span class="inline-flex items-center gap-1 px-2 py-1 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-[10px] font-bold">
+<span class="material-symbols-outlined text-[12px] fill-current">gavel</span> Valor probatorio pleno detectado
+                        </span>
+</div>
+<div class="text-sm leading-relaxed text-slate-700 dark:text-slate-300 italic font-display min-h-[160px]">
+<p class="mb-3"><strong>Considerando Sexto:</strong> Valoración de la Documental Pública consistente en el acta de hechos número 12,345/2023, expedida por el Notario Público No. 121 del Primer Distrito Registral del Estado.</p>
+<p>Dicho documento, al ser expedido por un funcionario público en ejercicio de sus funciones, se le otorga <strong>valor probatorio pleno</strong> de conformidad con lo dispuesto por los artículos 287 y 359 del Código de Procedimientos Civiles vigente en el Estado de Nuevo León, acreditando plenamente la existencia de las actuaciones que en él se consignan.</p>
+</div>
+</div>
+</section>
+<!-- Footer Action Buttons -->
+<div class="flex gap-3 pt-2">
+<button class="flex-1 py-3 px-4 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-bold text-sm bg-white dark:bg-slate-800 hover:bg-slate-50 transition-colors">
+                    Descartar
+                </button>
+<button class="flex-1 py-3 px-4 rounded-xl border border-primary/30 text-primary font-bold text-sm bg-primary/10 hover:bg-primary/20 transition-colors">
+                    Guardar Borrador
+                </button>
+</div>
+<div class="h-20"></div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="absolute bottom-0 left-0 right-0 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800 px-4 pb-6 pt-2 flex items-center justify-between z-40">
+<a class="flex flex-col items-center gap-1 flex-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">folder</span>
+<span class="text-[10px] font-medium">Expedientes</span>
+</a>
+<a class="flex flex-col items-center gap-1 flex-1 text-primary" href="#">
+<span class="material-symbols-outlined fill-current">edit_note</span>
+<span class="text-[10px] font-bold">Redactor</span>
+</a>
+<a class="flex flex-col items-center gap-1 flex-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="text-[10px] font-medium">Historial</span>
+</a>
+<a class="flex flex-col items-center gap-1 flex-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Ajustes</span>
+</a>
+</nav>
+</div>
+</body></html>

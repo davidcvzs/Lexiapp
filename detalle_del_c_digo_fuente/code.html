@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13", // Theme required primary
+                        "legal-blue": "#0f172a", // Custom navy for LegalFlow
+                        "legal-gold": "#b48c36", // Custom gold for LegalFlow
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>LegalFlow - Contenido del Paquete</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Header Section -->
+<header class="bg-legal-blue text-white p-4 shadow-md">
+<div class="max-w-4xl mx-auto flex items-center gap-4">
+<button class="flex items-center justify-center p-2 hover:bg-white/10 rounded-full transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div>
+<h1 class="text-xl font-bold tracking-tight">Contenido del Paquete de Código</h1>
+<p class="text-xs text-legal-gold font-medium uppercase tracking-wider">LegalFlow ZIP Export</p>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-4xl mx-auto w-full p-4 md:p-6 space-y-6">
+<!-- Hero Visual / ZIP Info -->
+<div class="relative overflow-hidden rounded-xl bg-gradient-to-br from-legal-blue to-slate-800 p-8 text-white shadow-lg border-b-4 border-legal-gold">
+<div class="flex flex-col md:flex-row items-center gap-6">
+<div class="bg-white/10 p-6 rounded-2xl backdrop-blur-sm border border-white/20">
+<span class="material-symbols-outlined text-6xl text-legal-gold">folder_zip</span>
+</div>
+<div class="space-y-2 text-center md:text-left">
+<h2 class="text-2xl font-bold">legalflow_source_v1.0.zip</h2>
+<p class="text-slate-300">Generado el 24 de Mayo, 2024 • 124.5 MB</p>
+<div class="inline-flex items-center px-3 py-1 rounded-full bg-legal-gold/20 text-legal-gold text-sm border border-legal-gold/30">
+<span class="material-symbols-outlined text-sm mr-1">verified</span>
+                        Código 100% Verificado
+                    </div>
+</div>
+</div>
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-9xl">gavel</span>
+</div>
+</div>
+<!-- Directory List -->
+<div class="space-y-4">
+<h3 class="text-lg font-bold flex items-center gap-2 px-1">
+<span class="material-symbols-outlined text-primary">account_tree</span>
+                Directorios del Proyecto
+            </h3>
+<div class="grid gap-3">
+<!-- Frontend Item -->
+<div class="group flex items-center justify-between p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-legal-gold transition-all shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 flex items-center justify-center bg-slate-100 dark:bg-slate-700 text-legal-blue dark:text-legal-gold rounded-lg">
+<span class="material-symbols-outlined text-2xl">code_blocks</span>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">/frontend</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">React.js completo y componentes UI</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 group-hover:text-legal-gold transition-colors">chevron_right</span>
+</div>
+<!-- Backend Item -->
+<div class="group flex items-center justify-between p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-legal-gold transition-all shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 flex items-center justify-center bg-slate-100 dark:bg-slate-700 text-legal-blue dark:text-legal-gold rounded-lg">
+<span class="material-symbols-outlined text-2xl">psychology</span>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">/backend</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Motores de IA y APIs integradas</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 group-hover:text-legal-gold transition-colors">chevron_right</span>
+</div>
+<!-- Database Item -->
+<div class="group flex items-center justify-between p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-legal-gold transition-all shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 flex items-center justify-center bg-slate-100 dark:bg-slate-700 text-legal-blue dark:text-legal-gold rounded-lg">
+<span class="material-symbols-outlined text-2xl">database</span>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">/database</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Esquemas SQL y migraciones de datos</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 group-hover:text-legal-gold transition-colors">chevron_right</span>
+</div>
+<!-- Docs Item -->
+<div class="group flex items-center justify-between p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-legal-gold transition-all shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 flex items-center justify-center bg-slate-100 dark:bg-slate-700 text-legal-blue dark:text-legal-gold rounded-lg">
+<span class="material-symbols-outlined text-2xl">description</span>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">/docs</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Documentación técnica y manuales</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 group-hover:text-legal-gold transition-colors">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Legal Disclaimer / Info -->
+<div class="p-4 rounded-lg bg-primary/10 border border-primary/20 flex gap-3">
+<span class="material-symbols-outlined text-primary">info</span>
+<p class="text-sm leading-relaxed text-slate-700 dark:text-slate-300 font-medium">
+                Este paquete contiene el <span class="text-primary font-bold underline">100% del código fuente</span> desarrollado en esta sesión, listo para despliegue en producción o entornos locales.
+            </p>
+</div>
+<!-- Action Button -->
+<div class="pt-4">
+<button class="w-full bg-legal-blue dark:bg-legal-gold hover:opacity-90 text-white dark:text-legal-blue font-bold py-4 rounded-xl shadow-lg flex items-center justify-center gap-2 transition-transform active:scale-[0.98]">
+<span class="material-symbols-outlined">download</span>
+                Descargar Todo el Proyecto
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="sticky bottom-0 w-full border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pb-6 pt-3 flex justify-around items-center">
+<a class="flex flex-col items-center gap-1 text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<p class="text-[10px] font-medium uppercase tracking-tight">Inicio</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">terminal</span>
+<p class="text-[10px] font-medium uppercase tracking-tight">Código</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">history</span>
+<p class="text-[10px] font-medium uppercase tracking-tight">Historial</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-[10px] font-medium uppercase tracking-tight">Ajustes</p>
+</a>
+</nav>
+</body></html>

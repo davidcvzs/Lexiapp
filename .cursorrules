@@ -1,0 +1,7 @@
+# Reglas de Autodocumentación y Arquitectura para LexIA
+
+1. **Actualización Obligatoria:** Cada vez que desarrolles, modifiques o elimines una vista, un componente, o una regla de negocio en el código, **DEBES** actualizar la documentación correspondiente en `docs/`.
+2. **System Map Siempre Activo:** Cualquier nueva estructura de carpetas, nueva colección en Firebase, o nueva clase de Servicio debe quedar reflejada en `docs/system_map.md`. No se permite código orfano de documentación.
+3. **Flujos de usuario (PWA):** Todo nuevo flujo de botones guiados (como lo estipula el *LexIA Blueprint*) debe mapearse primero en comentarios o documentación antes de codificarse, asegurando que se enlace correctamente con `AIAssistantService`.
+4. **Comentarios JSDoc:** Todos los servicios dentro de `src/services/` deben tener comentarios JSDoc obligatorios explicando los inputs esperados y el valor de retorno. Específicamente el modelo de estado continuo (`documentState`).
+5. **No inferir lógica de negocio:** LexIA es una app crítica legal. Toda indicación respecto a los *prompts* de la IA debe seguir exactamente lo que dice el documento principal de requerimientos (`LexIA Blueprint v2`).

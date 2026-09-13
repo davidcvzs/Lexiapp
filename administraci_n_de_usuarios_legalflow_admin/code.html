@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegalFlow Admin - User Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Top Navigation / Header -->
+<header class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 py-3">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-2 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white">gavel</span>
+</div>
+<div>
+<h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">LegalFlow Admin</h1>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider">Owner Dashboard</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 flex h-2 w-2 rounded-full bg-primary"></span>
+</button>
+<div class="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center border-2 border-primary/30">
+<span class="text-primary font-bold">AD</span>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 pb-24">
+<!-- High Level Metrics -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">group</span>
+</div>
+<span class="text-emerald-600 dark:text-emerald-400 text-sm font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span> +5.2%
+                    </span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Users</p>
+<p class="text-3xl font-bold text-slate-900 dark:text-white mt-1">1,284</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">card_membership</span>
+</div>
+<span class="text-emerald-600 dark:text-emerald-400 text-sm font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span> +2.1%
+                    </span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Active Subscriptions</p>
+<p class="text-3xl font-bold text-slate-900 dark:text-white mt-1">956</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">person_add</span>
+</div>
+<span class="text-emerald-600 dark:text-emerald-400 text-sm font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">bolt</span> +15%
+                    </span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">New Users Today</p>
+<p class="text-3xl font-bold text-slate-900 dark:text-white mt-1">12</p>
+</div>
+</div>
+<!-- User Management Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">User Management</h2>
+<div class="flex items-center gap-3">
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-bold flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined">add</span> Add New User
+                </button>
+</div>
+</div>
+<!-- Search and Filter Bar -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm mb-6">
+<div class="flex flex-col md:flex-row gap-4">
+<div class="flex-1 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary text-slate-900 dark:text-white" placeholder="Search by name, email, or subscription..." type="text"/>
+</div>
+<div class="flex gap-2">
+<select class="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm text-slate-700 dark:text-slate-300 focus:ring-primary">
+<option>All Status</option>
+<option>Active</option>
+<option>Inactive</option>
+</select>
+<select class="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm text-slate-700 dark:text-slate-300 focus:ring-primary">
+<option>Subscription Type</option>
+<option>Enterprise</option>
+<option>Pro</option>
+<option>Free</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Users Table -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">User Details</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Subscription</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Sign-up Date</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-slate-500 dark:text-slate-400 font-bold overflow-hidden">
+<img class="h-full w-full object-cover" data-alt="Portrait of a male lawyer professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4VGMsgq2Eqs9c75S4dza2QXuMV5oai9QsyrWwsXYhEwtFtxEyL0VYhDeRtWUWb6zBFdqPeJJOhHUGTJ7iAB4UCih24iJnXUwqSnxFwoblEDKY4Km_mBVWzeQ9cc9XTrwDLtCM9cge09VJ2lup89AR-F6ZI2w6YPR_G2w7P96eBu9xDRQ934E5g3iUVUqjVaoP_DyCkttMcaD9e3h-fx5K_1zPH-c5w2VHfY08nZk93pD2iHOHnexN7yY1oEihRgu3p7lO9m6RkJAt"/>
+</div>
+<div>
+<p class="font-semibold text-slate-900 dark:text-white">Marcus Sterling</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">marcus.s@sterlinglaw.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-bold">
+<span class="size-1.5 rounded-full bg-emerald-500"></span> Active
+                                </span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Enterprise</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">Oct 12, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-slate-500 dark:text-slate-400 font-bold overflow-hidden">
+<img class="h-full w-full object-cover" data-alt="Portrait of a female legal advisor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQaCV3N6cXasLtif55rwxWlI0W-Zc15dbEQ9a0cTdY-vKsJEadEFlJ8JY7QhgoRu_ALUIYXvvHyDRvHtv-DCEsaaKAA-Hk1CvuHCeBcqXMgvm1EbEPchDTei8OUZnsubyLS0jXEnqG1qzZkiY62OChSksAoSvPUV9LlprEC7_kYzabymGHpi8KbFR2benG8ZPdVL-DE9x4EtwGY-TDo2OcMaNA1mUpZPHshTjryBG-PHEqHbQl9OXAx76zn_9f52nO1mYeA2VXMDA4"/>
+</div>
+<div>
+<p class="font-semibold text-slate-900 dark:text-white">Elena Vance</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">evance@legalsolutions.io</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-bold">
+<span class="size-1.5 rounded-full bg-emerald-500"></span> Active
+                                </span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Pro</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">Jan 05, 2024</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-slate-500 dark:text-slate-400 font-bold overflow-hidden">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<p class="font-semibold text-slate-900 dark:text-white">Julian Thorne</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">jthorne@freelance.legal</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold">
+<span class="size-1.5 rounded-full bg-slate-400"></span> Inactive
+                                </span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Free</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">Mar 18, 2024</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-slate-500 dark:text-slate-400 font-bold overflow-hidden">
+<img class="h-full w-full object-cover" data-alt="Portrait of a corporate executive" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6tZFOmGHow9lqeAiqiU_gHFIeb-rnAYeOctS_jj6ZzLaPM_mW_e5lOfgevOMKsaTNIttYwc0udX2MuIqypIFGDWG4bQ83Gs-1s6KCFGZtO_Lfzbg2B91p0Jd3Dxqrogrg92KeOT_KfAV3tBmiS8tVh_9iEDC0hA9rOnSBptUEv3mArxgw9y2liTl3jKNH7X_BThqTfS2bkQ6fLbAkk4Dv74u--05XjB-Ux4Z7SYQnEQGU_87wqLtwNW1WXJ_2zcCWFx5mJfkHSBD7"/>
+</div>
+<div>
+<p class="font-semibold text-slate-900 dark:text-white">Sarah Jenkins</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">sjenkins@majorlaw.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-bold">
+<span class="size-1.5 rounded-full bg-emerald-500"></span> Active
+                                </span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Enterprise</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">Apr 02, 2024</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 flex items-center justify-between border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
+<span class="text-xs font-medium text-slate-500 dark:text-slate-400">Showing 1 to 4 of 1,284 entries</span>
+<div class="flex gap-1">
+<button class="px-3 py-1 rounded border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Prev</button>
+<button class="px-3 py-1 rounded bg-primary text-white text-xs font-bold">1</button>
+<button class="px-3 py-1 rounded border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">2</button>
+<button class="px-3 py-1 rounded border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Next</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 md:hidden z-50">
+<div class="flex items-center justify-around h-16">
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Dash</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Users</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Reports</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Admin</span>
+</a>
+</div>
+</nav>
+</body></html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegalFlow - Firma Electrónica Profesional</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f172a", // Navy Blue
+                        "accent": "#b59410",  // Gold
+                        "background-light": "#f8f9fa",
+                        "background-dark": "#020617",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #b59410 0%, #d4af37 50%, #b59410 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Header / Top Bar -->
+<header class="border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-primary px-4 h-16 flex items-center justify-between sticky top-0 z-10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-accent text-3xl">gavel</span>
+<h1 class="text-xl font-bold tracking-tight text-primary dark:text-white uppercase">Legal<span class="text-accent">Flow</span></h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex flex-col items-end">
+<span class="text-xs font-semibold text-slate-500 uppercase tracking-widest">Estado del Sistema</span>
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-emerald-500"></span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Conexión Segura TLS 1.3</span>
+</div>
+</div>
+<button class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">account_balance</span>
+</button>
+</div>
+</header>
+<main class="flex-1 max-w-4xl mx-auto w-full p-4 md:p-8">
+<!-- Document Info Card -->
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm p-6 mb-8">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-start gap-4">
+<div class="p-3 bg-primary/10 dark:bg-accent/10 rounded-lg">
+<span class="material-symbols-outlined text-primary dark:text-accent">description</span>
+</div>
+<div>
+<h2 class="text-lg font-bold text-slate-900 dark:text-white">Sentencia_Definitiva_2024_089.pdf</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400">Expediente Judicial: CIV-29384-2023 | 4.2 MB</p>
+</div>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800 rounded-lg">
+<span class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-sm">verified_user</span>
+<span class="text-xs font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">Documento Íntegro</span>
+</div>
+</div>
+</section>
+<!-- Main Form Area -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Upload Certificates Section -->
+<div class="space-y-6">
+<h3 class="text-sm font-bold text-slate-400 uppercase tracking-[0.2em]">Credenciales de Firma</h3>
+<!-- File Input: .CER -->
+<div class="group relative flex items-center justify-between p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-accent transition-all">
+<div class="flex items-center gap-4">
+<div class="size-10 flex items-center justify-center rounded bg-slate-100 dark:bg-slate-800 text-slate-500">
+<span class="material-symbols-outlined">workspace_premium</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-white leading-none">Certificado Público</p>
+<p class="text-xs text-slate-500 mt-1">Archivo .cer requerido</p>
+</div>
+</div>
+<button class="px-4 py-2 border border-primary dark:border-accent text-primary dark:text-accent text-xs font-bold rounded uppercase hover:bg-primary hover:text-white dark:hover:bg-accent dark:hover:text-primary transition-all">
+                        Seleccionar
+                    </button>
+</div>
+<!-- File Input: .KEY -->
+<div class="group relative flex items-center justify-between p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-accent transition-all">
+<div class="flex items-center gap-4">
+<div class="size-10 flex items-center justify-center rounded bg-slate-100 dark:bg-slate-800 text-slate-500">
+<span class="material-symbols-outlined">vpn_key</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-white leading-none">Llave Privada</p>
+<p class="text-xs text-slate-500 mt-1">Archivo .key requerido</p>
+</div>
+</div>
+<button class="px-4 py-2 border border-primary dark:border-accent text-primary dark:text-accent text-xs font-bold rounded uppercase hover:bg-primary hover:text-white dark:hover:bg-accent dark:hover:text-primary transition-all">
+                        Seleccionar
+                    </button>
+</div>
+<!-- Password Input -->
+<div class="space-y-2">
+<label class="text-xs font-bold text-slate-500 uppercase tracking-widest">Contraseña de Clave Privada</label>
+<div class="relative">
+<input class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-accent/50 focus:border-accent outline-none transition-all" placeholder="••••••••••••" type="password"/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-slate-400 cursor-pointer">visibility</span>
+</div>
+</div>
+</div>
+<!-- Configuration & Options Section -->
+<div class="space-y-6">
+<h3 class="text-sm font-bold text-slate-400 uppercase tracking-[0.2em]">Opciones de Validez</h3>
+<div class="bg-primary/5 dark:bg-slate-800/50 p-6 rounded-xl border border-slate-200 dark:border-slate-800 space-y-4">
+<!-- Option: Timestamp -->
+<label class="flex items-center justify-between cursor-pointer group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-accent transition-colors">schedule</span>
+<span class="text-sm font-medium">Aplicar Sello de Tiempo (TSA)</span>
+</div>
+<input checked="" class="rounded border-slate-300 text-accent focus:ring-accent h-5 w-5" type="checkbox"/>
+</label>
+<!-- Option: Long-Term Validation -->
+<label class="flex items-center justify-between cursor-pointer group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-accent transition-colors">history_edu</span>
+<span class="text-sm font-medium">Habilitar validación LTV</span>
+</div>
+<input checked="" class="rounded border-slate-300 text-accent focus:ring-accent h-5 w-5" type="checkbox"/>
+</label>
+<hr class="border-slate-200 dark:border-slate-700"/>
+<!-- Validity Indicator -->
+<div class="flex items-center gap-4">
+<div class="flex-1">
+<p class="text-xs font-bold text-slate-500 uppercase">Validez Legal Estimada</p>
+<div class="mt-2 h-2 w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full gold-gradient w-[95%]"></div>
+</div>
+</div>
+<span class="text-lg font-bold text-accent">95%</span>
+</div>
+<p class="text-[10px] text-slate-500 leading-tight">
+                        Este documento cumple con los estándares eIDAS y normativas locales para firmas electrónicas avanzadas.
+                    </p>
+</div>
+<!-- Final Action -->
+<button class="w-full gold-gradient text-primary font-bold py-4 rounded-xl shadow-lg hover:shadow-accent/20 transition-all flex items-center justify-center gap-3 group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">draw</span>
+<span class="uppercase tracking-widest text-sm">Firmar y Finalizar Sentencia</span>
+</button>
+<p class="text-center text-[11px] text-slate-400">
+                    Al proceder, se generará una firma criptográfica única vinculada a su identidad legal.
+                </p>
+</div>
+</div>
+</main>
+<!-- Navigation Bar -->
+<nav class="bg-white dark:bg-primary border-t border-slate-200 dark:border-slate-800 px-4 py-2 sticky bottom-0 z-10">
+<div class="max-w-xl mx-auto flex justify-around items-center">
+<a class="flex flex-col items-center gap-1 p-2 text-slate-400 hover:text-accent transition-colors" href="#">
+<span class="material-symbols-outlined">folder_open</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Documentos</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-accent" href="#">
+<span class="material-symbols-outlined">ink_pen</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Firma Actual</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-slate-400 hover:text-accent transition-colors" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Historial</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-slate-400 hover:text-accent transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Ajustes</span>
+</a>
+</div>
+</nav>
+</body></html>

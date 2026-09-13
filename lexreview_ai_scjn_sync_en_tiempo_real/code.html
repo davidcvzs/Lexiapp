@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LexReview AI - Judicial Sentence Analysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center justify-between px-4 h-16 max-w-7xl mx-auto w-full">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-1.5 rounded-lg text-white">
+<span class="material-symbols-outlined text-2xl">gavel</span>
+</div>
+<div>
+<h1 class="text-lg font-bold tracking-tight">LexReview AI</h1>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold">Judicial Integrity Suite</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl">account_balance</span>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-7xl mx-auto w-full p-4 lg:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Column: Input & Progress -->
+<div class="lg:col-span-7 space-y-6">
+<!-- Stepper -->
+<div class="bg-white dark:bg-slate-900 rounded-xl p-1 shadow-sm border border-slate-200 dark:border-slate-800">
+<div class="flex">
+<a class="flex-1 flex flex-col items-center justify-center py-3 border-b-2 border-primary text-primary" href="#">
+<span class="material-symbols-outlined text-xl mb-1">upload_file</span>
+<span class="text-[11px] font-bold uppercase tracking-wider">1. Input</span>
+</a>
+<a class="flex-1 flex flex-col items-center justify-center py-3 border-b-2 border-transparent text-slate-400 hover:text-slate-600 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl mb-1">analytics</span>
+<span class="text-[11px] font-bold uppercase tracking-wider">2. Analysis</span>
+</a>
+<a class="flex-1 flex flex-col items-center justify-center py-3 border-b-2 border-transparent text-slate-400 hover:text-slate-600 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl mb-1">description</span>
+<span class="text-[11px] font-bold uppercase tracking-wider">3. Report</span>
+</a>
+</div>
+</div>
+<!-- Sentence Input Area -->
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-5 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
+<div>
+<h2 class="text-lg font-bold">Document Input</h2>
+<p class="text-sm text-slate-500">Paste the sentence text or upload the judicial draft</p>
+</div>
+<button class="text-primary hover:bg-primary/5 px-3 py-1.5 rounded-lg text-sm font-semibold flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-sm">attach_file</span>
+                        Upload PDF/Doc
+                    </button>
+</div>
+<div class="p-5">
+<textarea class="w-full min-h-[400px] p-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg text-slate-800 dark:text-slate-200 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all resize-none font-display leading-relaxed" placeholder="Enter the full text of the judicial sentence here... (e.g., 'VISTOS: El presente expediente número 4522-2023...')"></textarea>
+<div class="mt-4 flex flex-wrap gap-3">
+<div class="flex-1 min-w-[200px]">
+<label class="block text-xs font-bold text-slate-400 uppercase mb-2 ml-1">Jurisdiction Level</label>
+<select class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-sm px-3 py-2">
+<option>First Instance Court</option>
+<option>Appellate Division</option>
+<option>Supreme Court</option>
+<option>Constitutional Court</option>
+</select>
+</div>
+<div class="flex-1 min-w-[200px]">
+<label class="block text-xs font-bold text-slate-400 uppercase mb-2 ml-1">Matter / Type</label>
+<select class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-sm px-3 py-2">
+<option>Civil - Contractual Liability</option>
+<option>Criminal - Procedural Integrity</option>
+<option>Administrative - Public Law</option>
+<option>Labor - Worker Rights</option>
+</select>
+</div>
+</div>
+</div>
+<div class="p-5 bg-slate-50 dark:bg-slate-800/50 flex justify-end gap-3">
+<button class="px-6 py-2.5 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 transition-all flex items-center gap-2 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-lg">science</span>
+                        Run Full Analysis
+                    </button>
+</div>
+</section>
+</div>
+<!-- Right Column: Sidebar Options & Quick Tools -->
+<div class="lg:col-span-5 space-y-6">
+<!-- Verification Criteria Card -->
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-5">
+<h3 class="text-sm font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">verified</span>
+                    Verification Modules
+                </h3>
+<div class="space-y-3">
+<label class="flex items-start gap-3 p-3 rounded-lg border border-primary/10 bg-primary/5 cursor-pointer hover:bg-primary/10 transition-colors">
+<input checked="" class="mt-1 rounded text-primary focus:ring-primary" type="checkbox"/>
+<div>
+<p class="text-sm font-bold text-slate-800 dark:text-slate-200">Congruencia Interna</p>
+<p class="text-xs text-slate-500">Detect logic gaps and contradictory arguments within the text.</p>
+</div>
+</label>
+<label class="flex items-start gap-3 p-3 rounded-lg border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<input checked="" class="mt-1 rounded text-primary focus:ring-primary" type="checkbox"/>
+<div>
+<p class="text-sm font-bold text-slate-800 dark:text-slate-200">Congruencia Externa</p>
+<p class="text-xs text-slate-500">Cross-reference claims, evidence, and final ruling consistency.</p>
+</div>
+</label>
+<label class="flex items-start gap-3 p-3 rounded-lg border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<input checked="" class="mt-1 rounded text-primary focus:ring-primary" type="checkbox"/>
+<div>
+<div class="flex items-center justify-between mb-1">
+<p class="text-sm font-bold text-slate-800 dark:text-slate-200">Legal Precedent Sync</p>
+<span class="flex items-center gap-1.5 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded-full">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+</span>
+        LIVE
+    </span>
+</div>
+<p class="text-xs text-slate-500">Validate against the latest Supreme Court and International HR rulings.</p>
+<div class="mt-2 flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-2">
+<p class="text-[10px] text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">sync</span>
+        Real-time SCJN Sync
+    </p>
+<p class="text-[10px] font-mono text-slate-400">Last sync: 2 min ago</p>
+</div>
+</div>
+</label>
+</div>
+</section>
+<!-- Real-time Findings Preview (Placeholder) -->
+<section class="bg-slate-900 text-white rounded-xl p-5 shadow-xl">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-sm font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-amber-400">monitoring</span>
+                        Live Analysis Feed
+                    </h3>
+<span class="text-[10px] bg-slate-800 px-2 py-0.5 rounded text-slate-400 font-mono">ID: LX-4522</span>
+</div>
+<div class="space-y-4">
+<div class="border-l-2 border-primary pl-4 py-1">
+<p class="text-xs text-slate-400">Ready for processing</p>
+<p class="text-sm font-medium">Waiting for input submission...</p>
+</div>
+<div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700/50 italic text-slate-400 text-xs">
+                        "The analysis engine will scan for more than 45 specific formal requirements based on the latest Procedural Codes."
+                    </div>
+<div class="pt-4 border-t border-slate-800">
+<div class="flex justify-between text-xs mb-1.5">
+<span>Engine Reliability</span>
+<span class="text-primary font-bold">98.4%</span>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[98%]"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Guidelines Sidebar -->
+<div class="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Quick Reference</h4>
+<ul class="space-y-2">
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-base text-slate-400">info</span>
+                        Article 218 CPCC Compliance
+                    </li>
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-base text-slate-400">info</span>
+                        Due Process Methodology
+                    </li>
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-base text-slate-400">info</span>
+                        Standard of Judicial Logic
+                    </li>
+</ul>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<div class="lg:hidden sticky bottom-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex justify-around items-center h-16 px-2">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-[10px] font-bold uppercase">Workplace</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">history</span>
+<p class="text-[10px] font-bold uppercase">Archive</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">library_books</span>
+<p class="text-[10px] font-bold uppercase">Legislation</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-[10px] font-bold uppercase">Config</p>
+</a>
+</div>
+</body></html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegalFlow - Estilo y Formato</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1e293b", /* Navy Blue from slate-800/900 range for Professional feel */
+                        "accent": "#d4af37",  /* Gold */
+                        "background-light": "#f8faff",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header -->
+<header class="flex items-center bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-4 sticky top-0 z-10">
+<div class="flex items-center gap-3">
+<div class="bg-primary text-accent p-2 rounded-lg">
+<span class="material-symbols-outlined">gavel</span>
+</div>
+<div>
+<h1 class="text-xl font-bold text-primary dark:text-white leading-tight">LegalFlow</h1>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Asistente de Redacción Jurídica</p>
+</div>
+</div>
+<div class="flex-1"></div>
+<button class="flex items-center justify-center rounded-full w-10 h-10 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300">notifications</span>
+</button>
+</header>
+<main class="flex-1 max-w-4xl mx-auto w-full p-4 md:p-6 pb-24">
+<!-- Breadcrumb / Back Navigation -->
+<div class="flex items-center gap-2 mb-6">
+<button class="p-1 hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors">
+<span class="material-symbols-outlined text-primary dark:text-accent">arrow_back</span>
+</button>
+<h2 class="text-lg font-semibold">Estilo y Formato</h2>
+</div>
+<section class="mb-8">
+<h3 class="text-2xl font-bold mb-2">Selecciona el método de redacción</h3>
+<p class="text-slate-600 dark:text-slate-400">Define cómo quieres estructurar tu documento legal según los estándares judiciales.</p>
+</section>
+<!-- Navigation Tabs -->
+<div class="mb-6">
+<div class="flex border-b border-slate-200 dark:border-slate-800 gap-4 md:gap-8 overflow-x-auto scrollbar-hide">
+<button class="flex items-center gap-2 border-b-2 border-transparent text-slate-500 hover:text-primary dark:hover:text-accent pb-3 px-1 transition-all">
+<span class="material-symbols-outlined text-[20px]">upload_file</span>
+<span class="text-sm font-bold whitespace-nowrap">Subir Formato Propio</span>
+</button>
+<button class="flex items-center gap-2 border-b-2 border-primary dark:border-accent text-primary dark:text-accent pb-3 px-1 transition-all">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+<span class="text-sm font-bold whitespace-nowrap">Plantilla Institucional</span>
+</button>
+<button class="flex items-center gap-2 border-b-2 border-transparent text-slate-500 hover:text-primary dark:hover:text-accent pb-3 px-1 transition-all">
+<span class="material-symbols-outlined text-[20px]">edit_note</span>
+<span class="text-sm font-bold whitespace-nowrap">Instrucción Directa</span>
+</button>
+</div>
+</div>
+<!-- Content Area: Plantillas -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+<!-- Template Card 1 -->
+<div class="p-4 bg-white dark:bg-slate-800 border-2 border-primary dark:border-accent rounded-xl shadow-sm cursor-pointer hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2">
+<span class="material-symbols-outlined text-accent fill-1">check_circle</span>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-accent">description</span>
+<h4 class="font-bold">Sentencia Definitiva Penal</h4>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400">Formato alineado a los estándares de la SCJN para resoluciones penales definitivas.</p>
+<div class="flex gap-2">
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-[10px] font-bold uppercase tracking-wider">Federal</span>
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-[10px] font-bold uppercase tracking-wider">Penal</span>
+</div>
+</div>
+</div>
+<!-- Template Card 2 -->
+<div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm cursor-pointer hover:border-accent transition-all group">
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-accent transition-colors">gavel</span>
+<h4 class="font-bold">Auto de Vinculación a Proceso</h4>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400">Estructura formal para la resolución de situación jurídica inicial.</p>
+<div class="flex gap-2">
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-[10px] font-bold uppercase tracking-wider">Local</span>
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-[10px] font-bold uppercase tracking-wider">Procesal</span>
+</div>
+</div>
+</div>
+<!-- Template Card 3 -->
+<div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm cursor-pointer hover:border-accent transition-all group">
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-accent transition-colors">record_voice_over</span>
+<h4 class="font-bold">Valoración de Testimonial</h4>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400">Análisis técnico-jurídico de declaraciones y testimonios en juicio.</p>
+<div class="flex gap-2">
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-[10px] font-bold uppercase tracking-wider">Argumentativo</span>
+</div>
+</div>
+</div>
+<!-- Template Card 4 -->
+<div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm cursor-pointer hover:border-accent transition-all group">
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-accent transition-colors">balance</span>
+<h4 class="font-bold">Amparo Indirecto</h4>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400">Estructura para la redacción de conceptos de violación y agravios.</p>
+<div class="flex gap-2">
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-[10px] font-bold uppercase tracking-wider">Constitucional</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Instruction Text Area -->
+<div class="mt-8 bg-slate-50 dark:bg-slate-900/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
+<label class="block text-sm font-bold mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-accent">tips_and_updates</span>
+                    Instrucciones adicionales de estilo
+                </label>
+<textarea class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl p-4 text-sm focus:ring-2 focus:ring-accent focus:border-transparent outline-none min-h-[120px]" placeholder='Ej: "Redactar en tercera persona, tono formal, evitar tecnicismos innecesarios, resaltar la perspectiva de género."'></textarea>
+<div class="mt-4 flex justify-between items-center">
+<p class="text-xs text-slate-500">Puedes pegar aquí un formato de texto propio para que la IA aprenda tu estilo.</p>
+<button class="bg-primary hover:bg-slate-700 dark:bg-accent dark:hover:bg-yellow-600 text-white dark:text-primary px-6 py-2 rounded-lg font-bold transition-all flex items-center gap-2 shadow-lg">
+                        Continuar
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-4 pb-6 pt-3 flex justify-around items-center z-20">
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary dark:hover:text-accent transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<p class="text-[10px] font-medium uppercase tracking-wider">Inicio</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary dark:hover:text-accent transition-colors" href="#">
+<span class="material-symbols-outlined">folder_open</span>
+<p class="text-[10px] font-medium uppercase tracking-wider">Expedientes</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary dark:text-accent" href="#">
+<span class="material-symbols-outlined fill-1">description</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Plantillas</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary dark:hover:text-accent transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<p class="text-[10px] font-medium uppercase tracking-wider">Análisis</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary dark:hover:text-accent transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-[10px] font-medium uppercase tracking-wider">Ajustes</p>
+</a>
+</nav>
+</div>
+</body></html>

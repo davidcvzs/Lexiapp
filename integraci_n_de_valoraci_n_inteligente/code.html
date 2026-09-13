@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegalFlow - Integración de Valoración</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#ec5b13", // Primary action color
+                "legal-navy": "#1a2a40", // Navy blue theme
+                "legal-gold": "#c5a059", // Gold theme
+                "background-light": "#f8f6f6",
+                "background-dark": "#1a1a1a",
+              },
+              fontFamily: {
+                "display": ["Public Sans", "sans-serif"],
+                "arial": ["Arial", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+      </script>
+<style>
+        .arial-12 { font-family: Arial, sans-serif; font-size: 12pt; line-height: 1.5; }
+        .custom-checkbox:checked { background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e"); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen pb-20">
+<!-- Header Navigation -->
+<header class="bg-legal-navy text-white px-4 py-3 flex items-center justify-between shadow-md">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-legal-gold">gavel</span>
+<h1 class="text-lg font-bold tracking-tight">LegalFlow</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-300">notifications</span>
+<div class="w-8 h-8 rounded-full bg-legal-gold flex items-center justify-center text-legal-navy font-bold text-xs">MR</div>
+</div>
+</header>
+<!-- Progress Indicator (Phase 3 of 8) -->
+<div class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400">Fase 3 de 8: Integración de Valoración</span>
+<span class="text-sm font-bold text-primary">37.5%</span>
+</div>
+<div class="flex w-full flex-row items-center justify-center gap-2">
+<div class="h-1.5 flex-1 rounded-full bg-primary"></div>
+<div class="h-1.5 flex-1 rounded-full bg-primary"></div>
+<div class="h-1.5 flex-1 rounded-full bg-primary"></div>
+<div class="h-1.5 flex-1 rounded-full bg-slate-200 dark:bg-slate-700"></div>
+<div class="h-1.5 flex-1 rounded-full bg-slate-200 dark:bg-slate-700"></div>
+<div class="h-1.5 flex-1 rounded-full bg-slate-200 dark:bg-slate-700"></div>
+<div class="h-1.5 flex-1 rounded-full bg-slate-200 dark:bg-slate-700"></div>
+<div class="h-1.5 flex-1 rounded-full bg-slate-200 dark:bg-slate-700"></div>
+</div>
+</div>
+<main class="max-w-3xl mx-auto p-4 space-y-6">
+<!-- Vincular Declaraciones Section -->
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="bg-slate-50 dark:bg-slate-800/50 px-4 py-3 border-b border-slate-200 dark:border-slate-800 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">link</span>
+<h2 class="text-base font-bold text-legal-navy dark:text-slate-100">Vincular Declaraciones</h2>
+</div>
+<div class="p-4 space-y-1">
+<label class="flex items-center gap-3 p-3 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg cursor-pointer transition-colors">
+<input checked="" class="h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary custom-checkbox" type="checkbox"/>
+<div class="flex flex-col">
+<span class="text-sm font-medium">Testimonio de Juan Pérez</span>
+<span class="text-xs text-green-600 font-semibold uppercase tracking-wider">Procesado</span>
+</div>
+</label>
+<label class="flex items-center gap-3 p-3 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg cursor-pointer transition-colors">
+<input checked="" class="h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary custom-checkbox" type="checkbox"/>
+<div class="flex flex-col">
+<span class="text-sm font-medium">Peritaje Técnico de Tránsito</span>
+<span class="text-xs text-green-600 font-semibold uppercase tracking-wider">Procesado</span>
+</div>
+</label>
+<label class="flex items-center gap-3 p-3 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg cursor-pointer transition-colors">
+<input class="h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary custom-checkbox" type="checkbox"/>
+<div class="flex flex-col">
+<span class="text-sm font-medium">Declaración de Víctima A.B.</span>
+<span class="text-xs text-green-600 font-semibold uppercase tracking-wider">Procesado</span>
+</div>
+</label>
+</div>
+</section>
+<!-- Añadir Resolución del Juez Section -->
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="bg-slate-50 dark:bg-slate-800/50 px-4 py-3 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">description</span>
+<h2 class="text-base font-bold text-legal-navy dark:text-slate-100">Añadir Resolución del Juez</h2>
+</div>
+<button class="text-xs font-bold text-legal-gold flex items-center gap-1 uppercase hover:underline">
+<span class="material-symbols-outlined text-sm">download</span> Importar de Transcripción
+                </button>
+</div>
+<div class="p-4">
+<div class="arial-12 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg p-6 min-h-[200px] shadow-inner focus-within:ring-1 focus-within:ring-primary transition-all">
+<p class="text-slate-400 italic mb-2">Escriba o importe la resolución aquí...</p>
+<div class="outline-none text-slate-800 dark:text-slate-200" contenteditable="true">
+                        En virtud de los testimonios presentados y el análisis técnico pericial, esta judicatura determina que la responsabilidad civil recae sobre la parte demandada...
+                    </div>
+</div>
+<p class="mt-2 text-[10px] text-slate-500 uppercase tracking-widest font-semibold">Visualización Estilo Arial 12pt</p>
+</div>
+</section>
+<!-- Refuerzo de Argumentación Section -->
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="bg-slate-50 dark:bg-slate-800/50 px-4 py-3 border-b border-slate-200 dark:border-slate-800 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">psychology</span>
+<h2 class="text-base font-bold text-legal-navy dark:text-slate-100">Refuerzo de Argumentación</h2>
+</div>
+<div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+<button class="flex flex-col items-center justify-center p-4 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all group">
+<span class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-primary mb-2">bookmarks</span>
+<span class="text-sm font-bold text-slate-700 dark:text-slate-300">Mis Lineamientos</span>
+<span class="text-xs text-slate-500 text-center mt-1">Biblioteca personalizada de argumentos</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all group">
+<span class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-primary mb-2">account_balance</span>
+<span class="text-sm font-bold text-slate-700 dark:text-slate-300">Formatos Públicos</span>
+<span class="text-xs text-slate-500 text-center mt-1">Jurisprudencia y formatos oficiales</span>
+</button>
+</div>
+</section>
+<!-- Style Toggle -->
+<div class="flex items-center justify-between p-4 bg-legal-navy/5 dark:bg-white/5 rounded-xl border border-legal-navy/10 dark:border-white/10">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-legal-navy dark:text-slate-200">Mantener Estilo María del Refugio</span>
+<span class="text-xs text-slate-500">Aplica preconfiguraciones de redacción y formato personal</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-legal-gold"></div>
+</label>
+</div>
+<!-- Action Button -->
+<div class="pt-4 flex gap-3">
+<button class="flex-1 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 py-3 rounded-lg font-bold uppercase text-sm tracking-wider hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors">Guardar Borrador</button>
+<button class="flex-[2] bg-primary text-white py-3 rounded-lg font-bold uppercase text-sm tracking-wider shadow-lg shadow-primary/20 hover:opacity-90 transition-opacity">Continuar a Fase 4</button>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-4 pb-2 pt-2 flex justify-around items-center">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined text-[24px]">work</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Casos</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">inbox</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Bandeja</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">calendar_month</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Agenda</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">person</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Perfil</span>
+</a>
+</nav>
+</body></html>

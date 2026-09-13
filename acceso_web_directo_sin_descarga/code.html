@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000066",
+                        "accent": "#D4AF37",
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0f0f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>LegalFlow Dashboard</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-slate-200 font-display">
+<!-- Mobile Browser Mockup Wrapper -->
+<div class="relative mx-auto my-8 max-w-[390px] min-h-[844px] bg-background-light dark:bg-background-dark shadow-2xl rounded-[3rem] border-[8px] border-slate-800 overflow-hidden flex flex-col">
+<!-- Browser Top Bar (URL Bar) -->
+<div class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 pt-12 pb-3 px-4 flex items-center gap-3">
+<div class="flex-1 bg-slate-100 dark:bg-slate-800 rounded-lg py-2 px-4 flex items-center justify-between">
+<span class="material-symbols-outlined text-slate-400 text-sm">lock</span>
+<span class="text-slate-600 dark:text-slate-300 text-sm">legalflow.com.mx</span>
+<span class="material-symbols-outlined text-slate-400 text-sm">refresh</span>
+</div>
+<button class="text-primary dark:text-blue-400">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<!-- Main Dashboard Content (Scrollable) -->
+<div class="flex-1 overflow-y-auto">
+<!-- Hero Banner -->
+<div class="p-4">
+<div class="relative overflow-hidden rounded-xl bg-primary aspect-[16/7] flex flex-col justify-end p-5" data-alt="Abstract navy blue and gold geometric pattern">
+<div class="absolute inset-0 bg-gradient-to-t from-primary to-transparent opacity-60"></div>
+<div class="relative z-10">
+<p class="text-white/80 text-xs font-medium uppercase tracking-widest mb-1">Professional Suite</p>
+<h1 class="text-white text-2xl font-bold">LegalFlow</h1>
+</div>
+<div class="absolute top-4 right-4 bg-accent/20 border border-accent/30 rounded-full px-3 py-1">
+<span class="text-accent text-[10px] font-bold uppercase tracking-tighter">Premium</span>
+</div>
+</div>
+</div>
+<!-- Welcome Message -->
+<div class="px-5 pt-4">
+<h2 class="text-slate-900 dark:text-white text-2xl font-bold">Welcome back</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Your workspace is ready. No app install required.</p>
+</div>
+<!-- Quick Actions -->
+<div class="px-5 py-6">
+<button class="w-full bg-primary text-white rounded-xl py-4 flex items-center justify-center gap-3 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">mic</span>
+<span class="font-semibold">Start new transcription</span>
+</button>
+<div class="grid grid-cols-2 gap-3 mt-3">
+<button class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-accent">upload_file</span>
+<span class="text-slate-700 dark:text-slate-200 text-xs font-medium">Upload File</span>
+</button>
+<button class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-accent">gavel</span>
+<span class="text-slate-700 dark:text-slate-200 text-xs font-medium">Case Analysis</span>
+</button>
+</div>
+</div>
+<!-- Recent Drafts -->
+<div class="px-5 pb-20">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-slate-900 dark:text-white font-bold">Recent drafts</h3>
+<button class="text-primary dark:text-blue-400 text-xs font-semibold">View all</button>
+</div>
+<div class="space-y-3">
+<!-- Draft Item 1 -->
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-100 dark:border-slate-700 flex items-center gap-4">
+<div class="bg-accent/10 p-2 rounded-lg">
+<span class="material-symbols-outlined text-accent">description</span>
+</div>
+<div class="flex-1">
+<p class="text-slate-900 dark:text-white text-sm font-semibold">Smith v. Johnson Hearing</p>
+<p class="text-slate-400 dark:text-slate-500 text-xs mt-0.5">Edited 2 hours ago</p>
+</div>
+<span class="material-symbols-outlined text-slate-300">chevron_right</span>
+</div>
+<!-- Draft Item 2 -->
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-100 dark:border-slate-700 flex items-center gap-4">
+<div class="bg-accent/10 p-2 rounded-lg">
+<span class="material-symbols-outlined text-accent">description</span>
+</div>
+<div class="flex-1">
+<p class="text-slate-900 dark:text-white text-sm font-semibold">NDA Final Review - TechCorp</p>
+<p class="text-slate-400 dark:text-slate-500 text-xs mt-0.5">Edited yesterday</p>
+</div>
+<span class="material-symbols-outlined text-slate-300">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Browser Navigation Bar (Bottom) -->
+<div class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 px-6 pb-8 pt-3">
+<div class="flex justify-between items-center max-w-sm mx-auto">
+<a class="flex flex-col items-center gap-1 text-primary dark:text-blue-400" href="#">
+<span class="material-symbols-outlined fill-1">home</span>
+<span class="text-[10px] font-medium">Dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">folder</span>
+<span class="text-[10px] font-medium">Files</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">event_note</span>
+<span class="text-[10px] font-medium">Calendar</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</a>
+</div>
+</div>
+<!-- iPhone Notch Mockup -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-7 bg-slate-800 rounded-b-2xl z-50"></div>
+</div>
+</body></html>

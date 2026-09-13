@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PJENL - Generación de Sentencia Final</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Top Header / Navigation -->
+<header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-2 rounded-lg text-white">
+<span class="material-symbols-outlined block">gavel</span>
+</div>
+<div>
+<h1 class="text-lg font-bold leading-tight tracking-tight">PJENL</h1>
+<p class="text-xs text-slate-500 font-medium uppercase tracking-wider">Poder Judicial de Nuevo León</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex flex-col items-end mr-4">
+<span class="text-sm font-semibold">Expediente: 452/2023</span>
+<span class="text-xs text-slate-500">Juicio Ordinario Civil</span>
+</div>
+<button class="p-2 text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+                        JD
+                    </div>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-7xl w-full mx-auto px-4 py-6 sm:px-6 lg:px-8">
+<!-- Status Bar -->
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-6 mb-6">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+<div>
+<h2 class="text-xl font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">description</span>
+                        Generación de Sentencia Definitiva
+                    </h2>
+<p class="text-slate-500 text-sm mt-1">Proceso automático de compilación de secciones legales.</p>
+</div>
+<div class="flex items-center gap-2 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 px-3 py-1.5 rounded-full text-sm font-medium border border-green-100 dark:border-green-800">
+<span class="material-symbols-outlined text-sm">shield</span>
+                    Entorno Seguro Certificado
+                </div>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-end">
+<span class="text-sm font-bold text-primary uppercase tracking-wide">Compilación del Documento</span>
+<span class="text-sm font-bold">85% Completado</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-3">
+<div class="bg-primary h-3 rounded-full transition-all duration-500" style="width: 85%"></div>
+</div>
+<p class="text-xs text-slate-500 italic">Sección actual: Redactando Considerandos y Valoración de Pruebas...</p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+<!-- Sidebar Navigation Sections -->
+<aside class="lg:col-span-1 space-y-2">
+<nav class="flex flex-col gap-1">
+<a class="flex items-center justify-between p-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-primary transition-all group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="font-semibold text-sm">Vistos</span>
+</div>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100">chevron_right</span>
+</a>
+<a class="flex items-center justify-between p-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-primary transition-all group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="font-semibold text-sm">Resultandos</span>
+</div>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100">chevron_right</span>
+</a>
+<a class="flex items-center justify-between p-3 rounded-lg bg-primary text-white shadow-md shadow-primary/20 border border-primary transition-all" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">edit_document</span>
+<span class="font-semibold text-sm">Considerandos</span>
+</div>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</a>
+<a class="flex items-center justify-between p-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-400 dark:text-slate-600 transition-all cursor-not-allowed" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">pending</span>
+<span class="font-semibold text-sm">Resolutivos</span>
+</div>
+</a>
+</nav>
+<!-- Confidentiality Warning -->
+<div class="p-4 bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-800/50 rounded-lg mt-6">
+<div class="flex gap-2 text-amber-800 dark:text-amber-400 mb-2">
+<span class="material-symbols-outlined text-lg">warning</span>
+<span class="text-xs font-bold uppercase tracking-wider">Aviso de Privacidad</span>
+</div>
+<p class="text-[10px] text-amber-700/80 dark:text-amber-500/80 leading-relaxed">
+                        Este documento contiene datos sensibles protegidos por la Ley de Transparencia y Acceso a la Información Pública del Estado de Nuevo León. Queda prohibida su difusión fuera del entorno judicial.
+                    </p>
+</div>
+</aside>
+<!-- Editor / Preview Area -->
+<div class="lg:col-span-3 space-y-6">
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col h-full min-h-[600px]">
+<!-- Editor Toolbar -->
+<div class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800 px-4 py-2 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors"><span class="material-symbols-outlined text-lg">format_bold</span></button>
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors"><span class="material-symbols-outlined text-lg">format_italic</span></button>
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors"><span class="material-symbols-outlined text-lg">format_list_bulleted</span></button>
+<div class="w-px h-6 bg-slate-300 dark:bg-slate-700 mx-1"></div>
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors"><span class="material-symbols-outlined text-lg">history</span></button>
+</div>
+<div class="flex items-center gap-4 text-xs font-medium text-slate-500">
+<span>Autoguardado: 12:45 PM</span>
+<span class="flex items-center gap-1"><span class="size-2 bg-green-500 rounded-full"></span> Online</span>
+</div>
+</div>
+<!-- Document Canvas -->
+<div class="flex-1 p-8 md:p-12 overflow-y-auto max-h-[800px] bg-slate-50 dark:bg-slate-950/30">
+<div class="bg-white dark:bg-slate-900 shadow-lg mx-auto max-w-4xl p-12 border border-slate-200 dark:border-slate-800 min-h-full">
+<div class="text-center mb-8">
+<p class="text-sm font-bold uppercase tracking-widest text-slate-400">Poder Judicial del Estado de Nuevo León</p>
+<p class="text-xs font-medium text-slate-400">Juzgado Primero de lo Civil del Primer Distrito Judicial</p>
+<div class="w-16 h-1 bg-primary/20 mx-auto mt-4"></div>
+</div>
+<div class="space-y-6 text-sm text-justify leading-relaxed text-slate-700 dark:text-slate-300">
+<h3 class="font-bold text-center text-slate-900 dark:text-white uppercase tracking-tight">CONSIDERANDOS</h3>
+<p>
+<span class="font-bold">I. COMPETENCIA.</span> Este Juzgado es competente para conocer y resolver el presente juicio, de conformidad con lo dispuesto por los artículos 98, 99 y 100 del Código de Procedimientos Civiles vigente en el Estado...
+                                </p>
+<p>
+<span class="font-bold">II. VALORACIÓN DE PRUEBAS.</span> En el presente apartado, se procede al análisis exhaustivo del material probatorio aportado por las partes. Especial relevancia cobra la <span class="bg-primary/10 px-1 rounded font-medium text-primary">Prueba Pericial en Grafoscopía</span>, la cual fue desahogada en términos de ley...
+                                </p>
+<div class="bg-primary/5 border-l-4 border-primary p-4 my-4 italic">
+                                    "De la valoración lógica y jurídica de los testimonios rendidos, se desprende una concordancia plena sobre los hechos narrados en el escrito inicial de demanda, adquiriendo pleno valor probatorio al tenor del artículo 392 del ordenamiento procesal..."
+                                </div>
+<p>
+                                    Asimismo, se integra la valoración de la <span class="font-medium underline decoration-primary/30">Prueba Confesional</span> a cargo de la parte demandada, quien al no comparecer a la audiencia de ley, fue declarada confesa de las posiciones calificadas de legales...
+                                </p>
+<div class="animate-pulse flex space-x-4">
+<div class="flex-1 space-y-2 py-1">
+<div class="h-2 bg-slate-200 dark:bg-slate-700 rounded"></div>
+<div class="h-2 bg-slate-200 dark:bg-slate-700 rounded w-5/6"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Actions -->
+<div class="border-t border-slate-200 dark:border-slate-800 p-4 bg-white dark:bg-slate-900 flex flex-wrap items-center justify-between gap-4 flex-col md:flex-row items-stretch md:items-center">
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-2 px-4 py-2 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-red-500">picture_as_pdf</span>
+                                Exportar PDF
+                            </button>
+<button class="flex items-center gap-2 px-4 py-2 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-blue-600">description</span>
+                                Exportar Word
+                            </button>
+</div>
+<div class="flex flex-wrap items-center gap-6 p-3 bg-slate-50 dark:bg-slate-800/30 rounded-lg border border-slate-200 dark:border-slate-800 mb-2 md:mb-0">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">settings_applications</span>
+<span class="text-xs font-bold uppercase tracking-wider text-slate-500">Preferencias de Formato (Word)</span>
+</div>
+<div class="flex flex-wrap items-center gap-4">
+<!-- Toggle Sensitive Data -->
+<div class="flex flex-col gap-3 min-w-[280px]">
+<!-- Toggle -->
+<label class="inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="relative w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+<span class="ms-2 text-xs font-medium text-slate-600 dark:text-slate-400">Resaltar datos sensibles en rojo</span>
+</label>
+<!-- Checklist -->
+<div class="grid grid-cols-2 gap-x-4 gap-y-2">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="w-3.5 h-3.5 rounded border-slate-300 text-primary focus:ring-primary/20" type="checkbox"/>
+<span class="text-[11px] text-slate-600 dark:text-slate-400">Nombres de las partes</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="w-3.5 h-3.5 rounded border-slate-300 text-primary focus:ring-primary/20" type="checkbox"/>
+<span class="text-[11px] text-slate-600 dark:text-slate-400">Testigos</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="w-3.5 h-3.5 rounded border-slate-300 text-primary focus:ring-primary/20" type="checkbox"/>
+<span class="text-[11px] text-slate-600 dark:text-slate-400">Lugares</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="w-3.5 h-3.5 rounded border-slate-300 text-primary focus:ring-primary/20" type="checkbox"/>
+<span class="text-[11px] text-slate-600 dark:text-slate-400">Edades</span>
+</label>
+</div>
+<!-- Custom Input -->
+<div class="flex flex-col gap-1.5">
+<label class="text-[10px] font-bold text-slate-400 uppercase">Otros datos a resaltar:</label>
+<input class="text-xs py-1.5 px-3 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 rounded-md focus:ring-primary focus:border-primary w-full shadow-sm" placeholder="ej. tatuajes, vestimenta, objetos..." type="text"/>
+</div>
+</div>
+<!-- Font Selector -->
+<div class="flex items-center gap-2">
+<label class="text-[10px] font-bold text-slate-400 uppercase">Fuente:</label>
+<select class="text-xs py-1 pl-2 pr-8 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 rounded-md focus:ring-primary focus:border-primary">
+<option>Arial 11</option>
+<option selected="">Arial 12</option>
+<option>Times New Roman 12</option>
+</select>
+</div>
+<!-- Spacing Selector -->
+<div class="flex items-center gap-2">
+<label class="text-[10px] font-bold text-slate-400 uppercase">Interlineado:</label>
+<select class="text-xs py-1 pl-2 pr-8 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 rounded-md focus:ring-primary focus:border-primary">
+<option>1.0</option>
+<option>1.15</option>
+<option selected="">1.5</option>
+<option>2.0</option>
+</select>
+</div>
+</div>
+</div><button class="flex items-center gap-2 px-6 py-2 bg-primary text-white rounded-lg text-sm font-bold shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all active:scale-95"><span class="material-symbols-outlined">document_scanner</span>
+                            Generar Sentencia en Word</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Nav Bar Mobile (Legacy UI requirement matching) -->
+<div class="md:hidden sticky bottom-0 z-50 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-4 py-2 flex justify-between">
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">folder_open</span>
+<span class="text-[10px] font-medium">Expedientes</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">edit_square</span>
+<span class="text-[10px] font-medium">Redacción</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Configuración</span>
+</a>
+</div>
+<!-- Background Decoration -->
+<div class="fixed inset-0 pointer-events-none -z-10 opacity-20 dark:opacity-10 overflow-hidden">
+<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
+<div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
+</div>
+</body></html>

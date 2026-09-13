@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000066",
+                        "gold": "#C5A059",
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0f0f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "legal": ["Arial", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .legal-text {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.5;
+            font-size: 12pt;
+            color: black;
+        }
+        .sensitive-data {
+            color: #ef4444; /* Tailwind red-500 */
+            font-weight: bold;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-screen w-full flex-col overflow-hidden">
+<!-- Top Bar -->
+<header class="bg-white border-b border-primary/10 px-4 py-3 flex items-center justify-between shrink-0">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+<span class="text-gold font-bold text-xl">L</span>
+</div>
+<span class="text-primary font-bold text-xl tracking-tight">LegalFlow</span>
+</div>
+<div class="h-6 w-px bg-primary/20 mx-2"></div>
+<h1 class="text-primary/60 text-sm font-semibold tracking-widest">DOCUMENT PREVIEW</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary/40 text-xl">search</span>
+<input class="pl-10 pr-4 py-1.5 bg-primary/5 border-none rounded-lg text-sm focus:ring-1 focus:ring-primary w-64" placeholder="Buscar en el documento" type="text"/>
+</div>
+<button class="flex items-center gap-2 px-3 py-1.5 hover:bg-primary/5 rounded-lg text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">download</span>
+</button>
+<button class="bg-primary text-white px-4 py-1.5 rounded-lg flex items-center gap-2 font-semibold text-sm hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-xl">print</span>
+<span>Imprimir</span>
+</button>
+</div>
+</header>
+<!-- Document Area -->
+<main class="flex-1 overflow-y-auto p-4 md:p-8 flex justify-center bg-slate-200/50">
+<div class="bg-white w-full max-w-[816px] shadow-xl p-[2cm] min-h-[1056px] flex flex-col">
+<!-- Legal Header -->
+<div class="text-center mb-12">
+<div class="flex justify-center mb-4">
+<div class="border-2 border-primary p-2 flex flex-col items-center">
+<span class="text-primary font-bold text-2xl">LEGALFLOW</span>
+<span class="text-gold text-[10px] font-bold tracking-[0.2em] border-t border-gold w-full text-center mt-1 pt-1">SOLUCIONES JURÍDICAS</span>
+</div>
+</div>
+<p class="legal-text font-bold uppercase underline">SENTENCIA DEFINITIVA</p>
+</div>
+<!-- Document Content -->
+<div class="legal-text flex-1 text-justify">
+<p class="mb-8 font-bold text-center">VISTOS</p>
+<p class="mb-6">
+                        En la ciudad de <span class="sensitive-data">MÉXICO, CIUDAD DE MÉXICO</span>, a <span class="sensitive-data">15 DE NOVIEMBRE DE 2023</span>, se tiene a la vista para resolver los autos del expediente número <span class="sensitive-data">123/2023</span> relativo al juicio <span class="sensitive-data">ORDINARIO CIVIL</span>, promovido por <span class="sensitive-data">JUAN PÉREZ LÓPEZ</span> en contra de <span class="sensitive-data">MARÍA GARCÍA REYES</span>, sobre el cumplimiento de contrato y otras prestaciones; y,
+                    </p>
+<p class="mb-8 font-bold text-center">RESULTANDOS</p>
+<p class="mb-4">
+                        1.- Por escrito presentado con fecha <span class="sensitive-data">10 DE ENERO DE 2023</span>, compareció el C. <span class="sensitive-data">JUAN PÉREZ LÓPEZ</span>, de <span class="sensitive-data">45 AÑOS DE EDAD</span>, demandando en la vía ordinaria civil a la C. <span class="sensitive-data">MARÍA GARCÍA REYES</span>, por las prestaciones que quedaron precisadas en su escrito inicial de demanda.
+                    </p>
+<p class="mb-4">
+                        2.- La parte demandada fue emplazada legalmente en el domicilio ubicado en <span class="sensitive-data">CALLE REFORMA 500, COLONIA JUÁREZ</span>, otorgándosele el término de ley para producir su contestación, lo cual realizó mediante escrito recibido el <span class="sensitive-data">05 DE FEBRERO DE 2023</span>, oponiendo las excepciones y defensas que a su interés convinieron.
+                    </p>
+<p class="mb-4">
+                        3.- Seguido el juicio en todas sus etapas procesales, y habiéndose desahogado las pruebas ofrecidas por las partes ante los testigos <span class="sensitive-data">ROBERTO CASAS</span> y <span class="sensitive-data">ELENA MONTIEL</span>, se citó a las mismas para oír la presente sentencia definitiva que hoy se dicta de conformidad con los siguientes...
+                    </p>
+<div class="mt-20 border-t border-black w-64 mx-auto text-center">
+<p class="font-bold uppercase mt-2">EL JUEZ DE LO CIVIL</p>
+<p class="mt-12 uppercase"><span class="sensitive-data">LIC. RODRIGO HERNÁNDEZ SOTO</span></p>
+</div>
+</div>
+<div class="mt-8 text-[10px] text-gray-400 text-right italic">
+                    Documento generado por LegalFlow v2.4 - Solo para fines de previsualización
+                </div>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="bg-white border-t border-primary/10 px-4 py-2 shrink-0">
+<div class="max-w-screen-md mx-auto flex items-center justify-between">
+<a class="flex flex-col items-center gap-1 text-primary hover:text-primary/70 transition-colors flex-1" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Editar</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary hover:text-primary/70 transition-colors flex-1" href="#">
+<span class="material-symbols-outlined">print</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Imprimir</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary hover:text-primary/70 transition-colors flex-1" href="#">
+<span class="material-symbols-outlined">share</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Compartir</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary hover:text-primary/70 transition-colors flex-1" href="#">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Más</span>
+</a>
+</div>
+</nav>
+</div>
+</body></html>

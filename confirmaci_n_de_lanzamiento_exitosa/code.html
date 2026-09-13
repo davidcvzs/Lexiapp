@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Deployment Success - LegalFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000066",
+                        "accent": "#D4AF37",
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0f0f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+<!-- Top Navigation -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between border-b border-primary/10">
+<div class="text-primary dark:text-slate-100 flex size-12 shrink-0 items-center cursor-pointer" data-icon="ArrowLeft">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<h2 class="text-primary dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">System Update</h2>
+</div>
+<div class="max-w-xl mx-auto w-full px-4">
+<!-- Success Illustration/Header Image -->
+<div class="@container">
+<div class="@[480px]:px-4 @[480px]:py-3">
+<div class="w-full bg-center bg-no-repeat bg-cover flex flex-col items-center justify-center overflow-hidden bg-primary/5 dark:bg-primary/20 @[480px]:rounded-xl min-h-[218px] relative border border-primary/10" data-alt="Abstract geometric navy and gold pattern background" style="background-image: linear-gradient(135deg, rgba(0,0,102,0.05) 0%, rgba(212,175,55,0.05) 100%);">
+<div class="bg-emerald-500 rounded-full p-6 shadow-lg shadow-emerald-500/20">
+<span class="material-symbols-outlined text-white text-6xl">check_circle</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Status -->
+<div class="text-center mt-6">
+<h1 class="text-primary dark:text-slate-100 tracking-tight text-[32px] font-bold leading-tight pb-2">Deployment Success</h1>
+<p class="text-slate-600 dark:text-slate-400 text-base font-normal leading-normal px-4">LegalFlow is now live and fully operational for your firm.</p>
+</div>
+<!-- Deployment Details Card -->
+<div class="mt-8 bg-white dark:bg-slate-900 rounded-xl border border-primary/10 shadow-sm overflow-hidden">
+<div class="p-4 border-b border-primary/5 bg-primary/5">
+<h3 class="text-primary dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">Configuration Details</h3>
+</div>
+<div class="divide-y divide-primary/5">
+<!-- Detail Row 1 -->
+<div class="flex items-center justify-between p-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-accent">language</span>
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400">Domain</span>
+</div>
+<span class="text-sm font-bold text-primary dark:text-slate-200">legalflow.com</span>
+</div>
+<!-- Detail Row 2 -->
+<div class="flex items-center justify-between p-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-accent">payments</span>
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400">Payment Status</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="text-sm font-bold text-primary dark:text-slate-200">Connected to Mercado Pago</span>
+</div>
+</div>
+<!-- Detail Row 3 -->
+<div class="flex items-center justify-between p-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-accent">psychology</span>
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400">AI Engines</span>
+</div>
+<span class="text-sm font-bold text-primary dark:text-slate-200">Active (GPT Agent)</span>
+</div>
+</div>
+</div>
+<!-- Summary Text -->
+<div class="mt-6 flex items-start gap-3 p-4 bg-accent/10 rounded-lg border border-accent/20">
+<span class="material-symbols-outlined text-accent">info</span>
+<p class="text-sm text-primary dark:text-slate-300">
+                    Your environment has been provisioned. All legal modules including Document Automation and Case Management are ready.
+                </p>
+</div>
+<!-- Call to Action -->
+<div class="mt-8 mb-12">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 group">
+                    Go to Dashboard
+                    <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+<button class="w-full mt-4 bg-transparent border border-primary/20 text-primary dark:text-slate-300 font-medium py-3 rounded-xl hover:bg-primary/5 transition-all">
+                    View Logs
+                </button>
+</div>
+</div>
+<!-- Footer Spacer -->
+<div class="h-8"></div>
+</div>
+</body></html>

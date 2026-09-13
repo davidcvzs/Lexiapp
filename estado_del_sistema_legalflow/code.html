@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000066",
+                        "accent-gold": "#C5A059",
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0f0f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>LegalFlow System Status</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<header class="bg-white dark:bg-slate-900 border-b border-primary/10 px-4 py-4 sticky top-0 z-10">
+<div class="max-w-md mx-auto flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl">gavel</span>
+<h1 class="text-xl font-bold tracking-tight text-primary">LegalFlow</h1>
+</div>
+<div class="flex items-center gap-2 bg-green-100 dark:bg-green-900/30 px-3 py-1 rounded-full">
+<div class="size-2 bg-green-500 rounded-full animate-pulse"></div>
+<span class="text-xs font-semibold text-green-700 dark:text-green-400">OPERATIVO</span>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-md mx-auto w-full p-4 space-y-6">
+<section>
+<h2 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3 px-1">Estado de Infraestructura</h2>
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-primary/5 shadow-sm overflow-hidden">
+<div class="divide-y divide-primary/5">
+<div class="flex items-center justify-between p-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">language</span>
+</div>
+<div>
+<p class="text-sm font-medium">Dominio</p>
+<p class="text-xs text-slate-500">legalflow.com.mx</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-green-500">check_circle</span>
+</div>
+<div class="flex items-center justify-between p-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<div>
+<p class="text-sm font-medium">Servidor de IA</p>
+<p class="text-xs text-slate-500">GPT Motor Activo</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-green-500">check_circle</span>
+</div>
+<div class="flex items-center justify-between p-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div>
+<p class="text-sm font-medium">Pasarela de Pago</p>
+<p class="text-xs text-slate-500">Mercado Pago Conectado</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-green-500">check_circle</span>
+</div>
+<div class="flex items-center justify-between p-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">encrypted</span>
+</div>
+<div>
+<p class="text-sm font-medium">Seguridad</p>
+<p class="text-xs text-slate-500">Encriptación AES-256</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-green-500">check_circle</span>
+</div>
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3 px-1">Configuración Actual</h2>
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-primary/5 shadow-sm">
+<span class="material-symbols-outlined text-accent-gold mb-2">subscriptions</span>
+<p class="text-xs text-slate-500">Suscripción</p>
+<p class="text-lg font-bold text-primary">$60 MXN</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-primary/5 shadow-sm">
+<span class="material-symbols-outlined text-accent-gold mb-2">timer</span>
+<p class="text-xs text-slate-500">Límite Video</p>
+<p class="text-lg font-bold text-primary">650 min</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-primary/5 shadow-sm col-span-2 flex items-center justify-between">
+<div>
+<p class="text-xs text-slate-500">Formato de Exportación Word</p>
+<p class="text-sm font-semibold">Arial 12 / Interlineado 1.5</p>
+</div>
+<span class="material-symbols-outlined text-accent-gold">description</span>
+</div>
+</div>
+</section>
+<div class="pt-4">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
+<span>Entrar al Panel de Control</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</main>
+<nav class="bg-white dark:bg-slate-900 border-t border-primary/10 pb-6 pt-2 sticky bottom-0">
+<div class="max-w-md mx-auto flex justify-around items-center px-4">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-medium uppercase tracking-tighter">Status</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">cases</span>
+<span class="text-[10px] font-medium uppercase tracking-tighter">Casos</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">folder_open</span>
+<span class="text-[10px] font-medium uppercase tracking-tighter">Archivos</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium uppercase tracking-tighter">Ajustes</span>
+</a>
+</div>
+</nav>
+</body></html>

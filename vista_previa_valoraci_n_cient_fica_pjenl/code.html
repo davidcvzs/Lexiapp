@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Valoración de Prueba Pericial - Poder Judicial</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&amp;family=Noto+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"],
+                        "arial-like": ["Arial", "Helvetica", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .judicial-content {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12pt;
+            line-height: 1.5;
+        }
+        .sensitive-data {
+            color: #ef4444; /* Tailwind red-500 */
+            font-weight: bold;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex flex-col min-h-screen max-w-4xl mx-auto bg-white dark:bg-slate-900 shadow-xl my-8 overflow-hidden">
+<!-- Header -->
+<header class="border-b border-slate-200 dark:border-slate-700 p-6 text-center">
+<h1 class="text-slate-900 dark:text-slate-100 text-xl font-bold uppercase tracking-wider">
+                PODER JUDICIAL DEL ESTADO DE NUEVO LEÓN
+            </h1>
+</header>
+<!-- Document Body -->
+<main class="flex-1 p-10 md:p-16 judicial-content text-slate-900 dark:text-slate-200">
+<div class="mb-10 text-center">
+<h2 class="text-slate-900 dark:text-slate-100 font-bold uppercase underline">
+                    VALORACIÓN DE PRUEBA PERICIAL
+                </h2>
+</div>
+<p class="mb-6 text-justify">
+                En la ciudad de <span class="sensitive-data">MONTERREY, NUEVO LEÓN</span> a los <span class="sensitive-data">15 DÍAS DEL MES DE OCTUBRE DE 2023</span>. 
+                Relativo al expediente <span class="sensitive-data">1234/2023</span>, se procede a la valoración de la prueba pericial en materia de 
+                <span class="sensitive-data">GENÉTICA FORENSE</span>.
+            </p>
+<p class="mb-6 text-justify">
+                De acuerdo con los Conocimientos Científicos Afianzados, el dictamen emitido por el perito <span class="sensitive-data">NOMBRE DEL PERITO</span> 
+                establece una correspondencia técnica rigurosa. El análisis realizado en el laboratorio de <span class="sensitive-data">UBICACIÓN DEL LABORATORIO</span> 
+                demuestra que las muestras recolectadas en <span class="sensitive-data">DIRECCIÓN DEL EVENTO</span> presentan una probabilidad de coincidencia superior al 99.9%.
+            </p>
+<p class="mb-6 text-justify">
+                Esta valoración se fundamenta en la aplicación de protocolos internacionales validados, garantizando que la evidencia procesada bajo la cadena de custodia 
+                iniciada el <span class="sensitive-data">FECHA DE RECOLECCIÓN</span> mantiene su integridad y valor probatorio pleno para este juzgador. 
+                Se hace constar que los métodos empleados se ajustan a los estándares de validación técnica exigidos por la comunidad científica internacional.
+            </p>
+<p class="mb-6 text-justify">
+                Por lo anterior, este órgano jurisdiccional otorga pleno valor probatorio al dictamen de referencia, toda vez que ha sido desahogado conforme a las reglas 
+                de la lógica y la experiencia, sustentado en una metodología científica reproducible y verificable, lo cual permite generar convicción sobre la identidad 
+                biológica del perfil analizado en relación con el hecho que se investiga.
+            </p>
+<div class="mt-20 flex flex-col items-center">
+<div class="w-64 border-t border-slate-900 dark:border-slate-100 mb-2"></div>
+<p class="text-center font-bold uppercase">FIRMA DE LA AUTORIDAD JURISDICCIONAL</p>
+<p class="text-center text-sm uppercase"><span class="sensitive-data">SECRETARÍA DE ACUERDOS</span></p>
+</div>
+</main>
+<!-- Footer Actions -->
+<footer class="bg-slate-50 dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 p-6 flex justify-between items-center">
+<button class="px-6 py-2 rounded border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors uppercase text-sm">
+                Volver
+            </button>
+<button class="px-6 py-2 rounded bg-primary text-white font-bold hover:opacity-90 transition-opacity uppercase text-sm">
+                Exportar Word
+            </button>
+</footer>
+</div>
+</body></html>

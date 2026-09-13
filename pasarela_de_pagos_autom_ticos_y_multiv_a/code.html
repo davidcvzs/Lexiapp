@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#002147",
+                "accent": "#C5A059",
+                "background-light": "#f8f9fa",
+                "background-dark": "#0a101a",
+              },
+              fontFamily: {
+                "display": ["Public Sans"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<title>Pasarela de Pago Segura - PJENL</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+<div class="flex items-center bg-white dark:bg-background-dark p-4 border-b border-slate-200 dark:border-slate-800 justify-between">
+<div class="text-primary flex size-12 shrink-0 items-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-12 uppercase">Pago Seguro</h2>
+</div>
+<div class="max-w-3xl mx-auto w-full px-4">
+<h2 class="text-slate-900 dark:text-slate-100 text-[24px] font-bold leading-tight tracking-tight pb-3 pt-8">Resumen de Suscripción</h2>
+<div class="p-0 @container">
+<div class="flex flex-col items-stretch justify-start rounded-xl @xl:flex-row @xl:items-start shadow-sm border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden">
+<div class="w-full @xl:w-1/3 bg-center bg-no-repeat aspect-video bg-cover" data-alt="Escalera de la justicia en edificio gubernamental" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCUfvlRr9Yev_smvDlWeUvtuS9DMvabrGFUQxwpyOkbWeKJws8m2La6zfH4OZbqhjkGMwAmfJGhVKlLgA0iJru_I3MqplZC-Wog2OrM90DNhp9TokkniRkGlnUSskcSppFF68SUMTVgX4OE7mv8w7gnJW-2ySkkKKfW7WGtiAKYrI-xXs0J-BlTbzgqHW-4T3f89Vi7wTCWwbiHyEcfvyK_AB8jh2dNA_zz8T3vB8x4N-xbgVdan-ksQKme7Q49SDhGfIWouLiLCAAH");'>
+</div>
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-1 py-6 px-6">
+<div class="flex justify-between items-start">
+<p class="text-primary text-xl font-bold leading-tight">Plan Profesional PJENL</p>
+<span class="bg-primary/10 text-primary text-xs font-bold px-2 py-1 rounded">ACTIVO</span>
+</div>
+<div class="mt-4 flex flex-col gap-3">
+<div class="flex items-baseline gap-1">
+<p class="text-slate-900 dark:text-slate-100 text-3xl font-extrabold">$50 MXN</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">/ mes</p>
+</div>
+<ul class="space-y-2 mt-2">
+<li class="flex items-center gap-2 text-slate-600 dark:text-slate-400 text-sm">
+<span class="material-symbols-outlined text-primary text-lg text-[#002147]">check_circle</span>
+                                    Transcripción ilimitada
+                                </li>
+<li class="flex items-center gap-2 text-slate-600 dark:text-slate-400 text-sm">
+<span class="material-symbols-outlined text-primary text-lg text-[#002147]">check_circle</span>
+                                    650 minutos por video
+                                </li>
+<li class="flex items-center gap-2 text-slate-600 dark:text-slate-400 text-sm">
+<span class="material-symbols-outlined text-primary text-lg text-[#002147]">check_circle</span>
+                                    Sentencias en formato oficial PJENL
+                                </li>
+</ul><div class="mt-6 p-3 bg-accent/10 border border-accent/20 rounded-lg text-xs text-primary font-medium flex items-start gap-2 italic">
+<span class="material-symbols-outlined text-base">info</span>
+    Los pagos se realizarán de forma automática al finalizar cada periodo una vez aceptado el método Premium.
+</div>
+</div>
+</div>
+</div>
+</div>
+<h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight pb-4 pt-8">Método de Pago</h3>
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="flex border-b border-slate-200 dark:border-slate-800">
+<button class="flex-1 flex flex-col items-center justify-center gap-1 border-b-2 border-primary text-primary pb-3 pt-3 font-bold text-sm bg-primary/5">
+<span class="flex gap-1 mb-1">
+<span class="material-symbols-outlined">credit_card</span>
+</span>
+    Tarjetas de Crédito/Débito
+</button>
+<button class="flex-1 flex flex-col items-center justify-center gap-1 border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-3 font-bold text-sm hover:bg-slate-50 dark:hover:bg-slate-800/50">
+<span class="flex gap-1 mb-1">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</span>
+    PayPal y Otros
+</button>
+</div>
+<div class="p-6 space-y-4"><div class="flex justify-center gap-3 mb-4 opacity-70">
+<img alt="Visa" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1xFm1hvKY7ojdg8lAA2pvFEZqVLq2IhncvwOo8nVIhSA6cfFi7fl-iQ2F2h7YcLfAbCVpO_nBrV1T6NBN5GhSfL3MSvZ6NVfT21PBxPz9Wt-Rycq8gk5NbD74Hb-WFGRXNWszo6gvjJJj-tAN195s3-X-joq-ViS6zt98cvXwmtRMrRdZKEzapEZphzpaDqQQhbuj4cmwYhMthHTD7HAXYm97o876-JPSZRLu2tct04hz_zcS2YoY26uWDyD63E-J5aRBfXBK4Akj"/>
+<img alt="Mastercard" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNqvNWwRWQv959IibXLBxHEszuDd49jeZyy4wCjzx2SrfSfLgQc8Gs6odGvQbhOtMynOMnKarEh5AkaHewZxOIC-rLwaTwEpk-I-kd5DMjq4-yquqE8Q1lz7hEnaGKSpR-Sjz3atxPPAEYlj74-h4DnOK1fz37-6mnVivukSK8sQDmLZtPcE9ylnt1EDzgjbdwDSwnvWpG5Sfz1EwX4XvbNK_iGUI_LUb2m_FHHfJpSoixK4K5DtKVnqXzJj63Oj7sx0sBkcTso_hC"/>
+<img alt="PayPal" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIYlMGkkbISKFblJK0-LaVVN6Dwkw60K8wAA3FObjsm044-OTcR17cTKi5R38ZlK-NgQWVEaYUKnpHLff42tcOP1Y2odiJU1yGIJiklOohV0AahEEL2CH78AJPidRtHGAftNd4Waen4xn_SlvvcvCQll2zKzHVzvhfBC-W1VumdzksA4He1LaEs2G7kVSfvS2brCk3BZG0H14_o0ychKDH1D9QBVlzzs0sJPG1-NGcOunYWd5PNH-6MoU8uk1jgypLTYCXtbsyCJCW"/>
+<img alt="AMEX" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwb_HI2TwqXoEylsIc_qmfB2qjkirjj7C0jG6lP1BTu3sSovjO62DpiITahAK817G7rg_ciQEuFndZcajtWK0nUDgJmW0V0l1l2X_1UVZQKptIdJ2RkKqD6rM-YJnOtKYlWpa5nclvteSIPWusUdmgwocKBXf5OljE2pydkmTCWCFJ1pkzpEQaq0I33eWmSfP7fXOqmSDiey-Ed1RsQXPgxezvb_xr9AOFXpf1zRcvDgJ7Oc2qax2hy7QDH5sJSnqJAhYyPBeO3Wth"/>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Nombre en la tarjeta</label>
+<input class="w-full rounded-lg border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:ring-primary focus:border-primary" placeholder="Como aparece en el plástico" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Número de tarjeta</label>
+<div class="relative">
+<input class="w-full rounded-lg border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:ring-primary focus:border-primary pr-10" placeholder="0000 0000 0000 0000" type="text"/>
+<span class="absolute right-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-400">lock</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1">
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Vencimiento</label>
+<input class="w-full rounded-lg border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:ring-primary focus:border-primary text-center" placeholder="MM/AA" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider">CVC</label>
+<input class="w-full rounded-lg border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:ring-primary focus:border-primary text-center" placeholder="123" type="text"/>
+</div>
+</div>
+<div class="pt-4">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg transition-colors flex items-center justify-center gap-2 bg-[#002147]" style="background-color: #002147;">
+                            Finalizar Suscripción
+                            <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+<div class="flex items-center justify-center gap-4 pt-4">
+<div class="h-[1px] flex-1 bg-slate-200 dark:bg-slate-800"></div>
+<p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Pago Encriptado SSL</p>
+<div class="h-[1px] flex-1 bg-slate-200 dark:bg-slate-800"></div>
+</div>
+</div>
+</div>
+<div class="mt-8 mb-12 flex items-start gap-3 p-4 bg-primary/5 rounded-lg border border-primary/10">
+<span class="material-symbols-outlined text-primary text-[#002147]">verified_user</span>
+<div>
+<p class="text-sm font-bold text-primary">Garantía de Seguridad y Cobro Automático</p>
+<p class="text-xs text-slate-600 dark:text-slate-400 mt-1">
+                        Sus datos están protegidos bajo los estándares de seguridad del Poder Judicial del Estado de Nuevo León. No almacenamos los datos de su tarjeta en nuestros servidores.
+                    </p>
+</div>
+</div>
+</div>
+<footer class="mt-auto py-8 bg-white dark:bg-background-dark border-t border-slate-200 dark:border-slate-800">
+<div class="max-w-3xl mx-auto px-4 text-center">
+<p class="text-xs text-slate-400 font-medium">© 2024 Poder Judicial del Estado de Nuevo León. Todos los derechos reservados.</p>
+<div class="mt-2 flex justify-center gap-4">
+<a class="text-xs text-primary hover:underline font-semibold" href="#" style="color: #002147;">Términos y Condiciones</a>
+<a class="text-xs text-primary hover:underline font-semibold" href="#" style="color: #002147;">Aviso de Privacidad</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

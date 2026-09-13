@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13", // Theme requires this, but I'll use Navy/Gold for UI as requested
+                        "navy-blue": "#1a2a44",
+                        "gold-accent": "#c5a059",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "Arial", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', Arial, sans-serif; }
+        .bg-navy-gradient { background: linear-gradient(135deg, #1a2a44 0%, #0f172a 100%); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto shadow-2xl">
+<!-- Header Section -->
+<header class="bg-navy-gradient p-4 pb-6 text-white sticky top-0 z-50">
+<div class="flex items-center justify-between mb-6">
+<button class="flex items-center justify-center p-2 rounded-lg hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="text-center">
+<h1 class="text-lg font-bold tracking-tight">LegalFlow</h1>
+<p class="text-[10px] uppercase tracking-widest text-gold-accent font-semibold">Judicial Excellence Tool</p>
+</div>
+<button class="flex items-center justify-center p-2 rounded-lg hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">info</span>
+</button>
+</div>
+<!-- Stepper -->
+<div class="px-2">
+<div class="flex items-center justify-between mb-3 text-[11px] font-bold uppercase tracking-wider text-slate-400">
+<span>Fase 1</span>
+<span>Fase 2</span>
+<span class="text-gold-accent">Fase 3: Valoración</span>
+<span>Fase 4</span>
+</div>
+<div class="flex w-full flex-row items-center justify-between gap-1">
+<div class="h-1 flex-1 rounded-full bg-gold-accent/40"></div>
+<div class="h-1 flex-1 rounded-full bg-gold-accent/40"></div>
+<div class="h-1.5 flex-1 rounded-full bg-gold-accent shadow-[0_0_8px_rgba(197,160,89,0.6)]"></div>
+<div class="h-1 flex-1 rounded-full bg-slate-700"></div>
+<div class="h-1 flex-1 rounded-full bg-slate-700"></div>
+</div>
+</div>
+</header>
+<main class="flex-1 p-4 space-y-6">
+<!-- Phase Title -->
+<section>
+<h2 class="text-navy-blue dark:text-gold-accent text-2xl font-bold leading-tight">Valoración de Pruebas</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Metodología de Razonamiento Probatorio</p>
+</section>
+<!-- 1. Selection of Reasoning Model -->
+<section class="space-y-3">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-navy-blue text-white text-[10px] font-bold px-2 py-0.5 rounded">1</span>
+<h3 class="text-navy-blue dark:text-slate-100 font-bold uppercase text-xs tracking-wider">Modelo de Razonamiento</h3>
+</div>
+<div class="space-y-2">
+<label class="flex items-center justify-between p-4 bg-white dark:bg-slate-800 border-2 border-gold-accent rounded-xl shadow-sm cursor-pointer">
+<div class="flex flex-col">
+<span class="font-bold text-navy-blue dark:text-slate-100">Razonamiento Probatorio</span>
+<span class="text-xs text-slate-500 italic">Estándares de Ferrer</span>
+</div>
+<span class="material-symbols-outlined text-gold-accent">check_circle</span>
+<input checked="" class="hidden" name="model" type="radio"/>
+</label>
+<label class="flex items-center justify-between p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm cursor-pointer opacity-70">
+<div class="flex flex-col">
+<span class="font-bold text-navy-blue dark:text-slate-100">Lógica y Máximas de Experiencia</span>
+<span class="text-xs text-slate-500 italic">Sana Crítica Tradicional</span>
+</div>
+<input class="hidden" name="model" type="radio"/>
+</label>
+<label class="flex items-center justify-between p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm cursor-pointer opacity-70">
+<div class="flex flex-col">
+<span class="font-bold text-navy-blue dark:text-slate-100">Psicología del Testimonio</span>
+<span class="text-xs text-slate-500 italic">Análisis de Credibilidad</span>
+</div>
+<input class="hidden" name="model" type="radio"/>
+</label>
+</div>
+</section>
+<!-- 2. Analysis Criteria -->
+<section class="space-y-3">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-navy-blue text-white text-[10px] font-bold px-2 py-0.5 rounded">2</span>
+<h3 class="text-navy-blue dark:text-slate-100 font-bold uppercase text-xs tracking-wider">Criterios de Análisis</h3>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg">
+<div class="flex items-center justify-between mb-1">
+<span class="text-[10px] font-bold text-slate-400 uppercase">Idoneidad</span>
+<span class="material-symbols-outlined text-navy-blue text-sm">verified_user</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full">
+<div class="h-1.5 bg-navy-blue rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<div class="p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg">
+<div class="flex items-center justify-between mb-1">
+<span class="text-[10px] font-bold text-slate-400 uppercase">Legalidad</span>
+<span class="material-symbols-outlined text-navy-blue text-sm">gavel</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full">
+<div class="h-1.5 bg-navy-blue rounded-full" style="width: 100%"></div>
+</div>
+</div>
+<div class="p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg">
+<div class="flex items-center justify-between mb-1">
+<span class="text-[10px] font-bold text-slate-400 uppercase">Objetividad</span>
+<span class="material-symbols-outlined text-navy-blue text-sm">visibility</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full">
+<div class="h-1.5 bg-navy-blue rounded-full" style="width: 70%"></div>
+</div>
+</div>
+<div class="p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg">
+<div class="flex items-center justify-between mb-1">
+<span class="text-[10px] font-bold text-slate-400 uppercase">Fiabilidad</span>
+<span class="material-symbols-outlined text-navy-blue text-sm">balance</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full">
+<div class="h-1.5 bg-navy-blue rounded-full" style="width: 90%"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Integration Section -->
+<section class="bg-gold-accent/10 border border-gold-accent/30 p-4 rounded-xl">
+<div class="flex items-center justify-between gap-4">
+<div class="flex-1">
+<h4 class="font-bold text-navy-blue dark:text-gold-accent text-sm">Resolución del Juzgador</h4>
+<p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Incorporar razonamientos de la audiencia oral automáticamente.</p>
+</div>
+<div class="relative inline-block w-12 h-6 transition duration-200 ease-in-out">
+<input checked="" class="absolute block w-6 h-6 rounded-full bg-white border-4 border-gold-accent appearance-none cursor-pointer checked:translate-x-6 transition-transform duration-200" id="toggle-reasoning" type="checkbox"/>
+<label class="block overflow-hidden h-6 rounded-full bg-gold-accent cursor-pointer" for="toggle-reasoning"></label>
+</div>
+</div>
+</section>
+<!-- 4. Scientific Standards -->
+<section class="space-y-3 pb-24">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-navy-blue text-white text-[10px] font-bold px-2 py-0.5 rounded">4</span>
+<h3 class="text-navy-blue dark:text-slate-100 font-bold uppercase text-xs tracking-wider">Estándares Científicos (Pericial)</h3>
+</div>
+<div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 shadow-sm">
+<div class="flex items-center gap-3 mb-4">
+<div class="p-2 bg-navy-blue/5 rounded-lg">
+<span class="material-symbols-outlined text-navy-blue">science</span>
+</div>
+<div>
+<p class="font-bold text-navy-blue dark:text-slate-100 text-sm">Criterios Daubert/Kumho</p>
+<p class="text-[10px] text-slate-500">Validación de prueba experta</p>
+</div>
+</div>
+<ul class="space-y-3">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-gold-accent text-lg">check_circle</span>
+<span class="text-xs text-slate-700 dark:text-slate-300 italic">Teoría o técnica puede ser (y ha sido) probada.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-gold-accent text-lg">check_circle</span>
+<span class="text-xs text-slate-700 dark:text-slate-300 italic">Sometida a revisión por pares y publicación.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-slate-300 text-lg">radio_button_unchecked</span>
+<span class="text-xs text-slate-400 italic">Tasa de error conocida o potencial.</span>
+</li>
+</ul>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-6 py-2 flex items-center justify-between z-50">
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">folder</span>
+<span class="text-[10px] font-medium">Expedientes</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-navy-blue dark:text-gold-accent" href="#">
+<span class="material-symbols-outlined fill-1">gavel</span>
+<span class="text-[10px] font-bold">Evaluación</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-[10px] font-medium">Dictámenes</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Ajustes</span>
+</a>
+</nav>
+<!-- Action Button -->
+<div class="fixed bottom-20 right-8 z-40">
+<button class="bg-navy-blue text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center border-2 border-gold-accent">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#000066",
+                "gold": "#D4AF37",
+                "background-light": "#f5f5f8",
+                "background-dark": "#0f0f23",
+              },
+              fontFamily: {
+                "display": ["Inter", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<title>Configuración LegalFlow</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full max-w-md mx-auto flex-col bg-white dark:bg-slate-900 shadow-2xl overflow-x-hidden border-x border-slate-200 dark:border-slate-800">
+<!-- Header Section -->
+<div class="flex items-center bg-white dark:bg-slate-900 p-4 pb-2 justify-between sticky top-0 z-10 border-b border-slate-100 dark:border-slate-800">
+<div class="text-primary dark:text-slate-100 flex size-10 shrink-0 items-center justify-center cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-primary dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-10">Configuración LegalFlow</h2>
+</div>
+<!-- Progress Section -->
+<div class="flex flex-col gap-3 p-6 bg-slate-50 dark:bg-slate-800/50">
+<div class="flex gap-6 justify-between items-end">
+<div>
+<p class="text-primary/60 dark:text-slate-400 text-xs font-bold uppercase tracking-widest">Estado del Setup</p>
+<p class="text-primary dark:text-slate-100 text-lg font-bold leading-none mt-1">Progreso del Lanzamiento</p>
+</div>
+<p class="text-primary dark:text-gold text-sm font-bold leading-normal bg-primary/10 dark:bg-gold/10 px-2 py-1 rounded">3 de 4 completados</p>
+</div>
+<div class="rounded-full bg-slate-200 dark:bg-slate-700 h-3 overflow-hidden">
+<div class="h-full rounded-full bg-primary dark:bg-gold transition-all duration-500" style="width: 75%;"></div>
+</div>
+</div>
+<!-- Main Title -->
+<div class="px-6 pt-8 pb-4">
+<h1 class="text-slate-900 dark:text-slate-100 tracking-tight text-3xl font-extrabold leading-tight">Pasos Finales para el Lanzamiento</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-2 text-sm leading-relaxed">Completa los siguientes requisitos para activar tu despacho digital y empezar a recibir pagos.</p>
+</div>
+<!-- Checklist Section -->
+<div class="px-6 space-y-2">
+<!-- Item 1 -->
+<label class="flex items-start gap-x-4 py-4 px-4 rounded-xl border border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group cursor-pointer">
+<div class="relative flex items-center pt-0.5">
+<input class="h-6 w-6 rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-primary dark:focus:ring-gold bg-transparent checked:bg-primary dark:checked:bg-gold cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-slate-900 dark:text-slate-100 text-base font-semibold leading-tight">Vincular cuenta de Mercado Pago</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Necesario para recibir tus honorarios ($60 MXN por consulta).</p>
+<button class="mt-3 inline-flex items-center justify-center gap-2 px-4 py-2 bg-primary text-white text-sm font-bold rounded-lg hover:opacity-90 transition-opacity w-fit shadow-md">
+<span class="material-symbols-outlined text-sm">account_balance_wallet</span>
+                        Conectar Mercado Pago
+                    </button>
+</div>
+</label>
+<!-- Item 2 -->
+<label class="flex items-start gap-x-4 py-4 px-4 rounded-xl border border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer">
+<div class="relative flex items-center pt-0.5">
+<input class="h-6 w-6 rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-primary dark:focus:ring-gold bg-transparent checked:bg-primary dark:checked:bg-gold cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-slate-900 dark:text-slate-100 text-base font-semibold leading-tight">Configurar dominio web</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Personaliza tu dirección (p. ej. www.legalflow.mx)</p>
+</div>
+</label>
+<!-- Item 3 -->
+<label class="flex items-start gap-x-4 py-4 px-4 rounded-xl border border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer">
+<div class="relative flex items-center pt-0.5">
+<input class="h-6 w-6 rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-primary dark:focus:ring-gold bg-transparent checked:bg-primary dark:checked:bg-gold cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-slate-900 dark:text-slate-100 text-base font-semibold leading-tight">Activar el Motor GPT</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Configura tu agente inteligente personalizado.</p>
+</div>
+</label>
+<!-- Item 4 -->
+<label class="flex items-start gap-x-4 py-4 px-4 rounded-xl border-2 border-primary/20 dark:border-gold/20 bg-primary/5 dark:bg-gold/5 hover:bg-primary/10 dark:hover:bg-gold/10 transition-colors cursor-pointer">
+<div class="relative flex items-center pt-0.5">
+<input class="h-6 w-6 rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-primary dark:focus:ring-gold bg-transparent checked:bg-primary dark:checked:bg-gold cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-primary dark:text-gold text-base font-bold leading-tight">Publicar App</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Haz que tu despacho sea visible para todo el mundo.</p>
+</div>
+</label>
+</div>
+<!-- Action Button -->
+<div class="p-6 mt-4">
+<button class="w-full bg-primary dark:bg-gold text-white dark:text-primary py-4 rounded-xl font-bold text-lg shadow-xl shadow-primary/20 dark:shadow-gold/10 flex items-center justify-center gap-2 hover:translate-y-[-2px] transition-all active:translate-y-[0px]">
+<span class="material-symbols-outlined">rocket_launch</span>
+                Publicar Ahora
+            </button>
+<p class="text-center text-slate-400 text-xs mt-4">Al publicar aceptas nuestros términos y condiciones de servicio.</p>
+</div>
+<div class="flex-1"></div>
+<!-- Bottom Navigation Bar -->
+<div class="sticky bottom-0 w-full flex gap-2 border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur px-4 pb-6 pt-2">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 hover:text-primary dark:hover:text-gold transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Inicio</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 hover:text-primary dark:hover:text-gold transition-colors" href="#">
+<span class="material-symbols-outlined">work</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Expedientes</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 hover:text-primary dark:hover:text-gold transition-colors" href="#">
+<span class="material-symbols-outlined">smart_toy</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">GPT</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary dark:text-gold font-bold" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Ajustes</p>
+</a>
+</div>
+</div>
+</body></html>

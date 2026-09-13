@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,FILL@0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#d4af37", // Gold
+              "navy-deep": "#0a192f",
+              "navy-muted": "#112240",
+              "background-light": "#f8f9fa",
+              "background-dark": "#0a192f",
+            },
+            fontFamily: {
+              "display": ["Public Sans", "sans-serif"],
+              "legal": ["Arial", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .text-preview-area {
+            font-family: Arial, sans-serif;
+            font-size: 12pt;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<header class="flex items-center bg-navy-deep p-4 border-b border-primary/20 sticky top-0 z-10">
+<div class="text-primary flex size-10 shrink-0 items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<div class="flex-1 ml-2">
+<p class="text-primary/70 text-xs font-semibold uppercase tracking-wider">Procedimiento Penal</p>
+<h2 class="text-white text-lg font-bold leading-tight tracking-tight">Fase 4: Acreditación del Delito</h2>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-primary hover:bg-primary/10 p-2 rounded-lg transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</div>
+</header>
+<main class="flex-1 max-w-4xl mx-auto w-full p-4 md:p-8">
+<section class="bg-white dark:bg-navy-muted rounded-xl shadow-sm border border-slate-200 dark:border-primary/10 p-6 mb-6">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary">gavel</span>
+<h2 class="text-xl font-bold tracking-tight text-navy-deep dark:text-white">Lineamientos de Usuario</h2>
+</div>
+<p class="text-slate-600 dark:text-slate-300 text-sm mb-6 leading-relaxed">
+                    Especifique las instrucciones detalladas para el motor de inteligencia artificial. Puede definir el tono de redacción, la estructura de los argumentos o el tratamiento de información omitida en el expediente.
+                </p>
+<div class="space-y-6">
+<div>
+<label class="block text-sm font-semibold mb-2 text-navy-deep dark:text-primary/90">Instrucciones de Redacción</label>
+<textarea class="w-full min-h-[180px] p-4 rounded-xl border border-slate-300 dark:border-primary/20 bg-slate-50 dark:bg-navy-deep text-slate-800 dark:text-slate-100 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none text-preview-area transition-all" placeholder="Ejemplo: Utilizar un tono formal y técnico. En caso de detectar lagunas en la línea de tiempo, señalar explícitamente la falta de acreditación de la flagrancia..."></textarea>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 bg-primary/5 dark:bg-primary/10 rounded-xl border border-primary/10">
+<div class="flex flex-col">
+<span class="font-semibold text-sm text-navy-deep dark:text-white">IA Logic: Completar Detalles Omitidos</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Permite a la IA sugerir argumentos basados en jurisprudencia cuando falten datos.</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer dark:bg-navy-deep peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 bg-primary hover:bg-primary/90 text-navy-deep font-bold py-3 px-6 rounded-xl transition-all flex items-center justify-center gap-2 shadow-md">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+                            Aplicar Lineamientos
+                        </button>
+<button class="bg-slate-200 dark:bg-navy-deep hover:bg-slate-300 dark:hover:bg-navy-muted text-navy-deep dark:text-white font-semibold py-3 px-6 rounded-xl transition-all">
+                            Restablecer
+                        </button>
+</div>
+</div>
+</section>
+<section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="p-4 border border-slate-200 dark:border-primary/10 rounded-xl bg-white dark:bg-navy-muted">
+<h3 class="text-primary text-xs font-bold uppercase mb-2">Previsualización de Estilo</h3>
+<p class="text-preview-area text-slate-500 dark:text-slate-400 italic">
+                        "De conformidad con lo establecido en el Artículo 16 constitucional, se procede a la debida acreditación de los elementos..."
+                    </p>
+</div>
+<div class="p-4 border border-slate-200 dark:border-primary/10 rounded-xl bg-white dark:bg-navy-muted">
+<h3 class="text-primary text-xs font-bold uppercase mb-2">Estado del Procesamiento</h3>
+<div class="flex items-center gap-2">
+<div class="h-2 flex-1 bg-slate-200 dark:bg-navy-deep rounded-full overflow-hidden">
+<div class="h-full bg-primary w-3/4"></div>
+</div>
+<span class="text-xs font-bold">75%</span>
+</div>
+</div>
+</section>
+</main>
+<nav class="sticky bottom-0 w-full border-t border-slate-200 dark:border-primary/20 bg-white dark:bg-navy-deep px-4 pb-4 pt-2 shadow-2xl z-20">
+<div class="flex max-w-lg mx-auto gap-1">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">folder</span>
+<p class="text-[10px] font-medium">Expedientes</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+<p class="text-[10px] font-medium">Procesos</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">history</span>
+<p class="text-[10px] font-medium">Historial</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-[10px] font-medium">Ajustes</p>
+</a>
+</div>
+</nav>
+</div>
+</body></html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>PJENL - Dashboard de Prueba</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col max-w-md mx-auto bg-white dark:bg-background-dark shadow-xl overflow-x-hidden">
+<!-- Header -->
+<header class="flex items-center bg-white dark:bg-background-dark p-4 border-b border-slate-100 dark:border-slate-800 justify-between sticky top-0 z-10">
+<div class="text-primary flex size-10 items-center justify-center">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 ml-4">PJENL</h2>
+<div class="flex items-center gap-2 bg-primary/10 px-3 py-1 rounded-full">
+<span class="material-symbols-outlined text-primary text-sm">confirmation_number</span>
+<span class="text-primary text-xs font-bold uppercase tracking-wider">Pruebas: 1</span>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto">
+<!-- Hero Message -->
+<div class="px-4 pt-6 pb-4">
+<h3 class="text-slate-900 dark:text-white tracking-tight text-2xl font-bold leading-tight">Bienvenido a tu prueba gratuita</h3>
+<p class="text-slate-600 dark:text-slate-400 text-base font-normal leading-normal mt-2">
+                    Estás usando tu única prueba gratuita. Aprovecha al máximo el flujo completo de nuestra plataforma de transcripción jurídica.
+                </p>
+</div>
+<!-- Warning/Info Banner -->
+<div class="mx-4 mb-6 p-4 bg-primary/5 border-l-4 border-primary rounded-r-lg flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">info</span>
+<p class="text-sm text-slate-700 dark:text-slate-300">
+                    Aprovecha al máximo el flujo completo. Una vez iniciado, no podrá reiniciarse.
+                </p>
+</div>
+<!-- Progress Tracker -->
+<div class="px-4 py-4">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] mb-6">Progreso del Proceso</h3>
+<div class="relative">
+<!-- Steps -->
+<div class="flex flex-col gap-8 relative">
+<!-- Step 1 -->
+<div class="flex items-center gap-4 relative z-10">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary text-white font-bold">
+                                1
+                            </div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-white font-semibold">Subir Video</p>
+<p class="text-slate-500 text-xs">Carga el archivo de la audiencia</p>
+</div>
+<span class="material-symbols-outlined ml-auto text-slate-300">pending</span>
+</div>
+<!-- Line 1-2 -->
+<div class="absolute left-5 top-10 w-0.5 h-8 bg-slate-200 dark:bg-slate-700"></div>
+<!-- Step 2 -->
+<div class="flex items-center gap-4 relative z-10">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400 font-bold border-2 border-dashed border-slate-300">
+                                2
+                            </div>
+<div class="flex flex-col">
+<p class="text-slate-400 dark:text-slate-500 font-semibold">Descargar Transcripción</p>
+<p class="text-slate-400 text-xs">Revisión de texto procesado</p>
+</div>
+<span class="material-symbols-outlined ml-auto text-slate-300">lock</span>
+</div>
+<!-- Line 2-3 -->
+<div class="absolute left-5 top-[110px] w-0.5 h-8 bg-slate-200 dark:bg-slate-700"></div>
+<!-- Step 3 -->
+<div class="flex items-center gap-4 relative z-10">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400 font-bold border-2 border-dashed border-slate-300">
+                                3
+                            </div>
+<div class="flex flex-col">
+<p class="text-slate-400 dark:text-slate-500 font-semibold">Generar Sentencia</p>
+<p class="text-slate-400 text-xs">Resumen inteligente de IA</p>
+</div>
+<span class="material-symbols-outlined ml-auto text-slate-300">lock</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="p-4 mt-8">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 transition-all active:scale-95">
+<span class="material-symbols-outlined">play_circle</span>
+                    Iniciar Proceso
+                </button>
+</div>
+<!-- Visual Support/Placeholder -->
+<div class="px-4 py-8">
+<div class="w-full aspect-video rounded-xl bg-slate-100 dark:bg-slate-800 flex flex-col items-center justify-center text-slate-400 gap-2 border-2 border-dashed border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined text-4xl">cloud_upload</span>
+<p class="text-sm">Previsualización de carga de video</p>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="flex gap-2 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-background-dark px-4 pb-6 pt-2">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined fill-1">home</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Inicio</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500 dark:text-slate-400" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">history</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Historial</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500 dark:text-slate-400" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Planes</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500 dark:text-slate-400" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">settings</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Ajustes</p>
+</a>
+</nav>
+</div>
+</body></html>

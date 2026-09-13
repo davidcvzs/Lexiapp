@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Configuración de Valoración de Pruebas - PJENL</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"],
+                        "arial-preview": ["Arial", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .preview-text { font-family: Arial, sans-serif; font-size: 12pt; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Header / Navigation -->
+<header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-10">
+<div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">gavel</span>
+<h1 class="text-lg font-bold tracking-tight">PJENL | Sistema de Valoración</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-sm font-medium text-slate-500">Expediente: 1234/2023</span>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-4xl w-full mx-auto p-4 md:p-6 space-y-8 pb-24">
+<!-- Header Title Section -->
+<div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+<h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200 leading-tight">Valoración de Pruebas</h2>
+<p class="text-slate-500 text-sm mt-1">Configure los parámetros técnicos y metodológicos para el análisis probatorio.</p>
+</div>
+<!-- 1. Método de Valoración -->
+<section class="space-y-4">
+<div class="flex items-center gap-2">
+<span class="bg-primary/10 text-primary w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold">1</span>
+<h3 class="text-lg font-semibold">Método de Valoración</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+<label class="relative flex flex-col p-4 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-xl cursor-pointer hover:border-primary/50 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+<input checked="" class="sr-only" name="metodo_valoracion" type="radio"/>
+<span class="text-sm font-bold mb-1">Individual</span>
+<span class="text-xs text-slate-500 leading-relaxed">Análisis pormenorizado de cada elemento probatorio de forma aislada.</span>
+</label>
+<label class="relative flex flex-col p-4 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-xl cursor-pointer hover:border-primary/50 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+<input class="sr-only" name="metodo_valoracion" type="radio"/>
+<span class="text-sm font-bold mb-1">En Conjunto</span>
+<span class="text-xs text-slate-500 leading-relaxed">Estudio integral y sistémico de todo el acervo probatorio disponible.</span>
+</label>
+<label class="relative flex flex-col p-4 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-xl cursor-pointer hover:border-primary/50 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+<input class="sr-only" name="metodo_valoracion" type="radio"/>
+<span class="text-sm font-bold mb-1">Enlazada</span>
+<span class="text-xs text-slate-500 leading-relaxed">Conectividad lógica y cronológica entre los distintos medios de prueba.</span>
+</label>
+</div>
+</section>
+<!-- 2. Criterios Específicos -->
+<section class="space-y-6">
+<div class="flex items-center gap-2">
+<span class="bg-primary/10 text-primary w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold">2</span>
+<h3 class="text-lg font-semibold">Criterios Específicos Aplicables al Caso</h3>
+</div>
+<!-- Prueba Circunstancial -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+<div class="p-4 flex items-center justify-between border-b border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<input class="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary" id="circunstancial" type="checkbox"/>
+<label class="font-bold text-slate-800 dark:text-slate-200" for="circunstancial">Prueba Circunstancial (Indiciaria)</label>
+</div>
+</div>
+<div class="p-5 space-y-4">
+<div class="grid grid-cols-1 gap-4">
+<div>
+<label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Hechos Conocidos (Indicios)</label>
+<textarea class="w-full rounded-lg border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:border-primary focus:ring-0 min-h-[80px] preview-text" placeholder="Describa los hechos plenamente acreditados..."></textarea>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Nexo Lógico</label>
+<textarea class="w-full rounded-lg border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:border-primary focus:ring-0 min-h-[80px] preview-text" placeholder="Explicación de la inferencia lógica..."></textarea>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Conclusión</label>
+<textarea class="w-full rounded-lg border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:border-primary focus:ring-0 min-h-[80px] preview-text" placeholder="Hecho desconocido que se deduce..."></textarea>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Psicología del Testimonio -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+<div class="p-4 flex items-center justify-between border-b border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<input class="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary" id="psicologia" type="checkbox"/>
+<label class="font-bold text-slate-800 dark:text-slate-200" for="psicologia">Psicología del Testimonio</label>
+</div>
+</div>
+<div class="p-5 space-y-4">
+<p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Indicadores de Credibilidad</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<label class="flex items-center gap-3 p-3 rounded-lg border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/50">
+<input class="rounded text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm font-medium">Ausencia de incredibilidad subjetiva</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-lg border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/50">
+<input class="rounded text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm font-medium">Verosimilitud (Coherencia)</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-lg border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/50">
+<input class="rounded text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm font-medium">Persistencia en la incriminación</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Conocimientos Científicos Afianzados -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+<div class="p-4 flex items-center justify-between border-b border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<input class="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary" id="cientifico" type="checkbox"/>
+<label class="font-bold text-slate-800 dark:text-slate-200" for="cientifico">Conocimientos Científicos Afianzados</label>
+</div>
+</div>
+<div class="p-5">
+<div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-lg border-l-4 border-slate-300 dark:border-slate-600 mb-4">
+<p class="text-xs font-bold text-slate-600 dark:text-slate-400 mb-1">ESTÁNDARES DAUBERT / KUMHO</p>
+<p class="text-xs text-slate-500 italic">Evaluación de la fiabilidad técnica de la prueba pericial basándose en el control de calidad, revisión por pares y tasa de error.</p>
+</div>
+<textarea class="w-full rounded-lg border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:border-primary focus:ring-0 min-h-[100px] preview-text" placeholder="Justificación técnica de la validez científica aplicada..."></textarea>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-4 pb-4 pt-2 shadow-lg z-20">
+<div class="max-w-4xl mx-auto flex items-center justify-between gap-4">
+<div class="flex gap-4">
+<a class="flex flex-col items-center justify-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined text-[24px] fill-current">gavel</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Casos</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Ajustes</span>
+</a>
+</div>
+<button class="bg-primary text-white px-8 py-2.5 rounded-lg font-bold text-sm flex items-center gap-2 hover:bg-primary/90 shadow-md">
+                Guardar Configuración
+                <span class="material-symbols-outlined text-sm">save</span>
+</button>
+</div>
+</nav>
+</body></html>

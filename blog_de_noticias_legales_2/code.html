@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#b59410", /* Gold */
+                        "navy": "#0a192f",    /* Navy Blue */
+                        "navy-light": "#112240",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#0a192f",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"],
+                        "body": ["Arial", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .text-body-size { font-size: 12px; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<!-- Header Section -->
+<header class="sticky top-0 z-50 bg-navy dark:bg-navy border-b border-primary/20">
+<div class="flex items-center p-4 justify-between max-w-4xl mx-auto">
+<div class="text-primary flex size-10 shrink-0 items-center">
+<span class="material-symbols-outlined text-3xl">balance</span>
+</div>
+<h1 class="text-white text-xl font-bold leading-tight tracking-tight flex-1 ml-3 uppercase">LegalFlow Blog</h1>
+<div class="flex items-center gap-4">
+<button class="text-white hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-white hover:text-primary transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<main class="max-w-4xl mx-auto pb-24">
+<!-- Search Bar -->
+<div class="px-4 py-6">
+<label class="flex flex-col w-full group">
+<div class="flex w-full items-stretch rounded-xl h-12 border border-slate-200 dark:border-navy-light bg-white dark:bg-navy-light shadow-sm group-focus-within:ring-2 ring-primary/50 transition-all">
+<div class="text-slate-400 dark:text-slate-500 flex items-center justify-center pl-4">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input w-full border-none bg-transparent focus:ring-0 text-base font-normal placeholder:text-slate-400 dark:placeholder:text-slate-500" placeholder="Buscar jurisprudencia, tesis o reformas..." value=""/>
+</div>
+</label>
+</div>
+<!-- Categories horizontal scroll -->
+<div class="flex gap-3 px-4 pb-6 overflow-x-auto no-scrollbar">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-navy text-white px-4 text-sm font-semibold hover:bg-navy/90 transition-colors border border-primary/30">
+                Tesis SCJN
+            </button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-navy-light text-navy dark:text-slate-200 px-4 text-sm font-medium border border-slate-200 dark:border-navy-light hover:border-primary transition-colors">
+                Reformas PJENL
+            </button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-navy-light text-navy dark:text-slate-200 px-4 text-sm font-medium border border-slate-200 dark:border-navy-light hover:border-primary transition-colors">
+                Derecho Penal
+            </button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-navy-light text-navy dark:text-slate-200 px-4 text-sm font-medium border border-slate-200 dark:border-navy-light hover:border-primary transition-colors">
+                Jurisprudencia Internacional
+            </button>
+</div>
+<!-- Section Title -->
+<div class="px-4 mb-4 flex items-center justify-between">
+<h2 class="text-navy dark:text-slate-100 text-lg font-bold uppercase tracking-wider">Últimas Publicaciones</h2>
+<span class="h-px flex-1 bg-slate-200 dark:bg-navy-light ml-4"></span>
+</div>
+<!-- News Feed -->
+<div class="space-y-4 px-4">
+<!-- Article 1 -->
+<article class="bg-white dark:bg-navy-light rounded-xl overflow-hidden shadow-sm border border-slate-100 dark:border-navy-light hover:border-primary/50 transition-all">
+<div class="p-5">
+<div class="flex items-center gap-2 mb-2">
+<span class="text-[10px] font-bold uppercase tracking-widest text-primary bg-primary/10 px-2 py-0.5 rounded">Tesis SCJN</span>
+<span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">24 OCT 2023</span>
+</div>
+<h3 class="text-navy dark:text-white text-lg font-bold leading-snug mb-2 group-hover:text-primary transition-colors">
+                        Contradicción de Tesis 124/2023: Interpretación del Artículo 14 Constitucional
+                    </h3>
+<p class="font-body text-body-size text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-3 mb-4">
+                        La Suprema Corte de Justicia de la Nación establece nuevos criterios sobre la retroactividad de la ley en perjuicio de persona alguna, definiendo los alcances procesales en materia administrativa y civil bajo los estándares internacionales de derechos humanos.
+                    </p>
+<a class="inline-flex items-center text-primary text-xs font-bold uppercase tracking-tighter hover:gap-2 transition-all" href="#">
+                        Leer análisis completo <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Article 2 -->
+<article class="bg-white dark:bg-navy-light rounded-xl overflow-hidden shadow-sm border border-slate-100 dark:border-navy-light hover:border-primary/50 transition-all">
+<div class="p-5">
+<div class="flex items-center gap-2 mb-2">
+<span class="text-[10px] font-bold uppercase tracking-widest text-primary bg-primary/10 px-2 py-0.5 rounded">Reformas PJENL</span>
+<span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">22 OCT 2023</span>
+</div>
+<h3 class="text-navy dark:text-white text-lg font-bold leading-snug mb-2">
+                        Nuevas disposiciones en la Ley Orgánica del Poder Judicial de Nuevo León
+                    </h3>
+<p class="font-body text-body-size text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-3 mb-4">
+                        Se publican las modificaciones referentes a la digitalización de expedientes y el uso de la firma electrónica avanzada en procesos locales, buscando agilizar la carga procesal en los juzgados de lo civil y mercantil del estado.
+                    </p>
+<a class="inline-flex items-center text-primary text-xs font-bold uppercase tracking-tighter hover:gap-2 transition-all" href="#">
+                        Leer análisis completo <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Article 3 -->
+<article class="bg-white dark:bg-navy-light rounded-xl overflow-hidden shadow-sm border border-slate-100 dark:border-navy-light hover:border-primary/50 transition-all">
+<div class="p-5">
+<div class="flex items-center gap-2 mb-2">
+<span class="text-[10px] font-bold uppercase tracking-widest text-primary bg-primary/10 px-2 py-0.5 rounded">Jurisprudencia Internacional</span>
+<span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">20 OCT 2023</span>
+</div>
+<h3 class="text-navy dark:text-white text-lg font-bold leading-snug mb-2">
+                        Corte IDH: Sentencia sobre el Derecho a la Libertad de Expresión en Entornos Digitales
+                    </h3>
+<p class="font-body text-body-size text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-3 mb-4">
+                        Un análisis detallado sobre el reciente fallo que redefine la protección de periodistas y defensores de derechos humanos frente a las leyes de difamación criminal, estableciendo un precedente para todo el continente americano.
+                    </p>
+<a class="inline-flex items-center text-primary text-xs font-bold uppercase tracking-tighter hover:gap-2 transition-all" href="#">
+                        Leer análisis completo <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Article 4 -->
+<article class="bg-white dark:bg-navy-light rounded-xl overflow-hidden shadow-sm border border-slate-100 dark:border-navy-light hover:border-primary/50 transition-all">
+<div class="p-5">
+<div class="flex items-center gap-2 mb-2">
+<span class="text-[10px] font-bold uppercase tracking-widest text-primary bg-primary/10 px-2 py-0.5 rounded">Derecho Penal</span>
+<span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">18 OCT 2023</span>
+</div>
+<h3 class="text-navy dark:text-white text-lg font-bold leading-snug mb-2">
+                        Evolución del Sistema Penal Acusatorio: Retos en la Etapa Intermedia
+                    </h3>
+<p class="font-body text-body-size text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-3 mb-4">
+                        Expertos debaten sobre la exclusión de pruebas ilícitas y la importancia de la depuración procesal para garantizar juicios orales justos y expeditos en el marco de la legislación vigente.
+                    </p>
+<a class="inline-flex items-center text-primary text-xs font-bold uppercase tracking-tighter hover:gap-2 transition-all" href="#">
+                        Leer análisis completo <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+</a>
+</div>
+</article>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-navy border-t border-primary/20 safe-area-pb">
+<div class="flex gap-2 px-4 pb-3 pt-2 max-w-4xl mx-auto">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<p class="text-[10px] font-medium leading-normal uppercase tracking-wider">Inicio</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">description</span>
+<p class="text-[10px] font-medium leading-normal uppercase tracking-wider">Expedientes</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">news</span>
+<p class="text-[10px] font-bold leading-normal uppercase tracking-wider">Noticias</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<p class="text-[10px] font-medium leading-normal uppercase tracking-wider">Perfil</p>
+</a>
+</div>
+</nav>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .safe-area-pb {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+    </style>
+</body></html>

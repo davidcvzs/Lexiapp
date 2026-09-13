@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000066",
+                        "accent": "#D4AF37",
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0f0f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .step-gradient {
+            background: linear-gradient(135deg, #000066 0%, #000044 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header -->
+<header class="sticky top-0 z-50 flex items-center bg-white dark:bg-background-dark border-b border-slate-200 dark:border-slate-800 p-4 justify-between">
+<button class="text-primary dark:text-slate-100 flex size-10 items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h2 class="text-primary dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-10">Guía de Inicio</h2>
+</header>
+<main class="flex-1 max-w-2xl mx-auto w-full">
+<!-- Progress Section -->
+<section class="flex flex-col gap-4 p-6 mt-2 bg-white dark:bg-slate-900/50 rounded-xl mx-4 shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-primary dark:text-accent text-sm font-semibold uppercase tracking-wider">Estado Actual</p>
+<p class="text-slate-900 dark:text-slate-100 text-xl font-bold">Progreso de Configuración</p>
+</div>
+<p class="text-primary dark:text-accent text-2xl font-bold leading-none">25%</p>
+</div>
+<div class="w-full bg-slate-200 dark:bg-slate-800 h-3 rounded-full overflow-hidden">
+<div class="h-full bg-primary dark:bg-accent rounded-full w-1/4 transition-all duration-500"></div>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Paso 1 de 4 completado</p>
+</section>
+<!-- Welcome Message -->
+<div class="px-6 pt-8 pb-4">
+<h1 class="text-slate-900 dark:text-slate-100 text-3xl font-bold tracking-tight">Bienvenido a LegalFlow</h1>
+<div class="h-1 w-12 bg-accent mt-2 mb-4"></div>
+<p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed">
+                    Siga estos pasos para procesar su material probatorio bajo los más altos estándares técnicos y metodológicos.
+                </p>
+</div>
+<!-- Steps Grid -->
+<div class="flex flex-col gap-4 p-4 pb-24">
+<!-- Step 1 -->
+<div class="group flex gap-4 p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary/30 transition-all shadow-sm">
+<div class="flex flex-col items-center">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary text-white shadow-lg">
+<span class="material-symbols-outlined">cloud_upload</span>
+</div>
+<div class="w-0.5 h-full bg-slate-200 dark:bg-slate-800 mt-2"></div>
+</div>
+<div class="flex flex-col gap-1 pb-4">
+<h4 class="text-primary dark:text-accent font-bold text-lg">1. Cargar Videos</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-normal">
+                            Soporte para audiencias multidía de hasta <span class="font-semibold">650 minutos</span>. Arrastre sus archivos MP4, AVI o MKV.
+                        </p>
+<div class="mt-3">
+<button class="px-4 py-2 bg-primary/10 text-primary dark:text-slate-200 dark:bg-primary/30 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-all">
+                                Configurar Carga
+                            </button>
+</div>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="group flex gap-4 p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary/30 transition-all shadow-sm">
+<div class="flex flex-col items-center">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div class="w-0.5 h-full bg-slate-200 dark:bg-slate-800 mt-2"></div>
+</div>
+<div class="flex flex-col gap-1 pb-4">
+<h4 class="text-slate-900 dark:text-slate-100 font-bold text-lg">2. Transcribir</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-normal">
+                            Procesamiento inteligente de audio con identificación de locutores y marcas temporales automáticas.
+                        </p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="group flex gap-4 p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary/30 transition-all shadow-sm">
+<div class="flex flex-col items-center">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400">
+<span class="material-symbols-outlined">gavel</span>
+</div>
+<div class="w-0.5 h-full bg-slate-200 dark:bg-slate-800 mt-2"></div>
+</div>
+<div class="flex flex-col gap-1 pb-4">
+<h4 class="text-slate-900 dark:text-slate-100 font-bold text-lg">3. Configurar Valoración</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-normal">
+                            Ajuste criterios de <span class="text-primary dark:text-accent font-medium">Estándares Daubert</span> y análisis de <span class="text-primary dark:text-accent font-medium">Psicología del Testimonio</span>.
+                        </p>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="group flex gap-4 p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary/30 transition-all shadow-sm">
+<div class="flex flex-col items-center">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400">
+<span class="material-symbols-outlined">article</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="text-slate-900 dark:text-slate-100 font-bold text-lg">4. Generar Word</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-normal">
+                            Exportación automática en formato profesional: <span class="font-medium">Arial 12, interlineado 1.5</span> y metadatos críticos resaltados en rojo.
+                        </p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark px-4 pb-6 pt-3">
+<div class="max-w-md mx-auto flex justify-around">
+<a class="flex flex-1 flex-col items-center gap-1 text-slate-400 hover:text-primary dark:hover:text-accent" href="#">
+<span class="material-symbols-outlined">home</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">Inicio</p>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 text-slate-400 hover:text-primary dark:hover:text-accent" href="#">
+<span class="material-symbols-outlined">folder</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">Casos</p>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 text-primary dark:text-accent" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">play_circle</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">Guía</p>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 text-slate-400 hover:text-primary dark:hover:text-accent" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">Ajustes</p>
+</a>
+</div>
+</nav>
+</div>
+</body></html>

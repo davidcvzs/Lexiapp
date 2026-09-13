@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000066", // Navy Blue
+                        "accent": "#C5A059",  // Gold
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0f0f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Arial", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<title>LegalFlow | Centro de Mando Progresivo</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex min-h-screen w-full flex-col max-w-4xl mx-auto shadow-2xl bg-white dark:bg-slate-900">
+<!-- Header -->
+<header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 p-6 bg-primary text-white">
+<div class="flex items-center gap-4">
+<div class="bg-accent p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl">balance</span>
+</div>
+<div>
+<h1 class="text-2xl font-bold tracking-tight">LegalFlow</h1>
+<p class="text-xs uppercase tracking-widest text-accent font-semibold">Centro de Mando Progresivo</p>
+</div>
+</div>
+<div class="hidden md:flex flex-col items-end">
+<span class="text-sm font-medium">Expediente: #LF-2024-0892</span>
+<span class="text-xs text-slate-300">Última actualización: Hace 12 min</span>
+</div>
+</header>
+<!-- Overall Progress Section -->
+<section class="p-6 bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h2 class="text-lg font-bold text-primary dark:text-accent">Progreso Procesal General</h2>
+<span class="px-3 py-1 bg-primary/10 text-primary dark:bg-primary/30 dark:text-white rounded-full text-sm font-bold border border-primary/20">3 / 8 Fases</span>
+</div>
+<div class="relative w-full h-4 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="absolute top-0 left-0 h-full bg-gradient-to-r from-primary to-accent" style="width: 37.5%;"></div>
+</div>
+<div class="flex justify-between items-center">
+<p class="text-sm font-medium text-slate-600 dark:text-slate-400">
+                        Estado: <span class="text-primary dark:text-accent font-bold">Fase de Valoración en Curso</span>
+</p>
+<button class="text-xs font-bold text-primary hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">download</span> Descargar Reporte PDF
+                    </button>
+</div>
+</div>
+</section>
+<!-- Timeline / Process List -->
+<main class="flex-1 p-6">
+<h3 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-8 flex items-center gap-2">
+<span class="material-symbols-outlined">account_tree</span>
+                Fases del Proceso Jurídico
+            </h3>
+<div class="space-y-0">
+<!-- Step 1 -->
+<div class="flex gap-6 group">
+<div class="flex flex-col items-center">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-accent border-2 border-accent">
+<span class="material-symbols-outlined text-xl">check_circle</span>
+</div>
+<div class="h-full w-0.5 bg-primary/30 my-1"></div>
+</div>
+<div class="flex-1 pb-10">
+<div class="flex flex-wrap items-start justify-between gap-4 p-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
+<div class="space-y-1">
+<h4 class="text-lg font-bold text-primary dark:text-white">1. Transcripción de Audiencia</h4>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                                    Completado
+                                </span>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 text-sm font-bold border border-slate-300 dark:border-slate-600 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 transition-colors">
+<span class="material-symbols-outlined">visibility</span> Ver Archivo
+                            </button>
+</div>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex gap-6">
+<div class="flex flex-col items-center">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-accent border-2 border-accent">
+<span class="material-symbols-outlined text-xl">check_circle</span>
+</div>
+<div class="h-full w-0.5 bg-primary/30 my-1"></div>
+</div>
+<div class="flex-1 pb-10">
+<div class="flex flex-wrap items-start justify-between gap-4 p-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
+<div class="space-y-1">
+<h4 class="text-lg font-bold text-primary dark:text-white">2. Redacción de Declaraciones</h4>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                                    Completado
+                                </span>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 text-sm font-bold border border-slate-300 dark:border-slate-600 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 transition-colors">
+<span class="material-symbols-outlined">visibility</span> Ver Archivo
+                            </button>
+</div>
+</div>
+</div>
+<!-- Step 3 (ACTIVE) -->
+<div class="flex gap-6">
+<div class="flex flex-col items-center">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-primary ring-4 ring-accent/20">
+<span class="material-symbols-outlined text-xl font-bold">pending</span>
+</div>
+<div class="h-full w-0.5 bg-slate-200 dark:bg-slate-700 my-1"></div>
+</div>
+<div class="flex-1 pb-10">
+<div class="flex flex-wrap items-start justify-between gap-4 p-5 rounded-xl border-2 border-accent bg-accent/5 dark:bg-accent/10 shadow-md">
+<div class="space-y-1">
+<h4 class="text-lg font-bold text-primary dark:text-accent">3. Valoración de Pruebas</h4>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary dark:bg-primary/40 dark:text-accent border border-primary/20">
+                                    En Proceso
+                                </span>
+</div>
+<button class="flex items-center gap-2 px-6 py-2.5 text-sm font-bold bg-primary text-white rounded-lg hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">upload_file</span> Subir Video/Documento
+                            </button>
+</div>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="flex gap-6">
+<div class="flex flex-col items-center">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 border-2 border-slate-300 dark:border-slate-600 text-slate-400">
+<span class="material-symbols-outlined text-xl">radio_button_unchecked</span>
+</div>
+<div class="h-full w-0.5 bg-slate-200 dark:bg-slate-700 my-1"></div>
+</div>
+<div class="flex-1 pb-10">
+<div class="flex flex-wrap items-start justify-between gap-4 p-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 opacity-60">
+<div class="space-y-1">
+<h4 class="text-lg font-bold text-slate-500 dark:text-slate-400">4. Acreditación del Delito</h4>
+<span class="text-xs font-medium text-slate-400 uppercase tracking-tighter">Pendiente de Fase Anterior</span>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 text-sm font-bold bg-slate-100 dark:bg-slate-700 text-slate-400 rounded-lg cursor-not-allowed border border-slate-200 dark:border-slate-600" disabled="">
+<span class="material-symbols-outlined">lock</span> Subir
+                            </button>
+</div>
+</div>
+</div>
+<!-- Step 5 -->
+<div class="flex gap-6">
+<div class="flex flex-col items-center">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 border-2 border-slate-300 dark:border-slate-600 text-slate-400">
+<span class="material-symbols-outlined text-xl">radio_button_unchecked</span>
+</div>
+<div class="h-full w-0.5 bg-slate-200 dark:bg-slate-700 my-1"></div>
+</div>
+<div class="flex-1 pb-10">
+<div class="flex flex-wrap items-start justify-between gap-4 p-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 opacity-60">
+<div class="space-y-1">
+<h4 class="text-lg font-bold text-slate-500 dark:text-slate-400">5. Antijuridicidad y Culpabilidad</h4>
+<span class="text-xs font-medium text-slate-400 uppercase tracking-tighter">Pendiente</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 6 -->
+<div class="flex gap-6">
+<div class="flex flex-col items-center">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 border-2 border-slate-300 dark:border-slate-600 text-slate-400">
+<span class="material-symbols-outlined text-xl">radio_button_unchecked</span>
+</div>
+<div class="h-full w-0.5 bg-slate-200 dark:bg-slate-700 my-1"></div>
+</div>
+<div class="flex-1 pb-10">
+<div class="flex flex-wrap items-start justify-between gap-4 p-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 opacity-60">
+<div class="space-y-1">
+<h4 class="text-lg font-bold text-slate-500 dark:text-slate-400">6. Responsabilidad</h4>
+<span class="text-xs font-medium text-slate-400 uppercase tracking-tighter">Pendiente</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 7 -->
+<div class="flex gap-6">
+<div class="flex flex-col items-center">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 border-2 border-slate-300 dark:border-slate-600 text-slate-400">
+<span class="material-symbols-outlined text-xl">radio_button_unchecked</span>
+</div>
+<div class="h-full w-0.5 bg-slate-200 dark:bg-slate-700 my-1"></div>
+</div>
+<div class="flex-1 pb-10">
+<div class="flex flex-wrap items-start justify-between gap-4 p-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 opacity-60">
+<div class="space-y-1">
+<h4 class="text-lg font-bold text-slate-500 dark:text-slate-400">7. Alegatos</h4>
+<span class="text-xs font-medium text-slate-400 uppercase tracking-tighter">Pendiente</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 8 -->
+<div class="flex gap-6">
+<div class="flex flex-col items-center">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 border-2 border-slate-300 dark:border-slate-600 text-slate-400">
+<span class="material-symbols-outlined text-xl">radio_button_unchecked</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex flex-wrap items-start justify-between gap-4 p-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 opacity-60">
+<div class="space-y-1">
+<h4 class="text-lg font-bold text-slate-500 dark:text-slate-400">8. Individualización y Reparación</h4>
+<span class="text-xs font-medium text-slate-400 uppercase tracking-tighter">Pendiente</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="sticky bottom-0 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 z-50">
+<div class="flex justify-around items-center max-w-lg mx-auto">
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:fill-1">folder</span>
+<span class="text-xs font-medium">Casos</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary dark:text-accent font-bold" href="#">
+<span class="material-symbols-outlined font-variation-settings-fill-1">ads_click</span>
+<span class="text-xs">Fases</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:fill-1">description</span>
+<span class="text-xs font-medium">Documentos</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:fill-1">account_circle</span>
+<span class="text-xs font-medium">Perfil</span>
+</a>
+</div>
+</nav>
+</div>
+</body></html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000066",
+                        "accent": "#C5A059", // Gold accent for legal prestige
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0f0f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "legal": ["Arial", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .paper-preview {
+            line-height: 1.5;
+            font-family: 'Arial', sans-serif;
+            font-size: 12pt;
+        }
+        .sensitive-data {
+            background-color: #fee2e2;
+            color: #dc2626;
+            border-bottom: 1px dashed #dc2626;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Header / Top Bar -->
+<header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-10">
+<div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<button class="text-primary dark:text-slate-100 hover:bg-primary/10 p-2 rounded-lg transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div>
+<h1 class="text-lg font-bold text-primary dark:text-white leading-tight">LegalFlow Editor</h1>
+<p class="text-xs text-slate-500">Demanda de Amparo Indirecto - Borrador v2.4</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="hidden md:flex items-center gap-2 px-4 py-2 border border-slate-300 dark:border-slate-700 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined text-lg">history</span>
+                    Historial
+                </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-sm font-bold hover:bg-primary/90 shadow-sm">
+<span class="material-symbols-outlined text-lg">description</span>
+                    Exportar a Word
+                </button>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-6 p-4 md:p-6">
+<!-- Sidebar: Configuration & Tools -->
+<aside class="lg:col-span-4 space-y-6">
+<!-- Progress Card -->
+<div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-bold text-slate-800 dark:text-slate-100">Progreso de Redacción</h3>
+<span class="text-primary font-bold">75%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2.5 rounded-full mb-3">
+<div class="bg-primary h-2.5 rounded-full" style="width: 75%"></div>
+</div>
+<p class="text-xs text-slate-500 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-green-600">check_circle</span>
+                    Secciones mínimas requeridas completadas.
+                </p>
+</div>
+<!-- Formatting Options -->
+<div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<h3 class="font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-accent">format_paint</span>
+                    Estilo Personalizado
+                </h3>
+<div class="space-y-4">
+<div>
+<label class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Formato de Usuario</label>
+<select class="mt-1 w-full rounded-lg border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm py-2">
+<option>Basado en: Formato_Despacho_Principal.docx</option>
+<option>Estándar Judicial Federal</option>
+<option>Personalizado 1</option>
+</select>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="p-3 border border-primary/20 bg-primary/5 rounded-lg">
+<p class="text-[10px] text-slate-500 uppercase">Tipografía</p>
+<p class="text-sm font-bold text-primary">Arial 12</p>
+</div>
+<div class="p-3 border border-slate-200 dark:border-slate-700 rounded-lg">
+<p class="text-[10px] text-slate-500 uppercase">Interlineado</p>
+<p class="text-sm font-bold text-slate-700 dark:text-slate-300">1.5</p>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg cursor-pointer transition-colors">
+<span class="text-sm text-slate-700 dark:text-slate-300">Márgenes Judiciales</span>
+<span class="material-symbols-outlined text-green-500">toggle_on</span>
+</div>
+<div class="flex items-center justify-between p-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg cursor-pointer transition-colors">
+<span class="text-sm text-slate-700 dark:text-slate-300">Numeración de fojas</span>
+<span class="material-symbols-outlined text-slate-400">toggle_off</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Sensitive Data Warning -->
+<div class="bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/30 p-5 rounded-xl">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-red-600">security</span>
+<div>
+<h4 class="text-sm font-bold text-red-900 dark:text-red-400">Datos Sensibles Detectados</h4>
+<p class="text-xs text-red-700 dark:text-red-500/80 mt-1 leading-relaxed">
+                            Se han resaltado automáticamente los campos que contienen información personal. Asegúrese de testar antes de una publicación pública.
+                        </p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Document Preview Editor -->
+<section class="lg:col-span-8 flex flex-col gap-4">
+<div class="flex items-center justify-between bg-white dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-800">
+<div class="flex gap-1">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded"><span class="material-symbols-outlined text-xl">format_bold</span></button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded"><span class="material-symbols-outlined text-xl">format_italic</span></button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded"><span class="material-symbols-outlined text-xl">format_list_numbered</span></button>
+<div class="w-px h-6 bg-slate-200 dark:bg-slate-700 mx-1 self-center"></div>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded"><span class="material-symbols-outlined text-xl">search_check</span></button>
+</div>
+<div class="text-xs text-slate-400 font-medium px-2 uppercase tracking-tighter">Vista de Edición Activa</div>
+</div>
+<!-- Main Document Body -->
+<div class="bg-white dark:bg-slate-900 shadow-xl rounded-sm border border-slate-200 dark:border-slate-800 min-h-[800px] p-16 md:p-24 relative overflow-hidden">
+<!-- Watermark -->
+<div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-[0.03] rotate-[-45deg]">
+<span class="text-9xl font-bold">LEGALFLOW</span>
+</div>
+<div class="paper-preview relative z-[2] text-slate-800 dark:text-slate-200">
+<div class="text-right mb-12">
+<p class="font-bold">QUEJOSO: <span class="sensitive-data">[NOMBRE DEL QUEJOSO RESALTADO]</span></p>
+<p class="font-bold">ASUNTO: SE PROMUEVE JUICIO DE AMPARO INDIRECTO.</p>
+</div>
+<div class="mb-8">
+<p class="font-bold">C. JUEZ DE DISTRITO EN MATERIA ADMINISTRATIVA EN LA CIUDAD DE MÉXICO EN TURNO.</p>
+<p class="mt-4">
+<span class="sensitive-data">[NOMBRE DEL REPRESENTANTE LEGAL]</span>, por mi propio derecho, señalando como domicilio para oír y recibir toda clase de notificaciones el ubicado en <span class="sensitive-data">[DOMICILIO PROCESAL COMPLETO]</span>, autorizando para tales efectos en términos del artículo 12 de la Ley de Amparo a los Licenciados en Derecho <span class="sensitive-data">[NOMBRE DE ABOGADOS AUTORIZADOS]</span>, ante Usted, con el debido respeto comparezco y expongo:
+                        </p>
+</div>
+<div class="mb-8">
+<p class="font-bold uppercase underline mb-4">I. NOMBRE Y DOMICILIO DEL QUEJOSO:</p>
+<p>Ya han quedado precisados en el proemio del presente escrito.</p>
+</div>
+<div class="mb-8">
+<p class="font-bold uppercase underline mb-4">II. NOMBRE Y DOMICILIO DEL TERCERO INTERESADO:</p>
+<p>Bajo protesta de decir verdad, manifiesto que no existe tercero interesado en el presente juicio, dada la naturaleza del acto reclamado.</p>
+</div>
+<div class="mb-8">
+<p class="font-bold uppercase underline mb-4">III. AUTORIDADES RESPONSABLES:</p>
+<ul class="list-decimal ml-8 space-y-2">
+<li>El C. Secretario de Gobernación.</li>
+<li>El Director General de Asuntos Jurídicos.</li>
+</ul>
+</div>
+<div class="mb-8">
+<p class="font-bold uppercase underline mb-4">IV. ACTO RECLAMADO:</p>
+<p>La omisión de dar respuesta al escrito de petición presentado con fecha <span class="sensitive-data">[FECHA DE PRESENTACIÓN]</span>, identificado con el número de folio <span class="sensitive-data">[NÚMERO DE EXPEDIENTE]</span>...</p>
+</div>
+<div class="mt-20 border-t border-slate-300 dark:border-slate-700 pt-4 w-64 mx-auto text-center">
+<p class="text-sm font-bold">PROTESTO LO NECESARIO</p>
+<p class="text-xs mt-12 text-slate-400">Firma del Quejoso</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-6 py-2 flex justify-between items-center z-20">
+<a class="flex flex-col items-center text-primary" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="text-[10px] font-medium">Editor</span>
+</a>
+<a class="flex flex-col items-center text-slate-500" href="#">
+<span class="material-symbols-outlined">style</span>
+<span class="text-[10px] font-medium">Estilos</span>
+</a>
+<a class="flex flex-col items-center text-slate-500" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-[10px] font-medium">Casos</span>
+</a>
+<a class="flex flex-col items-center text-slate-500" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Ajustes</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,390 @@
+⚖
+LexIA
+Plataforma de IA para el Poder Judicial de Nuevo León
+BLUEPRINT DE DISEÑO, FLUJOS Y DESARROLLO
+Incluye: Sistema de Botones Guiados · Flujos por Documento · Prompts para Stitch + Antigravity
+Josue Daniel Silva Castro
+Versión 2.0 — Abril 2026
+1. Concepto Central de LexIA
+LexIA no es solo un transcriptor ni solo un generador de documentos. Es un asistente de flujo de trabajo judicial completo: guía al usuario paso a paso desde el video de la audiencia hasta el documento final en Word, usando botones intuitivos para usuarios nuevos y conversación libre para usuarios expertos.
+💡 La filosofía de diseño:
+Usuario nuevo  →  Usa los botones guiados para no perderse
+Usuario experto →  Ignora los botones y escribe directamente sus instrucciones
+Ambos obtienen el mismo resultado: documentos judiciales profesionales en Word
+Es como un GPS: puedes seguir la ruta sugerida o tomar tu propio camino.
+1.1 El Flujo Maestro (5 pasos)
+1
+INGRESAR VIDEO
+El usuario arrastra o selecciona el video/audio de la audiencia. Formatos: MP4, MOV, AVI, MP3, WAV. Tamaño máximo: 2GB.
+2
+TRANSCRIPCIÓN AUTOMÁTICA
+LexIA transcribe el audio con Whisper (OpenAI). Genera un documento Word descargable con la transcripción completa. El usuario puede corregir errores antes de continuar.
+3
+SELECCIONAR QUÉ HACER
+Aparece el panel de botones guiados. El usuario elige qué documento quiere crear o qué quiere extraer de la transcripción.
+4
+CONSTRUCCIÓN ASISTIDA
+La IA redacta paso a paso según las instrucciones del usuario. En cada paso aparecen botones con las siguientes acciones posibles. El usuario puede usar los botones o escribir instrucciones propias.
+5
+EXPORTAR A WORD
+Cuando el usuario indica que el documento está listo, LexIA lo exporta en Word con el formato judicial preciso indicado por el usuario.
+2. Sistema de Botones Guiados — Diseño Completo
+Este es el corazón de la experiencia de usuario. Cada pantalla tiene un conjunto de botones contextuales que cambian según en qué paso del flujo se encuentre el usuario. El desarrollador debe implementar estos botones exactamente como se describe.
+2.1 Panel Inicial — Después de la Transcripción
+Cuando la transcripción termina, aparece este panel debajo del texto transcrito:
+¿Qué quieres hacer con esta transcripción?
+  📋 Extraer declaraciones de testigos  
+        ⚖️ Extraer alegatos de las partes
+  🗂️ Resumir los puntos principales  
+        📝 Iniciar Acta de Audiencia
+  🏛️ Iniciar Sentencia  
+        📄 Iniciar Acuerdo
+  📨 Elaborar Escrito / Demanda  
+        ⚡ Elaborar Demanda de Amparo
+  📊 Analizar Sentencia recibida  
+        ✍️ Escribir instrucción propia...
+Nota para el desarrollador: El botón '✍️ Escribir instrucción propia...' abre el campo de texto libre. Los demás botones envían un prompt predefinido al motor de IA.
+2.2 Flujo de Botones — SENTENCIA
+Cuando el usuario elige 'Iniciar Sentencia', el sistema muestra los pasos en orden. El botón del paso actual está resaltado en dorado. Los completados muestran ✅. Los siguientes están en gris.
+PASO ACTUAL EN LA SENTENCIA — Elige qué redactar ahora:
+  ✅ 1. Transcripción lista  
+        ▶ 2. Redactar RESULTANDO
+  ○ 3. Redactar CONSIDERANDOS  
+        ○ 4. Valoración de Pruebas
+  ○ 5. Argumentación Jurídica  
+        ○ 6. Buscar Tesis / Jurisprudencia
+  ○ 7. Redactar RESOLUTIVOS  
+        ○ 8. Exportar Sentencia a Word
+En cada paso, adicionalmente aparecen estos botones de apoyo:
+Herramientas de apoyo (disponibles en cualquier paso):
+  🔍 Buscar criterio en SCJN  
+        🔍 Buscar en PJENL
+  🔍 Buscar en DOF  
+        📚 Buscar en mis documentos
+  ✏️ Mejorar redacción de este párrafo  
+        ⚖️ Agregar fundamento constitucional
+  🔗 Agregar tesis jurisprudencial  
+        ↩️ Rehacer este paso
+  💬 Dar instrucción específica...  
+        ✅ Este paso está listo, continuar
+2.3 Flujo de Botones — ACTA DE AUDIENCIA
+PASOS PARA ELABORAR ACTA DE AUDIENCIA:
+  ▶ 1. Datos generales del juicio  
+        ○ 2. Identificar partes presentes
+  ○ 3. Redactar apertura de audiencia  
+        ○ 4. Declaraciones de testigos
+  ○ 5. Alegatos de las partes  
+        ○ 6. Acuerdos tomados en audiencia
+  ○ 7. Cierre y firmas  
+        ○ 8. Exportar Acta a Word
+2.4 Flujo de Botones — DEMANDA DE AMPARO
+PASOS PARA ELABORAR DEMANDA DE AMPARO:
+  ▶ 1. Autoridad responsable y acto reclamado  
+        ○ 2. Derechos humanos violados
+  ○ 3. Antecedentes del acto reclamado  
+        ○ 4. Conceptos de violación
+  ○ 5. Buscar tesis SCJN aplicables  
+        ○ 6. Suspensión del acto reclamado
+  ○ 7. Pruebas ofrecidas  
+        ○ 8. Puntos petitorios
+  ○ 9. Exportar Amparo a Word  
+2.5 Flujo de Botones — ANÁLISIS DE SENTENCIA
+Para el litigante que recibe una sentencia y quiere impugnarla:
+ANÁLISIS Y ESTRATEGIA DE IMPUGNACIÓN:
+  ▶ 1. Identificar puntos resolutivos  
+        ○ 2. Detectar vicios de forma
+  ○ 3. Detectar vicios de fondo  
+        ○ 4. Identificar agravios posibles
+  ○ 5. Buscar tesis que me favorezcan  
+        ○ 6. Redactar agravios
+  ○ 7. Elaborar escrito de impugnación  
+        ○ 8. Exportar a Word
+3. Prompts Completos para Google Stitch
+Estos prompts deben ejecutarse en stitch.withgoogle.com en el orden indicado. Son la instrucción exacta para generar cada pantalla de LexIA.
+3.1 Prompt Maestro — Estructura General
+Ejecutar primero para establecer el sistema de diseño:
+PROMPT 1 — SISTEMA DE DISEÑO (ejecutar primero):
+Design a professional legal AI web app called 'LexIA' for Mexican judiciary.
+DESIGN SYSTEM:
+Primary color: Navy blue #1A2E5A (sidebar, headers, main buttons)
+Secondary color: Medium blue #2563A8 (active states, links)
+Accent color: Gold #C9A227 (current step indicator, premium borders, icons)
+Background: White #FFFFFF
+Card background: Light blue #EBF3FB
+Success: Green #065F46 on #ECFDF5
+Font titles: Georgia serif
+Font body: Inter or Calibri sans-serif
+Style: Luxury legal — professional, trustworthy, institutional
+Layout: Fixed left sidebar (240px) + main content area
+Sidebar items: Dashboard, Nueva Transcripción, Mis Documentos,
+  Búsqueda Legal, Suscripción, Mi Perfil
+Header: LexIA logo (scales of justice in gold) + user avatar + plan badge
+All action buttons: rounded corners (8px), navy background, gold text
+Guided step buttons: pill shape, gold border when active, gray when pending,
+  green checkmark when completed
+3.2 Prompt — Pantalla de Inicio de Sesión
+PROMPT 2 — LOGIN / REGISTRO:
+Design the Login screen for LexIA.
+Layout: Split screen — left 40% navy blue with gold scales of justice logo,
+  tagline 'Inteligencia Artificial al Servicio de la Justicia',
+  and 3 feature badges (Transcripción, Documentos, Búsqueda Legal).
+Right 60% white background with:
+  - LexIA logo small at top
+  - Tab selector: [Iniciar Sesión] [Registrarse]
+  - Email field, Password field
+  - Blue 'Entrar' button full width
+  - Divider 'o continúa con'
+  - Google Sign-In button
+  - For register tab: add Name field, Role selector
+    (radio buttons: Funcionario Judicial / Litigante)
+  - Forgot password link in gold
+3.3 Prompt — Pantalla Principal (Dashboard)
+PROMPT 3 — DASHBOARD:
+Design the main Dashboard for LexIA after login.
+Top area: Welcome card 'Bienvenido, [Nombre]' with current plan badge in gold.
+Stats row (4 cards with gold icon): Transcripciones este mes / Documentos generados /
+  Minutos transcritos / Búsquedas realizadas
+Big action button center: '+ Nueva Transcripción' — large, navy blue, gold icon,
+  subtitle text 'Sube un video o audio de audiencia'
+Recent documents table: columns [Nombre, Tipo, Fecha, Acciones]
+  Type badges: Sentencia (navy), Acta (blue), Amparo (gold), Acuerdo (gray)
+  Action buttons: Ver / Descargar Word / Continuar editando
+Right panel (300px): Quick tips for new users titled 'Cómo empezar'
+  with 3 numbered steps and gold numbers.
+3.4 Prompt — Pantalla de Transcripción (LA MÁS IMPORTANTE)
+Esta es la pantalla central de LexIA. Debe mostrar claramente el flujo de 5 pasos:
+PROMPT 4 — TRANSCRIPCIÓN Y PANEL DE BOTONES GUIADOS:
+Design the Transcription screen — the core screen of LexIA. This has 3 states:
+STATE 1 — UPLOAD:
+Large drag-and-drop zone center screen: dashed gold border, navy cloud-upload icon,
+'Arrastra tu video aquí o haz clic para seleccionar'
+Accepted formats badge: MP4 MOV AVI MP3 WAV
+Max size badge: hasta 2GB
+Below: Step progress bar showing 5 steps (Upload > Transcribiendo > Listo >
+  Elaborando > Exportar) — current step highlighted in gold
+STATE 2 — TRANSCRIBING (show as loading state):
+Animated waveform in navy/gold colors
+Progress percentage and estimated time remaining
+'Transcribiendo audio con IA...' message
+Cancel button (outlined, small)
+STATE 3 — TRANSCRIPTION READY (most important state):
+Left panel (55% width): Scrollable transcription text in clean card.
+  Top of card: 'Transcripción completa' title + duration badge +
+  'Descargar Word' button (gold, small)
+  Text is selectable. Small timestamp markers every 5 minutes in gold.
+Right panel (45% width): GUIDED ACTIONS PANEL
+  Title: '¿Qué deseas elaborar?' in navy Georgia font
+  Subtitle: 'Elige una opción o escribe tu propia instrucción'
+  BUTTON GRID (2 columns, pill-shaped buttons, navy bg, gold icon, white text):
+  Row 1: [📋 Extraer declaraciones] [⚖️ Extraer alegatos]
+  Row 2: [📝 Iniciar Acta]          [🏛️ Iniciar Sentencia]
+  Row 3: [📄 Iniciar Acuerdo]        [⚡ Demanda de Amparo]
+  Row 4: [📊 Analizar Sentencia]     [📨 Elaborar Escrito]
+  Divider line with text 'o escribe tu instrucción'
+  Text input field: placeholder 'Ej: Extrae solo las declaraciones del testigo 2...'
+  Send button: gold arrow icon
+3.5 Prompt — Pantalla de Elaboración de Documentos
+PROMPT 5 — ELABORACIÓN ASISTIDA CON BOTONES DE PASOS:
+Design the Document Builder screen for LexIA. This is a 3-panel layout:
+LEFT PANEL (25% width) — STEP NAVIGATOR:
+Title: 'Pasos de la Sentencia' (or current document type)
+Vertical step list with status icons:
+  ✅ Step completed — green text, checkmark
+  ▶ Step active — gold text, gold left border, slightly highlighted background
+  ○ Step pending — gray text
+Steps for Sentencia: Resultando / Considerandos / Valoración de Pruebas /
+  Argumentación / Buscar Jurisprudencia / Resolutivos / Revisión Final
+Below steps: 'Herramientas' section with small icon buttons:
+  🔍 Buscar SCJN  🔍 Buscar PJENL  📚 Mis docs  ✏️ Mejorar texto
+CENTER PANEL (45% width) — AI CHAT / DOCUMENT BUILDING:
+Shows the conversation: user instructions + AI responses building the document
+Each AI response shows the drafted paragraph in a clean card with light blue bg
+At bottom: text input + send button + microphone button
+Above input: QUICK ACTION BUTTONS (horizontal scroll row of pill buttons):
+  [✅ Aceptar y continuar] [↩️ Rehacer] [✏️ Mejorar redacción]
+  [⚖️ Agregar fundamento] [🔗 Agregar tesis] [💬 Instrucción propia]
+RIGHT PANEL (30% width) — DOCUMENT PREVIEW:
+Shows the document being assembled in real-time as sections are completed
+Each completed section separated by thin gold divider
+Top right: 'Exportar a Word' button — gold background, navy text, Word icon
+  (disabled/gray until at least one section is complete)
+Small badge showing: 'X secciones completadas de Y'
+3.6 Prompt — Pantalla de Búsqueda Legal
+PROMPT 6 — BÚSQUEDA EN FUENTES LEGALES:
+Design the Legal Search screen for LexIA.
+Top: Large search bar full width, navy border, gold search icon,
+placeholder: 'Busca tesis, jurisprudencia, leyes...'
+Below search bar: SOURCE FILTER PILLS (select one or multiple):
+[🏛️ SCJN] [⚖️ PJENL] [📰 DOF] [📚 Mis documentos] [🌐 Web legal]
+Active filter: navy background, white text. Inactive: white bg, navy border.
+Results area: Cards with:
+  - Source badge (color coded: SCJN=navy, PJENL=blue, DOF=gold)
+  - Title of tesis/article in bold
+  - Short excerpt (3 lines)
+  - Action buttons: [Ver completo] [📌 Guardar] [➕ Agregar a mi documento]
+Right sidebar (300px): 'Últimas búsquedas' + 'Guardados' list
+Empty state (no search yet): Suggested searches grid:
+  'Valoración de prueba testimonial', 'Principio de legalidad',
+  'Debido proceso', 'Amparo directo procedencia'
+3.7 Prompt — Pantalla de Suscripción y Pagos
+PROMPT 7 — PLANES Y PAGOS:
+Design the Subscription screen for LexIA.
+Header: 'Elige tu plan' title centered. Toggle: [Mensual] [Anual -20%]
+3 plan cards side by side:
+Card 1 — BÁSICO $299/mes:
+  White background, navy border
+  For: Litigantes
+  Features list: 20 documentos/mes, transcripción 30min/video,
+    actas y escritos, soporte por email
+Card 2 — PROFESIONAL $599/mes (RECOMMENDED):
+  Navy background, gold border, gold 'Más popular' badge on top
+  White text
+  Features: Todo Básico + documentos ilimitados, transcripción ilimitada,
+    búsqueda SCJN/PJENL/DOF, análisis de sentencias, amparo
+Card 3 — INSTITUCIONAL $1,499/mes:
+  Light blue background, gold border
+  For: Funcionarios Judiciales / Despachos
+  Features: Todo Pro + plantillas PJENL oficiales, múltiples usuarios (5),
+    exportación con formato institucional, soporte prioritario
+Each card: CTA button 'Comenzar ahora' — navy on light cards, gold on navy card
+Below cards: Security badges row: [🔒 Pago seguro] [✅ Cancela cuando quieras]
+  [🔄 Sin permanencia] [💳 Stripe]
+Payment modal (show as overlay): Stripe card form, billing summary,
+  total amount, 'Suscribirse' gold button
+4. Prompts para Antigravity — Lógica de Botones
+Una vez importado el diseño de Stitch a Antigravity, estos prompts implementan la lógica funcional de cada botón guiado.
+4.1 Prompt — Sistema de Botones Guiados
+PROMPT ANTIGRAVITY 1 — BOTONES CON PROMPTS PREDEFINIDOS:
+Implement the guided action buttons system.
+Each button sends a predefined prompt to the OpenAI Assistant API.
+Map each button to its prompt:
+Button 'Extraer declaraciones de testigos' →
+  prompt: 'Del siguiente texto de audiencia judicial, extrae y organiza
+  únicamente las declaraciones de los testigos. Para cada testigo indica:
+  nombre, calidad (testigo de cargo/descargo), y su declaración completa.
+  Usa formato judicial mexicano. Transcripción: {transcription}'
+Button 'Extraer alegatos de las partes' →
+  prompt: 'Extrae y separa los alegatos de cada parte procesal de esta
+  audiencia: Ministerio Público, Defensa, y víctima si aplica.',
+Button 'Iniciar Sentencia - Redactar Resultando' →
+  prompt: 'Redacta el RESULTANDO de una sentencia judicial con base en
+  la transcripción de audiencia. Sigue el formato del Poder Judicial de
+  Nuevo León. Incluye: número de expediente [usuario lo indica],
+  partes procesales, antecedentes del proceso. Transcripción: {transcription}'
+Button 'Buscar tesis SCJN' →
+  Use web_search tool targeting scjn.gob.mx with user's current topic
+Button 'Exportar a Word' →
+  Compile all completed sections, apply judicial formatting,
+  generate .docx file with proper headers and structure
+IMPORTANT: After each button action, show the result AND then display
+the next-step buttons automatically based on current document state.
+4.2 Prompt — Memoria de Sesión (Contexto continuo)
+PROMPT ANTIGRAVITY 2 — CONTEXTO CONTINUO ENTRE PASOS:
+Implement session memory for the document building flow.
+Maintain a documentState object throughout the session:
+documentState = {
+  transcription: string,      // original transcription
+  documentType: string,       // sentencia/acta/amparo/etc
+  completedSections: [],      // array of {title, content}
+  currentStep: number,        // which step user is on
+  userInstructions: [],       // user's custom instructions
+  searchResults: [],          // saved legal search results
+  formatPreferences: {}       // user's formatting choices
+}
+On every API call to OpenAI, include:
+1. The original transcription
+2. All completed sections so far
+3. The user's current instruction
+4. Any search results the user added
+This ensures the AI always has full context and the document
+is coherent from beginning to end.
+5. Exportación a Word — Formato Judicial
+Este es un requisito crítico. Los documentos exportados deben cumplir con el formato judicial del Poder Judicial de Nuevo León. El desarrollador debe implementar estas especificaciones:
+Elemento
+Especificación
+Papel
+Carta (Letter) 21.59 x 27.94 cm
+Márgenes
+Superior 3cm, Inferior 2.5cm, Izquierdo 3cm, Derecho 2.5cm
+Fuente
+Times New Roman 12pt para cuerpo de texto
+Interlineado
+1.5 o doble espacio según tipo de documento
+Encabezado
+Nombre del juzgado, número de expediente, tipo de documento
+Pie de página
+Número de página centrado
+Secciones
+RESULTANDO, CONSIDERANDO, RESUELVE en mayúsculas y negritas
+Párrafos
+Primera línea con sangría de 1.25cm
+PROMPT ANTIGRAVITY 3 — EXPORTACIÓN A WORD:
+Implement Word export using docx npm library.
+When user clicks 'Exportar a Word', generate a .docx file with:
+- Times New Roman 12pt body font
+- Letter size paper with judicial margins
+- Document header: [JUZGADO], Expediente: [NUM], [TIPO DE DOCUMENTO]
+- Each section in caps and bold: RESULTANDO:, CONSIDERANDO:, etc.
+- 1.5 line spacing
+- First-line indent 1.25cm for each paragraph
+- Page numbers centered at bottom
+- At the end: signature spaces for judge and court secretary
+File name: [TipoDocumento]_Exp[Numero]_[Fecha].docx
+Trigger automatic download when generated.
+6. Personalización de Botones por el Usuario
+Una de las características más importantes: los botones predeterminados son un punto de partida. El usuario experto puede crear sus propios botones con instrucciones personalizadas.
+6.1 Cómo Funciona
+En la pantalla de elaboración, hay un botón '⚙️ Personalizar mis botones'
+El usuario puede editar el texto de cualquier botón predeterminado
+Puede agregar hasta 8 botones propios con nombre e instrucción personalizada
+Sus botones se guardan en Firebase y aparecen cada vez que inicia sesión
+Puede tener diferentes sets de botones para Sentencias, Amparos, etc.
+PROMPT ANTIGRAVITY 4 — BOTONES PERSONALIZABLES:
+Implement customizable quick-action buttons.
+Store user's custom buttons in Firestore: users/{userId}/customButtons
+Each button has: { id, label, icon, prompt, documentType, order }
+Add an 'Edit buttons' mode where user can:
+- Rename any default button
+- Edit the prompt sent to AI when button is clicked
+- Add new custom buttons (max 8 custom)
+- Drag to reorder buttons
+- Reset to defaults option
+Show a small pencil icon on each button when in edit mode.
+Save changes automatically to Firestore.
+7. Checklist de Implementación para el Desarrollador
+SEMANA 1 — Setup y Diseño
+[ ] Ejecutar los 7 prompts de Stitch en orden
+[ ] Revisar y aprobar diseño con Josue antes de continuar
+[ ] Importar diseño a Antigravity via MCP
+[ ] Configurar Firebase (Auth, Firestore, Storage, Hosting)
+[ ] Configurar variables de entorno (.env)
+SEMANA 2 — Transcripción
+[ ] Subida de video a Firebase Storage funcionando
+[ ] Integración Whisper API con parámetros en español
+[ ] Los 3 estados de la pantalla de transcripción funcionando
+[ ] Exportación de transcripción a Word
+[ ] Panel de botones guiados aparece tras transcripción
+SEMANA 3 — Elaboración de Documentos
+[ ] Cada botón guiado envía su prompt correcto a OpenAI
+[ ] Sistema de pasos con indicadores ✅ ▶ ○ funcionando
+[ ] Memoria de sesión (contexto continuo entre pasos)
+[ ] Búsqueda legal en SCJN, PJENL, DOF
+[ ] Vista previa del documento en panel derecho
+[ ] Exportación a Word con formato judicial
+SEMANA 4 — Pagos, Personalización y Lanzamiento
+[ ] Stripe integrado con 3 planes
+[ ] Restricciones por plan activas
+[ ] Sistema de botones personalizables funcionando
+[ ] Pruebas con 3 funcionarios judiciales reales
+[ ] Correcciones de feedback
+[ ] Deploy en Firebase Hosting con dominio lexia.mx
+8. Nota sobre la IA — OpenAI vs Otras Opciones
+El desarrollador debe saber que el motor de transcripción de audio se llama Whisper. No es una app visible para el usuario — es la tecnología que trabaja internamente cuando el usuario sube su video. Para el usuario solo existe un botón 'Subir video' y el resultado es la transcripción. Whisper fue elegido porque:
+Es de los mismos creadores del GPT que Josue ya usa (OpenAI)
+Es el más preciso para español mexicano con terminología legal
+Se paga solo por uso — no hay mensualidad fija
+Se integra directamente en la app sin redirigir al usuario a otro servicio
+Para el generador de documentos, el desarrollador debe usar el Assistant ID del GPT ya creado por Josue en ChatGPT — ese 'cerebro' legal ya entrenado simplemente se conecta a la nueva app vía la API de OpenAI.
+⚖
+LexIA — Inteligencia Artificial al Servicio de la Justicia
+Josue Daniel Silva Castro — Poder Judicial de Nuevo León — 2026

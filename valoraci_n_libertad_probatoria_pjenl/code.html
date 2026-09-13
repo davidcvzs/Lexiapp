@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Valoración de Pruebas - PJENL</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header / Navigation -->
+<div class="sticky top-0 z-40 flex items-center bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-4 justify-between">
+<div class="flex items-center gap-3">
+<div class="text-primary flex size-10 items-center justify-center rounded-full bg-primary/10">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">Valoración de Pruebas</h2>
+<p class="text-xs text-slate-500 dark:text-slate-400">Expediente: 1234/2024 - Sistema Penal Acusatorio</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="hidden md:flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg font-bold text-sm">
+<span class="material-symbols-outlined text-sm">auto_fix_high</span>
+                    Aplicar Formato PJENL
+                </button>
+<button class="flex size-10 items-center justify-center rounded-lg text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<div class="flex flex-1 flex-col md:flex-row">
+<!-- Sidebar (Contexto PJENL) -->
+<aside class="hidden md:flex w-64 flex-col border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 gap-2">
+<div class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer">
+<span class="material-symbols-outlined text-slate-500">folder_open</span>
+<span class="text-sm font-medium">Expediente</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer">
+<span class="material-symbols-outlined text-slate-500">gavel</span>
+<span class="text-sm font-medium">Audiencias</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-lg bg-primary/10 text-primary font-bold">
+<span class="material-symbols-outlined">fact_check</span>
+<span class="text-sm">Pruebas</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer">
+<span class="material-symbols-outlined text-slate-500">description</span>
+<span class="text-sm font-medium">Resolución</span>
+</div>
+<div class="mt-auto border-t border-slate-200 dark:border-slate-800 pt-4">
+<div class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer">
+<span class="material-symbols-outlined text-slate-500">settings</span>
+<span class="text-sm font-medium">Configuración</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 p-4 md:p-8 max-w-5xl mx-auto w-full">
+<!-- Category Selector -->
+<section class="mb-8">
+<h3 class="text-slate-900 dark:text-slate-100 text-sm font-bold uppercase tracking-wider mb-4">Tipos de Prueba</h3>
+<div class="flex gap-2 flex-wrap">
+<span class="px-4 py-2 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-medium cursor-pointer hover:bg-primary/20 hover:text-primary transition-colors">Documental</span>
+<span class="px-4 py-2 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-medium cursor-pointer hover:bg-primary/20 hover:text-primary transition-colors">Digital</span>
+<span class="px-4 py-2 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-medium cursor-pointer hover:bg-primary/20 hover:text-primary transition-colors">Testimonial</span>
+<span class="px-4 py-2 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-medium cursor-pointer hover:bg-primary/20 hover:text-primary transition-colors">Pericial</span>
+<span class="px-4 py-2 rounded-full bg-primary text-white text-sm font-medium cursor-pointer shadow-md">Libertad Probatoria</span>
+</div>
+</section>
+<!-- Principal Evidence Section -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="bg-primary/5 p-4 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center">
+<h4 class="text-primary font-bold flex items-center gap-2">
+<span class="material-symbols-outlined">balance</span>
+                            Cualquier otra prueba (Libertad Probatoria)
+                        </h4>
+<span class="text-[10px] bg-primary/20 text-primary px-2 py-1 rounded font-bold uppercase">Principio de Contradicción</span>
+</div>
+<div class="p-6 space-y-8">
+<!-- Instructional Context -->
+<div class="text-sm text-slate-600 dark:text-slate-400 italic border-l-4 border-primary/30 pl-4 bg-slate-50 dark:bg-slate-800/50 py-3">
+                            En atención al sistema de libre valoración de la prueba, evalúe los siguientes criterios para determinar el valor convictivo del elemento aportado.
+                        </div>
+<!-- 1. Idoneidad -->
+<div class="space-y-3">
+<label class="flex items-center gap-2 text-slate-800 dark:text-slate-200 font-bold text-base">
+<span class="text-primary">1.</span> Idoneidad
+                                <span class="material-symbols-outlined text-slate-400 text-sm" title="Capacidad de la prueba para acreditar el hecho">help_outline</span>
+</label>
+<textarea class="w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 focus:ring-primary focus:border-primary text-sm min-h-[100px]" placeholder="Describa si el medio es apto para producir un conocimiento sobre el hecho controvertido..."></textarea>
+</div>
+<!-- 2. Legalidad -->
+<div class="space-y-3">
+<label class="flex items-center gap-2 text-slate-800 dark:text-slate-200 font-bold text-base">
+<span class="text-primary">2.</span> Legalidad
+                                <span class="material-symbols-outlined text-slate-400 text-sm">gavel</span>
+</label>
+<div class="flex items-center gap-4 mb-2">
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="text-primary focus:ring-primary" name="legalidad" type="radio"/>
+<span class="text-sm">Lícita</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="text-primary focus:ring-primary" name="legalidad" type="radio"/>
+<span class="text-sm">Excluir (Prueba Ilícita)</span>
+</label>
+</div>
+<textarea class="w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 focus:ring-primary focus:border-primary text-sm min-h-[100px]" placeholder="Fundamente el respeto a los derechos fundamentales en la obtención de la prueba..."></textarea>
+</div>
+<!-- 3. Objetividad -->
+<div class="space-y-3">
+<label class="flex items-center gap-2 text-slate-800 dark:text-slate-200 font-bold text-base">
+<span class="text-primary">3.</span> Objetividad
+                                <span class="material-symbols-outlined text-slate-400 text-sm">visibility</span>
+</label>
+<textarea class="w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 focus:ring-primary focus:border-primary text-sm min-h-[100px]" placeholder="Analice la concordancia de la prueba con la realidad externa, libre de prejuicios..."></textarea>
+</div>
+<!-- 4. Razonabilidad -->
+<div class="space-y-3">
+<label class="flex items-center gap-2 text-slate-800 dark:text-slate-200 font-bold text-base">
+<span class="text-primary">4.</span> Razonabilidad
+                                <span class="material-symbols-outlined text-slate-400 text-sm">psychology</span>
+</label>
+<div class="bg-primary/5 p-4 rounded-lg border border-primary/10 mb-2">
+<p class="text-xs text-primary font-bold mb-2 uppercase">Lógica y Máximas de la Experiencia</p>
+<textarea class="w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 focus:ring-primary focus:border-primary text-sm min-h-[120px]" placeholder="Exponga el razonamiento lógico que vincula la prueba con la conclusión..."></textarea>
+</div>
+</div>
+</div>
+<!-- Actions Footer -->
+<div class="p-6 bg-slate-50 dark:bg-slate-800/30 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors font-medium">
+<span class="material-symbols-outlined">save</span>
+                                Guardar Borrador
+                            </button>
+<button class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors font-medium">
+<span class="material-symbols-outlined">print</span>
+                                Imprimir
+                            </button>
+</div>
+<div class="flex items-center gap-3 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-6 py-2.5 rounded-lg border border-primary text-primary font-bold hover:bg-primary/5 transition-colors">
+<span class="md:hidden">Formato</span>
+<span class="hidden md:inline">Aplicar Formato PJENL</span>
+</button>
+<button class="flex-1 md:flex-none px-8 py-2.5 rounded-lg bg-primary text-white font-bold hover:bg-blue-700 shadow-lg shadow-primary/20">
+                                Siguiente
+                            </button>
+</div>
+</div>
+</div>
+<!-- Previous Sections Summary (Considerandos Style) -->
+<div class="mt-8 space-y-4 opacity-60">
+<h5 class="text-slate-500 font-bold text-xs uppercase tracking-widest px-1">Considerandos Previos</h5>
+<div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 flex justify-between items-center">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-green-500">check_circle</span>
+<span class="text-sm font-medium">Análisis de Pertinencia</span>
+</div>
+<span class="material-symbols-outlined text-slate-400">edit</span>
+</div>
+<div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 flex justify-between items-center">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-green-500">check_circle</span>
+<span class="text-sm font-medium">Fijación de Hechos</span>
+</div>
+<span class="material-symbols-outlined text-slate-400">edit</span>
+</div>
+</div>
+</main>
+</div>
+<!-- Bottom Navigation Mobile -->
+<div class="md:hidden sticky bottom-0 z-50 flex border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pb-3 pt-2">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+<p class="text-[10px] font-medium">Borrador</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">fact_check</span>
+<p class="text-[10px] font-medium">Pruebas</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">visibility</span>
+<p class="text-[10px] font-medium">Vista Previa</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">check_circle</span>
+<p class="text-[10px] font-medium">Finalizar</p>
+</a>
+</div>
+</div>
+</body></html>

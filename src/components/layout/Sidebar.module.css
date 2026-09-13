@@ -1,0 +1,131 @@
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: var(--color-primary);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-lg);
+  z-index: 50;
+  transition: width 0.3s ease, transform 0.3s ease;
+}
+
+.sidebarCollapsed {
+  width: 80px;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+}
+
+.logoArea {
+  padding: var(--spacing-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid color-mix(in srgb, white 10%, transparent);
+  height: 80px; 
+}
+
+.logoAreaCollapsed {
+  padding: var(--spacing-6) 0;
+  justify-content: center;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.logoIcon {
+  color: var(--color-accent-gold);
+  flex-shrink: 0;
+}
+
+.logoText {
+  font-family: var(--font-family-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.toggleBtn {
+  color: color-mix(in srgb, white 70%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s;
+  background-color: color-mix(in srgb, white 10%, transparent);
+}
+.toggleBtn:hover {
+  background-color: color-mix(in srgb, white 20%, transparent);
+  color: white;
+}
+
+.navMenu {
+  padding: var(--spacing-4) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3) var(--spacing-6);
+  color: color-mix(in srgb, white 80%, transparent);
+  font-weight: 500;
+  transition: all 0.2s;
+  border-left: 3px solid transparent;
+  white-space: nowrap;
+}
+
+.navItemCollapsed {
+  padding: var(--spacing-3) 0;
+  justify-content: center;
+}
+
+.navIcon {
+  flex-shrink: 0;
+}
+
+.navItem:hover {
+  background-color: color-mix(in srgb, white 5%, transparent);
+  color: white;
+}
+
+.navItemActive {
+  background-color: color-mix(in srgb, white 10%, transparent);
+  color: var(--color-accent-gold);
+  border-left-color: var(--color-accent-gold);
+}
+
+.footer {
+  padding: var(--spacing-6);
+  border-top: 1px solid color-mix(in srgb, white 10%, transparent);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.badge {
+  background-color: var(--color-accent-gold);
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-block;
+  margin-top: var(--spacing-4);
+}

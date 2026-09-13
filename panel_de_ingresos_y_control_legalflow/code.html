@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegalFlow Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000066",
+                        "accent": "#C5A059", // Professional Gold
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0f0f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex flex-col">
+<!-- Header -->
+<header class="flex items-center bg-white dark:bg-slate-900 p-4 sticky top-0 z-10 border-b border-slate-200 dark:border-slate-800 justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-accent text-3xl">menu</span>
+<h1 class="text-primary dark:text-white text-xl font-bold tracking-tight">LegalFlow</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">notifications</span>
+</button>
+<button class="size-10 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary dark:text-accent">account_circle</span>
+</button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto pb-24">
+<!-- Dashboard Title -->
+<div class="px-4 pt-6 pb-2">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Dashboard</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400">Resumen de actividad legal</p>
+</div>
+<!-- Real-Time Earnings Card -->
+<div class="p-4">
+<div class="relative overflow-hidden bg-primary dark:bg-slate-900 rounded-xl p-6 shadow-xl border border-white/10">
+<!-- Abstract Pattern Background -->
+<div class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-accent/20 rounded-full blur-3xl" data-alt="Abstract gold gradient pattern background"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-accent text-sm">payments</span>
+<p class="text-white/70 text-xs font-semibold tracking-widest uppercase">Real-Time Earnings</p>
+</div>
+<h3 class="text-white text-lg font-medium">Total Ingresos</h3>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="text-4xl font-bold text-white tracking-tight">$0.00</span>
+<span class="text-accent font-semibold">MXN</span>
+</div>
+<div class="mt-6 flex items-center gap-2 text-white/50 text-xs bg-black/20 w-fit px-3 py-1 rounded-full">
+<span class="material-symbols-outlined text-xs">sync</span>
+<span>Actualizado hace un momento</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Access Buttons -->
+<div class="px-4 py-4">
+<h3 class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4">Acceso Rápido</h3>
+<div class="grid grid-cols-3 gap-3">
+<button class="flex flex-col items-center justify-center gap-2 p-4 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 transition-active active:scale-95">
+<div class="size-12 rounded-full bg-primary/10 dark:bg-primary/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary dark:text-accent">description</span>
+</div>
+<span class="text-[10px] font-bold text-slate-700 dark:text-slate-300 text-center uppercase">Docs Activos</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 transition-active active:scale-95">
+<div class="size-12 rounded-full bg-accent/10 dark:bg-accent/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-accent">transcribe</span>
+</div>
+<span class="text-[10px] font-bold text-slate-700 dark:text-slate-300 text-center uppercase">Nueva Transcripción</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 transition-active active:scale-95">
+<div class="size-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">smart_toy</span>
+</div>
+<span class="text-[10px] font-bold text-slate-700 dark:text-slate-300 text-center uppercase">IA Config</span>
+</button>
+</div>
+</div>
+<!-- Recent Subscriptions -->
+<div class="px-4 py-2">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Recent Subscriptions</h3>
+<button class="text-primary dark:text-accent text-sm font-semibold">Ver todo</button>
+</div>
+<!-- Empty State -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 p-10 flex flex-col items-center justify-center text-center">
+<div class="size-16 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-slate-400 text-3xl">inbox</span>
+</div>
+<p class="text-slate-900 dark:text-white font-medium">No hay suscripciones activas</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Las nuevas suscripciones aparecerán aquí automáticamente.</p>
+<button class="mt-6 bg-primary text-white px-6 py-2 rounded-lg font-semibold text-sm hover:bg-primary/90">
+                    Añadir Suscripción
+                </button>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-4 pb-6 pt-3 flex justify-around items-center z-50">
+<a class="flex flex-col items-center gap-1 text-primary dark:text-accent" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">home</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">folder</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Documentos</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">credit_card</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Facturación</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Ajustes</span>
+</a>
+</nav>
+</body></html>

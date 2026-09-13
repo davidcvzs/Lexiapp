@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000066", // Navy Blue
+                        "gold": "#C5A059",    // Professional Gold
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0f0f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Arial", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>LegalFlow - Integración GPT</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header / Navigation -->
+<header class="flex items-center bg-white dark:bg-slate-900 border-b border-primary/10 p-4 justify-between sticky top-0 z-50">
+<div class="flex items-center gap-3">
+<div class="text-primary dark:text-gold flex size-10 items-center justify-center rounded-lg bg-primary/10">
+<span class="material-symbols-outlined">gavel</span>
+</div>
+<h2 class="text-primary dark:text-white text-xl font-bold leading-tight tracking-tight">LegalFlow</h2>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-500">notifications</span>
+<div class="size-8 rounded-full bg-gold/20 border border-gold/40 flex items-center justify-center text-primary font-bold text-xs">JD</div>
+</div>
+</header>
+<main class="flex-1 max-w-4xl mx-auto w-full p-4 md:p-8">
+<!-- Breadcrumbs / Back button -->
+<div class="flex items-center gap-2 text-primary dark:text-gold mb-6 cursor-pointer hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+<span class="text-sm font-medium">Volver a Herramientas</span>
+</div>
+<!-- Page Title & Intro -->
+<section class="mb-8">
+<h1 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">Integrar Agente GPT Externo</h1>
+<p class="text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
+                    Potencie su flujo de trabajo jurídico conectando asistentes especializados de OpenAI. Esta integración permite automatizar tareas complejas con precisión legal.
+                </p>
+</section>
+<!-- Agent Info Card -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6 mb-8 shadow-sm">
+<div class="flex items-start gap-4 mb-6">
+<div class="size-14 rounded-xl bg-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-white text-3xl">psychology</span>
+</div>
+<div>
+<h3 class="text-lg font-bold text-primary dark:text-gold">Transcripción, Redacción y Análisis de Sentencias</h3>
+<p class="text-sm text-slate-500">Motor especializado en jurisprudencia y documentos procesales.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+<div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+<span class="material-symbols-outlined text-primary dark:text-gold mb-2">description</span>
+<h4 class="font-bold text-sm mb-1">Transcripción</h4>
+<p class="text-xs text-slate-500">Conversión precisa de audiencias y testimonios a texto legal.</p>
+</div>
+<div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+<span class="material-symbols-outlined text-primary dark:text-gold mb-2">edit_note</span>
+<h4 class="font-bold text-sm mb-1">Redacción</h4>
+<p class="text-xs text-slate-500">Creación de borradores de demandas y escritos jurídicos.</p>
+</div>
+<div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+<span class="material-symbols-outlined text-primary dark:text-gold mb-2">analytics</span>
+<h4 class="font-bold text-sm mb-1">Análisis</h4>
+<p class="text-xs text-slate-500">Evaluación crítica de fallos y búsqueda de precedentes.</p>
+</div>
+</div>
+<!-- Input Field -->
+<div class="space-y-4">
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">URL del Asistente o GPT ID</label>
+<div class="flex flex-col md:flex-row gap-3">
+<input class="flex-1 h-12 rounded-lg border-slate-300 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary text-slate-900 dark:text-white px-4" placeholder="https://chatgpt.com/g/g-..." type="text" value="https://chatgpt.com/g/g-4MYFt1zIT-transcripcion-redaccion-y-analisis-de-sentencias"/>
+<button class="bg-primary hover:bg-primary/90 text-white font-bold py-2 px-8 rounded-lg transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">link</span>
+                            Conectar
+                        </button>
+</div>
+<p class="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Conexión cifrada de grado legal AES-256</p>
+</div>
+</div>
+<!-- Active Tools Section -->
+<section>
+<div class="flex items-center justify-between mb-4 border-b border-slate-200 dark:border-slate-800 pb-2">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-gold">verified</span>
+                        Herramientas Activas
+                    </h3>
+<span class="text-xs font-medium text-slate-500">1 Motor Activo</span>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-4 bg-white dark:bg-slate-900 rounded-xl border-l-4 border-gold shadow-sm">
+<div class="flex items-center gap-4">
+<div class="size-10 rounded-full bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">auto_fix_high</span>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white text-sm">GPT Especializado en Sentencias</h4>
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-green-500"></span>
+<span class="text-xs text-slate-500">Motor principal de redacción y análisis</span>
+</div>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">settings</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-red-600 transition-colors">
+<span class="material-symbols-outlined text-xl">link_off</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation -->
+<nav class="sticky bottom-0 w-full bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-4 py-2 flex justify-around items-center z-50">
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary dark:hover:text-gold transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Inicio</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary dark:hover:text-gold transition-colors" href="#">
+<span class="material-symbols-outlined">folder_open</span>
+<span class="text-[10px] font-medium">Expedientes</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary dark:text-gold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">handyman</span>
+<span class="text-[10px] font-medium">Herramientas</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary dark:hover:text-gold transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Ajustes</span>
+</a>
+</nav>
+</div>
+</body></html>

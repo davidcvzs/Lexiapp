@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Confirmación de Despliegue - LegalFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13", // Main accent from theme
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                        "navy-custom": "#0f172a", // Professional Navy
+                        "gold-custom": "#d4af37", // Professional Gold
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header / Top Bar -->
+<header class="flex items-center bg-navy-custom p-4 border-b border-gold-custom/30 justify-between">
+<h2 class="text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">
+                Confirmación de Despliegue
+            </h2>
+</header>
+<!-- Main Content Container -->
+<main class="flex-1 flex flex-col items-center justify-center max-w-2xl mx-auto w-full px-6 py-12">
+<!-- Success Status Icon (Visual Representation without Icons as requested, using styling) -->
+<div class="mb-8 p-6 rounded-full bg-gold-custom/10 border-2 border-gold-custom">
+<div class="h-16 w-16 bg-gold-custom rounded-full flex items-center justify-center">
+<div class="h-8 w-4 border-b-4 border-r-4 border-navy-custom rotate-45 mb-1"></div>
+</div>
+</div>
+<!-- Success Message -->
+<h1 class="text-navy-custom dark:text-slate-100 tracking-tight text-[32px] font-bold leading-tight text-center pb-3">
+                ¡Despliegue Exitoso!
+            </h1>
+<p class="text-slate-600 dark:text-slate-300 text-base font-normal leading-normal pb-8 text-center max-w-md">
+                Tu proyecto LegalFlow ha sido publicado correctamente y ya se encuentra disponible para su acceso global.
+            </p>
+<!-- Progress Section -->
+<div class="w-full flex flex-col gap-3 p-6 bg-white dark:bg-navy-custom/20 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 mb-8">
+<div class="flex gap-6 justify-between items-center">
+<p class="text-navy-custom dark:text-slate-100 text-base font-semibold leading-normal">Estado del despliegue</p>
+<p class="text-primary text-sm font-bold leading-normal">100%</p>
+</div>
+<div class="rounded-full bg-slate-200 dark:bg-slate-700 h-3 overflow-hidden">
+<div class="h-full rounded-full bg-primary" style="width: 100%;"></div>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium leading-normal">Proceso completado con éxito</p>
+</div>
+<!-- Details Table -->
+<div class="w-full bg-white dark:bg-navy-custom/20 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden mb-10">
+<div class="grid grid-cols-[35%_1fr] gap-x-4 border-b border-slate-100 dark:border-slate-800 p-5">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-semibold uppercase tracking-wider">ID del Proyecto</p>
+<p class="text-navy-custom dark:text-slate-100 text-sm font-mono break-all">my-first-project-b0dbd</p>
+</div>
+<div class="grid grid-cols-[35%_1fr] gap-x-4 p-5">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-semibold uppercase tracking-wider">URL en vivo</p>
+<p class="text-primary text-sm font-bold underline decoration-primary/30 underline-offset-4">www.legalflow.com.mx</p>
+</div>
+</div>
+<!-- Action Button -->
+<div class="w-full max-w-xs">
+<a class="flex items-center justify-center w-full py-4 px-6 bg-navy-custom hover:bg-navy-custom/90 text-gold-custom font-bold rounded-lg transition-colors border border-gold-custom/50 shadow-lg" href="http://www.legalflow.com.mx" target="_blank">
+                    Ir al sitio en vivo
+                </a>
+</div>
+</main>
+<!-- Footer Decoration -->
+<footer class="mt-auto h-2 bg-gradient-to-r from-navy-custom via-gold-custom to-navy-custom"></footer>
+</div>
+</body></html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#000066",
+                "accent-gold": "#C5A059",
+                "background-light": "#f5f5f8",
+                "background-dark": "#0f0f23",
+              },
+              fontFamily: {
+                "display": ["Inter"],
+                "legal": ["Arial", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        .document-text {
+            font-family: Arial, sans-serif;
+            font-size: 12pt;
+            line-height: 1.5;
+            color: #000000;
+        }
+        .highlight-red {
+            color: #D32F2F;
+            font-weight: 600;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-10 bg-primary text-white shadow-md">
+<div class="max-w-4xl mx-auto flex items-center justify-between p-4">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-lg font-bold tracking-tight">LegalFlow</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<div class="h-1 bg-accent-gold w-full"></div>
+</header>
+<main class="max-w-4xl mx-auto p-4 md:p-8">
+<!-- Preview Header -->
+<div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold">Vista previa del documento</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Formato oficial de declaración procesal</p>
+</div>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full uppercase tracking-wider">Borrador Final</span>
+</div>
+</div>
+<!-- Document Container -->
+<div class="bg-white shadow-xl rounded-lg border border-slate-200 overflow-hidden mb-8">
+<div class="p-8 md:p-16 max-w-full overflow-x-auto">
+<div class="document-text mx-auto max-w-[21cm]">
+<h3 class="text-center font-bold mb-10 underline decoration-1 underline-offset-4">Declaración de Testigos y Peritos</h3>
+<p class="mb-6 text-justify">
+                        En la ciudad de <span class="highlight-red">Pesquería, Nuevo León</span>, siendo el día <span class="highlight-red">9 de marzo de 2023</span>, comparece la ciudadana <span class="highlight-red">María del Refugio Muñoz Alcalá</span>, con domicilio en la <span class="highlight-red">Calle Sierra Marina</span>. 
+                        Manifiesta bajo protesta de decir verdad su relación con el ciudadano <span class="highlight-red">Manuel Adolfo Sandoval Muñoz</span>, a quien conoce desde hace tiempo y de quien puede dar fe sobre los hechos que se le cuestionan en el presente procedimiento.
+                    </p>
+<p class="mb-6 text-justify">
+                        La declarante ratifica los hechos expuestos en el presente instrumento jurídico, asegurando que la información proporcionada es fiel reflejo de la realidad observada durante el periodo de tiempo estipulado en los autos del expediente. En este sentido, la C. <span class="highlight-red">María del Refugio Muñoz Alcalá</span> aclara que su presencia obedece al estricto cumplimiento de la ley y su compromiso con el esclarecimiento de la verdad jurídica respecto al caso de <span class="highlight-red">Manuel Adolfo Sandoval Muñoz</span>.
+                    </p>
+<p class="mb-6 text-justify">
+                        Asimismo, declara que no tiene interés directo ni indirecto en el resultado del juicio, más allá del cumplimiento de su deber ciudadano. Las circunstancias de tiempo, modo y lugar descritas en su narrativa coinciden plenamente con los registros documentales integrados previamente, consolidando así la consistencia de su testimonio ante esta autoridad competente en <span class="highlight-red">Pesquería, Nuevo León</span>.
+                    </p>
+<div class="mt-24 flex flex-col items-center">
+<div class="w-64 border-t border-black mb-2"></div>
+<p class="font-bold text-center">Firma del Declarante</p>
+<p class="text-sm text-center"><span class="highlight-red">María del Refugio Muñoz Alcalá</span></p>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="flex flex-col md:flex-row items-center justify-center gap-4 pb-12">
+<button class="w-full md:w-auto flex items-center justify-center gap-2 bg-primary text-white px-8 py-3 rounded-lg font-bold hover:bg-primary/90 transition-all shadow-lg active:scale-95">
+<span class="material-symbols-outlined">description</span>
+                Descargar Word
+            </button>
+<button class="w-full md:w-auto flex items-center justify-center gap-2 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-600 px-8 py-3 rounded-lg font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-all">
+<span class="material-symbols-outlined">print</span>
+                Imprimir PDF
+            </button>
+</div>
+</main>
+<footer class="text-center p-6 text-slate-400 text-xs">
+<p>© 2024 LegalFlow. Documento generado bajo protocolos de seguridad legal.</p>
+</footer>
+</body></html>

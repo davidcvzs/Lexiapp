@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000066",
+                        "accent": "#B8860B", // Dark Goldenrod for a professional gold accent
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0f0f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .gold-gradient {
+            background: linear-gradient(135deg, #B8860B 0%, #E6B422 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex flex-col">
+<!-- Header Section -->
+<header class="bg-primary text-white p-6 shadow-lg border-b border-accent/30">
+<div class="max-w-5xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-accent text-3xl">balance</span>
+<h1 class="text-2xl font-bold tracking-tight">LegalFlow <span class="text-accent">Demandas</span></h1>
+</div>
+<div class="hidden md:flex items-center gap-4 text-sm font-medium">
+<span class="text-slate-300">Bienvenido, Lic. Alejandro M.</span>
+<div class="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-primary font-bold border-2 border-white/20">
+                    AM
+                </div>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-5xl mx-auto w-full p-4 md:p-8 space-y-8">
+<!-- Search and Filter Section -->
+<section class="space-y-4">
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors">search</span>
+</div>
+<input class="block w-full pl-12 pr-4 py-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all text-lg" placeholder="Buscar tipo de demanda o materia (ej. Amparo Directo, Civil...)" type="text"/>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="text-sm font-semibold text-slate-500 uppercase tracking-wider w-full mb-1">Materias Populares</span>
+<button class="px-4 py-2 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors">Todo</button>
+<button class="px-4 py-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm font-medium hover:border-accent transition-colors">Amparo</button>
+<button class="px-4 py-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm font-medium hover:border-accent transition-colors">Civil</button>
+<button class="px-4 py-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm font-medium hover:border-accent transition-colors">Mercantil</button>
+<button class="px-4 py-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm font-medium hover:border-accent transition-colors">Laboral</button>
+<button class="px-4 py-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm font-medium hover:border-accent transition-colors">Familiar</button>
+</div>
+</section>
+<!-- Main Actions -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Upload Custom Format Card -->
+<div class="md:col-span-1">
+<div class="bg-white dark:bg-slate-800 rounded-xl border-2 border-dashed border-accent/40 p-8 flex flex-col items-center justify-center text-center space-y-4 hover:border-accent transition-all cursor-pointer h-full group">
+<div class="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center text-accent group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl">upload_file</span>
+</div>
+<div>
+<h3 class="font-bold text-lg text-primary dark:text-accent">Subir Formato Propio</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Utilice sus propias plantillas y deje que nuestra IA las estructure.</p>
+</div>
+<button class="mt-4 px-6 py-2 bg-accent text-white rounded-lg font-semibold text-sm hover:brightness-110 transition-all">Seleccionar Archivo</button>
+</div>
+</div>
+<!-- Specific Guidelines Selector -->
+<div class="md:col-span-2 space-y-4">
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">gavel</span>
+<h3 class="font-bold text-lg">Lineamientos Específicos</h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<label class="relative flex items-center p-4 rounded-lg border border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 cursor-pointer hover:bg-slate-100 transition-colors">
+<input class="form-checkbox h-5 w-5 text-primary rounded border-slate-300 focus:ring-primary" type="checkbox"/>
+<span class="ml-3 text-sm font-medium">Protocolo de Género</span>
+</label>
+<label class="relative flex items-center p-4 rounded-lg border border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 cursor-pointer hover:bg-slate-100 transition-colors">
+<input class="form-checkbox h-5 w-5 text-primary rounded border-slate-300 focus:ring-primary" type="checkbox"/>
+<span class="ml-3 text-sm font-medium">Interés Superior del Menor</span>
+</label>
+<label class="relative flex items-center p-4 rounded-lg border border-slate-100 dark:border-slate-700 bg-slate-50 dark:border-slate-900/50 cursor-pointer hover:bg-slate-100 transition-colors">
+<input checked="" class="form-checkbox h-5 w-5 text-primary rounded border-slate-300 focus:ring-primary" type="checkbox"/>
+<span class="ml-3 text-sm font-medium">Jurisprudencia Actualizada</span>
+</label>
+<label class="relative flex items-center p-4 rounded-lg border border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 cursor-pointer hover:bg-slate-100 transition-colors">
+<input class="form-checkbox h-5 w-5 text-primary rounded border-slate-300 focus:ring-primary" type="checkbox"/>
+<span class="ml-3 text-sm font-medium">Formatos de Lectura Fácil</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Demands Grid -->
+<section class="space-y-6">
+<h3 class="text-xl font-bold border-l-4 border-accent pl-4">Catálogo de Demandas</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden hover:shadow-md transition-shadow group">
+<div class="h-2 gold-gradient"></div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<span class="px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider bg-primary/10 text-primary">Amparo Indirecto</span>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-accent transition-colors">article</span>
+</div>
+<h4 class="font-bold text-slate-900 dark:text-slate-100 mb-2">Contra Actos de Autoridad</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-6">Estructura completa para la impugnación de leyes o actos administrativos específicos.</p>
+<button class="w-full py-2 rounded-lg border border-primary text-primary font-bold text-sm hover:bg-primary hover:text-white transition-all">Seleccionar Tipo</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden hover:shadow-md transition-shadow group">
+<div class="h-2 gold-gradient"></div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<span class="px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider bg-primary/10 text-primary">Mercantil</span>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-accent transition-colors">payments</span>
+</div>
+<h4 class="font-bold text-slate-900 dark:text-slate-100 mb-2">Ejecutivo Mercantil</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-6">Basado en títulos de crédito (Pagarés, Cheques) con auto de ejecución inmediata.</p>
+<button class="w-full py-2 rounded-lg border border-primary text-primary font-bold text-sm hover:bg-primary hover:text-white transition-all">Seleccionar Tipo</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden hover:shadow-md transition-shadow group">
+<div class="h-2 gold-gradient"></div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<span class="px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider bg-primary/10 text-primary">Civil</span>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-accent transition-colors">foundation</span>
+</div>
+<h4 class="font-bold text-slate-900 dark:text-slate-100 mb-2">Reivindicatoria de Dominio</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-6">Procedimiento para la recuperación de la posesión de bienes inmuebles.</p>
+<button class="w-full py-2 rounded-lg border border-primary text-primary font-bold text-sm hover:bg-primary hover:text-white transition-all">Seleccionar Tipo</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Navigation Bar -->
+<nav class="sticky bottom-0 w-full bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-6 py-3 flex justify-around items-center shadow-2xl z-50">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold">Inicio</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-accent" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">gavel</span>
+<span class="text-[10px] font-bold">Demandas</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-[10px] font-bold">Formatos</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold">Perfil</span>
+</a>
+</nav>
+<!-- Decorative Elements -->
+<div class="fixed top-0 right-0 -z-10 opacity-5 dark:opacity-10 pointer-events-none">
+<svg fill="none" height="400" viewbox="0 0 400 400" width="400" xmlns="http://www.w3.org/2000/svg">
+<circle class="text-primary" cx="200" cy="200" r="180" stroke="currentColor" stroke-width="2"></circle>
+<circle class="text-accent" cx="200" cy="200" r="140" stroke="currentColor" stroke-width="1"></circle>
+</svg>
+</div>
+</body></html>

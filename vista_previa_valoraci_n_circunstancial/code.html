@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"],
+                        "legal": ["Arial", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .legal-spacing {
+            line-height: 1.5;
+        }
+        .legal-text {
+            font-family: Arial, sans-serif;
+            font-size: 12pt;
+        }
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<main class="flex-grow flex justify-center py-12 px-4">
+<div class="w-full max-w-[816px] bg-white dark:bg-slate-900 shadow-xl border border-slate-200 dark:border-slate-800 p-16 flex flex-col min-h-[1056px]">
+<header class="mb-10 text-center border-b-2 border-slate-900 dark:border-slate-100 pb-4">
+<h1 class="text-xl font-bold uppercase tracking-tight">Poder Judicial del Estado de Nuevo León</h1>
+<h2 class="text-lg font-bold uppercase mt-2">Valoración de Prueba Circunstancial</h2>
+</header>
+<section class="legal-text legal-spacing flex-grow text-justify">
+<p class="mb-6 font-bold uppercase text-center underline">Expediente: <span class="text-red-600">00124/2023-J-OAX</span></p>
+<p class="mb-6">
+                    En la ciudad de <span class="text-red-600">Monterrey, Nuevo León</span>, se procede a la valoración jurídica del acervo probatorio relativo a la responsabilidad penal del ciudadano <span class="text-red-600">JUAN PÉREZ LÓPEZ</span>. Esta autoridad jurisdiccional determina que el enlace lógico entre los hechos conocidos y la conclusión jurídica se establece bajo el estándar de la prueba circunstancial o indiciaria.
+                </p>
+<p class="mb-4 font-bold italic underline">I. HECHOS CONOCIDOS (INDICIOS):</p>
+<ol class="list-decimal pl-10 mb-6">
+<li class="mb-2">
+                        Se acreditó la presencia física del imputado en el domicilio ubicado en <span class="text-red-600">Calle Privada de los Abetos #452, Col. Vista Hermosa</span>, apenas tres minutos después de ocurrido el evento delictivo, según el registro de cámaras C5.
+                    </li>
+<li class="mb-2">
+                        El dictamen pericial en materia de dactiloscopía con número de folio <span class="text-red-600">DP-2023-981</span> arroja una coincidencia de correspondencia de puntos característicos de la mano derecha del imputado sobre el arma de fuego asegurada.
+                    </li>
+<li class="mb-2">
+                        La declaración del testigo con reserva de identidad <span class="text-red-600">TESTIGO_01_A</span> quien refiere haber escuchado la detonación y observar a un sujeto con las características físicas del ahora imputado salir del inmueble.
+                    </li>
+</ol>
+<p class="mb-4 font-bold italic underline">II. ENLACE LÓGICO Y DEDUCCIÓN:</p>
+<p class="mb-6">
+                    A través de un proceso de razonamiento inductivo-deductivo, se advierte que no existe una explicación alterna plausible que desvirtúe la convergencia de los indicios antes señalados. La pluralidad de los elementos, su concordancia y la gravedad intrínseca de cada uno de ellos, permiten a este juzgador construir una convicción de culpabilidad mas allá de toda duda razonable. No se trata de una mera sospecha, sino de la concatenación orgánica de hechos plenamente probados que convergen en un único punto causal.
+                </p>
+<p class="mb-4 font-bold italic underline">III. HECHO DESCONOCIDO (CONCLUSIÓN):</p>
+<p class="mb-6">
+                    Se concluye que el C. <span class="text-red-600">JUAN PÉREZ LÓPEZ</span> intervino de manera directa y material en la ejecución del hecho tipificado como delito de <span class="text-red-600">HOMICIDIO CALIFICADO</span> en agravio de quien en vida llevara el nombre de <span class="text-red-600">MIGUEL ÁNGEL "N"</span>.
+                </p>
+<div class="mt-12 text-center">
+<div class="w-64 border-t border-slate-900 dark:border-slate-100 mx-auto mt-20"></div>
+<p class="text-sm font-bold mt-2">Juez de Control y de Juicio Oral Penal del Estado</p>
+<p class="text-sm uppercase"><span class="text-red-600">Lic. Roberto Cantú Villalobos</span></p>
+</div>
+</section>
+<footer class="mt-auto pt-8 border-t border-slate-200 dark:border-slate-800 text-center text-xs uppercase tracking-widest text-slate-500">
+                Poder Judicial del Estado de Nuevo León
+            </footer>
+</div>
+</main>
+<nav class="no-print fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 p-4">
+<div class="max-w-4xl mx-auto flex justify-between items-center">
+<button class="px-6 py-2 border border-slate-300 dark:border-slate-700 rounded text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                Volver
+            </button>
+<div class="flex gap-4">
+<button class="bg-primary text-white px-8 py-2 rounded text-sm font-medium hover:bg-primary/90 transition-colors shadow-sm">
+                    Exportar Word
+                </button>
+</div>
+</div>
+</nav>
+</body></html>

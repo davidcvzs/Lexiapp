@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000066", // Navy Blue
+                        "accent": "#C5A059", // Gold
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0f0f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Arial", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            font-size: 16px;
+        }
+        .body-text {
+            font-size: 12pt; /* Arial 12 for body text as requested */
+            line-height: 1.6;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark overflow-x-hidden">
+<!-- Header Section -->
+<div class="flex items-center bg-white dark:bg-slate-900 p-4 border-b border-slate-200 dark:border-slate-800 justify-between sticky top-0 z-10">
+<div class="text-primary dark:text-accent flex size-10 shrink-0 items-center">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-primary dark:text-white text-lg font-bold leading-tight tracking-tight flex-1 px-4">LegalFlow: Dominios</h2>
+<div class="w-10"></div>
+</div>
+<main class="flex-1 max-w-4xl mx-auto w-full pb-24">
+<!-- Hero Title -->
+<div class="px-6 pt-8 pb-4">
+<h1 class="text-primary dark:text-accent tracking-tight text-3xl font-bold leading-tight border-l-4 border-accent pl-4">Gestión de Identidad Digital</h1>
+<p class="text-slate-600 dark:text-slate-400 mt-2 body-text">Configuración y costos de dominios para su firma legal.</p>
+</div>
+<!-- Section 1: What is a domain? -->
+<section class="px-6 py-6 bg-white dark:bg-slate-900/50 mt-4 rounded-xl mx-4 shadow-sm border border-slate-100 dark:border-slate-800">
+<h2 class="text-primary dark:text-accent text-xl font-bold mb-3">¿Qué es un dominio?</h2>
+<p class="text-slate-700 dark:text-slate-300 body-text">
+                    Un dominio es la dirección única y exclusiva que identifica a su despacho en internet (ejemplo: www.suasociado.com). Es el nombre que sus clientes escribirán en el navegador para acceder a sus servicios legales digitales, aportando profesionalismo y legitimidad a su presencia en línea.
+                </p>
+</section>
+<!-- Section 2: Domain Options -->
+<section class="px-6 py-8 mt-4">
+<h2 class="text-primary dark:text-accent text-xl font-bold mb-6">Opciones de Dominio</h2>
+<div class="grid md:grid-cols-2 gap-4">
+<!-- Custom Domain -->
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border-t-4 border-accent shadow-md">
+<h3 class="text-primary dark:text-white font-bold text-lg mb-2">Dominio Personalizado</h3>
+<p class="text-slate-600 dark:text-slate-400 mb-4 body-text">Uso de su propia marca (ej. .com, .net, .legal).</p>
+<div class="text-2xl font-bold text-primary dark:text-accent mb-2">
+                            $10 - $15 <span class="text-sm font-normal text-slate-500">USD / año</span>
+</div>
+<ul class="space-y-2 body-text text-slate-700 dark:text-slate-300">
+<li class="flex items-start">Propiedad total de la marca</li>
+<li class="flex items-start">Correos corporativos</li>
+<li class="flex items-start">Mejor posicionamiento SEO</li>
+</ul>
+</div>
+<!-- Subdomain -->
+<div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-xl border border-slate-200 dark:border-slate-700">
+<h3 class="text-primary dark:text-white font-bold text-lg mb-2">Subdominio LegalFlow</h3>
+<p class="text-slate-600 dark:text-slate-400 mb-4 body-text">ejemplo: sudespacho.legalflow.com</p>
+<div class="text-2xl font-bold text-slate-400 mb-2">
+                            Gratuito
+                        </div>
+<ul class="space-y-2 body-text text-slate-500 dark:text-slate-400">
+<li class="flex items-start">Activación inmediata</li>
+<li class="flex items-start">Sin costos de renovación</li>
+<li class="flex items-start">Marca compartida</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Section 3: How to Acquire -->
+<section class="px-6 py-6 bg-primary dark:bg-slate-900 text-white dark:text-slate-100 mt-4 mx-4 rounded-xl shadow-lg">
+<h2 class="text-accent text-xl font-bold mb-4">¿Cómo adquirirlo?</h2>
+<p class="mb-6 body-text opacity-90">LegalFlow permite una integración transparente con los principales proveedores del mercado. Usted mantiene el control total de su activo digital.</p>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-white/10 rounded-lg border border-white/20">
+<span class="font-medium">GoDaddy</span>
+<span class="text-xs uppercase tracking-widest text-accent">Sugerido</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-white/10 rounded-lg border border-white/20">
+<span class="font-medium">Namecheap</span>
+<span class="text-xs uppercase tracking-widest text-accent">Económico</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-white/10 rounded-lg border border-white/20">
+<span class="font-medium">Google Domains</span>
+<span class="text-xs uppercase tracking-widest text-accent">Simple</span>
+</div>
+</div>
+<div class="mt-6 p-4 bg-accent/20 rounded-lg">
+<p class="text-sm body-text text-accent font-semibold italic">Nota: El proceso de vinculación técnica es asistido por nuestro equipo de soporte sin costo adicional.</p>
+</div>
+</section>
+<!-- Section 4: FAQ -->
+<section class="px-6 py-10">
+<h2 class="text-primary dark:text-accent text-xl font-bold mb-6">Preguntas Frecuentes</h2>
+<div class="space-y-6">
+<div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+<h4 class="text-primary dark:text-white font-semibold mb-2">¿El costo del dominio incluye hosting?</h4>
+<p class="text-slate-600 dark:text-slate-400 body-text">No, el dominio es solo la dirección. Sin embargo, su suscripción a LegalFlow ya incluye el hosting (alojamiento) de alta seguridad para su plataforma.</p>
+</div>
+<div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+<h4 class="text-primary dark:text-white font-semibold mb-2">¿Existen costos de mantenimiento ocultos?</h4>
+<p class="text-slate-600 dark:text-slate-400 body-text">Solo debe considerar la renovación anual de su dominio con su proveedor elegido. LegalFlow no realiza cargos adicionales por la gestión técnica del enlace.</p>
+</div>
+<div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+<h4 class="text-primary dark:text-white font-semibold mb-2">¿Puedo migrar un dominio que ya poseo?</h4>
+<p class="text-slate-600 dark:text-slate-400 body-text">Sí, es posible apuntar cualquier dominio existente a nuestros servidores mediante la configuración de registros DNS (A y CNAME).</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pb-3 pt-2 z-20">
+<div class="flex gap-2 max-w-4xl mx-auto">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 dark:text-slate-500" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">home</span>
+</div>
+<p class="text-[10px] font-medium leading-normal tracking-wide uppercase">Inicio</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary dark:text-accent border-t-2 border-primary dark:border-accent pt-1" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">language</span>
+</div>
+<p class="text-[10px] font-medium leading-normal tracking-wide uppercase">Dominios</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 dark:text-slate-500" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">settings</span>
+</div>
+<p class="text-[10px] font-medium leading-normal tracking-wide uppercase">Ajustes</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 dark:text-slate-500" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">help</span>
+</div>
+<p class="text-[10px] font-medium leading-normal tracking-wide uppercase">Soporte</p>
+</a>
+</div>
+</nav>
+</div>
+</body></html>

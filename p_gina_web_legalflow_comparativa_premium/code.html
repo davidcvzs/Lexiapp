@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegalFlow - Transcriptor y Redactor Jurídico de Elite</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000066",
+                        "accent": "#D4AF37",
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0f0f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .gold-accent { color: #D4AF37; }
+        .bg-gold-accent { background-color: #D4AF37; }
+        .border-gold-accent { border-color: #D4AF37; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<!-- Top Navigation -->
+<nav class="sticky top-0 z-50 flex items-center bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-6 py-4 justify-between border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-2">
+<div class="text-primary dark:text-blue-400 flex items-center">
+<span class="material-symbols-outlined text-3xl">gavel</span>
+</div>
+<h2 class="text-primary dark:text-blue-400 text-xl font-extrabold tracking-tight">LegalFlow</h2>
+</div>
+<div class="flex items-center gap-6">
+<a class="hidden md:block text-slate-600 dark:text-slate-300 hover:text-primary font-medium text-sm" href="#features">Características</a>
+<a class="hidden md:block text-slate-600 dark:text-slate-300 hover:text-primary font-medium text-sm" href="#solutions">Soluciones</a>
+<a class="hidden md:block text-slate-600 dark:text-slate-300 hover:text-primary font-medium text-sm" href="#pricing">Precios</a>
+<button class="bg-primary text-white px-5 py-2 rounded-lg font-bold text-sm hover:opacity-90 transition-opacity">
+                Iniciar Sesión
+            </button>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative @container px-6 py-12 md:py-24 bg-white dark:bg-slate-900 overflow-hidden">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+<div class="flex flex-col gap-8 flex-1">
+<div class="flex flex-col gap-4">
+<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold w-fit uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm">verified</span> IA de Confianza para el PJENL
+                    </span>
+<h1 class="text-slate-900 dark:text-white text-4xl md:text-6xl font-black leading-tight tracking-tight">
+                        LegalFlow: <span class="text-primary">Transcriptor</span> y Redactor Jurídico de Elite
+                    </h1>
+<p class="text-slate-600 dark:text-slate-400 text-lg md:text-xl leading-relaxed">
+                        Optimice su práctica legal con IA especializada en formatos oficiales. Diseñado específicamente para Proyectistas y Litigantes que exigen precisión absoluta.
+                    </p>
+</div>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-white h-14 px-8 rounded-xl font-bold text-lg shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform">
+                        Comenzar ahora
+                    </button>
+<button class="border-2 border-primary/20 text-primary h-14 px-8 rounded-xl font-bold text-lg hover:bg-primary/5 transition-colors">
+                        Ver Demo
+                    </button>
+</div>
+<div class="flex items-center gap-4 text-sm text-slate-500 font-medium">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined gold-accent text-sm">check_circle</span> Sin tarjeta de crédito</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined gold-accent text-sm">check_circle</span> Formatos PJENL 2024</span>
+</div>
+</div>
+<div class="flex-1 w-full max-w-[600px]">
+<div class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 bg-slate-100 aspect-[4/3] w-full" data-alt="Gavel and law books on a wooden table in a professional setting" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC0baaMNZRPtPVkdVrrTdhmTCwX35RNJGnSEGYNhjnmvuAxD3r1Eg4ag6gMjZcjJxnX2qt21UFlkS-JTaWfNdWlKAQDsaOT1cJ2VnkHt_6tbdaS52M-sl1Lg4TFDnpk4FzSWpHkLjZGYNCocRFE2ihoiz_Yp--LgjR5I-NAem1cNR3qotPjLw1k6ugFP52gpCCZXg-wjC7lp4HKZLDKSkfsasM7WiUwjCch7HAcvuPJFU1yWajrz1SOWK4idxSRuo5V-dOXJ2pcxCbd"); background-size: cover; background-position: center;'>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+</div>
+</div>
+</div>
+</header>
+<!-- Features Section -->
+<section class="py-20 px-6 bg-slate-50 dark:bg-background-dark/50" id="features">
+<div class="max-w-7xl mx-auto">
+<div class="mb-16 text-center max-w-3xl mx-auto">
+<h2 class="text-slate-900 dark:text-white text-3xl md:text-4xl font-bold mb-4">Herramientas de Alta Precisión</h2>
+<p class="text-slate-600 dark:text-slate-400">Tecnología avanzada desarrollada exclusivamente para los desafíos del derecho mexicano moderno.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 hover:border-gold-accent/50 transition-colors group">
+<div class="w-12 h-12 bg-primary/5 rounded-lg flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined gold-accent group-hover:text-white">groups</span>
+</div>
+<h3 class="text-slate-900 dark:text-white text-xl font-bold mb-3">Diarización Avanzada</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Identificación precisa de cada interviniente en grabaciones de audiencias judiciales con etiquetado automático.</p>
+</div>
+<div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 hover:border-gold-accent/50 transition-colors group">
+<div class="w-12 h-12 bg-primary/5 rounded-lg flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined gold-accent group-hover:text-white">psychology</span>
+</div>
+<h3 class="text-slate-900 dark:text-white text-xl font-bold mb-3">IA Jurídica Especializada</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Modelos de lenguaje entrenados específicamente con jurisprudencia y terminología técnica del sistema jurídico mexicano.</p>
+</div>
+<div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 hover:border-gold-accent/50 transition-colors group">
+<div class="w-12 h-12 bg-primary/5 rounded-lg flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined gold-accent group-hover:text-white">description</span>
+</div>
+<h3 class="text-slate-900 dark:text-white text-xl font-bold mb-3">Formatos Oficiales PJENL</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Exporte sus transcripciones y borradores directamente a los estándares requeridos por el Poder Judicial de Nuevo León.</p>
+</div>
+</div>
+</div>
+</section><section class="py-20 px-6 bg-white dark:bg-background-dark" id="comparison">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-slate-900 dark:text-white text-3xl md:text-4xl font-bold mb-4">¿Por qué elegir LegalFlow?</h2>
+<p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Superamos a las herramientas genéricas de transcripción al ofrecer una solución diseñada por y para abogados mexicanos.</p>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-slate-200 dark:border-slate-800">
+<th class="py-4 px-6 text-sm font-bold uppercase tracking-wider text-slate-500">Característica</th>
+<th class="py-4 px-6 text-sm font-bold uppercase tracking-wider text-primary dark:text-blue-400">LegalFlow</th>
+<th class="py-4 px-6 text-sm font-bold uppercase tracking-wider text-slate-500">Competencia Genérica</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr>
+<td class="py-5 px-6 font-semibold text-slate-900 dark:text-white">Especialización Legal</td>
+<td class="py-5 px-6">
+<div class="flex items-center gap-2 text-primary font-bold">
+<span class="material-symbols-outlined gold-accent">check_circle</span>
+Contexto Mexicano &amp; PJENL
+</div>
+</td>
+<td class="py-5 px-6 text-slate-500">Modelos globales sin contexto jurídico</td>
+</tr>
+<tr>
+<td class="py-5 px-6 font-semibold text-slate-900 dark:text-white">Precio Mensual</td>
+<td class="py-5 px-6">
+<div class="flex items-center gap-2 text-primary font-bold">
+<span class="material-symbols-outlined gold-accent">check_circle</span>
+$60 MXN
+</div>
+</td>
+<td class="py-5 px-6 text-slate-500">$100+ USD (Precios en moneda extranjera)</td>
+</tr>
+<tr>
+<td class="py-5 px-6 font-semibold text-slate-900 dark:text-white">Redacción de Sentencias</td>
+<td class="py-5 px-6">
+<div class="flex items-center gap-2 text-primary font-bold">
+<span class="material-symbols-outlined gold-accent">check_circle</span>
+IA Redactora Integrada
+</div>
+</td>
+<td class="py-5 px-6 text-slate-500">Solo transcripción de audio</td>
+</tr>
+<tr>
+<td class="py-5 px-6 font-semibold text-slate-900 dark:text-white">Formatos Oficiales</td>
+<td class="py-5 px-6">
+<div class="flex items-center gap-2 text-primary font-bold">
+<span class="material-symbols-outlined gold-accent">check_circle</span>
+Exportación Directa PJENL
+</div>
+</td>
+<td class="py-5 px-6 text-slate-500">Archivos .txt o .doc sin formato legal</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Solutions Section -->
+<section class="py-20 px-6 bg-white dark:bg-background-dark" id="solutions">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<!-- For Proyectistas -->
+<div class="relative overflow-hidden bg-primary rounded-3xl p-10 text-white flex flex-col justify-between min-h-[400px]">
+<div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-20 -mt-20"></div>
+<div>
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-3xl gold-accent">balance</span>
+<h3 class="text-2xl font-bold">Para Proyectistas</h3>
+</div>
+<p class="text-white/80 mb-8 text-lg">Optimice la redacción de sus sentencias. Nuestra IA asiste en la estructuración de resolutivos con una coherencia doctrinal impecable.</p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm gold-accent">done</span> Síntesis de hechos automatizada</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm gold-accent">done</span> Citas jurisprudenciales dinámicas</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm gold-accent">done</span> Formato de sentencia de 2 columnas</li>
+</ul>
+</div>
+<button class="bg-white text-primary px-6 py-3 rounded-lg font-bold w-fit hover:bg-slate-100">Ver herramientas de juzgado</button>
+</div>
+<!-- For Litigantes -->
+<div class="relative overflow-hidden bg-white dark:bg-slate-900 border-2 border-primary rounded-3xl p-10 flex flex-col justify-between min-h-[400px]">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -mr-20 -mt-20"></div>
+<div>
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-3xl text-primary">gavel</span>
+<h3 class="text-2xl font-bold text-slate-900 dark:text-white">Para Litigantes</h3>
+</div>
+<p class="text-slate-600 dark:text-slate-400 mb-8 text-lg">Elabore demandas y recursos de amparo en una fracción del tiempo habitual, sin comprometer la calidad técnica.</p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center gap-2 text-slate-600 dark:text-slate-400"><span class="material-symbols-outlined text-sm text-primary">done</span> Redacción asistida de agravios</li>
+<li class="flex items-center gap-2 text-slate-600 dark:text-slate-400"><span class="material-symbols-outlined text-sm text-primary">done</span> Transcripción rápida de probanzas</li>
+<li class="flex items-center gap-2 text-slate-600 dark:text-slate-400"><span class="material-symbols-outlined text-sm text-primary">done</span> Estructura estándar de amparos</li>
+</ul>
+</div>
+<button class="bg-primary text-white px-6 py-3 rounded-lg font-bold w-fit hover:opacity-90">Explorar herramientas de litigio</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Section -->
+<section class="py-20 px-6 bg-slate-50 dark:bg-background-dark/50" id="pricing">
+<div class="max-w-5xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-slate-900 dark:text-white text-3xl font-bold mb-4">Planes diseñados para usted</h2>
+<p class="text-slate-600 dark:text-slate-400">Escalabilidad total desde un solo uso hasta suscripciones profesionales.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Free Trial Card -->
+<div class="bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col h-full">
+<div class="mb-8">
+<h3 class="text-xl font-bold mb-2">Prueba Gratuita</h3>
+<div class="flex items-baseline gap-1">
+<span class="text-4xl font-black">$0</span>
+<span class="text-slate-500 font-medium">MXN</span>
+</div>
+<p class="text-slate-500 text-sm mt-2">Pruebe el poder de la IA sin costo.</p>
+</div>
+<ul class="space-y-4 mb-8 flex-1">
+<li class="flex gap-3 text-slate-600 dark:text-slate-400 text-sm">
+<span class="material-symbols-outlined text-primary">check</span> 1 uso único completo
+                        </li>
+<li class="flex gap-3 text-slate-600 dark:text-slate-400 text-sm">
+<span class="material-symbols-outlined text-primary">check</span> Diarización básica
+                        </li>
+<li class="flex gap-3 text-slate-600 dark:text-slate-400 text-sm">
+<span class="material-symbols-outlined text-primary">check</span> Exportación a Word
+                        </li>
+</ul>
+<button class="w-full py-4 px-6 rounded-xl border-2 border-slate-200 dark:border-slate-700 font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 transition-colors">
+                        Probar ahora
+                    </button>
+</div>
+<!-- Pro Plan Card -->
+<div class="bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-xl border-2 border-primary relative overflow-hidden flex flex-col h-full">
+<div class="absolute top-0 right-0 bg-primary text-white text-[10px] font-black px-4 py-1 uppercase tracking-widest -mr-0 mt-4 rounded-l-full">
+                        Recomendado
+                    </div>
+<div class="mb-8">
+<h3 class="text-xl font-bold mb-2">Plan Pro</h3>
+<div class="flex items-baseline gap-1">
+<span class="text-4xl font-black text-primary">$60</span>
+<span class="text-slate-500 font-medium">MXN/mes</span>
+</div>
+<p class="text-slate-500 text-sm mt-2">Acceso total para el profesional activo.</p>
+</div>
+<ul class="space-y-4 mb-8 flex-1">
+<li class="flex gap-3 text-slate-900 dark:text-white text-sm font-medium">
+<span class="material-symbols-outlined gold-accent">verified</span> Transcripciones ilimitadas
+                        </li>
+<li class="flex gap-3 text-slate-900 dark:text-white text-sm font-medium">
+<span class="material-symbols-outlined gold-accent">verified</span> Redactor de demandas/sentencias
+                        </li>
+<li class="flex gap-3 text-slate-900 dark:text-white text-sm font-medium">
+<span class="material-symbols-outlined gold-accent">verified</span> IA Personalizada para PJENL
+                        </li>
+<li class="flex gap-3 text-slate-900 dark:text-white text-sm font-medium">
+<span class="material-symbols-outlined gold-accent">verified</span> Soporte prioritario 24/7
+                        </li>
+</ul>
+<button class="w-full py-4 px-6 rounded-xl bg-primary text-white font-bold text-lg shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform">
+                        Suscribirme ahora
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA Section -->
+<section class="py-20 px-6">
+<div class="max-w-4xl mx-auto bg-primary rounded-[2.5rem] p-8 md:p-16 text-center text-white relative overflow-hidden shadow-2xl shadow-primary/30">
+<div class="absolute inset-0 bg-gradient-to-br from-primary via-primary to-[#000044]"></div>
+<div class="relative z-10">
+<h2 class="text-3xl md:text-5xl font-black mb-6">Transforme su flujo de trabajo legal hoy</h2>
+<p class="text-lg text-white/80 mb-10 max-w-2xl mx-auto">Únase a los cientos de profesionales que ya han reducido sus tiempos de redacción en un 60%.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-white text-primary h-16 px-12 rounded-2xl font-extrabold text-xl hover:scale-105 transition-transform">
+                        Comenzar ahora
+                    </button>
+<button class="border border-white/30 bg-white/10 text-white h-16 px-12 rounded-2xl font-bold text-xl hover:bg-white/20 transition-colors">
+                        Contactar ventas
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-slate-900 text-slate-400 py-12 px-6">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+<div class="col-span-1 md:col-span-2">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-white text-3xl">gavel</span>
+<h2 class="text-white text-xl font-extrabold">LegalFlow</h2>
+</div>
+<p class="max-w-md leading-relaxed">La plataforma líder en tecnología jurídica para el estado de Nuevo León. Innovación, ética y precisión para el derecho moderno.</p>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Enlaces</h4>
+<ul class="space-y-3 text-sm">
+<li><a class="hover:text-white" href="#">Inicio</a></li>
+<li><a class="hover:text-white" href="#">Nosotros</a></li>
+<li><a class="hover:text-white" href="#">Seguridad</a></li>
+<li><a class="hover:text-white" href="#">Privacidad</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Legal</h4>
+<ul class="space-y-3 text-sm">
+<li><a class="hover:text-white" href="#">Términos de servicio</a></li>
+<li><a class="hover:text-white" href="#">Política de datos</a></li>
+<li><a class="hover:text-white" href="#">Contacto</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs uppercase tracking-widest font-bold">
+<p>© 2024 LegalFlow. Todos los derechos reservados.</p>
+<div class="flex gap-6">
+<a class="hover:text-white" href="#">Twitter</a>
+<a class="hover:text-white" href="#">LinkedIn</a>
+</div>
+</div>
+</footer>
+</body></html>

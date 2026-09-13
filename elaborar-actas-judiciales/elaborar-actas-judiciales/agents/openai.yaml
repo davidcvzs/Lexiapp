@@ -1,0 +1,14 @@
+interface:
+  display_name: Elaboración de actas judiciales
+  short_description: Actas judiciales conforme a tu método habitual
+  default_prompt: Usa $elaborar-actas-judiciales para elaborar esta acta conforme
+    a mi método habitual.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000066",
+                        "accent-gold": "#C5A059",
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0f0f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .preview-paper {
+            background-image: linear-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 100% 2rem;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Header -->
+<header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 py-4 sticky top-0 z-10">
+<div class="max-w-5xl mx-auto flex items-center gap-4">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined text-primary dark:text-slate-100">arrow_back</span>
+</button>
+<div>
+<h1 class="text-xl font-bold text-primary dark:text-slate-100 leading-tight">Compilación de Sentencia Final</h1>
+<p class="text-xs text-slate-500 dark:text-slate-400">Expediente No. 2023-0842-JF</p>
+</div>
+<div class="ml-auto flex gap-2">
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Borrador Final</span>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-5xl w-full mx-auto p-4 md:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Column: Controls -->
+<div class="lg:col-span-5 space-y-6">
+<!-- Selection Area -->
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-4 border-b border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50">
+<h2 class="font-bold text-primary dark:text-slate-100 flex items-center gap-2">
+<span class="material-symbols-outlined text-accent-gold">task_alt</span>
+                        Fases para Integración
+                    </h2>
+</div>
+<div class="p-2">
+<label class="flex items-center justify-between p-3 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg cursor-pointer group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">description</span>
+<span class="text-sm font-medium">Transcripción de Audiencia</span>
+</div>
+<input checked="" class="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-3 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg cursor-pointer group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">record_voice_over</span>
+<span class="text-sm font-medium">Declaraciones de Testigos</span>
+</div>
+<input checked="" class="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-3 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg cursor-pointer group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">gavel</span>
+<span class="text-sm font-medium">Valoración de Pruebas</span>
+</div>
+<input checked="" class="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-3 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg cursor-pointer group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">fact_check</span>
+<span class="text-sm font-medium">Acreditación de Hechos</span>
+</div>
+<input class="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-3 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg cursor-pointer group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">balance</span>
+<span class="text-sm font-medium">Fundamentos Jurídicos</span>
+</div>
+<input class="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+</label>
+</div>
+</section>
+<!-- Format Selector -->
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-4">
+<h2 class="font-bold text-primary dark:text-slate-100 mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-accent-gold">settings_applications</span>
+                    Configuración de Formato
+                </h2>
+<div class="space-y-4">
+<div class="grid grid-cols-2 gap-3">
+<div class="space-y-1">
+<label class="text-[10px] uppercase font-bold text-slate-500">Tipografía</label>
+<select class="w-full text-sm border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-800">
+<option>Arial 12pt</option>
+<option>Times New Roman 12pt</option>
+<option>Verdana 11pt</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] uppercase font-bold text-slate-500">Interlineado</label>
+<select class="w-full text-sm border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-800">
+<option>1.5 líneas</option>
+<option>Doble (2.0)</option>
+<option>Sencillo (1.0)</option>
+</select>
+</div>
+</div>
+<label class="flex items-center gap-3 p-2 bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-900/30 rounded-lg cursor-pointer">
+<input checked="" class="w-4 h-4 text-red-600 focus:ring-red-500 rounded" type="checkbox"/>
+<span class="text-xs font-medium text-red-700 dark:text-red-400">Resaltar datos sensibles en rojo</span>
+</label>
+</div>
+</section>
+<!-- Export Options -->
+<div class="grid grid-cols-1 gap-3">
+<button class="w-full flex items-center justify-between p-4 bg-white dark:bg-slate-900 border-2 border-primary hover:bg-primary/5 transition-colors rounded-xl text-left group">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">account_tree</span>
+<div>
+<p class="font-bold text-primary">Generar Documento Integrado</p>
+<p class="text-xs text-slate-500 italic">Estructurado por subtítulos</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 bg-primary hover:bg-primary/90 transition-colors rounded-xl text-left group shadow-lg shadow-primary/20">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-accent-gold text-3xl">verified</span>
+<div>
+<p class="font-bold text-white">Generar Sentencia Final</p>
+<p class="text-xs text-slate-300 italic">Aplica plantilla legal formal</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-accent-gold group-hover:translate-x-1 transition-transform">download</span>
+</button>
+</div>
+</div>
+<!-- Right Column: Preview Area -->
+<div class="lg:col-span-7">
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-lg border border-slate-200 dark:border-slate-800 h-full flex flex-col min-h-[600px]">
+<div class="p-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<h2 class="font-bold text-primary dark:text-slate-100 flex items-center gap-2">
+<span class="material-symbols-outlined">visibility</span>
+                        Vista Previa
+                    </h2>
+<div class="flex gap-2">
+<button class="p-1 hover:bg-slate-100 dark:hover:bg-slate-800 rounded">
+<span class="material-symbols-outlined text-slate-500 text-sm">zoom_in</span>
+</button>
+<button class="p-1 hover:bg-slate-100 dark:hover:bg-slate-800 rounded">
+<span class="material-symbols-outlined text-slate-500 text-sm">zoom_out</span>
+</button>
+</div>
+</div>
+<div class="flex-1 p-8 bg-slate-100 dark:bg-slate-800 overflow-y-auto">
+<!-- Paper Mockup -->
+<div class="bg-white dark:bg-slate-900 mx-auto w-full max-w-2xl shadow-xl min-h-full p-12 relative border-t-4 border-accent-gold">
+<div class="text-center mb-8">
+<p class="text-[10px] uppercase font-bold tracking-widest text-slate-400 mb-2">Poder Judicial del Estado</p>
+<h3 class="font-serif text-lg font-bold text-slate-800 dark:text-slate-100">SENTENCIA DEFINITIVA</h3>
+</div>
+<div class="space-y-6 text-sm leading-relaxed text-slate-700 dark:text-slate-300" style="font-family: 'Arial', sans-serif;">
+<p class="font-bold border-b border-slate-200 pb-1">I. ANTECEDENTES</p>
+<p>En la ciudad de [Ciudad], siendo las [Hora] del día [Fecha], se procede a la integración de los elementos probatorios y testimoniales...</p>
+<p class="font-bold border-b border-slate-200 pb-1">II. TRANSCRIPCIÓN DE AUDIENCIA</p>
+<p>Durante el desahogo de la audiencia principal, se hizo constar que el <span class="text-red-600 bg-red-50 px-1 rounded">Sujeto "A" con identificación ID-99283</span> manifestó bajo protesta de decir verdad...</p>
+<p class="font-bold border-b border-slate-200 pb-1">III. VALORACIÓN DE PRUEBAS</p>
+<p>Tras el análisis exhaustivo de los documentos aportados, este juzgado determina que la evidencia física marcada como 'Anexo B' cumple con los requisitos de procedencia...</p>
+<div class="mt-12 flex flex-col items-center gap-4">
+<div class="w-48 border-t border-slate-400 mt-8"></div>
+<p class="text-[10px] font-bold text-slate-500">FIRMA DEL MAGISTRADO</p>
+</div>
+</div>
+<!-- Watermark -->
+<div class="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none rotate-45 select-none">
+<p class="text-8xl font-black">LEGALFLOW</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Nav Bar -->
+<nav class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-4 py-2 flex justify-around items-center sticky bottom-0 lg:hidden">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Inicio</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">folder</span>
+<span class="text-[10px] font-medium">Casos</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-[10px] font-medium">Documentos</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Ajustes</span>
+</a>
+</nav>
+</body></html>

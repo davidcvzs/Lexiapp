@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegalFlow - Iniciar Sesión</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#ec5b13", // Theme Primary
+              "legal-navy": "#0f172a", // Navy for professional look
+              "legal-gold": "#b45309", // Golden/Amber for professional accent
+              "background-light": "#f8f6f6",
+              "background-dark": "#221610",
+            },
+            fontFamily: {
+              "display": ["Public Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header / Navigation -->
+<div class="flex items-center bg-legal-navy p-4 pb-2 justify-between">
+<div class="text-white flex size-12 shrink-0 items-center justify-center cursor-pointer" data-icon="ArrowLeft">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">LegalFlow</h2>
+</div>
+<!-- Hero Section -->
+<div class="@container">
+<div class="@[480px]:px-4 @[480px]:py-6 max-w-2xl mx-auto w-full">
+<div class="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden bg-legal-navy @[480px]:rounded-xl min-h-[200px] border-b-4 border-legal-gold" data-alt="Escritorio legal profesional con mazo de madera" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCl2QkLR25eJ_Xcye4x_vp5kxnE7rLtPLC9H7OBrNx1_wigRYqfUeqvrFfNvQ3RkJdTUk7LZiK_TvQQhE66CoQJDQ7_7uESKuhr_CeaMd4cpC8SIypE7WyKk2OqDrU6A9XtbvSjlEOOjtJNzpaFbN-Y2PGEMG3mGAZQx3Ck1cqXODXYAA2g0zssCweGfwCe_KsqevyycaufWAdS-la58WR1sbVQ5H-UmaOsQCFtGIPgNRTTh2i5ZcgstCvskuAGT_0paEtvSi2drVAr");'>
+</div>
+</div>
+</div>
+<!-- Welcome Text -->
+<div class="max-w-[480px] mx-auto w-full">
+<h1 class="text-slate-900 dark:text-white tracking-tight text-[32px] font-bold leading-tight px-4 text-center pb-2 pt-6">Bienvenido a LegalFlow</h1>
+<p class="text-slate-600 dark:text-slate-300 text-base font-normal leading-normal pb-6 pt-1 px-4 text-center">Gestión legal sobria y eficiente para profesionales.</p>
+<!-- Login Form -->
+<div class="flex flex-col gap-4 px-4 py-3">
+<label class="flex flex-col w-full">
+<p class="text-slate-700 dark:text-slate-200 text-sm font-semibold leading-normal pb-2">Correo electrónico</p>
+<input class="form-input flex w-full rounded-xl text-slate-900 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-slate-300 bg-white h-14 placeholder:text-slate-400 p-[15px] text-base font-normal" placeholder="ejemplo@legalflow.com" type="email" value=""/>
+</label>
+<label class="flex flex-col w-full">
+<p class="text-slate-700 dark:text-slate-200 text-sm font-semibold leading-normal pb-2">Contraseña</p>
+<input class="form-input flex w-full rounded-xl text-slate-900 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-slate-300 bg-white h-14 placeholder:text-slate-400 p-[15px] text-base font-normal" placeholder="••••••••" type="password" value=""/>
+</label>
+<button class="mt-2 flex w-full h-14 items-center justify-center rounded-xl bg-legal-navy text-white text-base font-bold tracking-wide transition-colors hover:bg-slate-800">
+                    Iniciar Sesión
+                </button>
+<div class="flex items-center gap-4 py-4">
+<div class="h-[1px] flex-1 bg-slate-300"></div>
+<span class="text-sm text-slate-500 font-medium">O continuar con</span>
+<div class="h-[1px] flex-1 bg-slate-300"></div>
+</div>
+<!-- Social Login -->
+<button class="flex w-full h-14 items-center justify-center gap-3 rounded-xl border border-slate-300 bg-white text-slate-700 text-base font-semibold hover:bg-slate-50 transition-colors">
+<img alt="Google" class="w-6 h-6" data-alt="Logotipo de Google G" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW_qUa5Mu9T-utWlBBFJeLPnQMob2nfVsEchJUPpqqkWWZpH27Ew8P7bVUVB1LvBY0dvUktnUZ_jX9b4-wJnnxoPGWazWr-Vjpzrx04xDmRkfqJYLQsVIZU44nycV5Jzw1QoGiPBwHG9bMq2uVgdWXrQKnQdSr_B_FGTM-RxKrT43Gd9H2ylQlIMP19_9SynDGteAp0c83L_E_eJsAj55tTi6ha02nBo8eAdvOWvyXpRGSdhj9fN38S3xkhMngV80m9hhxUnlaSA2Q"/>
+                    Acceder con Google
+                </button>
+<p class="text-center text-sm text-slate-600 dark:text-slate-400 mt-4">
+                    ¿No tienes cuenta? <a class="text-legal-gold font-bold hover:underline" href="#">Regístrate</a>
+</p>
+</div>
+<!-- App Store Buttons -->
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4 px-4 py-10">
+<a class="flex items-center bg-black text-white px-5 py-2.5 rounded-lg w-full sm:w-auto justify-center hover:opacity-90 transition-opacity" href="#">
+<span class="material-symbols-outlined mr-2 !text-3xl">play_store_installed</span>
+<div class="flex flex-col items-start leading-none">
+<span class="text-[10px] uppercase">Disponible en</span>
+<span class="text-lg font-semibold">Google Play</span>
+</div>
+</a>
+<a class="flex items-center bg-black text-white px-5 py-2.5 rounded-lg w-full sm:w-auto justify-center hover:opacity-90 transition-opacity" href="#">
+<span class="material-symbols-outlined mr-2 !text-3xl">ios</span>
+<div class="flex flex-col items-start leading-none">
+<span class="text-[10px] uppercase">Consíguelo en el</span>
+<span class="text-lg font-semibold">App Store</span>
+</div>
+</a>
+</div>
+<!-- Footer links -->
+<div class="flex justify-center gap-6 pb-12">
+<a class="text-xs text-slate-500 hover:text-primary" href="#">Términos y condiciones</a>
+<a class="text-xs text-slate-500 hover:text-primary" href="#">Privacidad</a>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegalFlow Command Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000066", // Navy
+                        "accent": "#C5A059",  // Gold
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0f0f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Arial", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            font-size: 12px; /* User requested Arial 12 equivalent sizing */
+        }
+        .legal-gradient {
+            background: linear-gradient(135deg, #000066 0%, #000044 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex min-h-screen flex-col overflow-x-hidden">
+<!-- Header -->
+<header class="flex items-center justify-between bg-white dark:bg-slate-900 px-6 py-4 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-2 rounded text-white flex items-center justify-center">
+<span class="material-symbols-outlined">gavel</span>
+</div>
+<div>
+<h1 class="text-lg font-bold text-primary dark:text-slate-100 tracking-tight">LegalFlow</h1>
+<p class="text-[10px] uppercase tracking-widest text-accent font-semibold">Command Center</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<!-- Reference Document Shortcut -->
+<button class="flex items-center gap-2 px-3 py-1.5 bg-primary/5 hover:bg-primary/10 border border-primary/20 rounded-lg transition-colors group">
+<span class="material-symbols-outlined text-primary text-sm">description</span>
+<span class="text-primary font-semibold text-[11px]">Auto de Apertura</span>
+<span class="material-symbols-outlined text-primary text-[14px]">open_in_new</span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200 dark:bg-slate-700"></div>
+<div class="flex items-center gap-2">
+<div class="text-right hidden sm:block">
+<p class="font-bold text-[11px]">Lic. Alejandro Silva</p>
+<p class="text-[10px] text-slate-500">Defense Attorney</p>
+</div>
+<div class="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-white font-bold">AS</div>
+</div>
+</div>
+</header>
+<main class="flex-1 grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-0">
+<!-- Sidebar Navigation / Stepper -->
+<aside class="bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 p-6 overflow-y-auto max-h-[calc(100vh-73px)]">
+<div class="mb-6">
+<div class="flex justify-between items-end mb-2">
+<span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Overall Progress</span>
+<span class="text-primary font-bold">38%</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-accent" style="width: 38.5%;"></div>
+</div>
+</div>
+<nav class="space-y-1">
+<!-- Phase 1 -->
+<div class="group relative flex gap-4 pb-6">
+<div class="flex flex-col items-center">
+<div class="z-10 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-white">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="h-full w-[2px] bg-primary"></div>
+</div>
+<div class="flex flex-col">
+<h3 class="font-bold text-slate-900 dark:text-slate-100">1. Transcripción</h3>
+<p class="text-primary text-[11px] font-medium uppercase">Completed</p>
+</div>
+</div>
+<!-- Phase 2 -->
+<div class="group relative flex gap-4 pb-6">
+<div class="flex flex-col items-center">
+<div class="z-10 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-white">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="h-full w-[2px] bg-primary"></div>
+</div>
+<div class="flex flex-col">
+<h3 class="font-bold text-slate-900 dark:text-slate-100">2. Declaraciones</h3>
+<p class="text-primary text-[11px] font-medium uppercase">Completed</p>
+</div>
+</div>
+<!-- Phase 3 (Active) -->
+<div class="group relative flex gap-4 pb-6">
+<div class="flex flex-col items-center">
+<div class="z-10 flex h-6 w-6 items-center justify-center rounded-full border-2 border-accent bg-white dark:bg-slate-900">
+<div class="h-2 w-2 rounded-full bg-accent"></div>
+</div>
+<div class="h-full w-[2px] bg-slate-200 dark:bg-slate-800"></div>
+</div>
+<div class="flex flex-col">
+<h3 class="font-bold text-accent">3. Valoración</h3>
+<p class="text-accent text-[11px] font-bold uppercase tracking-wide">In Progress</p>
+</div>
+</div>
+<!-- Phase 4 -->
+<div class="group relative flex gap-4 pb-6">
+<div class="flex flex-col items-center">
+<div class="z-10 flex h-6 w-6 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+</div>
+<div class="h-full w-[2px] bg-slate-200 dark:bg-slate-800"></div>
+</div>
+<div class="flex flex-col opacity-60">
+<h3 class="font-medium text-slate-600 dark:text-slate-400">4. Acreditación del Delito</h3>
+<p class="text-slate-400 text-[11px] uppercase">Locked</p>
+</div>
+</div>
+<!-- Phase 5 -->
+<div class="group relative flex gap-4 pb-6">
+<div class="flex flex-col items-center">
+<div class="z-10 flex h-6 w-6 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+</div>
+<div class="h-full w-[2px] bg-slate-200 dark:bg-slate-800"></div>
+</div>
+<div class="flex flex-col opacity-60">
+<h3 class="font-medium text-slate-600 dark:text-slate-400">5. Antijuridicidad y Culpabilidad</h3>
+<p class="text-slate-400 text-[11px] uppercase">Locked</p>
+</div>
+</div>
+<!-- Phase 6 -->
+<div class="group relative flex gap-4 pb-6">
+<div class="flex flex-col items-center">
+<div class="z-10 flex h-6 w-6 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+</div>
+<div class="h-full w-[2px] bg-slate-200 dark:bg-slate-800"></div>
+</div>
+<div class="flex flex-col opacity-60">
+<h3 class="font-medium text-slate-600 dark:text-slate-400">6. Responsabilidad</h3>
+<p class="text-slate-400 text-[11px] uppercase">Locked</p>
+</div>
+</div>
+<!-- Phase 7 -->
+<div class="group relative flex gap-4 pb-6">
+<div class="flex flex-col items-center">
+<div class="z-10 flex h-6 w-6 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+</div>
+<div class="h-full w-[2px] bg-slate-200 dark:bg-slate-800"></div>
+</div>
+<div class="flex flex-col opacity-60">
+<h3 class="font-medium text-slate-600 dark:text-slate-400">7. Alegatos</h3>
+<p class="text-slate-400 text-[11px] uppercase">Locked</p>
+</div>
+</div>
+<!-- Phase 8 -->
+<div class="group relative flex gap-4">
+<div class="flex flex-col items-center">
+<div class="z-10 flex h-6 w-6 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+</div>
+</div>
+<div class="flex flex-col opacity-60">
+<h3 class="font-medium text-slate-600 dark:text-slate-400 leading-tight">8. Individualización de la Pena y Reparación del Daño</h3>
+<p class="text-slate-400 text-[11px] uppercase">Locked</p>
+</div>
+</div>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<section class="p-8 bg-slate-50 dark:bg-background-dark overflow-y-auto">
+<div class="max-w-4xl mx-auto">
+<!-- Stage Banner -->
+<div class="flex items-center justify-between mb-8">
+<div>
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Fase 3: Valoración</h2>
+<p class="text-slate-500 text-sm">Reviewing evidence and statements from Phase 2: Declaraciones.</p>
+</div>
+<div class="bg-primary/5 px-4 py-2 rounded-lg border border-primary/10 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">update</span>
+<span class="text-primary font-semibold">Validation Required</span>
+</div>
+</div>
+<!-- Phase Transition Summary -->
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 mb-8 overflow-hidden">
+<div class="bg-primary px-6 py-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-white text-lg">summarize</span>
+<h3 class="text-white font-bold uppercase tracking-wider text-[11px]">Transition Summary</h3>
+</div>
+<div class="p-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-3">
+<p class="text-slate-500 font-bold uppercase text-[10px]">From: Phase 2 (Declaraciones)</p>
+<ul class="space-y-2">
+<li class="flex items-start gap-2 text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span>
+<span>Testimonio del Perito (Exp. 442/24) validado.</span>
+</li>
+<li class="flex items-start gap-2 text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span>
+<span>Declaración del Imputado registrada y sellada.</span>
+</li>
+</ul>
+</div>
+<div class="space-y-3">
+<p class="text-accent font-bold uppercase text-[10px]">Active Task: Phase 3 (Valoración)</p>
+<ul class="space-y-2">
+<li class="flex items-start gap-2 text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined text-accent text-[18px]">pending</span>
+<span>Asignar valor probatorio a las pruebas documentales.</span>
+</li>
+<li class="flex items-start gap-2 text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined text-slate-300 text-[18px]">radio_button_unchecked</span>
+<span>Correlación de hechos con testimonios.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Evidence Cards / Main Area -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+<div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-accent transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<div class="h-10 w-10 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center text-slate-600">
+<span class="material-symbols-outlined">description</span>
+</div>
+<span class="px-2 py-0.5 bg-green-100 text-green-700 text-[9px] font-bold rounded uppercase">Verified</span>
+</div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-1">Prueba Documental A</h4>
+<p class="text-slate-500 text-[11px]">Contrato de prestación de servicios y facturas anexas.</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-accent transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<div class="h-10 w-10 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center text-slate-600">
+<span class="material-symbols-outlined">audio_file</span>
+</div>
+<span class="px-2 py-0.5 bg-accent/10 text-accent text-[9px] font-bold rounded uppercase">In Review</span>
+</div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-1">Registro de Audio</h4>
+<p class="text-slate-500 text-[11px]">Grabación de la audiencia preliminar del 12/05.</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-accent transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<div class="h-10 w-10 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center text-slate-600">
+<span class="material-symbols-outlined">image</span>
+</div>
+<span class="px-2 py-0.5 bg-slate-100 text-slate-500 text-[9px] font-bold rounded uppercase">Pending</span>
+</div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-1">Evidencia Fotográfica</h4>
+<p class="text-slate-500 text-[11px]">Peritaje de daños estructurales en sitio.</p>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex items-center justify-end gap-4 pt-6 border-t border-slate-200 dark:border-slate-800">
+<button class="px-6 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                            Save Progress
+                        </button>
+<button class="px-8 py-2.5 bg-primary text-white rounded-lg font-bold flex items-center gap-2 hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all">
+                            Next Phase
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation (Mobile/Standard) -->
+<footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-4 py-2 flex items-center justify-around md:justify-center md:gap-16">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">folder</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Cases</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">schedule</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Timeline</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">account_balance</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Court</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Settings</span>
+</a>
+</footer>
+</div>
+</body></html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "accent-gold": "#C5A059",
+                        "navy-deep": "#0A1931",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header Navigation -->
+<div class="flex items-center bg-white dark:bg-navy-deep p-4 border-b border-slate-200 dark:border-slate-800 justify-between sticky top-0 z-10 shadow-sm">
+<div class="text-primary flex size-10 shrink-0 items-center justify-center cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<div class="flex flex-col items-center">
+<h2 class="text-navy-deep dark:text-white text-lg font-bold leading-tight tracking-tight">LegalFlow</h2>
+<span class="text-[10px] uppercase tracking-[0.2em] text-accent-gold font-bold">Nueva Carga</span>
+</div>
+<div class="flex w-10 items-center justify-end">
+<button class="flex items-center justify-center rounded-full size-10 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+</div>
+<!-- Main Content Area -->
+<div class="flex-1 max-w-2xl mx-auto w-full px-4 py-8">
+<div class="text-center mb-10">
+<div class="inline-flex items-center justify-center p-3 bg-primary/10 rounded-xl mb-4">
+<span class="material-symbols-outlined text-primary text-4xl">upload_file</span>
+</div>
+<h3 class="text-navy-deep dark:text-white text-3xl font-extrabold tracking-tight mb-3">Seleccione el Tipo de Carga</h3>
+<p class="text-slate-600 dark:text-slate-400 text-base max-w-md mx-auto">
+                    Elija la categoría que mejor describa su proceso legal para iniciar el procesamiento inteligente de documentos.
+                </p>
+</div>
+<!-- Selection Options -->
+<div class="space-y-6">
+<!-- Option 1: Audiencia Video -->
+<div class="group relative flex flex-col md:flex-row items-stretch justify-start rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-navy-deep hover:border-accent-gold transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer overflow-hidden">
+<div class="w-full md:w-48 bg-slate-100 dark:bg-slate-800 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-navy-deep/40 z-0"></div>
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 opacity-50" data-alt="Modern courtroom interior with digital equipment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw9DhJkCgt0LfCtBagvsxXWJ5w-0KywCPafWq6l-Tj1BIXtJY_Yj1tKEzXMkBDvL1aEki6FGMCjyOaP_cQp8CTU8ah1a4s9vXt47bofvFSmVl7OfxU6GZLp3K8TKSRNEbPx8fYx-boTf8D8z9QRQMHRep4xyS1d04gipUs-2bJSXiG79jlbP8Jgau3efAlbxY_tjSl3zsQY5QyMbnQc8W33KKDe86NQIe2eIdeBYaJYDvB2TT66zY9DXKi7UpDoLkFRcrZyt1JmFTf"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-5xl opacity-80">videocam</span>
+</div>
+</div>
+<div class="flex flex-1 flex-col items-stretch justify-center gap-3 p-6">
+<div class="flex items-center justify-between">
+<p class="text-navy-deep dark:text-white text-xl font-bold tracking-tight">Audiencia en Video (Penal)</p>
+<span class="material-symbols-outlined text-accent-gold opacity-0 group-hover:opacity-100 transition-opacity">check_circle</span>
+</div>
+<div class="space-y-2">
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                                Carga de grabaciones de audiencias orales, juicios y testimonios. Nuestro sistema realizará la transcripción y el análisis de hechos clave.
+                            </p>
+<div class="flex flex-wrap gap-2 pt-2">
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-[10px] font-bold rounded text-slate-500 uppercase">MP4</span>
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-[10px] font-bold rounded text-slate-500 uppercase">MOV</span>
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-[10px] font-bold rounded text-slate-500 uppercase">AVI</span>
+</div>
+</div>
+<button class="mt-2 w-full md:w-auto self-start flex min-w-[120px] items-center justify-center rounded-lg h-10 px-5 bg-primary text-white text-sm font-semibold hover:bg-navy-deep transition-colors shadow-sm">
+<span>Seleccionar</span>
+</button>
+</div>
+</div>
+<!-- Option 2: Expediente Documental -->
+<div class="group relative flex flex-col md:flex-row items-stretch justify-start rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-navy-deep hover:border-accent-gold transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer overflow-hidden">
+<div class="w-full md:w-48 bg-slate-100 dark:bg-slate-800 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-accent-gold/20 to-navy-deep/40 z-0"></div>
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 opacity-50" data-alt="Stacked legal documents and folders" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN3FjCN4xxJrnervsVQj_zYB6ZQ0OT4bSufWhhFPk1WbleOBWlMcC4J6AaAgcCxLHTXSthy6qPu2JcYWbCWFJr54iwljcjgeMvILZtBOx7k3FolDd8NJRq1PSR6rl9y1KUc463fu-qrJ1hQn0jl7bzzxSGqQs834wtrVB6K7dEJWFV_tkHmc_AOZfJCfLWgcAFqfzIZO3rZTEQy9EDCgax92c0QMNMjeUKIotXWX9OqOfhsiUcFgMQmpjKZ8CrmzD3_ccQL6Ji93DJ"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-5xl opacity-80">description</span>
+</div>
+</div>
+<div class="flex flex-1 flex-col items-stretch justify-center gap-3 p-6">
+<div class="flex items-center justify-between">
+<p class="text-navy-deep dark:text-white text-xl font-bold tracking-tight">Expediente Documental</p>
+<span class="material-symbols-outlined text-accent-gold opacity-0 group-hover:opacity-100 transition-opacity">check_circle</span>
+</div>
+<div class="space-y-2">
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                                Procesamiento de documentos Civil, Familiar, Mercantil o Laboral. Extracción automática de partes, fechas y acuerdos procesales.
+                            </p>
+<div class="flex flex-wrap gap-2 pt-2">
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-[10px] font-bold rounded text-slate-500 uppercase">PDF</span>
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-[10px] font-bold rounded text-slate-500 uppercase">DOCX</span>
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-[10px] font-bold rounded text-slate-500 uppercase">JPG</span>
+</div>
+</div>
+<button class="mt-2 w-full md:w-auto self-start flex min-w-[120px] items-center justify-center rounded-lg h-10 px-5 bg-white border-2 border-primary text-primary text-sm font-semibold hover:bg-primary hover:text-white transition-all shadow-sm">
+<span>Seleccionar</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Info Alert -->
+<div class="mt-8 flex items-start gap-4 p-4 rounded-lg bg-accent-gold/10 border border-accent-gold/20">
+<span class="material-symbols-outlined text-accent-gold mt-1">info</span>
+<p class="text-sm text-slate-700 dark:text-slate-300">
+<strong>Nota:</strong> Los archivos subidos son cifrados con estándares bancarios. Solo los usuarios autorizados en su despacho tendrán acceso a la información procesada.
+                </p>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<div class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-navy-deep px-4 pb-6 pt-3 sticky bottom-0 z-10">
+<div class="flex max-w-lg mx-auto gap-2">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Inicio</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary" href="#">
+<div class="relative">
+<span class="material-symbols-outlined">folder_open</span>
+<div class="absolute -top-1 -right-1 size-2 bg-accent-gold rounded-full"></div>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-wider">Expedientes</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Notificaciones</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Perfil</p>
+</a>
+</div>
+</div>
+</div>
+</body></html>

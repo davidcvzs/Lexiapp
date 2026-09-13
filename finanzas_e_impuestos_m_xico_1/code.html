@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegalFlow Finance &amp; Tax Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                        "navy": "#1a2b4b",
+                        "gold": "#c5a059",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex min-h-screen flex-col overflow-x-hidden">
+<!-- Header -->
+<header class="flex items-center bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-4 sticky top-0 z-10">
+<div class="flex size-12 shrink-0 items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">account_balance</span>
+</div>
+<div class="flex-1 ml-2">
+<h1 class="text-xl font-bold leading-tight tracking-tight text-navy dark:text-slate-100">LegalFlow Dashboard</h1>
+<p class="text-xs text-slate-500 dark:text-slate-400">Finance &amp; Tax Management • Mexico</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="size-10 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden border-2 border-gold">
+<img alt="User profile" data-alt="Professional user profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqgbI68tYX6hky9H2sSqEuQgKufRdqZSAsr1ONzsZyA0auyzfbMB4iqCpp4TeVVcnNULIXXWVa-hrswsosOReSSTzked2-Q3OF1HR8_dZyjG_cs4ILWhVS72J230Yr3-c-K_ugO8-kLb_8QWNdv-CP4tIXn0RxbrNVJ7FkZYe38zKxIfN1L6m8u0_YSlGRUPvGZ2XHDT57cQEC6_KgrrU4sFG9YE4AuBI31Pd3dwGEskMEOtIXOxLFvmF1k8yyuYkadIJPxuvmVmab"/>
+</div>
+</div>
+</header>
+<main class="flex-1 pb-24">
+<!-- Key Metrics -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-navy text-white shadow-lg border-b-4 border-gold">
+<div class="flex justify-between items-start">
+<p class="text-slate-300 text-sm font-medium uppercase tracking-wider">Gross Revenue (Monthly)</p>
+<span class="material-symbols-outlined text-gold">payments</span>
+</div>
+<p class="tracking-tight text-3xl font-bold">$245,800.00 <span class="text-xs font-normal text-slate-400">MXN</span></p>
+<div class="flex items-center gap-1 text-emerald-400 text-sm font-medium">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+14.2% vs last month</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">Net Profit (After Tax)</p>
+<span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+</div>
+<p class="text-navy dark:text-white tracking-tight text-3xl font-bold">$186,420.50 <span class="text-xs font-normal text-slate-400">MXN</span></p>
+<div class="flex items-center gap-1 text-primary text-sm font-medium">
+<span class="material-symbols-outlined text-sm">info</span>
+<span>Post-IVA &amp; ISR Deduction</span>
+</div>
+</div>
+</div>
+<!-- Revenue Tabs -->
+<div class="px-4 mt-2">
+<h2 class="text-navy dark:text-slate-100 text-lg font-bold mb-3">Revenue Performance</h2>
+<div class="flex border-b border-slate-200 dark:border-slate-700 gap-8">
+<button class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-2 text-sm font-bold">Daily</button>
+<button class="flex flex-col items-center justify-center border-b-2 border-primary text-primary pb-3 pt-2 text-sm font-bold">Monthly</button>
+<button class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-2 text-sm font-bold">Yearly</button>
+</div>
+<!-- Chart Placeholder -->
+<div class="mt-4 aspect-[16/9] w-full bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center p-6 relative overflow-hidden">
+<div class="absolute inset-0 flex items-end justify-around px-4 pb-8 opacity-20">
+<div class="w-8 bg-primary rounded-t-lg" style="height: 40%"></div>
+<div class="w-8 bg-primary rounded-t-lg" style="height: 60%"></div>
+<div class="w-8 bg-primary rounded-t-lg" style="height: 45%"></div>
+<div class="w-8 bg-gold rounded-t-lg" style="height: 85%"></div>
+<div class="w-8 bg-primary rounded-t-lg" style="height: 70%"></div>
+<div class="w-8 bg-primary rounded-t-lg" style="height: 90%"></div>
+</div>
+<span class="material-symbols-outlined text-4xl text-slate-300 dark:text-slate-600 z-10">insights</span>
+<p class="text-slate-400 dark:text-slate-500 text-sm mt-2 z-10">Revenue Trends visualization</p>
+</div>
+</div>
+<!-- Tax Breakdown Mexico Section -->
+<div class="p-4 mt-6">
+<div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-md">
+<div class="bg-navy p-4 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gold">receipt_long</span>
+<h3 class="text-white font-bold">Tax Breakdown (SAT Mexico)</h3>
+</div>
+<span class="text-[10px] bg-gold/20 text-gold px-2 py-1 rounded-full border border-gold/30 font-bold uppercase">Digital Platforms</span>
+</div>
+<div class="p-5 space-y-4">
+<!-- IVA Row -->
+<div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+<div>
+<p class="text-navy dark:text-slate-200 font-bold text-sm">VAT (IVA) 16%</p>
+<p class="text-slate-500 text-xs">Value Added Tax on Digital Services</p>
+</div>
+<p class="text-red-500 font-bold">-$39,328.00</p>
+</div>
+<!-- ISR Row -->
+<div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+<div>
+<p class="text-navy dark:text-slate-200 font-bold text-sm">Income Tax (ISR) Estimate</p>
+<p class="text-slate-500 text-xs">Estimated 8% for Platform Retention</p>
+</div>
+<p class="text-red-500 font-bold">-$19,664.00</p>
+</div>
+<!-- Summary -->
+<div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl mt-4">
+<div class="flex justify-between mb-2">
+<span class="text-slate-600 dark:text-slate-400 text-sm">Total Deductions</span>
+<span class="text-slate-900 dark:text-white font-bold">-$58,992.00</span>
+</div>
+<div class="flex justify-between items-center pt-2 border-t border-slate-200 dark:border-slate-700">
+<span class="text-navy dark:text-slate-200 font-black">Net Margin</span>
+<span class="text-emerald-600 dark:text-emerald-400 font-black text-lg">76%</span>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full mt-2 bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined">download</span>
+                            Download Tax Report (PDF)
+                        </button>
+</div>
+</div>
+</div>
+<!-- Recent Transactions Mini-List -->
+<div class="px-4 mt-4 pb-8">
+<div class="flex justify-between items-center mb-4">
+<h2 class="text-navy dark:text-slate-100 text-lg font-bold">Recent Billing</h2>
+<a class="text-primary text-sm font-bold hover:underline" href="#">View All</a>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 flex items-center justify-center">
+<span class="material-symbols-outlined">add_circle</span>
+</div>
+<div>
+<p class="text-sm font-bold text-navy dark:text-slate-200">Legal Consulting #402</p>
+<p class="text-xs text-slate-500">2 mins ago • Corporate Client</p>
+</div>
+</div>
+<p class="text-sm font-bold text-slate-900 dark:text-white">+$12,500</p>
+</div>
+<div class="flex items-center justify-between bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 flex items-center justify-center">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div>
+<p class="text-sm font-bold text-navy dark:text-slate-200">Software Subscription</p>
+<p class="text-xs text-slate-500">Yesterday • Recurring</p>
+</div>
+</div>
+<p class="text-sm font-bold text-slate-900 dark:text-white">-$850</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 safe-area-pb">
+<div class="flex items-center justify-around h-20 px-4">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">Summary</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">history</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">History</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">calculate</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">Taxes</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">Config</p>
+</a>
+</div>
+</nav>
+</div>
+</body></html>

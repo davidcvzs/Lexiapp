@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000066", // Navy Blue
+                        "accent": "#D4AF37",  // Gold
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0f0f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .document-font {
+            font-family: Arial, sans-serif;
+            font-size: 12pt;
+            line-height: 1.5;
+        }
+        .highlight-data {
+            color: #dc2626; /* Red-600 */
+            font-weight: 600;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col max-w-md mx-auto bg-white dark:bg-slate-900 shadow-xl overflow-x-hidden">
+<!-- Header -->
+<div class="flex items-center bg-white dark:bg-slate-900 p-4 border-b border-slate-200 dark:border-slate-800 justify-between sticky top-0 z-10">
+<div class="text-primary dark:text-accent flex size-10 shrink-0 items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-primary dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center">Modelo de Redacción Final</h2>
+<div class="flex w-10 items-center justify-end">
+<button class="flex cursor-pointer items-center justify-center rounded-lg h-10 w-10 bg-transparent text-primary dark:text-accent">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+<!-- Subheader / Structure Info -->
+<div class="bg-primary/5 dark:bg-primary/20 px-4 py-3 flex items-center justify-between border-b border-accent/20">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-wider text-accent font-bold">Estructura Judicial</span>
+<h4 class="text-primary dark:text-slate-200 text-sm font-bold">Protocolo: María del Refugio</h4>
+</div>
+<div class="bg-accent text-white text-[10px] px-2 py-1 rounded font-bold">NARRATIVO</div>
+</div>
+<!-- Configuration Card -->
+<div class="p-4">
+<div class="flex flex-col gap-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 p-4 shadow-sm">
+<div class="flex items-center gap-3">
+<div class="bg-primary text-white p-2 rounded-lg">
+<span class="material-symbols-outlined text-sm">settings_applications</span>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-slate-100 text-sm font-bold">Estilo de Documento</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs">Arial 12 • Interlineado 1.5 • Judicial</p>
+</div>
+</div>
+<button class="w-full bg-primary dark:bg-primary text-white py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors">
+                    Editar Configuración
+                </button>
+</div>
+</div>
+<!-- Document Preview -->
+<div class="p-4 flex-1">
+<div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col">
+<!-- Document Header -->
+<div class="bg-slate-100 dark:bg-slate-700/50 px-4 py-2 border-b border-slate-200 dark:border-slate-600 flex justify-between items-center">
+<span class="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase">Vista Previa de Acta</span>
+<span class="material-symbols-outlined text-slate-400 text-sm">description</span>
+</div>
+<!-- Document Body -->
+<div class="p-6 document-font text-slate-800 dark:text-slate-200">
+<div class="mb-6 text-center">
+<p class="font-bold underline uppercase">ACTA DE COMPARECENCIA NARRATIVA</p>
+</div>
+<p class="mb-4 text-justify">
+                        En relación con los hechos que se investigan, la compareciente <span class="highlight-data">MARÍA DEL REFUGIO "N"</span> 
+                        refirió que en la fecha señalada, siendo aproximadamente las <span class="highlight-data">14:30 horas</span> del día 
+                        <span class="highlight-data">12 de octubre de 2023</span>, se encontraba en su domicilio ubicado en la calle 
+                        <span class="highlight-data">AVENIDA CENTRAL #405</span> de la ciudad de <span class="highlight-data">QUERÉTARO</span>. 
+                    </p>
+<p class="mb-4 text-justify">
+                        Sostuvo que los acontecimientos ocurrieron de manera súbita mientras realizaba labores cotidianas. Agregó que, 
+                        al escuchar el estruendo en la vía pública, procedió a observar a través del ventanal principal, momento en el cual 
+                        pudo identificar plenamente a los sujetos ahora vinculados.
+                    </p>
+<p class="mb-4 text-justify">
+                        Puntualizó que no recordaba con precisión la vestimenta exacta de todos los involucrados debido al estado de 
+                        nerviosismo que le produjo el evento, no obstante, reconoció sin temor a equivocarse la complexión de la persona 
+                        que portaba el objeto punzocortante. Manifestó finalmente que teme por su integridad física y solicitó las 
+                        medidas de protección pertinentes contempladas en la ley.
+                    </p>
+<div class="mt-12 flex flex-col items-center">
+<div class="w-48 border-t border-slate-400 mb-2"></div>
+<p class="text-[10px] font-bold uppercase tracking-widest">Firma del Declarante</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Actions -->
+<div class="p-4 flex gap-3">
+<button class="flex-1 flex items-center justify-center gap-2 bg-accent text-white py-3 rounded-lg font-bold shadow-md">
+<span class="material-symbols-outlined">download</span>
+                Exportar PDF
+            </button>
+<button class="px-4 flex items-center justify-center bg-primary text-white rounded-lg">
+<span class="material-symbols-outlined">print</span>
+</button>
+</div>
+<!-- Bottom Navigation -->
+<div class="mt-auto flex border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pb-6 pt-2">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">home</span>
+<p class="text-[10px] font-medium">Inicio</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary dark:text-accent" href="#">
+<span class="material-symbols-outlined" style="font-variant-settings: 'FILL' 1">description</span>
+<p class="text-[10px] font-medium">Modelos</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">history</span>
+<p class="text-[10px] font-medium">Historial</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-[10px] font-medium">Ajustes</p>
+</a>
+</div>
+</div>
+</body></html>

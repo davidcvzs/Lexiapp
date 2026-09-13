@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Style Preferences - Redactor Jurídico</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex h-screen w-full flex-col overflow-x-hidden">
+<!-- Header -->
+<div class="flex items-center bg-white dark:bg-slate-900 p-4 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-10">
+<div class="text-primary flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-primary/10 cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 ml-2">Style Preferences</h2>
+<div class="text-slate-600 dark:text-slate-400 flex size-10 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined">info</span>
+</div>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto">
+<!-- Writing Persona Section -->
+<div class="px-4 py-6">
+<h2 class="text-slate-900 dark:text-slate-100 text-[22px] font-bold leading-tight tracking-tight mb-2">Writing Persona</h2>
+<p class="text-slate-600 dark:text-slate-400 text-sm font-normal leading-relaxed mb-6">Provide specific instructions for the AI to match your legal writing style and tone.</p>
+<div class="space-y-4">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Style Name</label>
+<input class="form-input flex w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary p-3 text-base" placeholder="e.g., Formal Litigation, Client Newsletter" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Detailed Instructions</label>
+<textarea class="form-input flex w-full min-h-[160px] resize-none rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary p-4 text-base leading-normal" placeholder="e.g., Use more formal terminology, keep paragraphs concise, and prioritize active voice. Avoid archaic Latin phrases unless necessary."></textarea>
+</div>
+<button class="w-full bg-primary text-white font-bold py-3.5 rounded-lg flex items-center justify-center gap-2 shadow-lg shadow-primary/20 hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-xl">save</span>
+                        Save Persona
+                    </button>
+</div>
+</div>
+<!-- Divider -->
+<div class="h-2 bg-slate-200/50 dark:bg-slate-800/50"></div>
+<!-- Saved Styles Section -->
+<div class="px-4 py-6">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold">Saved Personas</h3>
+<span class="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded">3 Total</span>
+</div>
+<div class="space-y-3">
+<!-- Style Item 1 -->
+<div class="p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-between">
+<div class="flex items-start gap-3">
+<div class="size-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">gavel</span>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-slate-100">Formal Litigation</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Strict legal tone, objective voice</p>
+</div>
+</div>
+<div class="flex gap-1">
+<button class="p-2 text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">edit</span></button>
+<button class="p-2 text-slate-400 hover:text-red-500"><span class="material-symbols-outlined text-lg">delete</span></button>
+</div>
+</div>
+<!-- Style Item 2 -->
+<div class="p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-between">
+<div class="flex items-start gap-3">
+<div class="size-10 rounded-lg bg-green-500/10 flex items-center justify-center text-green-600">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-slate-100">Client Advisory</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Plain language, approachable tone</p>
+</div>
+</div>
+<div class="flex gap-1">
+<button class="p-2 text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">edit</span></button>
+<button class="p-2 text-slate-400 hover:text-red-500"><span class="material-symbols-outlined text-lg">delete</span></button>
+</div>
+</div>
+<!-- Style Item 3 -->
+<div class="p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-between">
+<div class="flex items-start gap-3">
+<div class="size-10 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-600">
+<span class="material-symbols-outlined">contract</span>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-slate-100">Drafting: Contracts</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Precise, standard terminology</p>
+</div>
+</div>
+<div class="flex gap-1">
+<button class="p-2 text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">edit</span></button>
+<button class="p-2 text-slate-400 hover:text-red-500"><span class="material-symbols-outlined text-lg">delete</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom NavBar -->
+<div class="mt-auto flex gap-2 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pb-6 pt-2">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500 dark:text-slate-400" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">history_edu</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-tight">Drafts</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 rounded-full text-primary" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">person_search</span>
+</div>
+<p class="text-xs font-bold leading-normal tracking-tight">Styles</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500 dark:text-slate-400" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">description</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-tight">Templates</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500 dark:text-slate-400" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">settings</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-tight">Settings</p>
+</a>
+</div>
+</div>
+</body></html>

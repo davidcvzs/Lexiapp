@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegalFlow - Resolución de Acceso Web</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration for Custom Colors -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'legal-navy': '#0A1D37',
+            'legal-gold': '#C5A059',
+            'legal-gold-light': '#D4AF37',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-animations">
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 font-sans text-legal-navy antialiased">
+<!-- BEGIN: MainContainer -->
+<main class="min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
+<!-- BEGIN: SupportCard -->
+<section class="w-full max-w-lg bg-white rounded-xl shadow-2xl border-t-8 border-legal-navy overflow-hidden animate-fade-in" data-purpose="support-card">
+<!-- Header Section -->
+<header class="p-8 text-center bg-slate-50 border-b border-gray-100">
+<div class="inline-flex items-center justify-center w-16 h-16 bg-legal-navy rounded-full mb-4">
+<svg class="h-8 w-8 text-legal-gold" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 15v2m0 0v2m0-2h2m-2 0h-2m8-3V7a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 7h8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h1 class="text-2xl font-bold text-legal-navy uppercase tracking-tight">Resolución de Acceso Web</h1>
+<p class="text-sm font-semibold text-red-600 mt-2">Código de Estado: ERR_CONNECTION_REFUSED</p>
+</header>
+<!-- Content Section -->
+<div class="p-8">
+<div class="mb-6 space-y-4">
+<p class="text-lg leading-relaxed text-gray-700">
+            Estimado cliente de <span class="font-bold text-legal-navy">LegalFlow</span>,
+          </p>
+<p class="text-gray-600">
+            El diseño y desarrollo de su plataforma web han sido completados con éxito. Actualmente, nos encontramos en la fase final de implementación técnica.
+          </p>
+<div class="bg-blue-50 border-l-4 border-legal-gold p-4 italic text-sm text-blue-900">
+            "Este error es temporal e indica que el servidor de destino aún no ha abierto la comunicación externa."
+          </div>
+</div>
+<!-- BEGIN: ProcessSteps -->
+<div class="space-y-6" data-purpose="deployment-steps">
+<h2 class="text-sm font-bold text-legal-navy uppercase tracking-widest border-b pb-2">Etapas de Despliegue Pendientes:</h2>
+<!-- Step 1 -->
+<div class="flex items-start gap-4">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-legal-gold text-white flex items-center justify-center font-bold">1</div>
+<div>
+<h3 class="font-bold text-legal-navy">Registro de Dominio (DNS)</h3>
+<p class="text-xs text-gray-500">Configuración de punteros hacia los servidores centrales de LegalFlow.</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex items-start gap-4">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-legal-gold text-white flex items-center justify-center font-bold">2</div>
+<div>
+<h3 class="font-bold text-legal-navy">Despliegue de Servidor (Hosting)</h3>
+<p class="text-xs text-gray-500">Activación de la infraestructura cloud para soportar el tráfico legal.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex items-start gap-4">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-legal-gold text-white flex items-center justify-center font-bold">3</div>
+<div>
+<h3 class="font-bold text-legal-navy">Certificado de Seguridad SSL</h3>
+<p class="text-xs text-gray-500">Encriptación de datos punto a punto para garantizar la privacidad.</p>
+</div>
+</div>
+</div>
+<!-- END: ProcessSteps -->
+</div>
+<!-- Footer Section -->
+<footer class="bg-legal-navy p-6 text-center">
+<p class="text-legal-gold-light text-sm mb-4 italic">El sistema estará disponible en las próximas 24 a 48 horas hábiles.</p>
+<button class="px-8 py-3 bg-legal-gold hover:bg-legal-gold-light text-legal-navy font-bold rounded transition-colors duration-300 shadow-lg" data-purpose="retry-button" onclick="window.location.reload()">
+          REINTENTAR CONEXIÓN
+        </button>
+</footer>
+</section>
+<!-- END: SupportCard -->
+<!-- Branding Footer -->
+<div class="mt-8 text-center">
+<p class="text-gray-400 text-xs">© 2023 LegalFlow Solutions. Todos los derechos reservados.</p>
+<p class="text-gray-400 text-[10px] mt-1 italic font-serif">Excelencia Jurídica y Tecnológica</p>
+</div>
+</main>
+<!-- END: MainContainer -->
+</body></html>
