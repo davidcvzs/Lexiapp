@@ -46,25 +46,36 @@ app.use('/api/scjn', scjnRoutes);
 // ---------------------------------------------------------------------------
 // Health Check — no OpenAI calls, no secrets exposed
 // ---------------------------------------------------------------------------
-app.get('/api/health', (req, res) => {
-  const scjnDbPath =
-    process.env.SCJN_DB_PATH ||
-    path.join(process.cwd(), 'data', 'scjn', 'scjn.db');
-
+import { createSCJNRepository } from './scjn/index.js';
+app.get('/api/health', async (req, res) => {
   const openaiKey      = process.env.OPENAI_API_KEY;
   const firebaseApiKey = process.env.VITE_FIREBASE_API_KEY;
   const firebaseProjId = process.env.VITE_FIREBASE_PROJECT_ID;
 
+  let scjnStatus = null;
+  try {
+    const repo = createSCJNRepository();
+    scjnStatus = await repo.getProviderStatus();
+  } catch(e) {
+    console.error('Health check scjn error', e);
+  }
+
   res.json({
     status:            'ok',
     environment:       NODE_ENV,
-    scjnDatabase: {
-      exists:          fs.existsSync(scjnDbPath),
+    database: {
+      driver:          scjnStatus?.driver || 'unknown',
+      connected:       scjnStatus?.connected || false,
+    },
+    scjn: {
+      available:       scjnStatus?.available || false,
+      records:         scjnStatus?.records || 0,
     },
     openaiConfigured:    !!openaiKey && openaiKey !== 'missing',
     firebaseConfigured:  !!(firebaseApiKey && firebaseProjId),
   });
 });
+
 
 // ---------------------------------------------------------------------------
 // Serve React frontend in production (single-process full-stack)

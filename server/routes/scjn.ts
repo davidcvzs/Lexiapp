@@ -1,11 +1,11 @@
 import { Router } from 'express';
 import multer from 'multer';
 import fs from 'fs';
-import { SQLiteSCJNRepository } from '../scjn/SQLiteSCJNRepository.js';
+import { createSCJNRepository } from '../scjn/index.js';
 import { SCJNImportService } from '../scjn/SCJNImportService.js';
 
 const router = Router();
-const repo = new SQLiteSCJNRepository();
+const repo = createSCJNRepository();
 // Ensure repo is initialized
 repo.init().catch(e => console.error("Error init SCJN repo", e));
 

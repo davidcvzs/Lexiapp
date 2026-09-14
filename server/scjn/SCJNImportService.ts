@@ -1,12 +1,17 @@
 import fs from 'fs';
 import path from 'path';
-import crypto from 'crypto';
 import AdmZip from 'adm-zip';
-import csvParser from 'csv-parser';
+import csv from 'csv-parser';
+import crypto from 'crypto';
+import { createSCJNRepository } from './index.js';
 import { ISCJNRepository, SCJNImportBatch, SCJNTesis } from './types.js';
 
 export class SCJNImportService {
-  constructor(private repo: ISCJNRepository) {}
+  private repo: ISCJNRepository;
+
+  constructor() {
+    this.repo = createSCJNRepository();
+  }
 
   async processZipFile(zipFilePath: string, originalFilename: string): Promise<SCJNImportBatch> {
     const tempDir = path.join(process.cwd(), 'data', 'scjn', 'temp', crypto.randomUUID());

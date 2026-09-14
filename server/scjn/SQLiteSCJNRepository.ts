@@ -15,6 +15,26 @@ export class SQLiteSCJNRepository implements ISCJNRepository {
     this.db = new Database(dbPath);
   }
 
+  async getProviderStatus(): Promise<any> {
+    try {
+      const row = this.db.prepare('SELECT COUNT(*) as count FROM scjn_tesis').get() as any;
+      return {
+        driver: 'sqlite',
+        connected: true,
+        available: true,
+        records: row.count,
+      };
+    } catch (err) {
+      return {
+        driver: 'sqlite',
+        connected: false,
+        available: false,
+        records: 0,
+        error: String(err),
+      };
+    }
+  }
+
   async init(): Promise<void> {
     this.db.exec(`
       CREATE TABLE IF NOT EXISTS scjn_tesis (
