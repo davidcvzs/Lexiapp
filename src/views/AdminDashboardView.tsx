@@ -13,8 +13,17 @@ import {
 export const AdminDashboardView: React.FC = () => {
   return (
     <div style={{ backgroundColor: '#f8fafc', minHeight: '100vh', padding: '1.5rem', fontFamily: 'Inter, sans-serif' }}>
-      
-      {/* Header */}
+
+      {/* STAGING DEMO NOTICE */}
+      <div style={{ backgroundColor: '#fef3c7', border: '1px solid #fbbf24', borderRadius: '0.75rem', padding: '0.875rem 1.25rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <span style={{ fontSize: '1.25rem' }}>⚠️</span>
+        <div>
+          <span style={{ fontWeight: 800, color: '#92400e', fontSize: '0.875rem' }}>DATOS DE DEMOSTRACIÓN — </span>
+          <span style={{ color: '#92400e', fontSize: '0.875rem' }}>Las métricas mostradas en este panel son valores de ejemplo. No representan datos reales de la plataforma.</span>
+        </div>
+      </div>
+
+
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
         <div>
           <h1 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0f172a', margin: 0, letterSpacing: '-0.025em' }}>Panel de Administración e Ingresos</h1>
@@ -188,6 +197,41 @@ export const AdminDashboardView: React.FC = () => {
           </table>
         </div>
       </div>
+      {/* SCJN Management */}
+      <div style={{ backgroundColor: 'white', borderRadius: '1rem', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)', border: '1px solid #e2e8f0', overflow: 'hidden', marginTop: '2rem' }}>
+        <div style={{ padding: '1.5rem', borderBottom: '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: 800, color: '#0f172a', margin: 0 }}>SCJN — Base Jurisprudencial</h3>
+            <p style={{ margin: '0.25rem 0 0', fontSize: '0.875rem', color: '#64748b' }}>Gestión de la base de datos local de jurisprudencia (SJF - Open Data)</p>
+          </div>
+          <div>
+            <button style={{ backgroundColor: '#000066', color: 'white', border: 'none', padding: '0.5rem 1rem', borderRadius: '0.5rem', fontWeight: 600, fontSize: '0.875rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <Database size={16} /> Importar ZIP/CSV SCJN
+            </button>
+          </div>
+        </div>
+        <div style={{ padding: '1.5rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
+          <div>
+            <p style={{ fontSize: '0.75rem', color: '#64748b', margin: '0 0 0.25rem', fontWeight: 600, textTransform: 'uppercase' }}>Registros Indexados</p>
+            <p style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0f172a', margin: 0 }}>1</p>
+          </div>
+          <div>
+            <p style={{ fontSize: '0.75rem', color: '#64748b', margin: '0 0 0.25rem', fontWeight: 600, textTransform: 'uppercase' }}>Último lote importado</p>
+            <p style={{ fontSize: '1.125rem', fontWeight: 600, color: '#0f172a', margin: 0 }}>Ninguno (Semilla de prueba)</p>
+          </div>
+          <div>
+            <p style={{ fontSize: '0.75rem', color: '#64748b', margin: '0 0 0.25rem', fontWeight: 600, textTransform: 'uppercase' }}>Fuente Activa</p>
+            <p style={{ fontSize: '1.125rem', fontWeight: 600, color: '#0f172a', margin: 0 }}>Repositorio Datos Abiertos SJF</p>
+          </div>
+          <div>
+            <p style={{ fontSize: '0.75rem', color: '#64748b', margin: '0 0 0.25rem', fontWeight: 600, textTransform: 'uppercase' }}>Estado de Motor</p>
+            <p style={{ margin: 0, fontSize: '0.875rem', color: '#10b981', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+              <span style={{ width: '0.5rem', height: '0.5rem', borderRadius: '50%', backgroundColor: '#10b981' }}></span> Local Index Online
+            </p>
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 };

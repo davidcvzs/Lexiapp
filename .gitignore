@@ -13,6 +13,10 @@ dist-ssr
 *.local
 
 # Editor directories and files
+# SCJN Data
+data/scjn/*.db
+data/scjn/imports/
+data/scjn/temp/*
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -22,3 +26,30 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment variables
+.env
+.env.*
+
+# SQLite databases at root (legacy artifacts)
+scjn_index.db
+*.db
+
+# Source data files — do not commit ZIP/CSV imports
+archivoSJF.zip
+*.zip
+
+# Reference documents (sensitive legal files — mount as volume)
+Conocimiento/
+
+# Firebase hosting (local config only)
+.firebase/
+
+# Upload temp directory
+uploads/
+
+# Recovered/extracted temp files
+ext_*.txt
+part*.txt
+recovered*.txt
+extracted*.txt

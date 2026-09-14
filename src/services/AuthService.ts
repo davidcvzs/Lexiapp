@@ -1,28 +1,38 @@
 import { BaseService } from './BaseService';
-import { signInWithPopup, onAuthStateChanged, signOut } from "firebase/auth";
+import { signInWithPopup, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 import type { User } from "firebase/auth";
 import { auth, googleProvider } from '../config/firebase';
 
 export class AuthService extends BaseService {
   private user: User | null = null;
-  private authStateListener: ((user: User | null) => void) | null = null;
 
   constructor() {
     super();
     // Iniciar escucha del estado persistente
     onAuthStateChanged(auth, (firebaseUser) => {
       this.user = firebaseUser;
-      if (this.authStateListener) {
-        this.authStateListener(firebaseUser);
-      }
     });
   }
 
-  /**
-   * Suscribirse a cambios en el estado de autenticación (Login/Logout)
-   */
   public onAuthStateChange(listener: (user: User | null) => void) {
-    this.authStateListener = listener;
+    return onAuthStateChanged(auth, (user) => {
+      this.user = user;
+      listener(user);
+    });
+  }
+
+  public async loginWithEmail(email: string, password: string): Promise<boolean> {
+    try {
+      this.log('Iniciando flujo de autenticación con Email');
+      const result = await signInWithEmailAndPassword(auth, email, password);
+      this.user = result.user;
+      this.log('Autenticación exitosa', this.user.email);
+      return true;
+    } catch (e) {
+      this.handleError(e);
+      alert("Error de inicio de sesión. Verifica tus credenciales.");
+      return false;
+    }
   }
 
   /**

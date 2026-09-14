@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
-  UploadCloud, 
   Play, 
   Download,
   ScrollText,
@@ -31,10 +30,6 @@ export const TranscriptionView: React.FC = () => {
   const [fileName, setFileName] = useState<string>('audiencia.mp4');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const triggerFileSelect = () => {
-    fileInputRef.current?.click();
-  };
-
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -61,23 +56,37 @@ export const TranscriptionView: React.FC = () => {
     <div style={{ minHeight: '100vh', backgroundColor: '#f8fafc', display: 'flex', flexDirection: 'column', fontFamily: 'Inter, sans-serif' }}>
       {viewState === 'UPLOAD' && (
         <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
-          <input 
-            type="file" 
-            ref={fileInputRef} 
+          {/* Hidden input kept for future integration */}
+          <input
+            type="file"
+            ref={fileInputRef}
             onChange={handleFileChange}
             accept="audio/*,video/*"
             style={{ display: 'none' }}
+            disabled
           />
-          <div onClick={triggerFileSelect} style={{ width: '100%', maxWidth: '600px', padding: '4rem 2rem', border: '2px dashed #cbd5e1', borderRadius: '1rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backgroundColor: '#ffffff', cursor: 'pointer', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)', transition: 'all 0.2s' }}>
-            <UploadCloud size={64} color="#000066" style={{ marginBottom: '1rem' }} />
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', marginBottom: '0.5rem', textAlign: 'center' }}>Arrastra tu video aquí o haz clic para seleccionar</h2>
-            <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1rem' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: '9999px', backgroundColor: '#f1f5f9', color: '#475569' }}>MP4 MOV AVI MP3 WAV</span>
-              <span style={{ fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: '9999px', backgroundColor: '#f1f5f9', color: '#475569' }}>hasta 2GB</span>
+          {/* Integration notice — transcription backend returns 501 */}
+          <div style={{
+            width: '100%', maxWidth: '600px', padding: '4rem 2rem',
+            border: '2px dashed #e2e8f0', borderRadius: '1rem',
+            display: 'flex', flexDirection: 'column', alignItems: 'center',
+            justifyContent: 'center', backgroundColor: '#f8fafc',
+            boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)',
+          }}>
+            <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🎙️</div>
+            <h2 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', marginBottom: '0.5rem', textAlign: 'center' }}>
+              Transcripción de video en integración
+            </h2>
+            <p style={{ textAlign: 'center', color: '#64748b', fontSize: '0.95rem', maxWidth: '380px', lineHeight: 1.6 }}>
+              La funcionalidad de transcripción automática está en proceso de integración con el servicio de audio. Estará disponible en una próxima actualización.
+            </p>
+            <div style={{ marginTop: '1.5rem', padding: '0.5rem 1.25rem', backgroundColor: '#fef3c7', color: '#92400e', borderRadius: '9999px', fontSize: '0.8rem', fontWeight: 700, border: '1px solid #fde68a' }}>
+              EN INTEGRACIÓN
             </div>
           </div>
         </div>
       )}
+
 
       {viewState === 'TRANSCRIBING' && (
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>

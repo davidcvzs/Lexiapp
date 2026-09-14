@@ -2,22 +2,45 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
-// Configuración leída de Vite Env Vars o mocks por defecto para que no falle la app.
+// In production (PROD=true set by Vite at build time), missing vars cause an
+// explicit error rather than silently using mock values that will never work.
+const isProd = import.meta.env.PROD;
+
+function requireEnv(key: string, value: string | undefined): string {
+  if (isProd && !value) {
+    throw new Error(
+      `[LexIA] Variable de entorno Firebase requerida no definida: ${key}. ` +
+      `Configura VITE_FIREBASE_* en tu entorno antes de compilar.`
+    );
+  }
+  return value || '';
+}
+
+const apiKey         = requireEnv('VITE_FIREBASE_API_KEY',            import.meta.env.VITE_FIREBASE_API_KEY);
+const authDomain     = requireEnv('VITE_FIREBASE_AUTH_DOMAIN',        import.meta.env.VITE_FIREBASE_AUTH_DOMAIN);
+const projectId      = requireEnv('VITE_FIREBASE_PROJECT_ID',         import.meta.env.VITE_FIREBASE_PROJECT_ID);
+const storageBucket  = import.meta.env.VITE_FIREBASE_STORAGE_BUCKET       || '';
+const messagingId    = import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID  || '';
+const appId          = import.meta.env.VITE_FIREBASE_APP_ID               || '';
+
+// In development, warn clearly if Firebase vars are absent (won't throw).
+if (!isProd && !import.meta.env.VITE_FIREBASE_API_KEY) {
+  console.warn(
+    '[LexIA] Firebase: VITE_FIREBASE_* no configuradas. ' +
+    'La autenticación real no funcionará. Define las variables en .env.local.'
+  );
+}
+
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSy_MOCK_KEY_DO_NOT_USE_IN_PROD",
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "lexia-mock.firebaseapp.com",
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "lexia-mock",
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "lexia-mock.appspot.com",
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "1234567890",
-  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:1234567890:web:abcdef123456"
+  apiKey,
+  authDomain,
+  projectId,
+  storageBucket,
+  messagingSenderId: messagingId,
+  appId,
 };
 
-// Initialize Firebase central app
-export const app = initializeApp(firebaseConfig);
-
-// Initialize Firebase Authentication
-export const auth = getAuth(app);
+export const app           = initializeApp(firebaseConfig);
+export const auth          = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
-
-// Initialize Cloud Firestore and get a reference to the service
-export const db = getFirestore(app);
+export const db            = getFirestore(app);

@@ -19,9 +19,13 @@ export const LoginView: React.FC = () => {
 
   const handleEmailLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate login for now
-    if (email) {
-      navigate('/dashboard');
+    if (email && password) {
+      const success = await authService.loginWithEmail(email, password);
+      if (success) {
+        navigate('/dashboard');
+      }
+    } else {
+      alert("Por favor ingrese correo y contraseña");
     }
   };
 

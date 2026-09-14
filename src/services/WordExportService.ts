@@ -2,30 +2,79 @@ import { Document, Packer, Paragraph, TextRun, AlignmentType, convertInchesToTwi
 import { saveAs } from "file-saver";
 import { BaseService } from './BaseService';
 
-// Interfaces for mock logic since AIAssistantService doesn't have a rigid structure exported yet
-export interface DocumentSegment {
-  text: string;
-  isRedacted?: boolean;
-}
-
 export class WordExportService extends BaseService {
   constructor() {
     super();
   }
 
-  /**
-   * Genera un archivo Word físico adhiriéndose al formato SCJN / Nuevo León.
-   * Utiliza la estandarización Arial 12, interlineado 1.5 y testado de datos.
-   */
-  public async exportToWord(): Promise<void> {
-    this.log('Iniciando construcción física de .docx');
+  public async exportToWord(content?: string): Promise<void> {
+    this.log('Iniciando construccion fisica de .docx con marcado rojo real');
+    if (!content) {
+       content = "Contenido generado por IA...";
+    }
 
     try {
-      // Configuraciones institucionales
+      let entitiesToRedact: string[] = [];
+      try {
+        const response = await fetch('/api/ai/redact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ content })
+        });
+        if (response.ok) {
+          const data = await response.json();
+          if (data.entities && Array.isArray(data.entities)) {
+             entitiesToRedact = data.entities;
+          }
+        }
+      } catch (err) {
+        console.error("No se pudo contactar endpoint de redactado", err);
+      }
+
+      // Ordenar por longitud descendente para que no se pisen matches cortos dentro de largos
+      entitiesToRedact.sort((a, b) => b.length - a.length);
+
+      // Algoritmo rudimentario para separar runs
+      let textRuns: {text: string, red: boolean}[] = [];
+
+      // A better approach is to use regex or simply split the text
+      // We will tokenize the text by the entities
+      // To avoid complexity, we can do a simple search and replace strategy generating markers,
+      // but let's build the runs dynamically.
+      
+      const regexSegments = entitiesToRedact.filter(e => e.trim().length > 0).map(e => {
+         return e.replace(/[.*+?^$\\{\\}()|[\\]\\\\]/g, '\\\\$&');
+      });
+      
+      if (regexSegments.length > 0) {
+          const combinedRegex = new RegExp("(" + regexSegments.join('|') + ")", 'g');
+          let lastIndex = 0;
+          let match;
+          
+          while ((match = combinedRegex.exec(content)) !== null) {
+              if (match.index > lastIndex) {
+                 textRuns.push({ text: content.substring(lastIndex, match.index), red: false });
+              }
+              textRuns.push({ text: match[0], red: true });
+              lastIndex = combinedRegex.lastIndex;
+          }
+          if (lastIndex < content.length) {
+              textRuns.push({ text: content.substring(lastIndex), red: false });
+          }
+      } else {
+          textRuns.push({ text: content, red: false });
+      }
+
+      const docxRuns = textRuns.map(run => new TextRun({
+          text: run.text,
+          font: "Arial",
+          size: 24, // 12pt
+          color: run.red ? "FF0000" : undefined,
+      }));
+
       const doc = new Document({
-        creator: "LexIA Pro - Poder Judicial",
-        title: "Sentencia Definitiva MOC-SCJN",
-        description: "Documento oficial generado con Inteligencia Artificial Criptográfica",
+        creator: "LexIA - Poder Judicial",
+        title: "Documento Legal",
         sections: [{
           properties: {
             page: {
@@ -33,138 +82,40 @@ export class WordExportService extends BaseService {
                 top: convertInchesToTwip(1),
                 right: convertInchesToTwip(1),
                 bottom: convertInchesToTwip(1),
-                left: convertInchesToTwip(1.2), // Margen izquierdo para empastado
+                left: convertInchesToTwip(1.2),
               },
             },
           },
           children: [
-            // Encabezado Centrado
-            new Paragraph({
-              alignment: AlignmentType.CENTER,
-              children: [
-                new TextRun({
-                  text: "PODER JUDICIAL DEL ESTADO DE NUEVO LEÓN",
-                  font: "Arial",
-                  size: 24, // 12pt * 2
-                  bold: true,
-                })
-              ],
-            }),
             new Paragraph({
               alignment: AlignmentType.CENTER,
               spacing: { after: 400 },
               children: [
                 new TextRun({
-                  text: "SENTENCIA DEFINITIVA",
+                  text: "PODER JUDICIAL DEL ESTADO DE NUEVO LEON",
                   font: "Arial",
                   size: 24,
                   bold: true,
                 })
               ],
             }),
-            
-            // Cuerpo del Documento (Con ejemplos testados)
             new Paragraph({
               alignment: AlignmentType.JUSTIFIED,
-              spacing: { line: 360 }, // 1.5 line spacing (240 * 1.5)
-              children: [
-                new TextRun({
-                  text: "En la ciudad de Monterrey, Nuevo León, siendo el día doce de octubre del año dos mil veintitrés, se dictamina el presente fallo relativo al expediente 452/2023. ",
-                  font: "Arial",
-                  size: 24,
-                }),
-              ],
-            }),
-
-            new Paragraph({
-              alignment: AlignmentType.JUSTIFIED,
-              spacing: { line: 360, before: 200 },
-              children: [
-                new TextRun({
-                  text: "Se hace constar que el C. ",
-                  font: "Arial",
-                  size: 24,
-                }),
-                new TextRun({
-                  text: "[NOMBRE_REDACTADO_IMPLICADO]",
-                  font: "Arial",
-                  size: 24,
-                  bold: true,
-                  color: "B91C1C",
-                  shading: { type: "solid", fill: "FEE2E2", color: "FEE2E2" } // Red highlight for redacted
-                }),
-                new TextRun({
-                  text: ", con domicilio en ",
-                  font: "Arial",
-                  size: 24,
-                }),
-                new TextRun({
-                  text: "[CALLE_Y_NUMERO_OCULTO]",
-                  font: "Arial",
-                  size: 24,
-                  bold: true,
-                  color: "B91C1C",
-                  shading: { type: "solid", fill: "FEE2E2", color: "FEE2E2" }
-                }),
-                new TextRun({
-                  text: ", comparece ante este tribunal.",
-                  font: "Arial",
-                  size: 24,
-                }),
-              ],
-            }),
-
-            new Paragraph({
-              alignment: AlignmentType.JUSTIFIED,
-              spacing: { line: 360, before: 200 },
-              children: [
-                new TextRun({
-                  text: "RESULTANDO: Que habiéndose cumplido con las formalidades esenciales del procedimiento...",
-                  font: "Arial",
-                  size: 24,
-                }),
-              ],
-            }),
-
-            // Footer / Signatures
-            new Paragraph({
-              alignment: AlignmentType.CENTER,
-              spacing: { before: 800 },
-              children: [
-                new TextRun({
-                  text: "___________________________________",
-                  font: "Arial",
-                  size: 24,
-                }),
-              ],
-            }),
-            new Paragraph({
-              alignment: AlignmentType.CENTER,
-              children: [
-                new TextRun({
-                  text: "Firma de la Autoridad Competente",
-                  font: "Arial",
-                  size: 20,
-                  italics: true,
-                  color: "64748B"
-                }),
-              ],
-            }),
+              spacing: { line: 360 },
+              children: docxRuns,
+            })
           ]
         }]
       });
 
-      // Compilar a formato Blob binario
       const blob = await Packer.toBlob(doc);
-      
-      // Descargar el archivo via file-saver
-      saveAs(blob, "Sentencia_Oficial_PJENL_123.docx");
+      saveAs(blob, "Documento_LexIA.docx");
       
       this.log("Archivo exportado exitosamente.");
 
     } catch (e) {
       this.handleError(e);
-      alert("Error en la compilación del archivo Word.");
+      alert("Error en la compilacion del archivo Word.");
     }
   }
 }

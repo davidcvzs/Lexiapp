@@ -1,0 +1,49 @@
+# =============================================================================
+# LexIA Webapp — .dockerignore
+# =============================================================================
+
+# Development artifacts
+node_modules
+dist
+
+# Local env and secrets — NEVER copy these into the image
+.env
+.env.local
+.env.*.local
+
+# SQLite databases — mounted as volumes at runtime
+data/
+scjn_index.db
+*.db
+
+# Source data files — not part of the image
+archivoSJF.zip
+*.zip
+*.csv
+
+# Reference documents — mount as volume if needed
+Conocimiento/
+
+# Firebase hosting config — not needed in Docker
+.firebase/
+firebase.json
+.firebaserc
+
+# Build / dev tools
+.git
+.gitignore
+*.log
+npm-debug.log*
+
+# Test files
+test-scjn.ts
+test-scjn-catalogs.ts
+
+# Docs — not needed in image
+*.md
+EOD_REPORT*.md
+DEPLOY_PRECHECK_REPORT.md
+
+# OS artifacts
+.DS_Store
+Thumbs.db
