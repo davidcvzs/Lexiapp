@@ -51,10 +51,13 @@ export const LegalSearchView: React.FC = () => {
         throw new Error(text || `HTTP ${res.status}`);
       }
       const text = await res.text();
+      if (text.trim().startsWith('<')) {
+        throw new Error("El servidor devolvió HTML (posiblemente falta el backend en producción).");
+      }
       const data = text ? JSON.parse(text) : {};
       setCatalogs(data);
       
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error cargando catálogos:', err);
     }
   };
@@ -112,6 +115,9 @@ export const LegalSearchView: React.FC = () => {
         throw new Error(text || `HTTP ${res.status}`);
       }
       const text = await res.text();
+      if (text.trim().startsWith('<')) {
+        throw new Error("El servidor devolvió HTML. Asegúrese de que el backend esté ejecutándose.");
+      }
       const data = text ? JSON.parse(text) : {};
 
       setScjnResults(data.data || []);
@@ -133,6 +139,9 @@ export const LegalSearchView: React.FC = () => {
         throw new Error(text || `HTTP ${res.status}`);
       }
       const text = await res.text();
+      if (text.trim().startsWith('<')) {
+        throw new Error("El servidor devolvió HTML. Asegúrese de que el backend esté ejecutándose.");
+      }
       const data = text ? JSON.parse(text) : {};
       setSelectedTesis(data);
     } catch (err: any) {

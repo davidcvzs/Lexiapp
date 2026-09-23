@@ -11,13 +11,12 @@ import {
   MoreVertical,
   Volume2,
   Settings,
-  Maximize
+  Maximize,
+  Upload
 } from 'lucide-react';
 import styles from './TranscriptionView.module.css';
-import { TranscriptionService } from '../services/TranscriptionService';
 import { AIAssistantService } from '../services/AIAssistantService';
 
-const transcriptionService = new TranscriptionService();
 const aiAssistant = new AIAssistantService();
 
 type ViewState = 'UPLOAD' | 'TRANSCRIBING' | 'READY';
@@ -25,9 +24,11 @@ type ViewState = 'UPLOAD' | 'TRANSCRIBING' | 'READY';
 export const TranscriptionView: React.FC = () => {
   const navigate = useNavigate();
   const [viewState, setViewState] = useState<ViewState>('UPLOAD');
-  const [progressText] = useState('Transcribiendo audio con IA...');
+  const [progressText, setProgressText] = useState('Transcribiendo audio con IA...');
   const [transcriptionData, setTranscriptionData] = useState<string>('');
   const [fileName, setFileName] = useState<string>('audiencia.mp4');
+  const [progress, setProgress] = useState(0);
+  const [elapsedTimer, setElapsedTimer] = useState(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,57 +37,130 @@ export const TranscriptionView: React.FC = () => {
     
     setFileName(file.name);
     setViewState('TRANSCRIBING');
+    setProgress(0);
+    setProgressText('Transcribiendo audio con IA...');
+    setElapsedTimer(0);
+    
+    const startTime = Date.now();
+    const timerInterval = setInterval(() => {
+      setElapsedTimer(Math.floor((Date.now() - startTime) / 1000));
+      setProgress(prev => prev < 95 ? prev + Math.floor(Math.random() * 3) + 1 : prev);
+    }, 1000);
     
     try {
-      const result = await transcriptionService.processMedia(file);
-      setTranscriptionData(result);
-      aiAssistant.initializeSession(result);
-      setViewState('READY');
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const apiUrl = import.meta.env.VITE_TRANSCRIPTION_API_URL || 'https://transcriptor-legal.yoshiman1989.workers.dev/api/transcribe';
+      
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${import.meta.env.VITE_AI_API_KEY}`,
+          'x-api-key': import.meta.env.VITE_AI_API_KEY
+        },
+        body: formData,
+      });
+
+      clearInterval(timerInterval);
+
+      if (!response.ok) {
+        throw new Error('Fallo en API de transcripción.');
+      }
+
+      let data = await response.json();
+      
+      if (data.job_id) {
+        let isCompleted = false;
+        
+        // Clean the URL to get the base domain
+        const baseUrl = apiUrl.replace(/\/api\/transcribe\/?$/, '');
+        const statusUrl = `${baseUrl}/jobs/${data.job_id}`;
+        
+        while (!isCompleted) {
+          await new Promise(resolve => setTimeout(resolve, 4000));
+          const pollResponse = await fetch(statusUrl, {
+            method: 'GET',
+            headers: {
+              'Authorization': `Bearer ${import.meta.env.VITE_AI_API_KEY}`,
+              'x-api-key': import.meta.env.VITE_AI_API_KEY
+            }
+          });
+          
+          if (!pollResponse.ok) throw new Error('Error al consultar estado.');
+          
+          const pollData = await pollResponse.json();
+          if (pollData.status === 'completed') {
+            isCompleted = true;
+            data = pollData; // Usamos los datos finales para extraer el texto
+          } else if (pollData.status === 'generating_transcript') {
+            setProgress(90);
+            setProgressText("IA generando texto de la transcripción...");
+          } else if (pollData.status === 'failed' || pollData.status === 'error') {
+            throw new Error('La transcripción falló en el servidor.');
+          }
+        }
+      }
+
+      setProgress(100);
+      
+      const resultText = data.text || data.transcription || '[Texto no recuperado]';
+      setTranscriptionData(resultText);
+      aiAssistant.initializeSession(resultText);
+      
+      setTimeout(() => {
+        navigate('/document-builder', { state: { transcriptionData: resultText } });
+      }, 500);
+      
     } catch (e) {
+      clearInterval(timerInterval);
+      console.error(e);
       alert("Error al transcribir el archivo.");
       setViewState('UPLOAD');
     }
   };
 
   const navigateToBuilder = () => {
-    navigate('/documents', { state: { transcriptionData } });
+    navigate('/document-builder', { state: { transcriptionData } });
   };
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#f8fafc', display: 'flex', flexDirection: 'column', fontFamily: 'Inter, sans-serif' }}>
       {viewState === 'UPLOAD' && (
         <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
-          {/* Hidden input kept for future integration */}
           <input
             type="file"
             ref={fileInputRef}
             onChange={handleFileChange}
-            accept="audio/*,video/*"
+            accept=".mp4,.m4a,.mp3,.wav,audio/*,video/*"
             style={{ display: 'none' }}
-            disabled
           />
-          {/* Integration notice — transcription backend returns 501 */}
-          <div style={{
-            width: '100%', maxWidth: '600px', padding: '4rem 2rem',
-            border: '2px dashed #e2e8f0', borderRadius: '1rem',
-            display: 'flex', flexDirection: 'column', alignItems: 'center',
-            justifyContent: 'center', backgroundColor: '#f8fafc',
-            boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)',
-          }}>
+          <div 
+            onClick={() => fileInputRef.current?.click()}
+            style={{
+              width: '100%', maxWidth: '600px', padding: '4rem 2rem',
+              border: '2px dashed #cbd5e1', borderRadius: '1rem',
+              display: 'flex', flexDirection: 'column', alignItems: 'center',
+              justifyContent: 'center', backgroundColor: '#ffffff',
+              boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)',
+              cursor: 'pointer', transition: 'all 0.2s ease-in-out'
+            }}
+            onMouseOver={(e) => e.currentTarget.style.borderColor = '#000066'}
+            onMouseOut={(e) => e.currentTarget.style.borderColor = '#cbd5e1'}
+          >
             <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🎙️</div>
             <h2 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', marginBottom: '0.5rem', textAlign: 'center' }}>
-              Transcripción de video en integración
+              Subir archivo de audiencia
             </h2>
             <p style={{ textAlign: 'center', color: '#64748b', fontSize: '0.95rem', maxWidth: '380px', lineHeight: 1.6 }}>
-              La funcionalidad de transcripción automática está en proceso de integración con el servicio de audio. Estará disponible en una próxima actualización.
+              Seleccione un archivo de video o audio (.mp4, .m4a, .mp3, .wav) para iniciar la transcripción con IA.
             </p>
-            <div style={{ marginTop: '1.5rem', padding: '0.5rem 1.25rem', backgroundColor: '#fef3c7', color: '#92400e', borderRadius: '9999px', fontSize: '0.8rem', fontWeight: 700, border: '1px solid #fde68a' }}>
-              EN INTEGRACIÓN
+            <div style={{ marginTop: '1.5rem', padding: '0.625rem 1.5rem', backgroundColor: '#000066', color: '#ffffff', borderRadius: '9999px', fontSize: '0.875rem', fontWeight: 700, border: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem', boxShadow: '0 4px 6px -1px rgba(0,0,102,0.2)' }}>
+              <Upload size={16} /> Seleccionar Archivo
             </div>
           </div>
         </div>
       )}
-
 
       {viewState === 'TRANSCRIBING' && (
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
@@ -98,7 +172,15 @@ export const TranscriptionView: React.FC = () => {
               <div className={styles.bar} style={{ backgroundColor: '#C5A059' }}></div>
               <div className={styles.bar} style={{ backgroundColor: '#000066' }}></div>
             </div>
-            <h2 style={{ fontSize: '1.125rem', fontWeight: 800, color: '#0f172a', margin: 0, textAlign: 'center' }}>{progressText}</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', width: '100%' }}>
+              <h2 style={{ fontSize: '1.125rem', fontWeight: 800, color: '#0f172a', margin: 0, textAlign: 'center' }}>{progressText}</h2>
+              <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#64748b' }}>Tiempo transcurrido: {elapsedTimer}s</span>
+              
+              <div style={{ width: '100%', height: '0.5rem', backgroundColor: '#e2e8f0', borderRadius: '9999px', overflow: 'hidden', marginTop: '0.5rem' }}>
+                <div style={{ height: '100%', width: `${progress}%`, backgroundColor: '#000066', transition: 'width 0.3s ease' }} />
+              </div>
+              <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#475569', marginTop: '0.25rem' }}>{progress}% Completado</span>
+            </div>
             <button onClick={() => setViewState('UPLOAD')} style={{ padding: '0.5rem 1.5rem', backgroundColor: '#f1f5f9', color: '#475569', border: '1px solid #cbd5e1', borderRadius: '9999px', fontWeight: 700, cursor: 'pointer', fontSize: '0.875rem' }}>
               Cancelar
             </button>

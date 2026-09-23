@@ -40,7 +40,14 @@ const firebaseConfig = {
   appId,
 };
 
-export const app           = initializeApp(firebaseConfig);
-export const auth          = getAuth(app);
+export const app            = initializeApp(firebaseConfig);
+export const auth           = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
-export const db            = getFirestore(app);
+
+// Forzar el inicio de sesión con cuentas del dominio de Google Workspace
+googleProvider.setCustomParameters({
+  prompt: 'select_account',
+  hd: 'pjenl.gob.mx' // Opcional pero recomendado basado en el placeholder del correo
+});
+
+export const db             = getFirestore(app);

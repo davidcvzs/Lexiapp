@@ -7,74 +7,41 @@ export class WordExportService extends BaseService {
     super();
   }
 
-  public async exportToWord(content?: string): Promise<void> {
-    this.log('Iniciando construccion fisica de .docx con marcado rojo real');
+  public async exportToWord(content: string, isPublicVersion: boolean): Promise<void> {
+    this.log('Iniciando construccion fisica de .docx');
     if (!content) {
-       content = "Contenido generado por IA...";
+       content = "";
     }
 
     try {
-      let entitiesToRedact: string[] = [];
-      try {
-        const response = await fetch('/api/ai/redact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ content })
+      let textToExport = content;
+
+      if (isPublicVersion) {
+        // Mismo regex utilizado en la UI para mantener consistencia
+        const piiRegex = /([A-ZÁÉÍÓÚÑ][a-záéíóúñ]+ [A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?:\s[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)?|\b\d{2}[\/\-]\d{2}[\/\-]\d{4}\b|\b[A-Z]{4}\d{6}[A-Z0-9]{8}\b)/g;
+        textToExport = textToExport.replace(piiRegex, "[ANONIMIZADO]");
+      }
+
+      // Separar el contenido en párrafos para el documento Word (por saltos de línea \n)
+      const textParagraphs = textToExport.split('\n');
+
+      const docxParagraphs = textParagraphs.map(textLine => {
+        return new Paragraph({
+          alignment: AlignmentType.JUSTIFIED,
+          spacing: { line: 360 }, // Interlineado 1.5 (240 * 1.5)
+          children: [
+            new TextRun({
+              text: textLine,
+              font: "Times New Roman",
+              size: 24, // 12pt
+            })
+          ],
         });
-        if (response.ok) {
-          const data = await response.json();
-          if (data.entities && Array.isArray(data.entities)) {
-             entitiesToRedact = data.entities;
-          }
-        }
-      } catch (err) {
-        console.error("No se pudo contactar endpoint de redactado", err);
-      }
-
-      // Ordenar por longitud descendente para que no se pisen matches cortos dentro de largos
-      entitiesToRedact.sort((a, b) => b.length - a.length);
-
-      // Algoritmo rudimentario para separar runs
-      let textRuns: {text: string, red: boolean}[] = [];
-
-      // A better approach is to use regex or simply split the text
-      // We will tokenize the text by the entities
-      // To avoid complexity, we can do a simple search and replace strategy generating markers,
-      // but let's build the runs dynamically.
-      
-      const regexSegments = entitiesToRedact.filter(e => e.trim().length > 0).map(e => {
-         return e.replace(/[.*+?^$\\{\\}()|[\\]\\\\]/g, '\\\\$&');
       });
-      
-      if (regexSegments.length > 0) {
-          const combinedRegex = new RegExp("(" + regexSegments.join('|') + ")", 'g');
-          let lastIndex = 0;
-          let match;
-          
-          while ((match = combinedRegex.exec(content)) !== null) {
-              if (match.index > lastIndex) {
-                 textRuns.push({ text: content.substring(lastIndex, match.index), red: false });
-              }
-              textRuns.push({ text: match[0], red: true });
-              lastIndex = combinedRegex.lastIndex;
-          }
-          if (lastIndex < content.length) {
-              textRuns.push({ text: content.substring(lastIndex), red: false });
-          }
-      } else {
-          textRuns.push({ text: content, red: false });
-      }
-
-      const docxRuns = textRuns.map(run => new TextRun({
-          text: run.text,
-          font: "Arial",
-          size: 24, // 12pt
-          color: run.red ? "FF0000" : undefined,
-      }));
 
       const doc = new Document({
-        creator: "LexIA - Poder Judicial",
-        title: "Documento Legal",
+        creator: "Redactor Jurídico AI - Poder Judicial",
+        title: "Sentencia Definitiva",
         sections: [{
           properties: {
             page: {
@@ -82,7 +49,7 @@ export class WordExportService extends BaseService {
                 top: convertInchesToTwip(1),
                 right: convertInchesToTwip(1),
                 bottom: convertInchesToTwip(1),
-                left: convertInchesToTwip(1.2),
+                left: convertInchesToTwip(1.2), // Margen estándar de encuadernación
               },
             },
           },
@@ -92,29 +59,30 @@ export class WordExportService extends BaseService {
               spacing: { after: 400 },
               children: [
                 new TextRun({
-                  text: "PODER JUDICIAL DEL ESTADO DE NUEVO LEON",
-                  font: "Arial",
-                  size: 24,
+                  text: "PODER JUDICIAL DEL ESTADO DE NUEVO LEÓN",
+                  font: "Times New Roman",
+                  size: 28, // 14pt (un poco más grande para el encabezado)
                   bold: true,
                 })
               ],
             }),
-            new Paragraph({
-              alignment: AlignmentType.JUSTIFIED,
-              spacing: { line: 360 },
-              children: docxRuns,
-            })
+            ...docxParagraphs
           ]
         }]
       });
 
       const blob = await Packer.toBlob(doc);
-      saveAs(blob, "Documento_LexIA.docx");
       
-      this.log("Archivo exportado exitosamente.");
+      const dateStr = new Date().toISOString().split('T')[0];
+      const versionStr = isPublicVersion ? 'PUBLICA' : 'OFICIAL';
+      const fileName = `Sentencia_Definitiva_${dateStr}_${versionStr}.docx`;
+      
+      saveAs(blob, fileName);
+      
+      this.log(`Archivo ${fileName} exportado exitosamente.`);
 
     } catch (e) {
-      this.handleError(e);
+      this.handleError(e as Error);
       alert("Error en la compilacion del archivo Word.");
     }
   }
