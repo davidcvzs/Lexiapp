@@ -1,0 +1,35 @@
+{
+  "indexes": [
+    { "collectionGroup": "documents", "queryScope": "COLLECTION", "fields": [
+      { "fieldPath": "uid", "order": "ASCENDING" }, { "fieldPath": "deleted", "order": "ASCENDING" },
+      { "fieldPath": "updatedAt", "order": "DESCENDING" }, { "fieldPath": "__name__", "order": "DESCENDING" }
+    ] },
+    { "collectionGroup": "transcriptionJobs", "queryScope": "COLLECTION", "fields": [
+      { "fieldPath": "uid", "order": "ASCENDING" }, { "fieldPath": "deleted", "order": "ASCENDING" },
+      { "fieldPath": "createdAt", "order": "DESCENDING" }, { "fieldPath": "__name__", "order": "DESCENDING" }
+    ] }
+  ],
+  "fieldOverrides": [
+    { "collectionGroup": "wordArtifacts", "fieldPath": "format", "indexes": [] },
+    { "collectionGroup": "blocks", "fieldPath": "data", "indexes": [] },
+    { "collectionGroup": "documents", "fieldPath": "wordFormat", "indexes": [] },
+    { "collectionGroup": "versions", "fieldPath": "wordFormat", "indexes": [] },
+    { "collectionGroup": "segments", "fieldPath": "segments", "indexes": [] },
+    { "collectionGroup": "transcriptionRequests", "fieldPath": "upload", "indexes": [] },
+    { "collectionGroup": "transcriptionRequests", "fieldPath": "metadata", "indexes": [] },
+    { "collectionGroup": "transcriptionJobs", "fieldPath": "_recoveryState", "indexes": [] },
+    { "collectionGroup": "documents", "fieldPath": "workflow", "indexes": [] },
+    { "collectionGroup": "versions", "fieldPath": "workflow", "indexes": [] },
+    { "collectionGroup": "documents", "fieldPath": "originalTranscription", "indexes": [] },
+    { "collectionGroup": "documents", "fieldPath": "generationLog", "indexes": [] },
+    { "collectionGroup": "versions", "fieldPath": "originalTranscription", "indexes": [] },
+    { "collectionGroup": "versions", "fieldPath": "generationLog", "indexes": [] },
+    { "collectionGroup": "documents", "fieldPath": "summary", "indexes": [] },
+    { "collectionGroup": "documents", "fieldPath": "transcription", "indexes": [] },
+    { "collectionGroup": "documents", "fieldPath": "content", "indexes": [] },
+    { "collectionGroup": "versions", "fieldPath": "summary", "indexes": [] },
+    { "collectionGroup": "versions", "fieldPath": "transcription", "indexes": [] },
+    { "collectionGroup": "versions", "fieldPath": "content", "indexes": [] },
+    { "collectionGroup": "transcriptionJobs", "fieldPath": "text", "indexes": [] }
+  ]
+}

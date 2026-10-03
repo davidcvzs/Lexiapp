@@ -1,0 +1,107 @@
+openapi: 3.1.0
+info:
+  title: Diagnóstico de Transcriptor Legal
+  version: 1.0.0
+  description: Esquema mínimo separado para probar la consulta de un trabajo ficticio.
+servers:
+  - url: https://transcriptor-legal.yoshiman1989.workers.dev
+security:
+  - ActionKey: []
+paths:
+  /jobs/{job_id}:
+    get:
+      operationId: consultarEstadoTranscripcion
+      summary: Consultar el estado de un trabajo
+      description: >-
+        Consulta con los parámetros proporcionados. Puede iniciar captions si un
+        trabajo real está listo. En esta prueba usar solamente el trabajo ficticio,
+        sin cargar archivos.
+      x-openai-isConsequential: true
+      parameters:
+        - name: job_id
+          in: path
+          required: true
+          description: Identificador del trabajo ficticio indicado para la prueba.
+          schema:
+            type: string
+        - name: job_token
+          in: query
+          required: true
+          description: Token de prueba proporcionado junto con el identificador.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Estado del trabajo
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  job_id:
+                    type: string
+                  status:
+                    type: string
+                  language:
+                    type: string
+        '404':
+          description: Trabajo no encontrado o no autorizado para este token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  code:
+                    type: string
+        '401':
+          description: Credencial de acción inválida
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  code:
+                    type: string
+        '400':
+          description: Parámetros inválidos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  code:
+                    type: string
+        '502':
+          description: No se confirmó la operación del proveedor
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  code:
+                    type: string
+        default:
+          description: Otra respuesta controlada
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  code:
+                    type: string
+components:
+  schemas: {}
+  securitySchemes:
+    ActionKey:
+      type: http
+      scheme: bearer

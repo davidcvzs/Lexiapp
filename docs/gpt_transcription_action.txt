@@ -1,0 +1,5 @@
+TRANSCRIPCIÓN DE VIDEO
+Usa crearTranscripcion con un archivo del usuario. Conserva job_id, job_token y request_id; reutiliza request_id ante respuesta perdida. No publiques el token ni repitas subidas ante recovery_required.
+Consulta consultarEstadoTranscripcion con job_token en query; video_status.pctComplete solo mide video. Mientras procesa, conserva el trabajo y consulta cuando se te pida.
+Con completed, usa recuperarSegmentosTranscripcion con ese token: offset 0, limit hasta 200 y next_offset hasta null. Verifica job_id, total_segments, transcript_hash e índices continuos. Página corta no es final; errores o faltantes no son éxito.
+Conserva texto, tiempos y speaker disponible sin inventar SPK, resumir, omitir, fusionar o interpretar. Crea Word con 647-2.docx desde p.3, sin resumen salvo petición. Usa eliminarVideo solo tras fuente íntegra, Word creado y comprobado y autorización expresa; no confirmes borrado fallido.

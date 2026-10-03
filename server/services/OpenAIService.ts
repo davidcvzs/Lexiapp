@@ -1,81 +1,60 @@
 import OpenAI from 'openai';
-import fs from 'fs';
-import path from 'path';
+import type { Response, Tool } from 'openai/resources/responses/responses';
 import dotenv from 'dotenv';
-import { getSystemPrompt } from '../legal/rules';
-import { KnowledgeService } from './KnowledgeService';
+import { getSystemPrompt } from '../legal/rules/index.js';
+import { DocumentGenerationService } from './DocumentGenerationService.js';
+import { KnowledgeService } from './KnowledgeService.js';
+import { RequestError } from '../middleware/security.js';
+import type { Environment } from '../config/environment.js';
+import { configured } from '../config/environment.js';
 
-dotenv.config({ path: '.env.local' });
+dotenv.config({ path: '.env.local', quiet: true });
 
-export class OpenAIService {
-  private openai: any;
+/** A successful HTTP response may still be incomplete, refused, or contain no text. */
+export function completedResponseText(response: Pick<Response, 'output_text' | 'status' | 'output'>): string {
+  if (response.status !== 'completed') {
+    throw new RequestError(502, 'La IA no completó la respuesta. El borrador anterior se conserva.');
+  }
+  if (response.output.some(item => item.type === 'message' && item.content.some(part => part.type === 'refusal'))) {
+    throw new RequestError(422, 'La IA no pudo completar esta solicitud. Revisa la instrucción; el borrador se conserva.');
+  }
+  if (typeof response.output_text !== 'string' || !response.output_text.trim()) {
+    throw new RequestError(502, 'La IA terminó sin texto válido. El borrador anterior se conserva.');
+  }
+  return response.output_text;
+}
+
+/** OpenAI transport preserving the shared task orchestration and legacy constructor. */
+export class OpenAIService extends DocumentGenerationService {
+  private readonly openai: OpenAI;
   private readonly defaultModel: string;
-  private knowledgeService: KnowledgeService;
+  private readonly generationConfigured: boolean;
 
-  constructor() {
-    // The key must come from the server-side environment
-    this.openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY || "missing"
+  constructor(client?: OpenAI, knowledgeService = new KnowledgeService(), env: Environment = process.env) {
+    const openai = client ?? new OpenAI({
+      apiKey: env.OPENAI_API_KEY || 'missing',
+      timeout: 120_000,
+      maxRetries: 0,
     });
-    this.defaultModel = process.env.OPENAI_MODEL || 'gpt-5.6-sol';
-    this.knowledgeService = new KnowledgeService();
+    const defaultModel = env.OPENAI_MODEL || 'gpt-5.6-sol';
+    const generationConfigured = !!client || configured(env.OPENAI_API_KEY);
+    super({ generate: async (instructions, input, options = {}) => {
+      if (!generationConfigured) throw new RequestError(503, 'OpenAI requiere una clave válida configurada en el servidor.');
+      const response = await openai.responses.create({ model: defaultModel, instructions, input }, { signal: options.signal });
+      options.signal?.throwIfAborted();
+      return completedResponseText(response);
+    } }, knowledgeService);
+    this.openai = openai;
+    this.defaultModel = defaultModel;
+    this.generationConfigured = generationConfigured;
   }
 
-  public async generateDocument(instruction: string, transcript: string, mode: string = 'GENERAL', history: string[] = []): Promise<string> {
-    const systemPrompt = getSystemPrompt(mode);
-    
-    // Si el modo es DIRECTORIO, interceptar y usar consulta determinista.
-    if (mode === 'DIRECTORIO') {
-       try {
-         const data = await this.knowledgeService.queryDirectoryExcel(instruction);
-         return JSON.stringify(data, null, 2);
-       } catch (err: any) {
-         return `Error consultando directorio: ${err.message}`;
-       }
-    }
-
-    const knowledgeText = await this.knowledgeService.getKnowledgeText(mode);
-    
-    let contextStr = '\\n--- TRANSCRIPCION/FUENTE ORIGINAL ---\\n' + transcript + '\\n-----------------------------------\\n';
-    if (knowledgeText) {
-       contextStr += '\\n--- CONOCIMIENTO DE REFERENCIA ---\\n' + knowledgeText + '\\n-----------------------------------\\n';
-    }
-
-    if (history.length > 0) {
-      // Estructuracion por caso como se pidio: caseId, documentType, etc. 
-      // Por ahora concatenamos con etiquetas si vienen planas, pero preparamos el contexto.
-      contextStr += '\\n--- HISTORIAL DE INSTRUCCIONES PREVIAS ---\\n' + history.join('\\n') + '\\n------------------------------------------\\n';
-    }
-    contextStr += '\\nINSTRUCCION ACTUAL: ' + instruction;
-
-    const reasoningEffort = process.env.OPENAI_REASONING_EFFORT || 'medium';
-
-    try {
-      // Usando Responses API (SDK openai actual)
-      const response = await this.openai.responses.create({
-        model: this.defaultModel,
-        instructions: systemPrompt,
-        input: contextStr,
-        // Opciones adicionales segun Responses API si aplican:
-        // reasoning_effort: reasoningEffort,
-        // web_search: instruction.includes('buscar') ? true : undefined
-      });
-
-      return response.output || response.text || response.choices?.[0]?.message?.content || JSON.stringify(response);
-    } catch (error) {
-      console.error('Error en OpenAI Service:', error);
-      throw error;
-    }
-  }
-
-  // File search / Web search nativos de Responses API expuestos si se necesitan luego:
-  public async generateWithTools(instruction: string, context: string, tools: any[]): Promise<string> {
-     const response = await this.openai.responses.create({
-        model: this.defaultModel,
-        instructions: getSystemPrompt('GENERAL'),
-        input: context + '\\n' + instruction,
-        tools: tools
-     });
-     return response.output || response.text || '';
+  /** Existing OpenAI-specific tool calls; Gemini selection never invokes this transport. */
+  public async generateWithTools(instruction: string, context: string, tools: Tool[]): Promise<string> {
+    if (!this.generationConfigured) throw new RequestError(503, 'OpenAI requiere una clave válida configurada en el servidor.');
+    const response = await this.openai.responses.create({
+      model: this.defaultModel, instructions: getSystemPrompt('GENERAL'), input: context + '\n' + instruction, tools,
+    });
+    return completedResponseText(response);
   }
 }

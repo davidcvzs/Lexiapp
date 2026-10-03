@@ -1,0 +1,11 @@
+{
+  "name": "lexia-transcriptor-worker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check:worker": "wrangler deploy --dry-run --outdir .build"
+  },
+  "devDependencies": {
+    "wrangler": "4.147.0"
+  }
+}

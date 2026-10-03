@@ -1,13 +1,12 @@
 import Database from 'better-sqlite3';
 import path from 'path';
 import fs from 'fs';
-import { ISCJNRepository, SCJNImportBatch, SCJNSearchResult, SCJNTesis } from './types.js';
+import type { ISCJNRepository, SCJNImportBatch, SCJNSearchResult, SCJNTesis, SCJNSearchParams, SCJNProviderStatus, SCJNCatalogs } from './types.js';
 
 export class SQLiteSCJNRepository implements ISCJNRepository {
   private db: Database.Database;
 
-  constructor() {
-    const dbPath = process.env.SCJN_DB_PATH || path.join(process.cwd(), 'data', 'scjn', 'scjn.db');
+  constructor(dbPath = process.env.SCJN_DB_PATH || path.join(process.cwd(), 'data', 'scjn', 'scjn.db')) {
     const dataDir = path.dirname(dbPath);
     if (!fs.existsSync(dataDir)) {
       fs.mkdirSync(dataDir, { recursive: true });
@@ -15,25 +14,11 @@ export class SQLiteSCJNRepository implements ISCJNRepository {
     this.db = new Database(dbPath);
   }
 
-  async getProviderStatus(): Promise<any> {
-    try {
-      const row = this.db.prepare('SELECT COUNT(*) as count FROM scjn_tesis').get() as any;
-      return {
-        driver: 'sqlite',
-        connected: true,
-        available: true,
-        records: row.count,
-      };
-    } catch (err) {
-      return {
-        driver: 'sqlite',
-        connected: false,
-        available: false,
-        records: 0,
-        error: String(err),
-      };
-    }
-  }
+  /** Close the connection after a CLI job or graceful server shutdown. */
+  async close(): Promise<void> { this.db.close(); }
+
+  /** SQLite's backup API creates a consistent snapshot, including active journal writes. */
+  async backup(destination: string): Promise<void> { await this.db.backup(destination); }
 
   async init(): Promise<void> {
     this.db.exec(`
@@ -112,7 +97,7 @@ export class SQLiteSCJNRepository implements ISCJNRepository {
   }
 
   async upsertTesis(tesis: SCJNTesis): Promise<'INSERTED' | 'UPDATED' | 'SKIPPED'> {
-    const existing = this.db.prepare('SELECT rowid, * FROM scjn_tesis WHERE registroDigital = ?').get(tesis.registroDigital) as any;
+    const existing = this.db.prepare('SELECT rowid, * FROM scjn_tesis WHERE registroDigital = ?').get(tesis.registroDigital) as SCJNTesis | undefined;
     
     if (existing) {
       // Very basic diff (could be improved)
@@ -127,11 +112,11 @@ export class SQLiteSCJNRepository implements ISCJNRepository {
           WHERE registroDigital = ?
         `);
         update.run(
-          tesis.tesis, tesis.rubro, tesis.texto, tesis.epoca, tesis.anio, tesis.mes,
-          tesis.instancia, tesis.organo, tesis.materia, tesis.tipo, tesis.asunto,
-          tesis.ponente, tesis.formasIntegracion, tesis.fuente, tesis.localizacion,
-          tesis.publicacion, tesis.notaPublicacion, tesis.precedentes,
-          tesis.certificadoDigital, tesis.lastUpdatedAt, tesis.lastImportBatchId,
+          tesis.tesis ?? null, tesis.rubro ?? null, tesis.texto ?? null, tesis.epoca ?? null, tesis.anio ?? null, tesis.mes ?? null,
+          tesis.instancia ?? null, tesis.organo ?? null, tesis.materia ?? null, tesis.tipo ?? null, tesis.asunto ?? null,
+          tesis.ponente ?? null, tesis.formasIntegracion ?? null, tesis.fuente ?? null, tesis.localizacion ?? null,
+          tesis.publicacion ?? null, tesis.notaPublicacion ?? null, tesis.precedentes ?? null,
+          tesis.certificadoDigital ?? null, tesis.lastUpdatedAt ?? null, tesis.lastImportBatchId ?? null,
           tesis.registroDigital
         );
         return 'UPDATED';
@@ -149,10 +134,10 @@ export class SQLiteSCJNRepository implements ISCJNRepository {
         )
       `);
       insert.run(
-        tesis.registroDigital, tesis.numeroIdentificacion, tesis.tesis, tesis.rubro, tesis.texto, tesis.epoca, tesis.anio, tesis.mes,
-        tesis.instancia, tesis.organo, tesis.materia, tesis.tipo, tesis.asunto, tesis.ponente, tesis.formasIntegracion,
-        tesis.fuente, tesis.localizacion, tesis.publicacion, tesis.notaPublicacion, tesis.precedentes,
-        tesis.certificadoDigital, tesis.source, tesis.importBatchId, tesis.importedAt
+        tesis.registroDigital, tesis.numeroIdentificacion ?? null, tesis.tesis ?? null, tesis.rubro ?? null, tesis.texto ?? null, tesis.epoca ?? null, tesis.anio ?? null, tesis.mes ?? null,
+        tesis.instancia ?? null, tesis.organo ?? null, tesis.materia ?? null, tesis.tipo ?? null, tesis.asunto ?? null, tesis.ponente ?? null, tesis.formasIntegracion ?? null,
+        tesis.fuente ?? null, tesis.localizacion ?? null, tesis.publicacion ?? null, tesis.notaPublicacion ?? null, tesis.precedentes ?? null,
+        tesis.certificadoDigital ?? null, tesis.source, tesis.importBatchId ?? null, tesis.importedAt ?? null
       );
       return 'INSERTED';
     }
@@ -165,11 +150,11 @@ export class SQLiteSCJNRepository implements ISCJNRepository {
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `);
     insert.run(
-      batch.id, batch.filename, batch.source, batch.category, batch.importedAt, batch.rowCount, batch.insertedCount, batch.updatedCount, batch.skippedCount, batch.csvSha256, batch.acuseFilename, batch.officialCertificate, batch.notes
+      batch.id, batch.filename, batch.source, batch.category, batch.importedAt, batch.rowCount, batch.insertedCount, batch.updatedCount, batch.skippedCount, batch.csvSha256, batch.acuseFilename ?? null, batch.officialCertificate ?? null, batch.notes ?? null
     );
   }
 
-  async search(params: any): Promise<SCJNSearchResult> {
+  async search(params: SCJNSearchParams): Promise<SCJNSearchResult> {
     const page = params.page || 1;
     const pageSize = params.pageSize || 10;
     const offset = (page - 1) * pageSize;
@@ -177,7 +162,7 @@ export class SQLiteSCJNRepository implements ISCJNRepository {
     let query = 'SELECT t.* FROM scjn_tesis t';
     let countQuery = 'SELECT COUNT(*) as total FROM scjn_tesis t';
     const conditions: string[] = [];
-    const values: any[] = [];
+    const values: (string | number)[] = [];
 
     if (params.q) {
       query = 'SELECT t.* FROM scjn_tesis_fts f JOIN scjn_tesis t ON f.rowid = t.rowid';
@@ -214,7 +199,7 @@ export class SQLiteSCJNRepository implements ISCJNRepository {
     query += ' LIMIT ? OFFSET ?';
     values.push(pageSize, offset);
 
-    const totalRow = this.db.prepare(countQuery).get(...values.slice(0, values.length - 2)) as any;
+    const totalRow = this.db.prepare(countQuery).get(...values.slice(0, values.length - 2)) as { total: number };
     const total = totalRow.total;
 
     const data = this.db.prepare(query).all(...values) as SCJNTesis[];
@@ -227,27 +212,28 @@ export class SQLiteSCJNRepository implements ISCJNRepository {
     return result || null;
   }
 
-  async getProviderStatus(): Promise<any> {
+  async getProviderStatus(): Promise<SCJNProviderStatus> {
     try {
-      const row = this.db.prepare("SELECT count(*) as c FROM scjn_tesis").get() as any;
-      const batchRow = this.db.prepare("SELECT importedAt FROM scjn_import_batches ORDER BY importedAt DESC LIMIT 1").get() as any;
+      const row = this.db.prepare("SELECT count(*) as c FROM scjn_tesis").get() as { c: number };
+      const batchRow = this.db.prepare("SELECT importedAt FROM scjn_import_batches ORDER BY importedAt DESC LIMIT 1").get() as { importedAt: string } | undefined;
       return { 
+        driver: 'sqlite', connected: true, available: true, records: row.c,
         provider: 'SCJN_LOCAL_INDEX', 
         status: 'online', 
         recordCount: row.c,
         lastSync: batchRow ? batchRow.importedAt : null
       };
-    } catch (e: any) {
-      return { provider: 'SCJN_LOCAL_INDEX', status: 'error', error: e.message };
+    } catch {
+      return { driver: 'sqlite', connected: false, available: false, records: 0, recordCount: 0, provider: 'SCJN_LOCAL_INDEX', status: 'error', error: 'Índice SCJN no disponible.' };
     }
   }
 
-  async getCatalogs(): Promise<any> {
+  async getCatalogs(): Promise<SCJNCatalogs> {
     const getDistinct = (field: string) => {
       try {
-        const rows = this.db.prepare(`SELECT DISTINCT ${field} as id FROM scjn_tesis WHERE ${field} IS NOT NULL AND ${field} != '' ORDER BY ${field}`).all() as any[];
+        const rows = this.db.prepare(`SELECT DISTINCT ${field} as id FROM scjn_tesis WHERE ${field} IS NOT NULL AND ${field} != '' ORDER BY ${field}`).all() as { id: string }[];
         return rows.map(r => ({ id: r.id, description: r.id }));
-      } catch (e) {
+      } catch {
         return [];
       }
     };

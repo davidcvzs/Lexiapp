@@ -27,8 +27,8 @@ async function testEpocas() {
       httpsAgent
     });
     console.dir(parser.parse(res.data), { depth: null });
-  } catch (err: any) {
-    console.error('Error in ObtenerEpocas:', err.message);
+  } catch (err) {
+    console.error('Error in ObtenerEpocas:', (err instanceof Error ? err.message : String(err)));
   }
 }
 
@@ -53,8 +53,8 @@ async function testFiltros(url: string, session: string) {
       httpsAgent
     });
     console.dir(parser.parse(res.data), { depth: null });
-  } catch (err: any) {
-    console.error('Error in ObtenerFiltros:', err.message);
+  } catch (err) {
+    console.error('Error in ObtenerFiltros:', (err instanceof Error ? err.message : String(err)));
   }
 }
 

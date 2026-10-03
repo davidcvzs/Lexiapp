@@ -1,6 +1,6 @@
 import pkg from 'pg';
 const { Pool } = pkg;
-import { ISCJNRepository, SCJNImportBatch, SCJNSearchResult, SCJNTesis } from './types.js';
+import type { ISCJNRepository, SCJNImportBatch, SCJNSearchResult, SCJNTesis, SCJNSearchParams, SCJNProviderStatus, SCJNCatalogs } from './types.js';
 
 export class PostgresSCJNRepository implements ISCJNRepository {
   private pool: pkg.Pool;
@@ -26,7 +26,9 @@ export class PostgresSCJNRepository implements ISCJNRepository {
     client.release();
   }
 
-  async getProviderStatus(): Promise<any> {
+  async close(): Promise<void> { await this.pool.end(); }
+
+  async getProviderStatus(): Promise<SCJNProviderStatus> {
     try {
       const res = await this.pool.query('SELECT COUNT(*) as count FROM scjn_tesis');
       return {
@@ -34,6 +36,7 @@ export class PostgresSCJNRepository implements ISCJNRepository {
         connected: true,
         available: true,
         records: parseInt(res.rows[0].count, 10),
+        recordCount: parseInt(res.rows[0].count, 10), provider: 'SCJN_LOCAL_INDEX', status: 'online',
       };
     } catch (err) {
       return {
@@ -41,12 +44,13 @@ export class PostgresSCJNRepository implements ISCJNRepository {
         connected: false,
         available: false,
         records: 0,
+        recordCount: 0, provider: 'SCJN_LOCAL_INDEX', status: 'error',
         error: String(err),
       };
     }
   }
 
-  async getCatalogs(): Promise<any> {
+  async getCatalogs(): Promise<SCJNCatalogs> {
     const catalogs = {
       epocas: await this.getDistinct('epoca'),
       anios: await this.getDistinct('anio'),
@@ -61,9 +65,9 @@ export class PostgresSCJNRepository implements ISCJNRepository {
     return catalogs;
   }
 
-  private async getDistinct(field: string): Promise<string[]> {
+  private async getDistinct(field: string): Promise<{ id: string; description: string }[]> {
     const res = await this.pool.query(`SELECT DISTINCT ${field} as val FROM scjn_tesis WHERE ${field} IS NOT NULL ORDER BY val ASC`);
-    return res.rows.map(r => r.val).filter(Boolean);
+    return res.rows.map(r => r.val as string).filter(Boolean).map(value => ({ id: value, description: value }));
   }
 
   async getByRegistroDigital(registro: string): Promise<SCJNTesis | null> {
@@ -85,13 +89,13 @@ export class PostgresSCJNRepository implements ISCJNRepository {
     ]);
   }
 
-  async search(params: any): Promise<SCJNSearchResult> {
-    const page = parseInt(params.page || '1');
-    const pageSize = parseInt(params.pageSize || '10');
+  async search(params: SCJNSearchParams): Promise<SCJNSearchResult> {
+    const page = params.page || 1;
+    const pageSize = params.pageSize || 10;
     const offset = (page - 1) * pageSize;
 
-    let conditions: string[] = [];
-    let values: any[] = [];
+    const conditions: string[] = [];
+    const values: (string | number)[] = [];
     let idx = 1;
 
     if (params.q) {
@@ -115,9 +119,10 @@ export class PostgresSCJNRepository implements ISCJNRepository {
     };
 
     for (const [key, field] of Object.entries(filters)) {
-      if (params[key]) {
+      const value = params[key as keyof SCJNSearchParams];
+      if (value) {
         conditions.push(`${field} = $${idx}`);
-        values.push(params[key]);
+        values.push(value);
         idx++;
       }
     }
@@ -198,7 +203,7 @@ export class PostgresSCJNRepository implements ISCJNRepository {
     return current ? 'UPDATED' : 'INSERTED';
   }
 
-  private mapRowToTesis(row: any): SCJNTesis {
+  private mapRowToTesis(row: Record<string, string>): SCJNTesis {
     return {
       registroDigital: row.registro_digital,
       numeroIdentificacion: row.numero_identificacion,

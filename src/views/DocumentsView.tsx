@@ -1,101 +1,79 @@
-import React from 'react';
-import { Search, Filter, MoreVertical, FileText, Download, Calendar, Folder } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { DatabaseService } from '../services/DatabaseService';
+import { WordExportService } from '../services/WordExportService';
+import type { DocumentSummary } from '../../shared/documents';
+import { isApproved } from '../../shared/documentIntegrity';
 
-export const DocumentsView: React.FC = () => {
+export function DocumentsView({ service: provided }: { service?: DatabaseService }) {
+  const buttonStyle = { padding: '0.5rem 0.75rem', border: '1px solid #cbd5e1', borderRadius: '0.5rem', color: '#000066', background: '#fff', fontWeight: 600 };
   const navigate = useNavigate();
-
-  const documents = [
-    { id: '1', name: 'Acta_Audiencia_Inicial_123_2024.docx', type: 'Control Detención', date: '12 Oct, 2026', size: '45 KB', status: 'Completado' },
-    { id: '2', name: 'Resolucion_Amparo_45_2026.docx', type: 'Sentencia', date: '11 Oct, 2026', size: '120 KB', status: 'Revisión' },
-    { id: '3', name: 'Acta_Bloque_Civil_Octubre.docx', type: 'Acta en Bloque', date: '10 Oct, 2026', size: '85 KB', status: 'Completado' },
-  ];
-
-  return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#f5f5f8', fontFamily: 'Inter, sans-serif', padding: '2rem 1rem' }}>
-      <div style={{ maxWidth: '80rem', margin: '0 auto' }}>
-        
-        {/* Header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '2rem' }}>
-          <div>
-            <h1 style={{ fontSize: '2rem', fontWeight: 800, color: '#0f172a', margin: '0 0 0.5rem', letterSpacing: '-0.025em' }}>Mis Documentos</h1>
-            <p style={{ color: '#64748b', fontSize: '1rem', margin: 0, fontWeight: 500 }}>Gestiona, exporta y revisa tus actas y sentencias generadas.</p>
-          </div>
-          <button 
-            onClick={() => navigate('/document-builder')}
-            style={{ backgroundColor: '#000066', color: 'white', padding: '0.75rem 1.5rem', borderRadius: '0.5rem', fontWeight: 700, border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', boxShadow: '0 4px 6px -1px rgba(0,0,102,0.2)' }}>
-            <FileText size={18} /> Nuevo Documento
-          </button>
-        </div>
-
-        {/* Filters and Search */}
-        <div style={{ backgroundColor: 'white', padding: '1rem', borderRadius: '1rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)', display: 'flex', gap: '1rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
-          <div style={{ flex: 1, minWidth: '240px', position: 'relative', display: 'flex', alignItems: 'center' }}>
-            <Search size={20} color="#94a3b8" style={{ position: 'absolute', left: '1rem' }} />
-            <input 
-              type="text" 
-              placeholder="Buscar por expediente, título o fecha..." 
-              style={{ width: '100%', padding: '0.75rem 1rem 0.75rem 3rem', borderRadius: '0.5rem', border: '1px solid #e2e8f0', fontSize: '0.875rem', outline: 'none', color: '#0f172a', backgroundColor: '#ffffff', boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)' }}
-            />
-          </div>
-          <button style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem', backgroundColor: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '0.5rem', color: '#475569', fontWeight: 600, cursor: 'pointer' }}>
-            <Filter size={18} /> Filtros
-          </button>
-          <button style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem', backgroundColor: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '0.5rem', color: '#475569', fontWeight: 600, cursor: 'pointer' }}>
-            <Calendar size={18} /> Fecha
-          </button>
-        </div>
-
-        {/* Document Grid / Table */}
-        <div style={{ backgroundColor: 'white', borderRadius: '1rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)', overflow: 'hidden' }}>
-          <table style={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}>
-            <thead>
-              <tr style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0' }}>
-                <th style={{ padding: '1rem 1.5rem', fontSize: '0.75rem', fontWeight: 700, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Nombre del Documento</th>
-                <th style={{ padding: '1rem 1.5rem', fontSize: '0.75rem', fontWeight: 700, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Tipo</th>
-                <th style={{ padding: '1rem 1.5rem', fontSize: '0.75rem', fontWeight: 700, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Fecha de Creación</th>
-                <th style={{ padding: '1rem 1.5rem', fontSize: '0.75rem', fontWeight: 700, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Estado</th>
-                <th style={{ padding: '1rem 1.5rem', fontSize: '0.75rem', fontWeight: 700, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em', textAlign: 'right' }}>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {documents?.map((doc, idx) => (
-                <tr key={doc?.id} style={{ borderBottom: idx === (documents?.length || 0) - 1 ? 'none' : '1px solid #f1f5f9' }}>
-                  <td style={{ padding: '1.25rem 1.5rem' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                      <div style={{ width: '2.5rem', height: '2.5rem', borderRadius: '0.5rem', backgroundColor: 'rgba(0,0,102,0.05)', color: '#000066', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <Folder size={20} />
-                      </div>
-                      <div>
-                        <p style={{ margin: '0 0 0.25rem', fontWeight: 700, color: '#0f172a', fontSize: '0.875rem' }}>{doc?.name}</p>
-                        <p style={{ margin: 0, fontSize: '0.75rem', color: '#64748b' }}>{doc?.size}</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td style={{ padding: '1.25rem 1.5rem', color: '#475569', fontSize: '0.875rem', fontWeight: 500 }}>{doc?.type}</td>
-                  <td style={{ padding: '1.25rem 1.5rem', color: '#475569', fontSize: '0.875rem', fontWeight: 500 }}>{doc?.date}</td>
-                  <td style={{ padding: '1.25rem 1.5rem' }}>
-                    <span style={{ padding: '0.25rem 0.75rem', borderRadius: '9999px', fontSize: '0.75rem', fontWeight: 700, backgroundColor: doc?.status === 'Completado' ? '#dcfce7' : '#fef08a', color: doc?.status === 'Completado' ? '#15803d' : '#854d0e' }}>
-                      {doc?.status}
-                    </span>
-                  </td>
-                  <td style={{ padding: '1.25rem 1.5rem', textAlign: 'right' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '0.5rem' }}>
-                      <button style={{ padding: '0.5rem', color: '#000066', borderRadius: '0.5rem', backgroundColor: 'transparent', border: 'none', cursor: 'pointer' }}>
-                        <Download size={18} />
-                      </button>
-                      <button style={{ padding: '0.5rem', color: '#64748b', borderRadius: '0.5rem', backgroundColor: 'transparent', border: 'none', cursor: 'pointer' }}>
-                        <MoreVertical size={18} />
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-      </div>
+  const [service] = useState(() => provided ?? new DatabaseService());
+  const [documents, setDocuments] = useState<DocumentSummary[]>([]);
+  const [cursor, setCursor] = useState<string | null>(null);
+  const [busy, setBusy] = useState(true);
+  const [error, setError] = useState('');
+  const [search, setSearch] = useState('');
+  const [filter, setFilter] = useState('Todos');
+  useEffect(() => {
+    const abort = new AbortController();
+    void service.list(undefined, abort.signal).then(page => {
+      if (abort.signal.aborted) return;
+      setDocuments(page.documents); setCursor(page.nextCursor); setBusy(false);
+    }).catch(failure => { if (!abort.signal.aborted) { setError(failure instanceof Error ? failure.message : 'No se pudieron cargar los documentos.'); setBusy(false); } });
+    return () => abort.abort();
+  }, [service]);
+  const more = async () => {
+    setBusy(true); setError('');
+    try {
+      const page = await service.list(cursor ?? undefined);
+      setDocuments(previous => cursor ? [...previous, ...page.documents] : page.documents); setCursor(page.nextCursor);
+    } catch (failure) { setError(failure instanceof Error ? failure.message : 'No se pudieron cargar los documentos.'); }
+    finally { setBusy(false); }
+  };
+  const remove = async (document: DocumentSummary) => {
+    if (!window.confirm(`¿Eliminar «${document.title}», sus versiones y sus fuentes? Esta acción no se puede deshacer.`)) return;
+    setBusy(true); setError('');
+    try { await service.delete(document.id); setDocuments(previous => previous.filter(item => item.id !== document.id)); }
+    catch (failure) { setError(failure instanceof Error ? failure.message : 'No se pudo eliminar el documento.'); }
+    finally { setBusy(false); }
+  };
+  const download = async (id: string) => {
+    setBusy(true); setError('');
+    try {
+      const document = await service.get(id);
+      if (!isApproved(document)) throw new Error('Abre el borrador y completa su auditoría antes de exportarlo.');
+      await new WordExportService().exportToWord(document, 'official');
+    } catch (failure) { setError(failure instanceof Error ? failure.message : 'No se pudo exportar el documento.'); }
+    finally { setBusy(false); }
+  };
+  const visible = documents.filter(document => (filter === 'Todos' || document.status === filter) &&
+    `${document.title} ${document.caseNumber} ${document.caseType} ${new Date(document.updatedAt).toLocaleDateString('es-MX')}`.toLowerCase().includes(search.toLowerCase()));
+  return <main style={{ minHeight: '100vh', padding: '2rem', background: '#f5f5f8', color: '#0f172a' }}>
+    <h1>Mis Documentos</h1>
+    <p>Abre un borrador para continuar su redacción, consultar sus versiones o revisar las ocultaciones de la versión pública.</p>
+    <button style={{ ...buttonStyle, background: '#000066', color: 'white' }} onClick={() => navigate('/document-builder')}>Nuevo Documento</button>
+    <div style={{ margin: '1rem 0', display: 'flex', gap: '1rem' }}>
+      <input aria-label="Buscar documentos" placeholder="Buscar en los documentos cargados…" value={search} onChange={event => setSearch(event.target.value)} />
+      <select aria-label="Filtrar por estado" value={filter} onChange={event => setFilter(event.target.value)}>
+        <option>Todos</option><option>Borrador</option><option>Revisado</option>
+      </select>
     </div>
-  );
-};
+    {error && <p role="alert" style={{ color: '#b91c1c' }}>{error} <button disabled={busy} onClick={() => void more()}>Reintentar</button></p>}
+    {busy && <p role="status">Cargando…</p>}
+    {!busy && !error && !visible.length && <p>{documents.length ? 'No hay coincidencias en los documentos cargados.' : 'Todavía no tienes documentos guardados.'}</p>}
+    <div style={{ overflowX: 'auto', background: 'white', padding: '1rem', borderRadius: '0.75rem' }}>
+      <table style={{ width: '100%', textAlign: 'left', borderSpacing: '0 1rem' }}>
+        <thead><tr><th>Documento</th><th>Expediente</th><th>Materia</th><th>Actualizado</th><th>Estado</th><th>Acciones</th></tr></thead>
+        <tbody>{visible.map(document => <tr key={document.id}>
+          <td>{document.title || 'Documento sin título'} · v{document.revision}</td><td>{document.caseNumber || 'Sin número'}</td><td>{document.caseType}</td>
+          <td>{new Date(document.updatedAt).toLocaleString('es-MX')}</td><td>{document.status}</td>
+          <td><button style={buttonStyle} disabled={busy} onClick={() => navigate(`/document-builder?documentId=${encodeURIComponent(document.id)}`)}>Abrir</button>{' '}
+            <button style={{ ...buttonStyle, opacity: document.status === 'Revisado' ? 1 : 0.45 }} disabled={busy || document.status !== 'Revisado'} onClick={() => void download(document.id)}>Descargar oficial</button>{' '}
+            <button style={{ ...buttonStyle, color: '#b91c1c' }} disabled={busy} onClick={() => void remove(document)}>Eliminar</button></td>
+        </tr>)}</tbody>
+      </table>
+    </div>
+    {cursor && <button disabled={busy} onClick={() => void more()}>Cargar más documentos</button>}
+  </main>;
+}

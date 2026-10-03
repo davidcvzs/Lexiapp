@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { XMLParser } from 'fast-xml-parser';
+import { soapResult, xmlObject, xmlText } from './soapXml.js';
+import type { CatalogItem } from '../scjn/types.js';
 
 export class SCJNCatalogService {
   private parser = new XMLParser({
@@ -7,11 +9,11 @@ export class SCJNCatalogService {
     parseAttributeValue: true,
   });
 
-  private cache = new Map<string, { value: any, expiry: number }>();
+  private cache = new Map<string, { value: CatalogItem[], expiry: number }>();
   // Default TTL: 6 hours
   private TTL = 6 * 60 * 60 * 1000;
 
-  private async fetchSoap(url: string, action: string, xmlRequest: string) {
+  private async fetchSoap(url: string, action: string, xmlRequest: string): Promise<unknown> {
     const res = await axios.post(url, xmlRequest, {
       headers: {
         'Content-Type': 'text/xml; charset=utf-8',
@@ -42,10 +44,10 @@ export class SCJNCatalogService {
       
       const results = this.extractNodes(parsedXml, 'ObtenerEpocasResponse', 'ObtenerEpocasResult', 'Catalogo');
       
-      const epocas = results.map((item: any) => ({
-        id: parseInt(item.Id, 10),
-        description: item.Descripcion || ''
-      })).filter((item: any) => !isNaN(item.id));
+      const epocas = results.map(item => ({
+        id: parseInt(xmlText(item.Id), 10),
+        description: xmlText(item.Descripcion)
+      })).filter(item => !isNaN(item.id));
 
       this.setCache(cacheKey, epocas);
       return epocas;
@@ -78,11 +80,11 @@ export class SCJNCatalogService {
 
       const results = this.extractNodes(parsedXml, 'ObtenerFiltrosResponse', 'ObtenerFiltrosResult', 'CatalogoBE');
 
-      const filtros = results.map((item: any) => ({
-        id: parseInt(item.Id, 10),
-        description: item.Descripcion || '',
-        tipo: parseInt(item.Tipo, 10)
-      })).filter((item: any) => !isNaN(item.id));
+      const filtros = results.map(item => ({
+        id: parseInt(xmlText(item.Id), 10),
+        description: xmlText(item.Descripcion),
+        tipo: parseInt(xmlText(item.Tipo), 10)
+      })).filter(item => !isNaN(item.id));
 
       this.setCache(cacheKey, filtros);
       return filtros;
@@ -93,7 +95,6 @@ export class SCJNCatalogService {
   }
 
   async getAllCatalogs() {
-    try {
       // Intenta obtener épocas. Para materias, instancias y tipos usamos la operación genérica.
       const [epocas, filtros] = await Promise.all([
         this.getEpocas().catch(() => []),
@@ -103,9 +104,9 @@ export class SCJNCatalogService {
       // Tipo 1: Materia? Tipo 2: Instancia? Tipo 3: Tipo de Tesis?
       // Esto es una conjetura inicial basada en catálogos típicos. 
       // Cuando el usuario lo pruebe, verá exactamente qué IDs de tipo devuelven qué listas.
-      const materias = filtros.filter((f: any) => f.tipo === 1);
-      const instancias = filtros.filter((f: any) => f.tipo === 2);
-      const tiposTesis = filtros.filter((f: any) => f.tipo === 3);
+      const materias = filtros.filter(f => f.tipo === 1);
+      const instancias = filtros.filter(f => f.tipo === 2);
+      const tiposTesis = filtros.filter(f => f.tipo === 3);
 
       return {
         epocas,
@@ -115,9 +116,6 @@ export class SCJNCatalogService {
         rawFiltros: filtros, // Enviamos el crudo por si los tipos no coinciden con la conjetura
         source: 'SCJN/SJF'
       };
-    } catch (error) {
-      throw error;
-    }
   }
 
   clearCache() {
@@ -134,20 +132,13 @@ export class SCJNCatalogService {
     return true;
   }
 
-  private setCache(key: string, value: any) {
+  private setCache(key: string, value: CatalogItem[]) {
     this.cache.set(key, { value, expiry: Date.now() + this.TTL });
   }
 
-  private extractNodes(parsedXml: any, responseName: string, resultName: string, itemName: string) {
-    const body = parsedXml['soap:Envelope']?.['soap:Body'] || parsedXml['soapenv:Envelope']?.['soapenv:Body'];
-    const responseNode = body?.[responseName];
-    const resultNode = responseNode?.[resultName];
-    
-    if (resultNode && resultNode[itemName]) {
-      let items = resultNode[itemName];
-      return Array.isArray(items) ? items : [items];
-    }
-    return [];
+  private extractNodes(parsedXml: unknown, responseName: string, resultName: string, itemName: string) {
+    const items = soapResult(parsedXml, responseName, resultName)[itemName];
+    return items ? (Array.isArray(items) ? items : [items]).map(xmlObject) : [];
   }
 
   private escapeXml(unsafe: string): string {

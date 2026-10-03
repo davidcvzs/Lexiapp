@@ -1,89 +1,51 @@
-import { Document, Packer, Paragraph, TextRun, AlignmentType, convertInchesToTwip } from "docx";
-import { saveAs } from "file-saver";
-import { BaseService } from './BaseService';
+import fileSaver from 'file-saver';
+import { parseDraft } from '../../shared/documents';
+import type { DocumentDraft } from '../../shared/documents';
+import { approvedExportText } from '../../shared/documentIntegrity';
+import type { ExportVariant } from '../../shared/documentIntegrity';
+import { publicFragments } from '../../shared/redaction';
+import type { RedactionRange } from '../../shared/redaction';
+import { buildWordArtifact, WORD_MEDIA_TYPE } from '../../shared/wordDocument';
 
-export class WordExportService extends BaseService {
-  constructor() {
-    super();
+export interface WordArtifact { blob: Blob; fileName: string; text: string; contentHash: string; artifactHash: string }
+type ExportDocument = DocumentDraft & { revision?: number };
+type Download = (blob: Blob, name: string) => void;
+
+/** Exports the approved snapshot through the same pure builder used by the server. */
+export class WordExportService {
+  private readonly download: Download;
+  /** Inject the final download for tests; DOCX construction remains independent of the browser. */
+  constructor(download: Download = (blob, name) => fileSaver.saveAs(blob, name)) { this.download = download; }
+
+  /** Build the exact approved variant and its text hash; never include private source metadata in the public artifact. */
+  async createArtifact(document: ExportDocument, variant: ExportVariant): Promise<WordArtifact> {
+    if (!['official', 'public'].includes(variant)) throw new Error('Elige una variante de exportación válida.');
+    const snapshot = parseDraft(document);
+    const text = await approvedExportText(snapshot, variant);
+    const format = snapshot.wordFormat ?? { profile: 'judicial' as const, marks: [] };
+    const publicMarks: RedactionRange[] = [];
+    if (variant === 'public') {
+      let offset = 0;
+      for (const fragment of publicFragments(snapshot.content, snapshot.publicVersion?.redactions ?? [])) {
+        if (fragment.hidden) publicMarks.push({ start: offset, end: offset + fragment.text.length });
+        offset += fragment.text.length;
+      }
+    }
+    const artifact = await buildWordArtifact({ text, format: variant === 'public' ? { profile: format.profile, marks: [] } : format,
+      ...(variant === 'official' ? { title: snapshot.title, caseNumber: snapshot.caseNumber, documentType: snapshot.documentType } : {}),
+      revision: document.revision, variant, ...(variant === 'public' ? { publicMarks } : {}) });
+    const date = new Date().toISOString().slice(0, 10);
+    // eslint-disable-next-line no-control-regex -- File names cannot contain XML controls or Windows path characters.
+    const safe = (value: string) => value.replace(/[<>:"/\\|?*\u0000-\u001F]/g, '_').replace(/[. ]+$/g, '').slice(0, 100) || 'Documento';
+    const prefix = variant === 'public' ? 'Documento' : `${safe(snapshot.documentType || 'Documento')}${snapshot.caseNumber ? `_Exp${safe(snapshot.caseNumber)}` : ''}`;
+    return { blob: new Blob([new Uint8Array(artifact.bytes)], { type: WORD_MEDIA_TYPE }), text: artifact.text, contentHash: artifact.contentHash, artifactHash: artifact.artifactHash,
+      fileName: `${prefix}_${date}_${variant === 'public' ? 'PUBLICA' : 'OFICIAL'}_v${document.revision ?? 0}.docx` };
   }
 
-  public async exportToWord(content: string, isPublicVersion: boolean): Promise<void> {
-    this.log('Iniciando construccion fisica de .docx');
-    if (!content) {
-       content = "";
-    }
-
-    try {
-      let textToExport = content;
-
-      if (isPublicVersion) {
-        // Mismo regex utilizado en la UI para mantener consistencia
-        const piiRegex = /([A-ZÁÉÍÓÚÑ][a-záéíóúñ]+ [A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?:\s[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)?|\b\d{2}[\/\-]\d{2}[\/\-]\d{4}\b|\b[A-Z]{4}\d{6}[A-Z0-9]{8}\b)/g;
-        textToExport = textToExport.replace(piiRegex, "[ANONIMIZADO]");
-      }
-
-      // Separar el contenido en párrafos para el documento Word (por saltos de línea \n)
-      const textParagraphs = textToExport.split('\n');
-
-      const docxParagraphs = textParagraphs.map(textLine => {
-        return new Paragraph({
-          alignment: AlignmentType.JUSTIFIED,
-          spacing: { line: 360 }, // Interlineado 1.5 (240 * 1.5)
-          children: [
-            new TextRun({
-              text: textLine,
-              font: "Times New Roman",
-              size: 24, // 12pt
-            })
-          ],
-        });
-      });
-
-      const doc = new Document({
-        creator: "Redactor Jurídico AI - Poder Judicial",
-        title: "Sentencia Definitiva",
-        sections: [{
-          properties: {
-            page: {
-              margin: {
-                top: convertInchesToTwip(1),
-                right: convertInchesToTwip(1),
-                bottom: convertInchesToTwip(1),
-                left: convertInchesToTwip(1.2), // Margen estándar de encuadernación
-              },
-            },
-          },
-          children: [
-            new Paragraph({
-              alignment: AlignmentType.CENTER,
-              spacing: { after: 400 },
-              children: [
-                new TextRun({
-                  text: "PODER JUDICIAL DEL ESTADO DE NUEVO LEÓN",
-                  font: "Times New Roman",
-                  size: 28, // 14pt (un poco más grande para el encabezado)
-                  bold: true,
-                })
-              ],
-            }),
-            ...docxParagraphs
-          ]
-        }]
-      });
-
-      const blob = await Packer.toBlob(doc);
-      
-      const dateStr = new Date().toISOString().split('T')[0];
-      const versionStr = isPublicVersion ? 'PUBLICA' : 'OFICIAL';
-      const fileName = `Sentencia_Definitiva_${dateStr}_${versionStr}.docx`;
-      
-      saveAs(blob, fileName);
-      
-      this.log(`Archivo ${fileName} exportado exitosamente.`);
-
-    } catch (e) {
-      this.handleError(e as Error);
-      alert("Error en la compilacion del archivo Word.");
-    }
+  /** A prepared download is not proof that the user saved the file on their device. */
+  async exportToWord(document: ExportDocument, variant: ExportVariant): Promise<WordArtifact> {
+    const artifact = await this.createArtifact(document, variant);
+    this.download(artifact.blob, artifact.fileName);
+    return artifact;
   }
 }

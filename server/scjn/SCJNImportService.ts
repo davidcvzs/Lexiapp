@@ -1,16 +1,17 @@
 import fs from 'fs';
 import path from 'path';
 import AdmZip from 'adm-zip';
-import csv from 'csv-parser';
+import csvParser from 'csv-parser';
 import crypto from 'crypto';
 import { createSCJNRepository } from './index.js';
 import { ISCJNRepository, SCJNImportBatch, SCJNTesis } from './types.js';
+import { validateArchive } from './archiveSafety.js';
 
 export class SCJNImportService {
   private repo: ISCJNRepository;
 
-  constructor() {
-    this.repo = createSCJNRepository();
+  constructor(repo: ISCJNRepository = createSCJNRepository()) {
+    this.repo = repo;
   }
 
   async processZipFile(zipFilePath: string, originalFilename: string): Promise<SCJNImportBatch> {
@@ -23,6 +24,7 @@ export class SCJNImportService {
     try {
       const zip = new AdmZip(zipFilePath);
       const zipEntries = zip.getEntries();
+      validateArchive(zipEntries);
       
       // Prevent path traversal and extract
       zipEntries.forEach((entry) => {
@@ -70,21 +72,19 @@ export class SCJNImportService {
     hashSum.update(fileBuffer);
     const csvSha256 = hashSum.digest('hex');
 
-    // Parse the CSV
-    const results: any[] = [];
-    
-    return new Promise((resolve, reject) => {
-      fs.createReadStream(csvFilePath, { encoding: 'utf-8' }) // May need windows-1252 or utf-8 depending on SCJN format
-        .pipe(csvParser())
-        .on('data', (data) => results.push(data))
-        .on('end', async () => {
+    // Bound row size and process incrementally instead of retaining every row.
+    const source = fs.createReadStream(csvFilePath, { encoding: 'utf-8' });
+    const parser = csvParser({ maxRowBytes: 1024 * 1024 });
+    source.on('error', error => parser.destroy(error));
+    source.pipe(parser);
+    try {
           let rowCount = 0;
           let insertedCount = 0;
           let updatedCount = 0;
           let skippedCount = 0;
 
           // For each row in CSV
-          for (const row of results) {
+          for await (const row of parser) {
             rowCount++;
             // Map known columns - SCJN CSV headers might be capitalized or not
             const rawRegistro = row['Registro digital'] || row['Registro Digital'] || row['registroDigital'];
@@ -138,9 +138,10 @@ export class SCJNImportService {
           };
 
           await this.repo.saveImportBatch(batch);
-          resolve(batch);
-        })
-        .on('error', (err) => reject(err));
-    });
+          return batch;
+    } finally {
+      source.destroy();
+      parser.destroy();
+    }
   }
 }

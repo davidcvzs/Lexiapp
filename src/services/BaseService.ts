@@ -14,7 +14,7 @@ export abstract class BaseService {
    * @param message Mensaje a registrar.
    * @param info Objeto opcional de información adicional.
    */
-  protected log(message: string, info?: any): void {
+  protected log(message: string, info?: unknown): void {
     if (import.meta.env.DEV) {
       console.log(`[${this.constructor.name}] ${message}`, info || '');
     }
@@ -24,7 +24,7 @@ export abstract class BaseService {
    * Captura y unifica el manejo de errores para peticiones.
    * @param error Objeto de error o mensaje capturado.
    */
-  protected handleError(error: any): void {
+  protected handleError(error: unknown): void {
     console.error(`[${this.constructor.name}] Error detectado:`, error);
     // TODO: Enviar al monitor de errores de la empresa (ej: Sentry)
   }

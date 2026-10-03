@@ -1,5 +1,13 @@
 import axios from 'axios';
-import { XMLParser, XMLBuilder } from 'fast-xml-parser';
+import { XMLParser } from 'fast-xml-parser';
+import { soapResult, xmlObject, xmlText } from './soapXml.js';
+import type { SCJNTesis } from '../scjn/types.js';
+
+interface SoapTesis extends SCJNTesis {
+  tipoTesis?: string; contradiccion?: boolean; tribunal?: string; fechaPublicacion?: string;
+  votos?: string; ejecutorias?: string; rutaPdf?: string;
+}
+interface SoapSearchResult { total: number; page: number; pageSize: number; results: SoapTesis[] }
 
 export interface SCJNSearchParams {
   q?: string;
@@ -14,8 +22,8 @@ export interface SCJNSearchParams {
 }
 
 export interface SCJNProvider {
-  search(params: SCJNSearchParams): Promise<any>;
-  getDetail(registro: string): Promise<any>;
+  search(params: SCJNSearchParams): Promise<SoapSearchResult>;
+  getDetail(registro: string): Promise<SoapTesis | null>;
 }
 
 export class SJFSoapProvider implements SCJNProvider {
@@ -24,7 +32,7 @@ export class SJFSoapProvider implements SCJNProvider {
     parseAttributeValue: true,
   });
 
-  async search(params: SCJNSearchParams): Promise<any> {
+  async search(params: SCJNSearchParams): Promise<SoapSearchResult> {
     const page = params.page || 1;
     const pageSize = params.pageSize || 20;
     const startRowIndex = (page - 1) * pageSize;
@@ -141,7 +149,7 @@ export class SJFSoapProvider implements SCJNProvider {
     }
   }
 
-  async getDetail(registro: string): Promise<any> {
+  async getDetail(registro: string): Promise<SoapTesis | null> {
     const xmlRequest = `<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Body>
@@ -172,25 +180,21 @@ export class SJFSoapProvider implements SCJNProvider {
     }
   }
 
-  private normalizeSearchResults(parsedXml: any, page: number, pageSize: number) {
+  private normalizeSearchResults(parsedXml: unknown, page: number, pageSize: number): SoapSearchResult {
     try {
-      const body = parsedXml['soap:Envelope']?.['soap:Body'] || parsedXml['soapenv:Envelope']?.['soapenv:Body'];
-      const responseNode = body?.['ObtenerResultadosResponse'];
-      const resultNode = responseNode?.['ObtenerResultadosResult'];
+      const resultNode = soapResult(parsedXml, 'ObtenerResultadosResponse', 'ObtenerResultadosResult');
       
-      let rawResults: any[] = [];
+      let rawResults: unknown[] = [];
       let total = 0;
 
-      if (resultNode) {
+      if (Object.keys(resultNode).length) {
         if (resultNode.Resultados) {
-           let items = resultNode.Resultados.Tesis || [];
-           if (!Array.isArray(items)) {
-              items = [items];
-           }
+           const raw = xmlObject(resultNode.Resultados).Tesis;
+           const items: unknown[] = raw ? Array.isArray(raw) ? raw : [raw] : [];
            rawResults = items;
-           total = parseInt(resultNode.Total || items.length, 10);
+           total = parseInt(xmlText(resultNode.Total) || String(items.length), 10);
         } else {
-           let items = resultNode;
+           let items: unknown[] | Record<string, unknown> = resultNode;
            if (!Array.isArray(items)) {
              items = [items];
            }
@@ -199,15 +203,15 @@ export class SJFSoapProvider implements SCJNProvider {
         }
       }
 
-      const normalized = rawResults.map((item: any) => ({
-        registroDigital: item.Registro || item.RegistroDigital || '',
-        tesis: item.Tesis || item.Clave || '',
-        rubro: item.Rubro || '',
-        localizacion: item.Localizacion || '',
-        tipoTesis: item.TipoTesis || item.Tipo || '',
+      const normalized = rawResults.map(raw => { const item = xmlObject(raw); return {
+        registroDigital: xmlText(item.Registro || item.RegistroDigital),
+        tesis: xmlText(item.Tesis || item.Clave),
+        rubro: xmlText(item.Rubro),
+        localizacion: xmlText(item.Localizacion),
+        tipoTesis: xmlText(item.TipoTesis || item.Tipo),
         contradiccion: item.Contradiccion === 'true' || item.Contradiccion === true,
         source: 'SCJN/SJF'
-      }));
+      }; });
 
       return {
         total,
@@ -221,34 +225,32 @@ export class SJFSoapProvider implements SCJNProvider {
     }
   }
 
-  private normalizeDetailResult(parsedXml: any) {
+  private normalizeDetailResult(parsedXml: unknown): SoapTesis | null {
     try {
-      const body = parsedXml['soap:Envelope']?.['soap:Body'] || parsedXml['soapenv:Envelope']?.['soapenv:Body'];
-      const responseNode = body?.['ObtenerDetalleResponse'];
-      const resultNode = responseNode?.['ObtenerDetalleResult'];
+      const resultNode = soapResult(parsedXml, 'ObtenerDetalleResponse', 'ObtenerDetalleResult');
 
-      if (!resultNode) {
+      if (!Object.keys(resultNode).length) {
         return null;
       }
 
       const item = resultNode;
       return {
-        registroDigital: item.Registro || item.RegistroDigital || '',
-        tesis: item.Tesis || item.Clave || '',
-        rubro: item.Rubro || '',
-        texto: item.Texto || '',
-        epoca: item.Epoca || '',
-        tipoTesis: item.TipoTesis || item.Tipo || '',
-        instancia: item.Instancia || '',
-        tribunal: item.Tribunal || '',
-        materia: item.Materia || '',
-        localizacion: item.Localizacion || '',
-        fechaPublicacion: item.FechaPublicacion || '',
-        fuente: item.Fuente || '',
-        precedentes: item.Precedentes || '',
-        votos: item.Votos || '',
-        ejecutorias: item.Ejecutorias || '',
-        rutaPdf: item.RutaPdf || '',
+        registroDigital: xmlText(item.Registro || item.RegistroDigital),
+        tesis: xmlText(item.Tesis || item.Clave),
+        rubro: xmlText(item.Rubro),
+        texto: xmlText(item.Texto),
+        epoca: xmlText(item.Epoca),
+        tipoTesis: xmlText(item.TipoTesis || item.Tipo),
+        instancia: xmlText(item.Instancia),
+        tribunal: xmlText(item.Tribunal),
+        materia: xmlText(item.Materia),
+        localizacion: xmlText(item.Localizacion),
+        fechaPublicacion: xmlText(item.FechaPublicacion),
+        fuente: xmlText(item.Fuente),
+        precedentes: xmlText(item.Precedentes),
+        votos: xmlText(item.Votos),
+        ejecutorias: xmlText(item.Ejecutorias),
+        rutaPdf: xmlText(item.RutaPdf),
         source: 'SCJN/SJF'
       };
     } catch (error) {
@@ -292,14 +294,14 @@ class Cache<T> {
 
 export class SCJNService {
   private provider: SCJNProvider;
-  private searchCache = new Cache<any>();
-  private detailCache = new Cache<any>();
+  private searchCache = new Cache<SoapSearchResult>();
+  private detailCache = new Cache<SoapTesis | null>();
 
   constructor(provider?: SCJNProvider) {
     this.provider = provider || new SJFSoapProvider();
   }
 
-  async search(params: SCJNSearchParams): Promise<any> {
+  async search(params: SCJNSearchParams): Promise<SoapSearchResult> {
     const cacheKey = JSON.stringify(params);
     const cached = this.searchCache.get(cacheKey);
     if (cached) return cached;
@@ -309,7 +311,7 @@ export class SCJNService {
     return result;
   }
 
-  async getDetail(registro: string): Promise<any> {
+  async getDetail(registro: string): Promise<SoapTesis | null> {
     const cached = this.detailCache.get(registro);
     if (cached) return cached;
 

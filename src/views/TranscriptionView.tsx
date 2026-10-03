@@ -1,300 +1,138 @@
-import React, { useState, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { 
-  Play, 
-  Download,
-  ScrollText,
-  FileSignature,
-  Search,
-  ArrowLeft,
-  Bookmark,
-  MoreVertical,
-  Volume2,
-  Settings,
-  Maximize,
-  Upload
-} from 'lucide-react';
-import styles from './TranscriptionView.module.css';
-import { AIAssistantService } from '../services/AIAssistantService';
+import { FileSignature, Upload, Download } from 'lucide-react';
+import { useTranscription } from '../hooks/useTranscription';
+import { TranscriptionService } from '../services/TranscriptionService';
+import type { TranscriptionRecord } from '../services/TranscriptionService';
+import { MEDIA_ACCEPT, DIRECT_MEDIA_ACCEPT } from '../../shared/transcription';
+import { TaskActions } from '../components/documents/TaskActions';
+import { TranscriptWordPanel } from '../components/documents/TranscriptWordPanel';
+import type { TranscriptWordClient } from '../services/TranscriptWordClient';
 
-const aiAssistant = new AIAssistantService();
-
-type ViewState = 'UPLOAD' | 'TRANSCRIBING' | 'READY';
-
-export const TranscriptionView: React.FC = () => {
+export function TranscriptionView({ service: provided, wordClient }: { service?: TranscriptionService; wordClient?: TranscriptWordClient }) {
+  const [service] = useState(() => provided ?? new TranscriptionService());
   const navigate = useNavigate();
-  const [viewState, setViewState] = useState<ViewState>('UPLOAD');
-  const [progressText, setProgressText] = useState('Transcribiendo audio con IA...');
-  const [transcriptionData, setTranscriptionData] = useState<string>('');
-  const [fileName, setFileName] = useState<string>('audiencia.mp4');
-  const [progress, setProgress] = useState(0);
-  const [elapsedTimer, setElapsedTimer] = useState(0);
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    
-    setFileName(file.name);
-    setViewState('TRANSCRIBING');
-    setProgress(0);
-    setProgressText('Transcribiendo audio con IA...');
-    setElapsedTimer(0);
-    
-    const startTime = Date.now();
-    const timerInterval = setInterval(() => {
-      setElapsedTimer(Math.floor((Date.now() - startTime) / 1000));
-      setProgress(prev => prev < 95 ? prev + Math.floor(Math.random() * 3) + 1 : prev);
-    }, 1000);
-    
+  const input = useRef<HTMLInputElement>(null);
+  const resumeInput = useRef<HTMLInputElement>(null);
+  const resumeRequestId = useRef<string | undefined>(undefined);
+  const transcription = useTranscription(service);
+  const [jobs, setJobs] = useState<TranscriptionRecord[]>([]);
+  const [cursor, setCursor] = useState<string | null>(null);
+  const [historyBusy, setHistoryBusy] = useState(false);
+  const [historyError, setHistoryError] = useState('');
+  const [notice, setNotice] = useState('');
+  const sourceFitsEditor = !!transcription.result && transcription.result.text.length <= 500_000
+    && new TextEncoder().encode(JSON.stringify({ original: transcription.result.text, working: transcription.result.text })).byteLength < 650_000;
+  useEffect(() => {
+    if (transcription.busy) return;
+    const abort = new AbortController();
+    void service.list(undefined, abort.signal).then(page => {
+      if (!abort.signal.aborted) { setJobs(page.jobs); setCursor(page.nextCursor); setHistoryError(''); }
+    }).catch(failure => { if (!abort.signal.aborted) setHistoryError(failure instanceof Error ? failure.message : 'No se pudo cargar el historial.'); });
+    return () => abort.abort();
+  }, [service, transcription.busy]);
+  const history = async (more = false) => {
+    setHistoryBusy(true); setHistoryError('');
     try {
-      const formData = new FormData();
-      formData.append('file', file);
-
-      const apiUrl = import.meta.env.VITE_TRANSCRIPTION_API_URL || 'https://transcriptor-legal.yoshiman1989.workers.dev/api/transcribe';
-      
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${import.meta.env.VITE_AI_API_KEY}`,
-          'x-api-key': import.meta.env.VITE_AI_API_KEY
-        },
-        body: formData,
-      });
-
-      clearInterval(timerInterval);
-
-      if (!response.ok) {
-        throw new Error('Fallo en API de transcripción.');
-      }
-
-      let data = await response.json();
-      
-      if (data.job_id) {
-        let isCompleted = false;
-        
-        // Clean the URL to get the base domain
-        const baseUrl = apiUrl.replace(/\/api\/transcribe\/?$/, '');
-        const statusUrl = `${baseUrl}/jobs/${data.job_id}`;
-        
-        while (!isCompleted) {
-          await new Promise(resolve => setTimeout(resolve, 4000));
-          const pollResponse = await fetch(statusUrl, {
-            method: 'GET',
-            headers: {
-              'Authorization': `Bearer ${import.meta.env.VITE_AI_API_KEY}`,
-              'x-api-key': import.meta.env.VITE_AI_API_KEY
-            }
-          });
-          
-          if (!pollResponse.ok) throw new Error('Error al consultar estado.');
-          
-          const pollData = await pollResponse.json();
-          if (pollData.status === 'completed') {
-            isCompleted = true;
-            data = pollData; // Usamos los datos finales para extraer el texto
-          } else if (pollData.status === 'generating_transcript') {
-            setProgress(90);
-            setProgressText("IA generando texto de la transcripción...");
-          } else if (pollData.status === 'failed' || pollData.status === 'error') {
-            throw new Error('La transcripción falló en el servidor.');
-          }
-        }
-      }
-
-      setProgress(100);
-      
-      const resultText = data.text || data.transcription || '[Texto no recuperado]';
-      setTranscriptionData(resultText);
-      aiAssistant.initializeSession(resultText);
-      
-      setTimeout(() => {
-        navigate('/document-builder', { state: { transcriptionData: resultText } });
-      }, 500);
-      
-    } catch (e) {
-      clearInterval(timerInterval);
-      console.error(e);
-      alert("Error al transcribir el archivo.");
-      setViewState('UPLOAD');
-    }
+      const page = await service.list(more ? cursor ?? undefined : undefined);
+      setJobs(previous => more ? [...previous, ...page.jobs] : page.jobs); setCursor(page.nextCursor);
+    } catch (failure) { setHistoryError(failure instanceof Error ? failure.message : 'No se pudo cargar el historial.'); }
+    finally { setHistoryBusy(false); }
   };
+  const remove = async (id: string) => {
+    if (!window.confirm('¿Eliminar esta transcripción de LexIA? El proveedor remoto puede conservar el archivo y continuar procesándolo.')) return;
+    setHistoryBusy(true); setHistoryError('');
+    try {
+      setNotice(await service.delete(id)); setJobs(previous => previous.filter(job => job.job_id !== id)); transcription.clearResult();
+    } catch (failure) { setHistoryError(failure instanceof Error ? failure.message : 'No se pudo eliminar la transcripción.'); }
+    finally { setHistoryBusy(false); }
+  };
+  const buttonStyle = { padding: '0.75rem 1.25rem', borderRadius: '0.5rem', border: '1px solid #cbd5e1', cursor: 'pointer', fontWeight: 700 };
 
-  const navigateToBuilder = () => {
-    navigate('/document-builder', { state: { transcriptionData } });
+  const downloadText = (result: { text: string; fileName: string }) => {
+    const url = URL.createObjectURL(new Blob([result.text], { type: 'text/plain;charset=utf-8' }));
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = result.fileName.replace(/\.[^.]+$/, '') + '-transcripcion.txt';
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
+  const downloadSaved = async (id: string) => {
+    setHistoryBusy(true); setHistoryError('');
+    try { downloadText(await service.transcript(id)); }
+    catch (failure) { setHistoryError(failure instanceof Error ? failure.message : 'No se pudo descargar.'); }
+    finally { setHistoryBusy(false); }
   };
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#f8fafc', display: 'flex', flexDirection: 'column', fontFamily: 'Inter, sans-serif' }}>
-      {viewState === 'UPLOAD' && (
-        <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
-          <input
-            type="file"
-            ref={fileInputRef}
-            onChange={handleFileChange}
-            accept=".mp4,.m4a,.mp3,.wav,audio/*,video/*"
-            style={{ display: 'none' }}
-          />
-          <div 
-            onClick={() => fileInputRef.current?.click()}
-            style={{
-              width: '100%', maxWidth: '600px', padding: '4rem 2rem',
-              border: '2px dashed #cbd5e1', borderRadius: '1rem',
-              display: 'flex', flexDirection: 'column', alignItems: 'center',
-              justifyContent: 'center', backgroundColor: '#ffffff',
-              boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)',
-              cursor: 'pointer', transition: 'all 0.2s ease-in-out'
-            }}
-            onMouseOver={(e) => e.currentTarget.style.borderColor = '#000066'}
-            onMouseOut={(e) => e.currentTarget.style.borderColor = '#cbd5e1'}
-          >
-            <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🎙️</div>
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', marginBottom: '0.5rem', textAlign: 'center' }}>
-              Subir archivo de audiencia
-            </h2>
-            <p style={{ textAlign: 'center', color: '#64748b', fontSize: '0.95rem', maxWidth: '380px', lineHeight: 1.6 }}>
-              Seleccione un archivo de video o audio (.mp4, .m4a, .mp3, .wav) para iniciar la transcripción con IA.
-            </p>
-            <div style={{ marginTop: '1.5rem', padding: '0.625rem 1.5rem', backgroundColor: '#000066', color: '#ffffff', borderRadius: '9999px', fontSize: '0.875rem', fontWeight: 700, border: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem', boxShadow: '0 4px 6px -1px rgba(0,0,102,0.2)' }}>
-              <Upload size={16} /> Seleccionar Archivo
-            </div>
-          </div>
-        </div>
-      )}
-
-      {viewState === 'TRANSCRIBING' && (
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
-          <div style={{ backgroundColor: '#ffffff', padding: '3rem', borderRadius: '1rem', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)', border: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', width: '100%', maxWidth: '400px' }}>
-            <div className={styles.waveform}>
-              <div className={styles.bar} style={{ backgroundColor: '#000066' }}></div>
-              <div className={styles.bar} style={{ backgroundColor: '#C5A059' }}></div>
-              <div className={styles.bar} style={{ backgroundColor: '#000066' }}></div>
-              <div className={styles.bar} style={{ backgroundColor: '#C5A059' }}></div>
-              <div className={styles.bar} style={{ backgroundColor: '#000066' }}></div>
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', width: '100%' }}>
-              <h2 style={{ fontSize: '1.125rem', fontWeight: 800, color: '#0f172a', margin: 0, textAlign: 'center' }}>{progressText}</h2>
-              <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#64748b' }}>Tiempo transcurrido: {elapsedTimer}s</span>
-              
-              <div style={{ width: '100%', height: '0.5rem', backgroundColor: '#e2e8f0', borderRadius: '9999px', overflow: 'hidden', marginTop: '0.5rem' }}>
-                <div style={{ height: '100%', width: `${progress}%`, backgroundColor: '#000066', transition: 'width 0.3s ease' }} />
-              </div>
-              <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#475569', marginTop: '0.25rem' }}>{progress}% Completado</span>
-            </div>
-            <button onClick={() => setViewState('UPLOAD')} style={{ padding: '0.5rem 1.5rem', backgroundColor: '#f1f5f9', color: '#475569', border: '1px solid #cbd5e1', borderRadius: '9999px', fontWeight: 700, cursor: 'pointer', fontSize: '0.875rem' }}>
-              Cancelar
+    <main style={{ minHeight: '100vh', background: '#f8fafc', padding: '2rem', color: '#0f172a' }}>
+      <div style={{ maxWidth: '64rem', margin: '0 auto' }}>
+        <h1 style={{ fontSize: '1.75rem', color: '#000066' }}>Transcripción de audiencia</h1>
+        <p>Selecciona un archivo de audio o video. Podrás revisar el texto antes de enviarlo al editor.</p>
+        <button onClick={() => navigate('/document-builder')}>Trabajar con texto o documentos sin video</button>
+        <section style={{ background: 'white', padding: '2rem', borderRadius: '1rem', border: '1px solid #e2e8f0', marginBottom: '1.5rem' }}>
+          <input ref={input} type="file" accept={MEDIA_ACCEPT + ',' + DIRECT_MEDIA_ACCEPT} aria-label="Archivo de audiencia" hidden
+            disabled={transcription.busy}
+            onChange={event => {
+              const file = event.currentTarget.files?.[0];
+              event.currentTarget.value = '';
+              if (file) void transcription.start(file);
+            }} />
+          <button onClick={() => input.current?.click()} disabled={transcription.busy}
+            style={{ ...buttonStyle, background: '#000066', color: 'white', opacity: transcription.busy ? 0.5 : 1 }}>
+            <Upload size={16} style={{ marginRight: '0.5rem' }} />Seleccionar archivo
+          </button>
+          <p style={{ fontSize: '0.875rem', color: '#64748b' }}>MP3, WAV, MP4, M4A, WEBM, OGG o FLAC: hasta 100 MiB en carga habitual. Videos MP4, WEBM, MOV o AVI: hasta 2 GiB cuando esté habilitada la carga directa reanudable.</p>
+          <input ref={resumeInput} type="file" accept={DIRECT_MEDIA_ACCEPT} aria-label="Archivo original para reanudar carga" hidden disabled={transcription.busy}
+            onChange={event => { const file = event.currentTarget.files?.[0]; event.currentTarget.value = ''; if (file) void transcription.resumeUpload(file, resumeRequestId.current); }} />
+          {transcription.pendingUpload?.kind === 'direct' && <button disabled={transcription.busy} style={buttonStyle}
+            onClick={() => { resumeRequestId.current = transcription.pendingUpload!.requestId; resumeInput.current?.click(); }}>Reseleccionar archivo original y reanudar carga</button>}
+          {transcription.progress?.percent !== undefined && <p role="status">{transcription.progress.stage === 'uploading' ? 'Carga del archivo' : 'Procesamiento del video'}: {Math.floor(transcription.progress.percent)}%</p>}
+          {transcription.progress?.recoveredSegments !== undefined && <p role="status">Segmentos recuperados: {transcription.progress.recoveredSegments}{transcription.progress.totalSegments ? ` de ${transcription.progress.totalSegments}` : ''}</p>}
+          {transcription.status && <p role="status" aria-live="polite">{transcription.status}</p>}
+          {transcription.busy && <>
+            <p>Tiempo transcurrido: {transcription.elapsed}s</p>
+            <button style={buttonStyle} onClick={transcription.cancel}>Detener espera</button>
+          </>}
+          {transcription.error && <p role="alert" style={{ color: '#b91c1c' }}>{transcription.error}</p>}
+          {!transcription.busy && transcription.canRetry && transcription.pendingUpload?.kind !== 'direct' && <button style={buttonStyle} onClick={() => void transcription.retry()}>
+            Reintentar / reanudar
+          </button>}
+        </section>
+        {transcription.result && <section aria-label="Transcripción completada" style={{ background: 'white', padding: '2rem', borderRadius: '1rem', border: '1px solid #e2e8f0' }}>
+          <h2>Transcripción completada</h2>
+          <p>Archivo: {transcription.result.fileName}</p>
+          <div style={{ whiteSpace: 'pre-wrap', lineHeight: 1.7, padding: '1rem', background: '#f8fafc', borderRadius: '0.5rem' }}>{transcription.result.text.slice(0, 30_000)}</div>
+          {transcription.result.text.length > 30_000 && <p>Vista previa de los primeros 30 000 caracteres. La descarga conserva la fuente completa.</p>}
+          {!sourceFitsEditor && <p>La fuente completa supera el tamaño del redactor. Descárgala y aporta los fragmentos que quieras trabajar; los segmentos originales permanecen guardados.</p>}
+          <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
+            <button style={{ ...buttonStyle, background: '#000066', color: 'white' }} disabled={transcription.busy || !sourceFitsEditor}
+              onClick={() => navigate('/document-builder', { state: { transcriptionData: transcription.result!.text } })}>
+              <FileSignature size={16} style={{ marginRight: '0.5rem' }} />Continuar al editor
             </button>
+            <button style={buttonStyle} onClick={() => downloadText(transcription.result!)}><Download size={16} style={{ marginRight: '0.5rem' }} />Descargar texto</button>
           </div>
-        </div>
-      )}
-
-      {viewState === 'READY' && (
-        <div style={{ maxWidth: '48rem', margin: '0 auto', backgroundColor: '#ffffff', minHeight: '100vh', display: 'flex', flexDirection: 'column', boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)', borderLeft: '1px solid #e2e8f0', borderRight: '1px solid #e2e8f0' }}>
-          {/* Header */}
-          <div style={{ display: 'flex', alignItems: 'center', padding: '1rem', borderBottom: '1px solid #e2e8f0', position: 'sticky', top: 0, backgroundColor: '#ffffff', zIndex: 10 }}>
-            <div style={{ padding: '0.5rem', cursor: 'pointer', color: '#475569' }} onClick={() => setViewState('UPLOAD')}>
-              <ArrowLeft size={24} />
-            </div>
-            <div style={{ flex: 1, padding: '0 0.5rem' }}>
-              <h2 style={{ fontSize: '1.125rem', fontWeight: 800, color: '#0f172a', margin: 0 }}>Expediente: 123/2024</h2>
-              <p style={{ fontSize: '0.75rem', color: '#475569', margin: 0, fontWeight: 500 }}>Archivo: {fileName}</p>
-            </div>
-            <div style={{ display: 'flex', gap: '0.5rem' }}>
-              <button style={{ padding: '0.5rem', border: 'none', background: 'transparent', cursor: 'pointer', color: '#000066' }}>
-                <Bookmark size={20} />
-              </button>
-              <button style={{ padding: '0.5rem', border: 'none', background: 'transparent', cursor: 'pointer', color: '#475569' }}>
-                <MoreVertical size={20} />
-              </button>
-            </div>
-          </div>
-
-          {/* Video Player */}
-          <div style={{ padding: '1.5rem 1.5rem 0.5rem 1.5rem' }}>
-            <div style={{ position: 'relative', aspectRatio: '16/9', backgroundColor: '#0f172a', borderRadius: '0.75rem', overflow: 'hidden', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}>
-              <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.4)' }}>
-                <button style={{ width: '4rem', height: '4rem', borderRadius: '9999px', backgroundColor: '#000066', color: '#ffffff', border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', boxShadow: '0 4px 6px -1px rgba(0,0,102,0.4)' }}>
-                  <Play size={32} fill="white" />
-                </button>
-              </div>
-              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '0.75rem 1rem', background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)' }}>
-                <div style={{ display: 'flex', height: '0.375rem', alignItems: 'center', marginBottom: '0.5rem' }}>
-                  <div style={{ height: '0.25rem', flex: 0.35, backgroundColor: '#C5A059', borderRadius: '9999px' }}></div>
-                  <div style={{ width: '0.75rem', height: '0.75rem', backgroundColor: '#C5A059', borderRadius: '9999px', zIndex: 1, boxShadow: '0 0 0 2px rgba(0,0,0,0.5)' }}></div>
-                  <div style={{ height: '0.25rem', flex: 0.65, backgroundColor: 'rgba(255,255,255,0.3)', borderRadius: '9999px' }}></div>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <Volume2 size={16} color="white" />
-                    <span style={{ color: 'white', fontSize: '0.75rem', fontWeight: 600 }}>05:22 / 45:10</span>
-                  </div>
-                  <div style={{ display: 'flex', gap: '0.75rem' }}>
-                    <Settings size={16} color="white" />
-                    <Maximize size={16} color="white" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Transcript Controls */}
-          <div style={{ padding: '1rem 1.5rem', position: 'sticky', top: '72px', backgroundColor: '#ffffff', zIndex: 9, borderBottom: '1px solid #f1f5f9' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-              <h3 style={{ fontSize: '1.125rem', fontWeight: 800, margin: 0, color: '#0f172a' }}>Transcripción de Audiencia</h3>
-              <div style={{ display: 'flex', gap: '0.5rem' }}>
-                <button style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.75rem', fontWeight: 700, color: '#000066', padding: '0.375rem 0.75rem', backgroundColor: 'rgba(0,0,102,0.05)', borderRadius: '0.5rem', border: '1px solid rgba(0,0,102,0.1)', cursor: 'pointer' }}>
-                  <Download size={14} /> PDF
-                </button>
-              </div>
-            </div>
-            <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-              <Search size={20} color="#64748b" style={{ position: 'absolute', left: '0.75rem' }} />
-              <input type="text" placeholder="Buscar en el testimonio..." style={{ width: '100%', padding: '0.75rem 1rem 0.75rem 2.5rem', borderRadius: '0.5rem', border: '1px solid #cbd5e1', fontSize: '0.875rem', backgroundColor: '#ffffff', color: '#0f172a', outline: 'none', boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)' }} />
-            </div>
-          </div>
-
-          {/* Transcription List */}
-          <div style={{ flex: 1, overflowY: 'auto', padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1.5rem', backgroundColor: '#f8fafc' }}>
-            <div style={{ padding: '1.25rem', borderRadius: '0.75rem', backgroundColor: '#ffffff', border: '1px solid #e2e8f0', boxShadow: '0 1px 3px 0 rgba(0,0,0,0.1)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
-                <ScrollText size={20} color="#000066" />
-                <h4 style={{ fontSize: '0.875rem', fontWeight: 800, margin: 0, color: '#0f172a' }}>Resumen de la Audiencia</h4>
-              </div>
-              <p style={{ fontSize: '0.875rem', lineHeight: 1.6, color: '#475569', margin: 0, fontWeight: 500 }}>
-                {transcriptionData.substring(0, 200)}...
-              </p>
-            </div>
-
-            {transcriptionData.split('\n').filter(p => p.trim() !== '').map((paragraph, index) => (
-              <div key={index} style={{ 
-                display: 'flex', flexDirection: 'column', gap: '0.375rem', padding: '1rem', 
-                borderRadius: '0.75rem', 
-                backgroundColor: '#ffffff',
-                border: '1px solid #e2e8f0',
-                borderLeft: index % 2 === 0 ? '4px solid #000066' : '1px solid #e2e8f0',
-                boxShadow: '0 1px 2px 0 rgba(0,0,0,0.05)'
-              }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.25rem' }}>
-                  <span style={{ fontSize: '0.75rem', fontWeight: 800, color: index % 2 === 0 ? '#000066' : '#0f172a', textTransform: 'uppercase' }}>
-                    {index % 2 === 0 ? 'Juez de Control' : 'Ministerio Público'}
-                  </span>
-                  <span style={{ fontSize: '0.625rem', fontWeight: 600, color: '#64748b' }}>--:--</span>
-                </div>
-                <p style={{ fontSize: '0.875rem', lineHeight: 1.6, color: '#1e293b', margin: 0, fontWeight: 500 }}>
-                  {paragraph}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Bottom Actions */}
-          <div style={{ padding: '1.25rem 1.5rem', borderTop: '1px solid #e2e8f0', backgroundColor: '#ffffff' }}>
-            <button onClick={navigateToBuilder} style={{ width: '100%', padding: '0.875rem', backgroundColor: '#000066', color: '#ffffff', border: 'none', borderRadius: '0.5rem', fontWeight: 800, fontSize: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', cursor: 'pointer', boxShadow: '0 4px 6px -1px rgba(0,0,102,0.2)' }}>
-              <FileSignature size={18} /> Generar Acta Judicial
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
+          {!transcription.busy && sourceFitsEditor && <TaskActions choose={taskIntent => navigate('/document-builder', { state: { transcriptionData: transcription.result!.text, taskIntent } })} />}
+          {!transcription.busy && <TranscriptWordPanel jobId={transcription.result.jobId} sourceText={transcription.result.text} client={wordClient} />}
+        </section>}
+        <section aria-label="Trabajos guardados" style={{ marginTop: '1.5rem', background: 'white', padding: '1.5rem', borderRadius: '1rem' }}>
+          <h2>Trabajos guardados</h2>
+          <p>Puedes abrir o reanudar una transcripción después de recargar, sin volver a subir el archivo.</p>
+          <button onClick={() => void history()} disabled={historyBusy || transcription.busy}>Actualizar historial</button>
+          {historyError && <p role="alert" style={{ color: '#b91c1c' }}>{historyError}</p>}
+          {notice && <p role="status">{notice}</p>}
+          {!jobs.length && !historyError && <p>No hay trabajos guardados.</p>}
+          {jobs.map(job => <article key={job.job_id} style={{ padding: '1rem 0', borderBottom: '1px solid #e2e8f0' }}>
+            <strong>{job.fileName}</strong> · {({ uploading: 'Carga pendiente', queued: 'En espera', processing: 'Procesando', generating_transcript: 'Generando texto', recovering_transcript: 'Recuperando segmentos', completed: 'Completado', failed: 'Fallido' })[job.status]}
+            <p>{new Date(job.createdAt).toLocaleString('es-MX')}</p>
+            {job.status === 'uploading' && job.uploadRequestId && <button disabled={historyBusy || transcription.busy} onClick={() => { resumeRequestId.current = job.uploadRequestId; resumeInput.current?.click(); }}>Reanudar carga de {job.fileName}</button>}
+            {job.status !== 'failed' && job.status !== 'uploading' && <button disabled={historyBusy || transcription.busy} onClick={() => void transcription.resume(job.job_id, job.fileName)}>{job.status === 'completed' ? 'Abrir transcripción' : 'Reanudar trabajo'}</button>}{' '}
+            {job.status === 'completed' && <button disabled={historyBusy || transcription.busy} onClick={() => void downloadSaved(job.job_id)}>Descargar transcripción</button>}{' '}
+            <button disabled={historyBusy || transcription.busy} onClick={() => void remove(job.job_id)}>Eliminar copia de LexIA</button>
+          </article>)}
+          {cursor && <button disabled={historyBusy || transcription.busy} onClick={() => void history(true)}>Más trabajos</button>}
+        </section>
+      </div>
+    </main>
   );
-};
+}

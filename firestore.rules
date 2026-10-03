@@ -1,0 +1,37 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+    function owns(data) {
+      return signedIn() && data.userId == request.auth.uid;
+    }
+    function validCase(data) {
+      return data.keys().hasAll(['userId', 'caseNumber', 'type', 'status', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly(['userId', 'caseNumber', 'type', 'status', 'createdAt', 'updatedAt', 'contentRef'])
+        && data.userId is string
+        && data.caseNumber is string && data.caseNumber.size() > 0 && data.caseNumber.size() <= 200
+        && data.type is string && data.type.size() > 0 && data.type.size() <= 100
+        && data.status in ['PROCESANDO', 'COMPLETADO']
+        && data.createdAt is timestamp && data.updatedAt is timestamp
+        && (!('contentRef' in data) || (data.contentRef is string && data.contentRef.size() <= 2048));
+    }
+    match /cases/{caseId} {
+      allow read, delete: if owns(resource.data);
+      allow create: if owns(request.resource.data) && validCase(request.resource.data)
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.updatedAt == request.time;
+      allow update: if owns(resource.data) && owns(request.resource.data)
+        && validCase(request.resource.data)
+        && request.resource.data.createdAt == resource.data.createdAt
+        && request.resource.data.updatedAt == request.time;
+    }
+    // transcriptionRequests, transcriptionJobs, nested segments and wordArtifacts/blocks use owner-checked backend access.
+    // Unimplemented collections and nested documents remain inaccessible.
+    // Administrative claims never grant access to another user's legal case.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

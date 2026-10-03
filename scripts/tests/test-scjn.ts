@@ -1,4 +1,4 @@
-import { SQLiteSCJNRepository } from './server/scjn/SQLiteSCJNRepository.js';
+import { SQLiteSCJNRepository } from '../../server/scjn/SQLiteSCJNRepository.js';
 
 async function test() {
   const repo = new SQLiteSCJNRepository();

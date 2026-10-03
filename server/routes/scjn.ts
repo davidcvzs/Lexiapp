@@ -1,87 +1,75 @@
 import { Router } from 'express';
-import multer from 'multer';
-import fs from 'fs';
 import { createSCJNRepository } from '../scjn/index.js';
 import { SCJNImportService } from '../scjn/SCJNImportService.js';
+import { requireAuth, requireAdmin } from '../middleware/auth.js';
+import { importLimit } from '../middleware/security.js';
+import { zipUpload, csvUpload } from '../middleware/uploads.js';
+import type { ISCJNRepository } from '../scjn/types.js';
 
+export function createScjnRouter(repo: ISCJNRepository = createSCJNRepository()) {
 const router = Router();
-const repo = createSCJNRepository();
-// Ensure repo is initialized
-repo.init().catch(e => console.error("Error init SCJN repo", e));
-
 const importService = new SCJNImportService(repo);
 
-// Configure multer for file uploads
-const upload = multer({ dest: 'data/scjn/temp/' });
-
 // POST /api/scjn/import (ZIP)
-router.post('/import', upload.single('file'), async (req, res) => {
+router.post('/import', requireAuth, requireAdmin, importLimit, zipUpload, async (req, res, next) => {
   try {
     if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
     
     // Process ZIP
     const batch = await importService.processZipFile(req.file.path, req.file.originalname);
     
-    // Clean up uploaded file
-    fs.unlinkSync(req.file.path);
-    
     res.json(batch);
-  } catch (error: any) {
-    if (req.file) fs.unlinkSync(req.file.path);
-    res.status(500).json({ error: error.message });
+  } catch (error) {
+    next(error);
   }
 });
 
 // POST /api/scjn/import/csv
-router.post('/import/csv', upload.single('file'), async (req, res) => {
+router.post('/import/csv', requireAuth, requireAdmin, importLimit, csvUpload, async (req, res, next) => {
   try {
     if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
     
     // Process CSV
     const batch = await importService.processCsvFile(req.file.path, req.file.originalname);
     
-    // Clean up uploaded file
-    fs.unlinkSync(req.file.path);
-    
     res.json(batch);
-  } catch (error: any) {
-    if (req.file) fs.unlinkSync(req.file.path);
-    res.status(500).json({ error: error.message });
+  } catch (error) {
+    next(error);
   }
 });
 
 // GET /api/scjn/provider-status
-router.get('/provider-status', async (req, res) => {
+router.get('/provider-status', requireAuth, requireAdmin, async (_req, res, next) => {
   try {
     const status = await repo.getProviderStatus();
     res.json(status);
-  } catch(e: any) {
-    res.status(500).json({ error: e.message });
+  } catch(e) {
+    next(e);
   }
 });
 
 // GET /api/scjn/health (legacy check)
-router.get('/health', async (req, res) => {
+router.get('/health', async (_req, res) => {
   const h = await repo.getProviderStatus();
-  res.json({ status: h.status, service: 'SCJN Integration Active via Local Index' });
+  res.status(h.connected ? 200 : 503).json({ status: h.connected ? 'ok' : 'unavailable' });
 });
 
 // GET /api/scjn/catalogs
-router.get('/catalogs', async (req, res) => {
+router.get('/catalogs', async (_req, res, next) => {
   try {
     const catalogs = await repo.getCatalogs();
     res.json({ ...catalogs, source: "SCJN/LOCAL_INDEX" });
-  } catch (error: any) {
-    res.status(500).json({ error: error.message });
+  } catch (error) {
+    next(error);
   }
 });
 
-router.post('/catalogs/clear-cache', (req, res) => {
+router.post('/catalogs/clear-cache', requireAuth, requireAdmin, importLimit, (_req, res) => {
   res.json({ status: 'ok', message: 'No-op for Local Index' });
 });
 
 // GET /api/scjn/search
-router.get('/search', async (req, res) => {
+router.get('/search', async (req, res, next) => {
   try {
     const q = req.query.q as string;
     const registro = req.query.registro as string;
@@ -103,13 +91,13 @@ router.get('/search', async (req, res) => {
     });
     
     res.json(result);
-  } catch (error: any) {
-    res.status(500).json({ error: error.message || 'Error en búsqueda SCJN' });
+  } catch (error) {
+    next(error);
   }
 });
 
 // GET /api/scjn/tesis/:registro
-router.get('/tesis/:registro', async (req, res) => {
+router.get('/tesis/:registro', async (req, res, next) => {
   try {
     const registro = req.params.registro;
     const detail = await repo.getByRegistroDigital(registro);
@@ -117,9 +105,10 @@ router.get('/tesis/:registro', async (req, res) => {
       return res.status(404).json({ error: `Registro digital ${registro} no encontrado en el índice local.` });
     }
     res.json(detail);
-  } catch (error: any) {
-    res.status(500).json({ error: error.message });
+  } catch (error) {
+    next(error);
   }
 });
 
-export default router;
+return router;
+}

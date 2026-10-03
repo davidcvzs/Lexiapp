@@ -1,0 +1,26 @@
+# Separate Worker project; the root wrangler.toml belongs to the web/Pages app.
+name = "transcriptor-legal"
+account_id = "7ea6c8f6637ddb93d68512834ac18724"
+main = "src/index.ts"
+compatibility_date = "2026-10-02"
+
+[vars]
+# Keep aligned with account_id: Stream binding and REST calls use the same account.
+CF_ACCOUNT_ID = "7ea6c8f6637ddb93d68512834ac18724"
+CORS_ORIGINS = ""
+RETENTION_DAYS = "31"
+MAX_DURATION_SECONDS = "36000"
+
+[stream]
+binding = "STREAM"
+
+[[durable_objects.bindings]]
+name = "JOURNAL"
+class_name = "JobJournal"
+
+[exports.JobJournal]
+type = "durable-object"
+storage = "sqlite"
+
+[observability]
+enabled = false

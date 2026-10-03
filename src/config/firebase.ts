@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
 
 // In production (PROD=true set by Vite at build time), missing vars cause an
 // explicit error rather than silently using mock values that will never work.
@@ -13,7 +12,7 @@ function requireEnv(key: string, value: string | undefined): string {
       `Configura VITE_FIREBASE_* en tu entorno antes de compilar.`
     );
   }
-  return value || '';
+  return value || (key === 'VITE_FIREBASE_API_KEY' ? 'dummy-api-key-for-dev' : '');
 }
 
 const apiKey         = requireEnv('VITE_FIREBASE_API_KEY',            import.meta.env.VITE_FIREBASE_API_KEY);
@@ -49,5 +48,3 @@ googleProvider.setCustomParameters({
   prompt: 'select_account',
   hd: 'pjenl.gob.mx' // Opcional pero recomendado basado en el placeholder del correo
 });
-
-export const db             = getFirestore(app);

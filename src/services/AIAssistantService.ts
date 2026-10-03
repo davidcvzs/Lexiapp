@@ -1,147 +1,75 @@
-import { BaseService } from './BaseService';
+import { ApiClient, ApiError } from './ApiClient';
+import { isRecord } from '../../shared/transcription';
+import { parseGenerationRequest, parseProvenance, validateGenerationConsent } from '../../shared/generation';
+import type { TaskGenerationRequest, TaskGenerationResult } from '../../shared/generation';
+import type { DocumentDraft } from '../../shared/documents';
+import { workflowSteps } from '../../shared/workflowCatalog';
 
-export interface DocumentSection {
-  title: string;
-  content: string;
-}
-
+export interface DocumentSection { title: string; content: string }
 export interface DocumentState {
   transcription: string;
   documentType: string;
   completedSections: DocumentSection[];
   currentStep: number;
   userInstructions: string[];
-  searchResults: any[];
-  formatPreferences: Record<string, any>;
+  searchResults: unknown[];
+  formatPreferences: Record<string, unknown>;
 }
 
-export class AIAssistantService extends BaseService {
-  private currentState: DocumentState;
+/** Per-editor state and JSON generation requests; no streaming or direct provider calls. */
+export class AIAssistantService {
+  private readonly api: ApiClient;
+  private currentState: DocumentState = {
+    transcription: '', documentType: '', completedSections: [], currentStep: 1,
+    userInstructions: [], searchResults: [], formatPreferences: {},
+  };
 
-  constructor() {
-    super();
-    this.currentState = {
-      transcription: '',
-      documentType: '',
-      completedSections: [],
-      currentStep: 1,
-      userInstructions: [],
-      searchResults: [],
-      formatPreferences: {}
-    };
+  /** Accept an authenticated API client; defaults to the application's same-origin API. */
+  constructor(api = new ApiClient()) { this.api = api; }
+
+  /** Keep the source transcription for this editor without changing its contents. */
+  initializeSession(transcription: string): void { this.currentState.transcription = transcription; }
+
+  /** Rebuild documentState from the durable draft after edits or reload; never infer missing sections. */
+  syncDocumentState(draft: DocumentDraft): void {
+    const flow = draft.workflow;
+    this.currentState = { transcription: draft.originalTranscription ?? draft.transcription, documentType: draft.generationTask?.taskId ?? draft.documentType,
+      completedSections: flow ? flow.sections.filter(section => section.matterId === flow.activeMatterId).map(section => ({ title: section.title, content: draft.content.slice(section.start, section.end) })) : [],
+      currentStep: flow && draft.generationTask ? workflowSteps(draft.generationTask).findIndex(step => step.id === flow.currentStepId) + 1 : 1,
+      userInstructions: (draft.generationLog ?? []).filter(record => !flow || record.matterId === flow.activeMatterId).map(record => record.instruction),
+      searchResults: flow?.references.filter(ref => ref.matterId === flow.activeMatterId) ?? [], formatPreferences: draft.generationTask ? { ...draft.generationTask } : {} };
   }
 
-  public initializeSession(transcription: string) {
-    this.currentState.transcription = transcription;
-    this.log('Sesion inicializada con transcripcion.', { chars: transcription.length });
-  }
-
-  private async fetchWithRetry(url: string, options: RequestInit, retries = 3): Promise<Response> {
-    for (let i = 0; i < retries; i++) {
-      try {
-        const response = await fetch(url, options);
-        if (response.ok) return response;
-        if (response.status === 429 || response.status >= 500) {
-           const delay = Math.pow(2, i) * 1000;
-           console.warn(`Error API ${response.status}. Reintentando en ${delay}ms...`);
-           await new Promise(res => setTimeout(res, delay));
-           continue;
-        }
-        return response; 
-      } catch (e) {
-        if (i === retries - 1) throw e;
-        const delay = Math.pow(2, i) * 1000;
-        await new Promise(res => setTimeout(res, delay));
-      }
+  /** Return complete text or throw. Failures and cancellations never enter history. */
+  async sendInstruction(instruction: string, options: { signal?: AbortSignal } = {}): Promise<string> {
+    if (!instruction.trim()) throw new Error('Escribe una instrucción antes de generar.');
+    const data = await this.api.request('/api/ai/generate', {
+      method: 'POST', signal: options.signal,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ instruction }),
+    }, 130_000);
+    options.signal?.throwIfAborted();
+    if (!isRecord(data) || typeof data.result !== 'string' || !data.result.trim()) {
+      throw new ApiError(502, 'La IA no devolvió texto válido. El borrador anterior se conserva.');
     }
-    throw new Error('API Timeout / Network Failure tras múltiples reintentos');
+    this.currentState.userInstructions.push(instruction);
+    return data.result;
   }
 
-  public async sendInstruction(
-    instruction: string, 
-    onChunk?: (chunk: string) => void
-  ): Promise<string> {
-    this.log('Instruccion enviada a la IA: ' + instruction.substring(0, 50) + '...');
-    
-    // Configuración de endpoints (Ej. OpenAI o Cloudflare Worker) a través de variables de entorno (Vite)
-    const apiUrl = import.meta.env?.VITE_AI_API_URL || '/api/ai/generate';
-    const apiKey = import.meta.env?.VITE_AI_API_KEY || '';
-
-    try {
-      this.currentState.userInstructions.push(instruction);
-      
-      // Construir payload dinámico (soporte nativo para OpenAI o Backend genérico)
-      const isOpenAI = apiUrl.includes('openai.com');
-      
-      let payload: any = {
-        instruction: instruction,
-        stream: !!onChunk
-      };
-
-      if (isOpenAI) {
-        payload = {
-          model: "gpt-4o",
-          messages: [
-            { role: "system", content: "Eres LexIA, un asistente jurídico experto del Poder Judicial del Estado de Nuevo León." },
-            { role: "user", content: instruction }
-          ],
-          stream: !!onChunk
-        };
-      }
-
-      const response = await this.fetchWithRetry(apiUrl, {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${apiKey}`
-        },
-        body: JSON.stringify(payload)
-      });
-
-      if (!response.ok) {
-        throw new Error(`Error en el servidor: ${response.status} ${response.statusText}`);
-      }
-
-      if (onChunk && response.body) {
-        const reader = response.body.getReader();
-        const decoder = new TextDecoder('utf-8');
-        let finalResult = '';
-
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          const chunk = decoder.decode(value, { stream: true });
-          
-          // Procesamiento básico de eventos SSE
-          const lines = chunk.split('\n');
-          for (const line of lines) {
-            if (line.startsWith('data: ')) {
-              const dataStr = line.replace('data: ', '').trim();
-              if (dataStr === '[DONE]') continue;
-              try {
-                const parsed = JSON.parse(dataStr);
-                const textChunk = parsed.choices?.[0]?.delta?.content || parsed.text || '';
-                finalResult += textChunk;
-                onChunk(textChunk);
-              } catch (err) {
-                 // Ignorar fragmentos incompletos
-              }
-            }
-          }
-        }
-        return finalResult;
-      } else {
-        const data = await response.json();
-        return data.result || data.choices?.[0]?.message?.content || '';
-      }
-    } catch (e) {
-      this.handleError(e as Error);
-      alert("Hubo un error de red o de cuota al procesar tu solicitud con la IA.");
-      return "";
-    }
+  /** Send a selected task with original, working and contrast sources; return text and reference hashes. */
+  async generateTask(input: TaskGenerationRequest, options: { signal?: AbortSignal } = {}): Promise<TaskGenerationResult> {
+    const request = parseGenerationRequest(input);
+    await validateGenerationConsent(request);
+    const data = await this.api.request('/api/ai/generate', { method: 'POST', signal: options.signal,
+      headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(request) }, 130_000);
+    options.signal?.throwIfAborted();
+    if (!isRecord(data) || typeof data.result !== 'string' || !data.result.trim()) throw new ApiError(502, 'La IA no devolvió texto válido. El borrador anterior se conserva.');
+    const provenance = parseProvenance(data.provenance);
+    if (provenance.taskId !== request.taskId || provenance.formatId !== request.formatId) throw new ApiError(502, 'La respuesta corresponde a otra tarea o formato.');
+    this.currentState.userInstructions.push(request.instruction);
+    return { result: data.result, provenance };
   }
 
-  public getState(): DocumentState {
-    return this.currentState;
-  }
+  /** Expose per-editor context reconstructed from the durable document, without provider conversation identifiers. */
+  getState(): DocumentState { return this.currentState; }
 }

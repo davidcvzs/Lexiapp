@@ -1,106 +1,26 @@
-import express from 'express';
-import cors from 'cors';
-import path from 'path';
-import fs from 'fs';
-import dotenv from 'dotenv';
-import { fileURLToPath } from 'url';
-import aiRoutes from './routes/ai.js';
-import transcriptionRoutes from './routes/transcription.js';
-import scjnRoutes from './routes/scjn.js';
-
-dotenv.config({ path: '.env.local' });
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname  = path.dirname(__filename);
-
-const app       = express();
-const port      = process.env.PORT || 3000;
-const NODE_ENV  = process.env.NODE_ENV || 'development';
-const APP_ORIGIN = process.env.APP_ORIGIN;
-
-// ---------------------------------------------------------------------------
-// CORS — only allow specific origins; open only in dev if APP_ORIGIN not set
-// ---------------------------------------------------------------------------
-if (NODE_ENV !== 'production') {
-  // Development: allow Vite dev server (and any custom APP_ORIGIN)
-  const devOrigins = APP_ORIGIN
-    ? [APP_ORIGIN]
-    : ['http://localhost:5173', 'http://127.0.0.1:5173'];
-
-  app.use(cors({ origin: devOrigins, credentials: true }));
-} else if (APP_ORIGIN) {
-  // Production with explicit cross-origin: allow only that origin
-  app.use(cors({ origin: APP_ORIGIN, credentials: true }));
-}
-// In production without APP_ORIGIN: no CORS headers (frontend served from same origin)
-
-app.use(express.json({ limit: '10mb' }));
-
-// ---------------------------------------------------------------------------
-// API Routes
-// ---------------------------------------------------------------------------
-app.use('/api/ai', aiRoutes);
-app.use('/api/transcription', transcriptionRoutes);
-app.use('/api/scjn', scjnRoutes);
-
-// ---------------------------------------------------------------------------
-// Health Check — no OpenAI calls, no secrets exposed
-// ---------------------------------------------------------------------------
+import { createApp } from './app.js';
+import { loadEnvironment, validateEnvironment } from './config/environment.js';
 import { createSCJNRepository } from './scjn/index.js';
-app.get('/api/health', async (req, res) => {
-  const openaiKey      = process.env.OPENAI_API_KEY;
-  const firebaseApiKey = process.env.VITE_FIREBASE_API_KEY;
-  const firebaseProjId = process.env.VITE_FIREBASE_PROJECT_ID;
+import { getApps, deleteApp } from 'firebase-admin/app';
 
-  let scjnStatus = null;
-  try {
-    const repo = createSCJNRepository();
-    scjnStatus = await repo.getProviderStatus();
-  } catch(e) {
-    console.error('Health check scjn error', e);
-  }
-
-  res.json({
-    status:            'ok',
-    environment:       NODE_ENV,
-    database: {
-      driver:          scjnStatus?.driver || 'unknown',
-      connected:       scjnStatus?.connected || false,
-    },
-    scjn: {
-      available:       scjnStatus?.available || false,
-      records:         scjnStatus?.records || 0,
-    },
-    openaiConfigured:    !!openaiKey && openaiKey !== 'missing',
-    firebaseConfigured:  !!(firebaseApiKey && firebaseProjId),
+loadEnvironment();
+const configuration = validateEnvironment(process.env);
+if (configuration.errors.length) throw new Error(configuration.errors.join('\n'));
+for (const warning of configuration.warnings) console.warn(`[LexIA] ${warning}`);
+const repo = createSCJNRepository();
+await repo.init();
+const app = createApp({ trustProxyHops: configuration.trustProxyHops });
+const server = app.listen(configuration.port, '0.0.0.0', () => {
+  console.log(`LexIA: puerto ${configuration.port}, entorno ${process.env.NODE_ENV || 'development'}.`);
+});
+let stopping = false;
+const shutdown = () => {
+  if (stopping) return;
+  stopping = true;
+  const timeout = setTimeout(() => process.exit(1), 10_000).unref();
+  server.close(() => {
+    void Promise.all([repo.close(), ...getApps().map(deleteApp)]).then(() => { clearTimeout(timeout); process.exit(0); }, () => process.exit(1));
   });
-});
-
-
-// ---------------------------------------------------------------------------
-// Serve React frontend in production (single-process full-stack)
-// ---------------------------------------------------------------------------
-if (NODE_ENV === 'production') {
-  const distPath = path.join(process.cwd(), 'dist');
-
-  if (fs.existsSync(distPath)) {
-    // Static assets (JS, CSS, images, sw.js, etc.)
-    app.use(express.static(distPath));
-
-    // SPA fallback — every non-/api path gets index.html
-    app.use((req, res, next) => {
-      if (req.path.startsWith('/api/')) return next();
-      res.sendFile(path.join(distPath, 'index.html'));
-    });
-  } else {
-    console.warn('[LexIA] dist/ no encontrado. Ejecuta npm run build antes de npm run start.');
-  }
-}
-
-// ---------------------------------------------------------------------------
-app.listen(port, () => {
-  console.log(`LexIA Backend running on port ${port} [${NODE_ENV}]`);
-  if (NODE_ENV === 'production') {
-    console.log('Full-stack mode: React servido desde dist/');
-  }
-});
+};
+process.on('SIGTERM', shutdown);
+process.on('SIGINT', shutdown);

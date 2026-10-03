@@ -1,6 +1,7 @@
 import Database from 'better-sqlite3';
 import path from 'path';
 import fs from 'fs';
+import type { SCJNTesis } from '../scjn/types.js';
 
 export interface SCJNSearchParams {
   q?: string;
@@ -104,10 +105,10 @@ export class SCJNLocalIndexProvider {
 
   async health() {
     try {
-      const row = this.db.prepare("SELECT count(*) as c FROM tesis").get() as any;
+      const row = this.db.prepare("SELECT count(*) as c FROM tesis").get() as { c: number };
       return { status: 'ok', provider: 'SCJN_LOCAL_INDEX', recordCount: row.c };
-    } catch (e: any) {
-      return { status: 'error', error: e.message };
+    } catch {
+      return { status: 'error', error: 'Índice no disponible.' };
     }
   }
 
@@ -119,7 +120,7 @@ export class SCJNLocalIndexProvider {
     let query = 'SELECT t.* FROM tesis t';
     let countQuery = 'SELECT COUNT(*) as total FROM tesis t';
     const conditions: string[] = [];
-    const values: any[] = [];
+    const values: (string | number)[] = [];
     
     // We use FTS if there is a text query
     if (params.q) {
@@ -161,10 +162,10 @@ export class SCJNLocalIndexProvider {
     query += ' LIMIT ? OFFSET ?';
     values.push(pageSize, offset);
 
-    const totalRow = this.db.prepare(countQuery).get(...values.slice(0, values.length - 2)) as any;
+    const totalRow = this.db.prepare(countQuery).get(...values.slice(0, values.length - 2)) as { total: number };
     const total = totalRow.total;
 
-    const results = this.db.prepare(query).all(...values) as any[];
+    const results = this.db.prepare(query).all(...values) as (SCJNTesis & { sourceUrl?: string })[];
 
     // Map to API format
     return {
@@ -187,7 +188,7 @@ export class SCJNLocalIndexProvider {
   }
 
   async getByRegistro(registro: string) {
-    const row = this.db.prepare('SELECT * FROM tesis WHERE registroDigital = ?').get(registro) as any;
+    const row = this.db.prepare('SELECT * FROM tesis WHERE registroDigital = ?').get(registro) as (SCJNTesis & { sourceUrl?: string }) | undefined;
     if (!row) {
       throw new Error(`Registro ${registro} no encontrado en índice local.`);
     }

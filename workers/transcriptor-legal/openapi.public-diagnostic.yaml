@@ -1,0 +1,36 @@
+openapi: 3.1.0
+info:
+  title: Diagnóstico público de Transcriptor Legal
+  version: 1.0.0
+  description: Prueba de control del servicio sin credenciales ni parámetros.
+servers:
+  - url: https://transcriptor-legal.yoshiman1989.workers.dev
+security: []
+paths:
+  /health:
+    get:
+      operationId: comprobarServicio
+      summary: Comprobar la salud pública del servicio
+      description: Consulta pública de control sin autenticación ni llamada a Stream.
+      security: []
+      x-openai-isConsequential: false
+      responses:
+        '200':
+          description: Salud y capacidades configuradas
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    type: boolean
+                  contract_version:
+                    type: integer
+                  language:
+                    type: string
+                  direct_upload:
+                    type: boolean
+                  job_authorization:
+                    type: string
+components:
+  schemas: {}

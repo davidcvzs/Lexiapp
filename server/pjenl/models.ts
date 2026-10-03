@@ -17,8 +17,8 @@ export interface PJENLCriterion {
   tipoId: number | null;
   fechaEmision: string | null;
   hasVotes: boolean;
-  votos: any[];
-  ejecutorias: any[];
+  votos: unknown[];
+  ejecutorias: unknown[];
   sentenciasPublicas: string | null;
   sourceType: SourceType;
   institution: string;

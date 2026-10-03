@@ -44,10 +44,11 @@ async function main() {
     console.log(`Acuse Oficial:    ${result.acuseFilename || 'No encontrado'}`);
     console.log("=========================================");
     
-    process.exit(0);
-  } catch (err: any) {
-    console.error("Error durante la importación:", err.message);
-    process.exit(1);
+  } catch (err) {
+    console.error("Error durante la importación:", (err instanceof Error ? err.message : String(err)));
+    process.exitCode = 1;
+  } finally {
+    await repo.close();
   }
 }
 

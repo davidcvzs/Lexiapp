@@ -1,45 +1,41 @@
 import fs from 'fs';
 import path from 'path';
 import mammoth from 'mammoth';
+import * as xlsx from 'xlsx';
+import { PDFParse } from 'pdf-parse';
 import { createRequire } from 'module';
+import { createHash } from 'node:crypto';
+import { LEGAL_REFERENCES, LEGAL_TASKS } from '../../shared/legalTasks.js';
+import type { ReferenceId } from '../../shared/legalTasks.js';
+import { RequestError } from '../middleware/security.js';
 const require = createRequire(import.meta.url);
-const xlsx = require('xlsx');
-const pdfParse = require('pdf-parse');
 
 export class KnowledgeService {
   private baseDir: string;
 
-  constructor() {
-    this.baseDir = path.resolve(process.cwd(), 'Conocimiento');
+  constructor(baseDir = process.env.KNOWLEDGE_DIR || path.resolve(process.cwd(), 'conocimiento')) {
+    this.baseDir = baseDir;
   }
 
   public getManifest(mode: string): string[] {
-    switch (mode) {
-      case 'TRANSCRIPCION':
-        return ['647-2.docx'];
-      case 'DECLARACION':
-        return ['DINAMICA DE TRABAJO GPT.docx'];
-      case 'HECHOS_DATOS':
-        return ['1095-26-HECHOS Y DATOS.docx'];
-      case 'ORDEN_APREHENSION':
-        return ['RESOLUCIONES ORDENES DE APREHENSION.doc', 'O.A POR ESCRITO YA VINCULADO.doc'];
-      case 'CATEO':
-        return ['FORMATO CATEO NARCO - copia.docx', 'Cateo Desaparición.doc', 'ACTA CATEO AUD.doc'];
-      case 'ACUERDO':
-        return ['ACUERDO-FECHAS-VARIOS 1.docx', 'ATENCION MEDICA.docx'];
-      case 'OFICIO':
-        return ['OF TRASLADOS.doc'];
-      case 'AMPARO':
-        return ['SUSPENSION DE PLANO 1.docx'];
-      case 'SEDES':
-        return ['SEDES PALACIOS DE JUSTICIA.docx'];
-      case 'DIRECTORIO':
-        return ['DIRECTORIO REQUERIMIENTOS ACTALIZADO 25-02-26.xlsx'];
-      case 'ACTA':
-        return [];
-      default:
-        return [];
+    const task = LEGAL_TASKS.find(item => item.id === mode);
+    return task ? task.formats[0].references.map(id => LEGAL_REFERENCES[id].file) : [];
+  }
+
+  /** Resolve only catalog identifiers; required examples must exist and contain readable text. */
+  public async readReferences(ids: readonly ReferenceId[]): Promise<{ id: ReferenceId; filename: string; content: string; sha256: string; bytes: Buffer }[]> {
+    const results = [];
+    for (const id of ids) {
+      if (!Object.hasOwn(LEGAL_REFERENCES, id)) throw new RequestError(400, 'Referencia desconocida.');
+      const filename = LEGAL_REFERENCES[id].file;
+      try {
+        const bytes = fs.readFileSync(path.join(this.baseDir, filename));
+        const [reference] = await this.readFiles([filename]);
+        if (!reference?.content.trim() || !bytes.equals(fs.readFileSync(path.join(this.baseDir, filename)))) throw new Error('Referencia vacía o modificada durante la lectura.');
+        results.push({ id, ...reference, bytes, sha256: createHash('sha256').update(bytes).digest('hex') });
+      } catch { throw new RequestError(503, `Referencia ausente o ilegible: ${filename}.`); }
     }
+    return results;
   }
 
   public async readFiles(files: string[]): Promise<{ filename: string, content: string }[]> {
@@ -60,8 +56,8 @@ export class KnowledgeService {
           const extracted = await extractor.extract(fullPath);
           content = extracted.getBody();
         } else if (ext === '.xlsx') {
-          const workbook = xlsx.readFile(fullPath);
-          const sheetsData = workbook.SheetNames.map(name => {
+          const workbook = xlsx.read(fs.readFileSync(fullPath));
+          const sheetsData = workbook.SheetNames.map((name: string) => {
             const sheet = workbook.Sheets[name];
             return `--- Hoja: ${name} ---\n` + xlsx.utils.sheet_to_csv(sheet);
           });
@@ -70,13 +66,14 @@ export class KnowledgeService {
           content = fs.readFileSync(fullPath, 'utf-8');
         } else if (ext === '.pdf') {
           const buffer = fs.readFileSync(fullPath);
-          const data = await pdfParse(buffer);
-          content = data.text;
+          const parser = new PDFParse({ data: buffer });
+          try { content = (await parser.getText({ pageJoiner: '' })).text; }
+          finally { await parser.destroy(); }
         }
 
         results.push({ filename: file, content: content.trim() });
-      } catch (err) {
-        console.error(`Error al leer archivo ${file}:`, err);
+      } catch {
+        // Never log private document text or parser diagnostics.
       }
     }
     return results;
@@ -85,22 +82,23 @@ export class KnowledgeService {
   public async getKnowledgeText(mode: string): Promise<string> {
     const files = this.getManifest(mode);
     if (files.length === 0) return '';
-    const readContents = await this.readFiles(files);
+    const task = LEGAL_TASKS.find(item => item.id === mode);
+    const readContents = await this.readReferences(task?.formats[0].references ?? []);
     return readContents.map(r => `[ARCHIVO: ${r.filename}]\n${r.content}`).join('\n\n');
   }
 
-  public async queryDirectoryExcel(query: string): Promise<any> {
+  public async queryDirectoryExcel(query: string, snapshot?: Buffer): Promise<Record<string, unknown>[]> {
     const filePath = path.join(this.baseDir, 'DIRECTORIO REQUERIMIENTOS ACTALIZADO 25-02-26.xlsx');
-    if (!fs.existsSync(filePath)) throw new Error('Excel no encontrado');
-    const workbook = xlsx.readFile(filePath);
-    let allData: any[] = [];
+    if (!snapshot && !fs.existsSync(filePath)) throw new Error('Excel no encontrado');
+    const workbook = xlsx.read(snapshot ?? fs.readFileSync(filePath));
+    const allData: Record<string, unknown>[] = [];
     for (const sheetName of workbook.SheetNames) {
       const sheet = workbook.Sheets[sheetName];
-      const rows = xlsx.utils.sheet_to_json(sheet);
-      rows.forEach((r: any) => allData.push({ Hoja: sheetName, ...r }));
+      const rows = xlsx.utils.sheet_to_json<Record<string, unknown>>(sheet);
+      rows.forEach(r => allData.push({ Hoja: sheetName, ...r }));
     }
     
-    const terms = query.toLowerCase().split(' ');
+    const terms = query.trim().toLowerCase().split(/\s+/);
     const results = allData.filter(row => {
       const rowText = JSON.stringify(row).toLowerCase();
       return terms.every(term => rowText.includes(term));

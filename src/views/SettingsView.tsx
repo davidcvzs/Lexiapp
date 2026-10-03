@@ -13,6 +13,8 @@ import {
   AlertCircle
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+import { auth } from '../config/firebase';
 
 export const SettingsView: React.FC = () => {
   const navigate = useNavigate();
@@ -26,10 +28,14 @@ export const SettingsView: React.FC = () => {
     setTimeout(() => setToastMessage(null), 3000);
   };
 
-  const handleLogout = () => {
-    // AuthService.logout() equivalent
-    localStorage.removeItem('auth_token');
-    navigate('/login');
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      localStorage.removeItem('auth_token');
+      navigate('/login', { replace: true });
+    } catch {
+      setToastMessage('No fue posible cerrar la sesión. Inténtalo nuevamente.');
+    }
   };
 
   const tabStyle = (isActive: boolean) => ({

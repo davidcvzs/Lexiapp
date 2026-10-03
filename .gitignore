@@ -9,6 +9,9 @@ lerna-debug.log*
 
 node_modules
 dist
+dist-server/
+.firebase-hosting.generated.json
+backups/
 dist-ssr
 *.local
 
@@ -31,6 +34,17 @@ data/scjn/temp/*
 .env
 .env.*
 
+# Private credentials must never enter source control
+*firebase-adminsdk*.json
+*service-account*.json
+*serviceAccount*.json
+*.pem
+*.key
+secrets/
+.dev.vars
+.dev.vars.*
+.wrangler/
+
 # SQLite databases at root (legacy artifacts)
 scjn_index.db
 *.db
@@ -41,6 +55,7 @@ archivoSJF.zip
 
 # Reference documents (sensitive legal files — mount as volume)
 Conocimiento/
+conocimiento/
 
 # Firebase hosting (local config only)
 .firebase/

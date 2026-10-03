@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useEffectEvent } from 'react';
+import type { SCJNTesis, SCJNCatalogs } from '../../server/scjn/types';
 import { Search, Library, Scale, FileText, BookOpen, AlertCircle, Loader } from 'lucide-react';
 
 type Category = 'SCJN' | 'PJENL' | 'DOCTRINA';
@@ -9,25 +10,15 @@ export const LegalSearchView: React.FC = () => {
   
   // SCJN specific states
   const [registroDigital, setRegistroDigital] = useState('');
-  const [scjnResults, setScjnResults] = useState<any[]>([]);
+  const [scjnResults, setScjnResults] = useState<SCJNTesis[]>([]);
   const [scjnTotal, setScjnTotal] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState(1);
-  const [selectedTesis, setSelectedTesis] = useState<any | null>(null);
+  const [selectedTesis, setSelectedTesis] = useState<(SCJNTesis & { officialUrl?: string }) | null>(null);
 
   // Catalogs
-  const [catalogs, setCatalogs] = useState<{
-    epocas: any[];
-    anios: any[];
-    instancias: any[];
-    organos: any[];
-    materias: any[];
-    asuntos: any[];
-    ponentes: any[];
-    tipos: any[];
-    formasIntegracion: any[];
-  } | null>(null);
+  const [catalogs, setCatalogs] = useState<SCJNCatalogs | null>(null);
   
   // Selected Filters
   const [selectedEpoca, setSelectedEpoca] = useState('');
@@ -57,7 +48,7 @@ export const LegalSearchView: React.FC = () => {
       const data = text ? JSON.parse(text) : {};
       setCatalogs(data);
       
-    } catch (err: any) {
+    } catch (err) {
       console.error('Error cargando catálogos:', err);
     }
   };
@@ -78,10 +69,10 @@ export const LegalSearchView: React.FC = () => {
     setSelectedPonente('');
     setSelectedTipo('');
     setSelectedFormaIntegracion('');
-    setTimeout(() => handleSearch(1), 0);
+    void handleSearch(1, true);
   };
 
-  const handleSearch = async (overridePage?: number) => {
+  const handleSearch = async (overridePage?: number, cleared = false) => {
     if (activeCategory !== 'SCJN') return;
     
     setIsLoading(true);
@@ -91,6 +82,7 @@ export const LegalSearchView: React.FC = () => {
 
     try {
       const params = new URLSearchParams();
+      if (!cleared) {
       if (searchQuery) params.append('q', searchQuery);
       if (registroDigital) params.append('registro', registroDigital);
       
@@ -104,6 +96,7 @@ export const LegalSearchView: React.FC = () => {
       if (selectedPonente) params.append('ponente', selectedPonente);
       if (selectedTipo) params.append('tipo', selectedTipo);
       if (selectedFormaIntegracion) params.append('formaIntegracion', selectedFormaIntegracion);
+      }
 
       params.append('page', currentPage.toString());
       params.append('pageSize', '10');
@@ -122,8 +115,8 @@ export const LegalSearchView: React.FC = () => {
 
       setScjnResults(data.data || []);
       setScjnTotal(data.total || 0);
-    } catch (err: any) {
-      setError(err.message || 'El servicio del Semanario Judicial de la Federación no está disponible temporalmente.');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'El servicio del Semanario Judicial de la Federación no está disponible temporalmente.');
     } finally {
       setIsLoading(false);
     }
@@ -144,16 +137,17 @@ export const LegalSearchView: React.FC = () => {
       }
       const data = text ? JSON.parse(text) : {};
       setSelectedTesis(data);
-    } catch (err: any) {
-      setError(err.message || 'Error al obtener detalle de tesis');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Error al obtener detalle de tesis');
     } finally {
       setIsLoading(false);
     }
   };
 
+  const searchOnCategory = useEffectEvent(() => { void handleSearch(1); });
   useEffect(() => {
     if (activeCategory === 'SCJN') {
-      handleSearch(1);
+      searchOnCategory();
     }
   }, [activeCategory]);
 
@@ -278,47 +272,47 @@ export const LegalSearchView: React.FC = () => {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem' }}>
                 <select value={selectedEpoca} onChange={(e) => setSelectedEpoca(e.target.value)} style={{ padding: '0.5rem', borderRadius: '0.25rem', border: '1px solid #cbd5e1', backgroundColor: '#f8fafc', outline: 'none', color: '#0f172a' }} disabled={!catalogs?.epocas || catalogs.epocas.length === 0}>
                   <option value="">{(!catalogs?.epocas || catalogs.epocas.length === 0) ? 'Época — sin datos importados' : 'Todas las épocas'}</option>
-                  {catalogs?.epocas?.map((item: any) => <option key={item.id} value={item.id}>{item.description}</option>)}
+                  {catalogs?.epocas?.map((item) => <option key={item.id} value={item.id}>{item.description}</option>)}
                 </select>
 
                 <select value={selectedAnio} onChange={(e) => setSelectedAnio(e.target.value)} style={{ padding: '0.5rem', borderRadius: '0.25rem', border: '1px solid #cbd5e1', backgroundColor: '#f8fafc', outline: 'none', color: '#0f172a' }} disabled={!catalogs?.anios || catalogs.anios.length === 0}>
                   <option value="">{(!catalogs?.anios || catalogs.anios.length === 0) ? 'Año — sin datos importados' : 'Todos los años'}</option>
-                  {catalogs?.anios?.map((item: any) => <option key={item.id} value={item.id}>{item.description}</option>)}
+                  {catalogs?.anios?.map((item) => <option key={item.id} value={item.id}>{item.description}</option>)}
                 </select>
 
                 <select value={selectedInstancia} onChange={(e) => setSelectedInstancia(e.target.value)} style={{ padding: '0.5rem', borderRadius: '0.25rem', border: '1px solid #cbd5e1', backgroundColor: '#f8fafc', outline: 'none', color: '#0f172a' }} disabled={!catalogs?.instancias || catalogs.instancias.length === 0}>
                   <option value="">{(!catalogs?.instancias || catalogs.instancias.length === 0) ? 'Instancia — sin datos importados' : 'Todas las instancias'}</option>
-                  {catalogs?.instancias?.map((item: any) => <option key={item.id} value={item.id}>{item.description}</option>)}
+                  {catalogs?.instancias?.map((item) => <option key={item.id} value={item.id}>{item.description}</option>)}
                 </select>
 
                 <select value={selectedOrgano} onChange={(e) => setSelectedOrgano(e.target.value)} style={{ padding: '0.5rem', borderRadius: '0.25rem', border: '1px solid #cbd5e1', backgroundColor: '#f8fafc', outline: 'none', color: '#0f172a' }} disabled={!catalogs?.organos || catalogs.organos.length === 0}>
                   <option value="">{(!catalogs?.organos || catalogs.organos.length === 0) ? 'Órgano — sin datos importados' : 'Todos los órganos'}</option>
-                  {catalogs?.organos?.map((item: any) => <option key={item.id} value={item.id}>{item.description}</option>)}
+                  {catalogs?.organos?.map((item) => <option key={item.id} value={item.id}>{item.description}</option>)}
                 </select>
 
                 <select value={selectedMateria} onChange={(e) => setSelectedMateria(e.target.value)} style={{ padding: '0.5rem', borderRadius: '0.25rem', border: '1px solid #cbd5e1', backgroundColor: '#f8fafc', outline: 'none', color: '#0f172a' }} disabled={!catalogs?.materias || catalogs.materias.length === 0}>
                   <option value="">{(!catalogs?.materias || catalogs.materias.length === 0) ? 'Materia — sin datos importados' : 'Todas las materias'}</option>
-                  {catalogs?.materias?.map((item: any) => <option key={item.id} value={item.id}>{item.description}</option>)}
+                  {catalogs?.materias?.map((item) => <option key={item.id} value={item.id}>{item.description}</option>)}
                 </select>
 
                 <select value={selectedAsunto} onChange={(e) => setSelectedAsunto(e.target.value)} style={{ padding: '0.5rem', borderRadius: '0.25rem', border: '1px solid #cbd5e1', backgroundColor: '#f8fafc', outline: 'none', color: '#0f172a' }} disabled={!catalogs?.asuntos || catalogs.asuntos.length === 0}>
                   <option value="">{(!catalogs?.asuntos || catalogs.asuntos.length === 0) ? 'Asunto — sin datos importados' : 'Todos los asuntos'}</option>
-                  {catalogs?.asuntos?.map((item: any) => <option key={item.id} value={item.id}>{item.description}</option>)}
+                  {catalogs?.asuntos?.map((item) => <option key={item.id} value={item.id}>{item.description}</option>)}
                 </select>
 
                 <select value={selectedPonente} onChange={(e) => setSelectedPonente(e.target.value)} style={{ padding: '0.5rem', borderRadius: '0.25rem', border: '1px solid #cbd5e1', backgroundColor: '#f8fafc', outline: 'none', color: '#0f172a' }} disabled={!catalogs?.ponentes || catalogs.ponentes.length === 0}>
                   <option value="">{(!catalogs?.ponentes || catalogs.ponentes.length === 0) ? 'Ponente — sin datos importados' : 'Todos los ponentes'}</option>
-                  {catalogs?.ponentes?.map((item: any) => <option key={item.id} value={item.id}>{item.description}</option>)}
+                  {catalogs?.ponentes?.map((item) => <option key={item.id} value={item.id}>{item.description}</option>)}
                 </select>
 
                 <select value={selectedTipo} onChange={(e) => setSelectedTipo(e.target.value)} style={{ padding: '0.5rem', borderRadius: '0.25rem', border: '1px solid #cbd5e1', backgroundColor: '#f8fafc', outline: 'none', color: '#0f172a' }} disabled={!catalogs?.tipos || catalogs.tipos.length === 0}>
                   <option value="">{(!catalogs?.tipos || catalogs.tipos.length === 0) ? 'Tipo — sin datos importados' : 'Todos los tipos'}</option>
-                  {catalogs?.tipos?.map((item: any) => <option key={item.id} value={item.id}>{item.description}</option>)}
+                  {catalogs?.tipos?.map((item) => <option key={item.id} value={item.id}>{item.description}</option>)}
                 </select>
 
                 <select value={selectedFormaIntegracion} onChange={(e) => setSelectedFormaIntegracion(e.target.value)} style={{ padding: '0.5rem', borderRadius: '0.25rem', border: '1px solid #cbd5e1', backgroundColor: '#f8fafc', outline: 'none', color: '#0f172a' }} disabled={!catalogs?.formasIntegracion || catalogs.formasIntegracion.length === 0}>
                   <option value="">{(!catalogs?.formasIntegracion || catalogs.formasIntegracion.length === 0) ? 'Forma de integración — sin datos importados' : 'Todas las formas de integración'}</option>
-                  {catalogs?.formasIntegracion?.map((item: any) => <option key={item.id} value={item.id}>{item.description}</option>)}
+                  {catalogs?.formasIntegracion?.map((item) => <option key={item.id} value={item.id}>{item.description}</option>)}
                 </select>
               </div>
             </div>
